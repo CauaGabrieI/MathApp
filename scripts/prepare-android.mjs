@@ -1,0 +1,26 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+const root=path.resolve(import.meta.dirname,'..'),target=path.join(root,'android/app/src/main/assets');
+await fs.mkdir(target,{recursive:true});
+const excluded=new Set(['sw.js','questions.json','enemhub.json','enemdev.json']);
+for(const file of await fs.readdir(path.join(root,'public'))){if(excluded.has(file))continue;const stat=await fs.stat(path.join(root,'public',file));if(stat.isFile())await fs.copyFile(path.join(root,'public',file),path.join(target,file));}
+let app=await fs.readFile(path.join(target,'app.js'),'utf8');
+app="import './android-runtime.js';\n"+app;
+app=app.replace("if('serviceWorker'in navigator)","if(!window.EquacaoAndroid&&'serviceWorker'in navigator)");
+app=app.replaceAll("matchMedia('(prefers-color-scheme: dark)').matches","window.EquacaoAndroid.systemDark");
+app+="\nwindow.addEventListener('android-system-theme',applyTheme);\n";
+app=app.replaceAll('neste navegador','neste aplicativo').replaceAll('dados do navegador','dados do aplicativo');
+app=app.replaceAll('<button class="button secondary" data-action="install">Instalar app</button>','');
+app=app.replace('const url=URL.createObjectURL(blob);',"if(window.EquacaoAndroid){blob.text().then(text=>window.EquacaoAndroid.exportHistory(text));return;}const url=URL.createObjectURL(blob);");
+app=app.replace('A chave de acesso fica no servidor.','O acervo EnemHub desta versão está incluído no APK. Nenhuma chave de API é armazenada no aplicativo.');
+app=app.replace(' é a fonte alternativa e fornece a dificuldade.',' fornece a dificuldade dos registros incluídos no app.');
+app=app.replace('Conectando ao banco de questões…','Abrindo o banco incluído no app…');
+await fs.writeFile(path.join(target,'app.js'),app);
+let css=await fs.readFile(path.join(target,'style.css'),'utf8');css=css.replace(/^@import[^;]+;\s*/,"@font-face{font-family:'DM Sans';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/dm-sans.woff2') format('woff2')}\n@font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url('/fonts/manrope.woff2') format('woff2')}\n");
+css+='\nhtml{overscroll-behavior-y:none}.bottom-nav{padding-bottom:9px}html,body{min-height:100%}\n';await fs.writeFile(path.join(target,'style.css'),css);
+await fs.cp(path.join(root,'android/fonts'),path.join(target,'fonts'),{recursive:true});
+await fs.copyFile(path.join(root,'android/web/android-runtime.js'),path.join(target,'android-runtime.js'));
+let service=await fs.readFile(path.join(root,'video-service.js'),'utf8');service=service.replaceAll("'./public/","'./");await fs.writeFile(path.join(target,'android-video-service.js'),service);
+await fs.copyFile(path.join(root,'video-catalog.json'),path.join(target,'video-catalog.json'));
+await fs.copyFile(path.join(root,'ENEM-API-LICENSE'),path.join(target,'ENEM-API-LICENSE.txt'));
+console.log('Android assets prepared; no API credentials or hosted-site login required.');

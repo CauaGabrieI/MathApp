@@ -1,1 +1,16 @@
-{"name":"equacao","version":"1.0.0","private":true,"type":"module","scripts":{"build":"node scripts/build.mjs","dev":"node scripts/serve.mjs","test":"node --test tests/*.test.mjs"},"devDependencies":{"fake-indexeddb":"^6.2.6"}}
+{
+  "name": "equacao",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "android:prepare": "node scripts/prepare-android.mjs",
+    "pretest": "node scripts/prepare-android.mjs"
+  },
+  "devDependencies": {
+    "fake-indexeddb": "^6.2.6"
+  }
+}

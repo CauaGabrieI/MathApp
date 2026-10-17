@@ -1,0 +1,35 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'br.com.equacao.app'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'br.com.equacao.app'
+        minSdk 26
+        targetSdk 36
+        versionCode 1
+        versionName '1.0.0'
+        testInstrumentationRunner 'android.test.InstrumentationTestRunner'
+    }
+    def signingPropertiesFile = rootProject.file('.android-signing/signing.properties')
+    if (signingPropertiesFile.exists()) {
+        def values = new Properties()
+        signingPropertiesFile.withInputStream { values.load(it) }
+        signingConfigs {
+            localRelease {
+                storeFile rootProject.file('.android-signing/equacao-release.jks')
+                storePassword values.getProperty('storePassword')
+                keyAlias 'equacao'
+                keyPassword values.getProperty('keyPassword')
+            }
+        }
+        buildTypes { release { signingConfig signingConfigs.localRelease; minifyEnabled false } }
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    testOptions { unitTests.returnDefaultValues = true }
+    lint { abortOnError true }
+}
+dependencies {
+    implementation 'androidx.webkit:webkit:1.17.1'
+    implementation 'androidx.activity:activity:1.11.0'
+    testImplementation 'junit:junit:4.13.2'
+}

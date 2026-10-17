@@ -1,6 +1,6 @@
-# Equação
+# MathApp — Equação
 
-App web instalável (PWA), em português, para praticar matemática com questões reais do ENEM. O mapa de aprendizagem é a página inicial. Layout responsivo inspirado no Material Design, com navegação inferior no celular, temas claro/escuro, prática por matéria, sorteio dentro do conteúdo e histórico de cards.
+Aplicativo Android e versão web instalável (PWA), em português, para praticar matemática com questões reais do ENEM. O mapa de aprendizagem é a página inicial. Layout responsivo inspirado no Material Design, com navegação inferior no celular, temas claro/escuro, prática por matéria, sorteio dentro do conteúdo e histórico de cards.
 
 ## Fontes
 
@@ -23,7 +23,9 @@ Abra http://localhost:4173. Para consultar a EnemHub ao vivo no servidor local, 
 
 ## Instalar no Android
 
-Abra a versão HTTPS publicada no Chrome e escolha ⋮ → Instalar aplicativo / Adicionar à tela inicial. É uma PWA, não um APK. Os textos, alternativas e histórico ficam disponíveis offline após o primeiro carregamento completo. As últimas 100 imagens visualizadas são guardadas em cache. As imagens ainda não visitadas precisam de conexão. Um aviso aparece quando uma imagem não carrega.
+O projeto Android está em [`android/`](android/README.md), com instruções para gerar o APK. Requer Android 8.0 ou superior. O aplicativo inclui a interface e o acervo localmente, com histórico próprio, exportação pelo seletor de arquivos e integração nativa de rede. Imagens ainda não carregadas e videoaulas precisam de internet. Consulte o README Android para os requisitos de compilação e as limitações de validação.
+
+Também é possível instalar a versão web publicada pelo menu do Chrome → Instalar aplicativo / Adicionar à tela inicial. Na PWA, textos, alternativas e histórico ficam disponíveis offline após o primeiro carregamento completo. As últimas 100 imagens visualizadas são guardadas em cache. As imagens ainda não visitadas precisam de conexão. Um aviso aparece quando uma imagem não carrega.
 
 ## Identificação e histórico
 
