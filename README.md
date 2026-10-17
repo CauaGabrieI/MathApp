@@ -1,6 +1,6 @@
 # Equação
 
-App web instalável (PWA), em português, para praticar matemática com questões reais do ENEM. Layout responsivo inspirado no Material Design, com navegação inferior no celular, temas claro/escuro, sorteio e histórico de cards.
+App web instalável (PWA), em português, para praticar matemática com questões reais do ENEM. O mapa de aprendizagem é a página inicial. Layout responsivo inspirado no Material Design, com navegação inferior no celular, temas claro/escuro, prática por matéria, sorteio dentro do conteúdo e histórico de cards.
 
 ## Fontes
 
@@ -73,7 +73,7 @@ A busca pública do YouTube não é um contrato estável e pode ser bloqueada ou
 
 ## Mapa de aprendizagem
 
-A rota `#mapa` integra o currículo de Matemática ao mesmo aplicativo JavaScript nativo, sem framework novo, iframe ou biblioteca de grafos. São 25 módulos e 199 subtópicos, preservados do Markdown fornecido. Os oito ramos usam HTML/CSS e conexões SVG decorativas; a versão mobile reorganiza os nós em cards legíveis. Há pesquisa sem acentos e por palavras, filtros combinados, acordeões, detalhes, conhecimentos recomendados, relações entre módulos, continuidade e prática por conteúdo.
+A rota inicial `#mapa` integra o currículo de Matemática ao mesmo aplicativo JavaScript nativo, sem framework novo, iframe ou biblioteca de grafos. São 25 módulos e 199 subtópicos, preservados do Markdown fornecido. Os oito ramos usam HTML/CSS e conexões SVG decorativas em uma seção expansível; a versão mobile reorganiza os nós em cards legíveis. O visual compartilha as cores, fontes e superfícies do aplicativo nos temas claro e escuro. O progresso e a continuidade aparecem antes da lista de matérias. Há pesquisa sem acentos e por palavras, filtros combinados, acordeões, detalhes, conhecimentos recomendados, relações entre módulos, continuidade e prática por conteúdo.
 
 ### Dados e manutenção
 
@@ -88,7 +88,7 @@ A ordem do Markdown foi preservada como sequência recomendada, mas não foi con
 
 ### Exercícios e limitações pedagógicas
 
-O botão de prática envia os IDs de questões associadas ao mecanismo transacional existente. Mantém filtros de fonte, dificuldade da questão, prevenção de repetições, alternativas e correção. O nível curricular Básico/Intermediário/Avançado é independente da dificuldade Fácil/Médio/Difícil da questão. O retorno ao mapa preserva os filtros e o progresso.
+O botão de prática envia os IDs de questões associadas ao mecanismo transacional existente. Mantém filtro de fonte, prevenção de repetições, alternativas e correção. A prática é escolhida por matéria e subtópico, sem filtro adicional de dificuldade: a etapa vem do currículo. Metadados de dificuldade das fontes continuam preservados nos registros antigos. O nível curricular Básico/Intermediário/Avançado é independente da dificuldade Fácil/Médio/Difícil da questão. O retorno ao mapa preserva os filtros e o progresso.
 
 A associação inicial alcança 102 dos 199 subtópicos; os demais exibem a ausência de exercícios. Todos os 25 módulos têm ao menos uma associação. As regras são automáticas e podem omitir questões ou produzir associações imprecisas: não constituem curadoria pedagógica. Não se pressupõe que o acervo cubra integralmente o currículo. Há casos vazios mesmo quando o módulo mais amplo contém questões.
 
@@ -105,3 +105,16 @@ Limpar o histórico de exercícios não apaga o checklist de estudo. Limpar os d
 `npm test` cobre fidelidade ao Markdown, pré-requisitos e ciclos, IDs estáveis, filtros combinados, contagens e separação entre estudo/desempenho, associação de questões, migração IndexedDB v1→v2, reserva concorrente, persistência após reabrir e conservação do estudo ao limpar exercícios. Os testes de API, formatação, histórico e videoaulas continuam na mesma suíte. `fake-indexeddb` é apenas uma dependência de desenvolvimento; não vai para o app ou Worker.
 
 A validação manual no navegador incluiu desktop e celular de 390 e 320 pixels: ramos, busca, acordeões, detalhes, marcação de estudo, recarregamento, prática de coeficientes angular/linear, correção e retorno ao mapa, tópico sem questões, preferências no mobile, cards vazios sem respostas e videoaulas introdutórias. A confirmação ao vivo do YouTube depende de rede; indisponibilidade não gera vídeos inventados.
+
+
+## Fluxo de aprendizagem como início do app
+
+O mapa é a página inicial também ao instalar a PWA. A primeira opção no menu é Meu aprendizado (Aprender no celular). Matérias e subtópicos têm botões de prática, inclusive tópicos sem questões: estes abrem a prática com o nome escolhido e um estado vazio honesto. Abrir Praticar diretamente restaura o conteúdo selecionado; sem seleção anterior, usa o último tópico válido ou a primeira matéria. O sorteio nunca remove o filtro de conteúdo.
+
+`public/learning-flow.js` centraliza seleção, restauração e validação da prática. Ao restaurar contextos antigos, descarta a escolha de dificuldade e reconstrói os IDs permitidos a partir do índice curricular. O histórico e as marcações de estudo são preservados. O progresso passa a exibir matérias em vez de uma separação por dificuldade.
+
+O painel de tópico inclui a videoaula confirmada, com miniatura, título, canal e reprodução integrada ao clicar. `GET /api/videos?content=math.m01.t01` aceita somente IDs curriculares existentes. `public/lesson-topics.js` define a consulta e a correspondência do assunto; o servidor verifica também o canal e o oEmbed oficial. Um vídeo genérico de equações não substitui uma aula de sistema decimal. Se nenhum vídeo puder ser confirmado, o painel informa isso sem inserir outro assunto. A aba de videoaulas continua disponível.
+
+A reprodução usa youtube-nocookie.com e só carrega o player após o clique. Fechar o painel remove o player para interromper a reprodução. O link Abrir no YouTube permanece disponível caso o canal ou navegador restrinja o player integrado. As sugestões ao lado da prática também acompanham o conteúdo selecionado, mesmo antes de responder.
+
+Testes adicionais em `tests/learning-flow.test.mjs`: restauração sem dificuldade antiga; validação de matéria/subtópico; tópico vazio sem fallback para outras matérias; vídeo compatível com o subtópico; curadoria de apoio sem contornar essa correspondência. `tests/api.test.mjs` também rejeita IDs curriculares desconhecidos na consulta de aulas.
