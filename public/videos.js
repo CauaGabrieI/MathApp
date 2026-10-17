@@ -1,5 +1,5 @@
-import {VIDEO_CHANNELS,VIDEO_TOPICS,detectVideoTopic} from './video-topics.js?v=ds20';
-import {completedRecords} from './core.js?v=ds20';
+import {VIDEO_CHANNELS,VIDEO_TOPICS,detectVideoTopic} from './video-topics.js?v=github22';
+import {completedRecords} from './core.js?v=github22';
 const $=s=>document.querySelector(s);
 const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const play='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg>';

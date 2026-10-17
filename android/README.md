@@ -119,3 +119,9 @@ Validação desta versão: build release, 12 testes Java (incluindo truncamento,
 Roteiro para aparelho: instalar esta versão por cima da anterior, publicar uma próxima versão com código maior e mesma chave, verificar atualizações, aceitar Atualizar agora, testar cancelamento do progresso, negar e depois conceder a autorização, cancelar e repetir a instalação, confirmar e conferir a versão e o histórico preservado.
 
 Referências: [FileProvider e permissões temporárias](https://developer.android.com/reference/androidx/core/content/FileProvider), [intenção de instalação e confirmação do Android](https://developer.android.com/reference/android/content/Intent#ACTION_INSTALL_PACKAGE).
+
+## Conta e backup · versão 1.2.0
+
+Login opcional pelo GitHub com Device Flow; backup privado em `equacao-backup` da conta conectada, restauração com mesclagem e automático opcional enquanto o app estiver aberto. Histórico e prática offline continuam independentes da conexão. A assinatura e o pacote Android são os mesmos das versões anteriores.
+
+Veja [GITHUB-BACKUP.md](../GITHUB-BACKUP.md) para uso, configuração, escopo `repo`, proteção das credenciais, conflitos, limites e roteiro de validação com uma conta real.

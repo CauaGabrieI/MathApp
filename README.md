@@ -106,7 +106,7 @@ Não há teoria própria cadastrada nem um modelo validado de domínio. A interf
 
 ### Persistência e migração
 
-IndexedDB `equacao-history`, versão 2: as stores antigas `records` e `meta` são preservadas, e a store `learning` registra `id`, `studied`, `startedAt`, `studiedAt` e `updatedAt`. A store `meta` guarda o último tópico, os filtros do mapa e o contexto de prática. A exportação JSON inclui o estudo manual, último tópico e filtros, além das respostas concluídas e IDs vistos. Não há conta, backend de progresso, sincronização entre dispositivos ou importação do backup pela interface nesta versão.
+IndexedDB `equacao-history`, versão 2: as stores antigas `records` e `meta` são preservadas, e a store `learning` registra `id`, `studied`, `startedAt`, `studiedAt` e `updatedAt`. A store `meta` guarda o último tópico, os filtros do mapa e o contexto de prática. A exportação JSON inclui o estudo manual, último tópico e filtros, além das respostas concluídas e IDs vistos. O login opcional com GitHub salva e restaura o progresso no repositório privado do próprio usuário, com mesclagem entre aparelhos. A prática continua disponível offline e sem conta; consulte GITHUB-BACKUP.md.
 
 Limpar o histórico de exercícios não apaga o checklist de estudo. Limpar os dados do site pelo navegador apaga ambos. O cache é versionado separadamente dos dados IndexedDB; atualizar o aplicativo não reinicia o progresso. A navegação tenta obter a versão atual e recorre à cópia local quando offline. O banco de questões é carregado apenas ao entrar na prática, não para abrir o mapa.
 
@@ -128,3 +128,7 @@ O painel de tópico inclui a videoaula confirmada, com miniatura, título, canal
 A reprodução usa youtube-nocookie.com e só carrega o player após o clique. Fechar o painel remove o player para interromper a reprodução. O link Abrir no YouTube permanece disponível caso o canal ou navegador restrinja o player integrado. As sugestões ao lado da prática também acompanham o conteúdo selecionado, mesmo antes de responder.
 
 Testes adicionais em `tests/learning-flow.test.mjs`: restauração sem dificuldade antiga; validação de matéria/subtópico; tópico vazio sem fallback para outras matérias; vídeo compatível com o subtópico; curadoria de apoio sem contornar essa correspondência. `tests/api.test.mjs` também rejeita IDs curriculares desconhecidos na consulta de aulas.
+
+## Conta e backup no GitHub
+
+A versão Android 1.2.0 e o site incluem conexão opcional ao GitHub, backup privado na conta do usuário e restauração com mesclagem. Veja [GITHUB-BACKUP.md](GITHUB-BACKUP.md) para configuração, privacidade, permissões e verificação.

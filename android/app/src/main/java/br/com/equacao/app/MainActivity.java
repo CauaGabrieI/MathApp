@@ -22,6 +22,7 @@ public class MainActivity extends androidx.activity.ComponentActivity {
     private final ExecutorService requests=Executors.newFixedThreadPool(8);
     private NativeHttp http;
     private GitHubUpdates updates;
+    private GitHubBackup github;
     private String pendingExport;
     private volatile String pageError;
     private int background;
@@ -35,6 +36,7 @@ public class MainActivity extends androidx.activity.ComponentActivity {
         } else {root.setFitsSystemWindows(true);getWindow().setStatusBarColor(background);getWindow().setNavigationBarColor(background);}
         http=new NativeHttp(this);
         updates=new GitHubUpdates(this);
+        try{github=new GitHubBackup(this);}catch(Exception ignored){github=null;}
         web=new WebView(this);web.setBackgroundColor(background);
         root.addView(web,new FrameLayout.LayoutParams(-1,-1));
         WebSettings settings=web.getSettings();
@@ -91,6 +93,7 @@ public class MainActivity extends androidx.activity.ComponentActivity {
                 if("theme".equals(kind)){applyTheme(input.optBoolean("dark",true));return;}
                 if("open".equals(kind)){openExternal(input.optString("url"));return;}
                 if("export".equals(kind)){exportHistory(input.optString("body"));return;}
+                if("github".equals(kind)){String id=input.getString("id");requests.execute(()->{JSONObject result=new JSONObject();try{if(github==null)throw new IllegalStateException();result=github.action(input.optString("action"),input.optJSONObject("input")==null?new JSONObject():input.getJSONObject("input")).put("id",id);}catch(Exception error){try{result.put("id",id).put("error",error instanceof GitHubBackup.BackupError?error.getMessage():"Não foi possível conectar ao GitHub. Verifique sua conexão e tente novamente.").put("status",error instanceof GitHubBackup.BackupError?((GitHubBackup.BackupError)error).status:502);}catch(Exception impossible){return;}}final String data=result.toString();runOnUiThread(()->{if(!isFinishing()&&!isDestroyed()){try{reply.postMessage(data);}catch(IllegalStateException ignored){}}});});return;}
                 if(!"fetch".equals(kind))return;
                 String id=input.getString("id"),url=input.getString("url");
                 requests.execute(()->{JSONObject result;

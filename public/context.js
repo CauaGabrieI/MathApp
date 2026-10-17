@@ -1,4 +1,4 @@
-import {expressionParts,formatNumber,questionId} from './core.js?v=ds20';
+import {expressionParts,formatNumber,questionId} from './core.js?v=github22';
 const n=formatNumber;
 const templates={
  '+':[
