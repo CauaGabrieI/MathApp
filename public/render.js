@@ -6,3 +6,5 @@ function sanitize(html){const clean=DOMPurify.sanitize(html,{ALLOWED_TAGS:['p','
 export function statementHTML(q){let html=q.format==='html'?q.statement:marked.parse(q.statement??'',{gfm:true,breaks:true});const rendered=sanitize(html);const present=new Set();const t=document.createElement('template');t.innerHTML=rendered;t.content.querySelectorAll('img').forEach(i=>present.add(i.src));const extra=(q.files??[]).map(imageURL).filter(Boolean).filter(src=>!present.has(new URL(src,location.origin).href));return rendered+extra.map(src=>`<figure><img src="${src}" alt="Imagem de apoio da questão" loading="lazy" data-zoom="true" tabindex="0" role="button" aria-label="Ampliar imagem de apoio"></figure>`).join('');}
 export function inlineHTML(text){return sanitize(marked.parse(String(text??''),{gfm:true,breaks:true}));}
 export function previewText(q){return plainText(q.statement??q.question??'');}
+
+export function optionHTML(text){return String(text??'').replace(/[&<>"\']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"\'":'&#39;'}[c])).replace(/\n/g,'<br>');}
