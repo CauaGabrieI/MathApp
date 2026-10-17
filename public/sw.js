@@ -1,5 +1,5 @@
-const CACHE='equacao-map14';
-const CORE=['/','/style.css?v=map14','/app.js?v=map14','/core.js?v=map14','/db.js?v=map14','/context.js?v=map14','/render.js?v=map14','/videos.js?v=map14','/video-topics.js?v=map14','/learning-map.js?v=map14','/learning-model.js?v=map14','/curriculum.json?v=map14','/curriculum-index.json?v=map14','/purify.min.js?v=map14','/marked.esm.js?v=map14','/manifest.webmanifest','/icon.svg','/icon-192.png','/icon-512.png'];
+const CACHE='equacao-map15';
+const CORE=['/','/style.css?v=map15','/app.js?v=map15','/core.js?v=map15','/db.js?v=map15','/context.js?v=map15','/render.js?v=map15','/videos.js?v=map15','/video-topics.js?v=map15','/learning-map.js?v=map15','/learning-model.js?v=map15','/curriculum.json?v=map15','/curriculum-index.json?v=map15','/purify.min.js?v=map15','/marked.esm.js?v=map15','/manifest.webmanifest','/icon.svg','/icon-192.png','/icon-512.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('equacao-')&&key!==CACHE&&key!=='equacao-data-v1').map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{const url=new URL(event.request.url);if(event.request.method!=='GET'||url.origin!==self.location.origin)return;
