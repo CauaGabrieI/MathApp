@@ -1,4 +1,4 @@
-const CACHE='equacao-v7';
+const CACHE='equacao-v8';
 const CORE=['/','/style.css','/app.js','/core.js','/db.js','/context.js','/render.js','/purify.min.js','/marked.esm.js','/manifest.webmanifest','/icon.svg','/icon-192.png','/icon-512.png','/bank.json'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('equacao-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));

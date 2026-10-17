@@ -10,3 +10,5 @@ test('histórico distingue pendente, acerto e erro inclusive na resposta zero an
 test('texto para busca remove HTML e links de imagem sem apagar o enunciado',()=>{assert.equal(plainText('<p>Uma escola &amp; uma turma.</p> ![](https://example.org/a.png)'),'Uma escola & uma turma.');});
 import {optionHTML} from '../public/render.js';
 test('alternativas numéricas com ponto são texto e não listas vazias de Markdown',()=>{assert.equal(optionHTML('4.'),'4.');assert.equal(optionHTML('2 < 4'),'2 &lt; 4');assert.equal(optionHTML('A\nB'),'A<br>B');assert.equal(optionHTML('<script>alert(1)</script>'),'&lt;script&gt;alert(1)&lt;/script&gt;');});
+import {completedRecords} from '../public/core.js';
+test('uma questão vista ou apenas selecionada não cria card; zero respondido cria',()=>{const viewed={id:'seen',seenAt:1,selectedAnswer:null,completedAt:null};const selected={id:'selected',seenAt:2,selectedAnswer:'B',completedAt:null};const answered={id:'done',seenAt:3,selectedAnswer:0,completedAt:4};assert.deepEqual(completedRecords([viewed,selected]),[]);assert.deepEqual(completedRecords([viewed,selected,answered]),[answered]);});

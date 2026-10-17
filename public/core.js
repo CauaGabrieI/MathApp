@@ -19,3 +19,5 @@ export function expressionParts(text){const m=text.match(/^\s*(-?\d+(?:\.\d+)?)\
 export function expressionText(q){const p=expressionParts(q.question);return p?`${formatNumber(p.left)} ${p.operator} ${formatNumber(p.right)}`:q.title??q.question;}
 export function localDay(date=new Date()){return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;}
 export function stats(records){const completed=records.filter(r=>r.completedAt);const correct=completed.filter(r=>r.selectedAnswer===r.question.answer).length;return {shown:records.length,answered:completed.length,correct,accuracy:completed.length?Math.round(correct/completed.length*100):0};}
+
+export function completedRecords(records){return records.filter(r=>Boolean(r.completedAt));}

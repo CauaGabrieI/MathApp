@@ -4,7 +4,7 @@ App web instalável (PWA), em português, para praticar matemática com questõe
 
 ## Fontes
 
-- **enem.dev é a fonte principal**, selecionada na primeira abertura. A API fornece contexto em Markdown, arquivos, alternativas, gabarito, ano e número da questão. Não fornece dificuldade: o app identifica explicitamente sua estimativa, baseada em extensão do texto, recursos visuais e termos do enunciado. Essa estimativa não tem validação pedagógica e não corresponde à classificação oficial do ENEM.
+- **enem.dev é a fonte principal**. A seleção padrão “As duas fontes” inclui também a EnemHub. A API fornece contexto em Markdown, arquivos, alternativas, gabarito, ano e número da questão. Não fornece dificuldade: o app identifica explicitamente sua estimativa, baseada em extensão do texto, recursos visuais e termos do enunciado. Essa estimativa não tem validação pedagógica e não corresponde à classificação oficial do ENEM.
 - **EnemHub é a fonte alternativa**. Preserva o HTML do enunciado, as imagens, o UUID nativo, a dificuldade fornecida e o gabarito. A chave é uma variável secreta `ENEMHUB_API_KEY` do servidor. Nunca precisa estar no navegador.
 - Acervo inicial importado em 17/10/2026: 581 registros de matemática do enem.dev (2009–2023) e 724 da EnemHub. Registros com alternativas incompletas ou sem o texto de contexto necessário foram excluídos. Não representa todo o acervo disponível de cada serviço.
 
@@ -32,9 +32,9 @@ A aplicação salva o registro **antes de exibir** cada questão. Usa IndexedDB 
 - `enemhub:<UUID original>`
 - `enemdev:<ano>:<número original>`
 
-Enunciados idênticos normalizados também recebem uma chave de conteúdo compartilhada entre fontes. Isso bloqueia duplicatas textuais exatas; não identifica reescritas do mesmo problema. Questões não respondidas ficam no histórico e não voltam no sorteio. O usuário pode retomá-las explicitamente pelo card. O esgotamento de um filtro é comunicado e não reinicia o histórico. Respostas antigas da primeira prévia continuam legíveis.
+Enunciados idênticos normalizados também recebem uma chave de conteúdo compartilhada entre fontes. Isso bloqueia duplicatas textuais exatas; não identifica reescritas do mesmo problema. Questões não respondidas ficam registradas internamente para não voltar no sorteio, mas não aparecem nos cards. Apenas depois de conferir uma resposta o usuário ganha um card, com a alternativa marcada e seu resultado. A questão em andamento pode ser retomada ao reabrir o app. O esgotamento de um filtro é comunicado e não reinicia o histórico. Respostas antigas da primeira prévia continuam legíveis.
 
-O histórico é local a este navegador/dispositivo. Não há sincronização entre aparelhos. A exportação JSON permite guardar uma cópia; limpar os dados do navegador remove os registros.
+O histórico é local a este navegador/dispositivo. Não há sincronização entre aparelhos. A exportação JSON contém os cards concluídos e os IDs já vistos para guardar uma cópia; limpar os dados do navegador remove os registros.
 
 ## API do app
 
