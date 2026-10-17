@@ -2,11 +2,8 @@ package br.com.equacao.app;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
@@ -27,6 +24,7 @@ final class GitHubUpdates implements AutoCloseable {
     private final SharedPreferences preferences;
     private final ExecutorService worker = Executors.newSingleThreadExecutor();
     private final Handler main = new Handler(Looper.getMainLooper());
+    private final UpdateInstaller installer;
     private boolean checking, resumed, closed;
     private boolean dark;
     private Result pending;
@@ -34,20 +32,25 @@ final class GitHubUpdates implements AutoCloseable {
 
     GitHubUpdates(Activity activity) {
         this.activity = activity;
+        installer = new UpdateInstaller(activity);
         dark = (activity.getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES;
+        installer.setDark(dark);
         preferences = activity.getSharedPreferences("github-updates", Context.MODE_PRIVATE);
     }
-    void setDark(boolean dark) { this.dark = dark; }
+    void setDark(boolean dark) { this.dark = dark; installer.setDark(dark); }
 
     void onResume() {
         resumed = true;
+        installer.onResume();
         if (pending != null) { Result ready = pending; pending = null; show(ready); }
         check(false);
     }
-    void onPause() { resumed = false; }
+    void onPause() { resumed = false; installer.onPause(); }
+    void onActivityResult(int request, int result) { installer.onActivityResult(request, result); }
 
     void check(boolean manual) {
         if (closed || activity.isFinishing() || activity.isDestroyed()) return;
+        if (installer.isBusy()) { if (manual) toast("A atualização já está em preparação."); return; }
         if (checking) { if (manual) toast("Já estamos verificando atualizações…"); return; }
         if (dialog != null && dialog.isShowing()) return;
         long now = System.currentTimeMillis();
@@ -161,14 +164,9 @@ final class GitHubUpdates implements AutoCloseable {
             preferences.getInt("deferredVersion", 0), preferences.getLong("deferredUntil", 0), System.currentTimeMillis())) return;
         dialog = new AlertDialog.Builder(activity, dark ? R.style.EquacaoDialogDark : R.style.EquacaoDialogLight).setTitle("Atualização disponível")
             .setMessage("A versão " + release.version + " do Equação está disponível no GitHub. Você está usando a "
-                + BuildConfig.VERSION_NAME + ".\n\nQuer baixar agora? O download será aberto no navegador. Depois, abra o APK e confirme a atualização no Android."
-                + "\n\nAo atualizar com a mesma assinatura, seu histórico e seus estudos são mantidos.")
-            .setPositiveButton("Baixar atualização", (which, button) -> {
-                try {
-                    activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(release.apkUrl)).addCategory(Intent.CATEGORY_BROWSABLE));
-                    defer(release.versionCode);
-                } catch (ActivityNotFoundException ignored) { toast("Nenhum navegador disponível para baixar a atualização."); }
-            })
+                + BuildConfig.VERSION_NAME + ".\n\nQuer atualizar agora? O Equação prepara a atualização aqui no app. Depois, basta confirmar a instalação na tela do Android."
+                + "\n\nSeu histórico e seus estudos são mantidos.")
+            .setPositiveButton("Atualizar agora", (which, button) -> installer.begin(release))
             .setNegativeButton("Agora não", (which, button) -> defer(release.versionCode))
             .setOnCancelListener(which -> defer(release.versionCode)).create();
         dialog.setOnDismissListener(which -> dialog = null);
@@ -180,7 +178,7 @@ final class GitHubUpdates implements AutoCloseable {
     }
     private void toast(String message) { Toast.makeText(activity, message, Toast.LENGTH_LONG).show(); }
     @Override public void close() {
-        closed = true; pending = null; worker.shutdownNow(); main.removeCallbacksAndMessages(null);
+        closed = true; pending = null; installer.close(); worker.shutdownNow(); main.removeCallbacksAndMessages(null);
         if (dialog != null) dialog.dismiss();
     }
     private static final class RateLimited extends IOException {}

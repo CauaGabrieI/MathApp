@@ -1,6 +1,6 @@
 # Equação para Android
 
-Aplicativo Android instalável (`br.com.equacao.app`, versão 1.1.0), Android 8.0/API 26 ou superior. É um app híbrido: uma Activity Android reutiliza a interface existente em uma WebView local, com assets incluídos no APK, armazenamento próprio e integração nativa para rede, links, exportação e botão de voltar. Não é um atalho do navegador e não abre o site privado para funcionar.
+Aplicativo Android instalável (`br.com.equacao.app`, versão 1.1.1), Android 8.0/API 26 ou superior. É um app híbrido: uma Activity Android reutiliza a interface existente em uma WebView local, com assets incluídos no APK, armazenamento próprio e integração nativa para rede, links, exportação e botão de voltar. Não é um atalho do navegador e não abre o site privado para funcionar.
 
 ## Incluído no app
 
@@ -68,24 +68,24 @@ As limitações pedagógicas do acervo e da associação automática dos exercí
 
 O app consulta somente a última release pública estável de [CauaGabrieI/MathApp](https://github.com/CauaGabrieI/MathApp/releases). Não usa login nem token de GitHub. Não envia histórico, respostas ou dados de estudo: faz somente GET dos metadados públicos de versão. O GitHub recebe a conexão HTTP normal, incluindo o IP e a versão do app no User-Agent.
 
-A consulta automática acontece ao abrir/retomar o app, no máximo uma vez por dia. Há também Preferências → Verificar atualizações. Quando encontra uma versão mais nova, o aviso oferece Baixar atualização e Agora não. Adiar silencia aquela versão por 24 horas; a consulta manual ignora o adiamento. Falhas automáticas ficam silenciosas e permitem nova consulta após uma hora; consultas manuais informam problemas de conexão/limite do GitHub.
+A consulta automática acontece ao abrir/retomar o app, no máximo uma vez por dia. Há também Preferências → Verificar atualizações. Quando encontra uma versão mais nova, o aviso oferece Atualizar agora e Agora não. Adiar silencia aquela versão por 24 horas; a consulta manual ignora o adiamento. Falhas automáticas ficam silenciosas e permitem nova consulta após uma hora; consultas manuais informam problemas de conexão/limite do GitHub.
 
-A release precisa conter `android-update.json` e o APK com o nome indicado nele. O app compara o `versionCode` Android, confere o identificador do aplicativo, a tag estável, o nome, o tamanho e o endereço do APK no mesmo repositório. Quando o GitHub fornece um digest, compara-o com o SHA-256 do manifesto. O download abre no navegador após o usuário aceitar; o app não baixa nem instala silenciosamente. O Android confirma a instalação e verifica a compatibilidade da assinatura do APK. Os dados locais são mantidos numa atualização normal, com mesmo pacote e assinatura.
+A release precisa conter `android-update.json` e o APK com o nome indicado nele. O app compara o `versionCode` Android, confere o identificador do aplicativo, a tag estável, o nome, o tamanho e o endereço do APK no mesmo repositório. Quando o GitHub fornece um digest, compara-o com o SHA-256 do manifesto. Depois de aceitar, o usuário vê o progresso dentro do app. O APK é baixado para `files/updates`, no armazenamento privado, sem navegador nem pasta Downloads. Antes de abrir o instalador, o app confere tamanho e SHA-256 dos bytes, pacote, versão mais nova e os certificados atuais do aplicativo instalado. A instalação é iniciada pelo próprio app e confirmada na tela do Android. Os dados locais são mantidos numa atualização normal, com mesmo pacote e assinatura.
 
-Sem release pública ou arquivo Android válido, nenhum download é sugerido. Rascunhos, pré-lançamentos e versões com código igual ou menor são ignorados. A versão 1.0.0 não tinha esse recurso: instale a 1.0.1 ou mais recente uma vez por cima dela. Não desinstale para atualizar, pois isso apaga os dados do app. O recurso é exclusivo do APK; a versão web conserva seu mecanismo de cache.
+Sem release pública ou arquivo Android válido, nenhum download é sugerido. Rascunhos, pré-lançamentos e versões com código igual ou menor são ignorados. A versão 1.0.0 não tinha esse recurso: instale uma versão recente uma vez por cima dela. As versões 1.0.1 e 1.1.0 tinham somente download pelo navegador; a 1.1.1 precisa ser instalada uma vez por esse fluxo antigo para ativar o instalador interno nas próximas atualizações. Não desinstale para atualizar, pois isso apaga os dados do app. O recurso é exclusivo do APK; a versão web conserva seu mecanismo de cache.
 
 ### Publicar uma próxima versão
 
-1. Aumente `versionCode` e `versionName` em `app/build.gradle`. Exemplo: código 4 e nome 1.1.1. Use sempre a chave de assinatura original, guardada localmente.
+1. Aumente `versionCode` e `versionName` em `app/build.gradle`. Exemplo: código 5 e nome 1.1.2. Use sempre a chave de assinatura original, guardada localmente.
 2. Na raiz, execute `npm ci`, `npm run build` e `npm test`. Em `android/`, execute `./gradlew --no-daemon assembleRelease testDebugUnitTest lintRelease`.
 3. Na raiz, com `ANDROID_HOME` configurado, execute `npm run android:release-files`. O script verifica assinatura, alinhamento, pacote e versão do APK antes de gerar os arquivos em `android/build/github-release/` (fora do Git).
 4. Faça commit e push do código. Crie uma release estável `v<versionName>` apontando para esse commit, com os três arquivos gerados: APK, `android-update.json` e `.sha256`. Publique os arquivos juntos, inicialmente em rascunho e depois tornando a release pública e latest.
 
-Exemplo para uma próxima versão 1.1.1, depois dos testes e da preparação dos arquivos:
+Exemplo para uma próxima versão 1.1.2, depois dos testes e da preparação dos arquivos:
 
 ```sh
-gh release create v1.1.1 android/build/github-release/equacao-android-1.1.1.apk android/build/github-release/android-update.json android/build/github-release/equacao-android-1.1.1.apk.sha256 --repo CauaGabrieI/MathApp --target main --title "Equação 1.1.1" --notes-file /caminho/notas.md --draft
-gh release edit v1.1.1 --repo CauaGabrieI/MathApp --draft=false --latest
+gh release create v1.1.2 android/build/github-release/equacao-android-1.1.2.apk android/build/github-release/android-update.json android/build/github-release/equacao-android-1.1.2.apk.sha256 --repo CauaGabrieI/MathApp --target main --title "Equação 1.1.2" --notes-file /caminho/notas.md --draft
+gh release edit v1.1.2 --repo CauaGabrieI/MathApp --draft=false --latest
 ```
 
 Um push de código sozinho não produz uma atualização instalável: é necessário publicar uma release com o APK assinado e seu manifesto. O script de preparação não publica nem inclui chaves privadas. A publicação usa a autenticação local do mantenedor via `gh`, fora do app. O repositório precisa permanecer público para a consulta sem login funcionar.
@@ -101,3 +101,21 @@ Referências: [GitHub Releases API](https://docs.github.com/en/rest/releases/rel
 O app usa os [fundamentos e componentes compartilhados do Equação](../design/README.md). `design/tokens.json` gera tanto o CSS quanto os recursos Android. O fundo nativo, as barras e o diálogo de atualização usam a mesma paleta; o aviso acompanha a escolha de aparência do app. O CSS do app padroniza contraste, tipos de texto, campos, ações, cards, alternativas e estados. As fontes continuam incluídas no APK.
 
 Validação: nove arquivos de testes Node, incluindo os pares de contraste principais; sete testes Java, build release e lint sem erros. Revisão da interface compartilhada no navegador em desktop, 390 e 320 px, claro/escuro, teclado, diálogo, enunciado real e histórico vazio. O teste no navegador não substitui a validação em aparelho Android ou TalkBack, que ainda não foi realizada.
+
+## Instalador interno · versão 1.1.1
+
+Fluxo: Atualizar agora → progresso dentro do Equação → verificação de integridade e assinatura → confirmação do instalador Android. O usuário não precisa baixar um APK no navegador nem procurar/abrir um arquivo. O pacote continua sendo um APK internamente; a instalação sem confirmação não é permitida a um app comum.
+
+Na primeira atualização interna, o Android pode exigir Permitir desta fonte para o Equação. O app abre somente a configuração da própria origem, por `ACTION_MANAGE_UNKNOWN_APP_SOURCES`, após o usuário aceitar o aviso. Ao voltar com autorização, revalida o arquivo e abre automaticamente o instalador. Negar, adiar ou cancelar mantém a versão instalada e todo o histórico. Nenhuma autorização é concedida automaticamente.
+
+A permissão `REQUEST_INSTALL_PACKAGES` é usada somente para esse fluxo de atualização. O `UpdateFileProvider` não é exportado e só compartilha a pasta privada `updates/`, com acesso temporário de leitura para o instalador. Não existe acesso amplo ao armazenamento, à WebView, aos registros do aluno ou a outras pastas. A chamada dedicada `ACTION_INSTALL_PACKAGE`, compatível com o Android mínimo do app, recebe somente uma URI `content://` do arquivo verificado. O Android também verifica a assinatura antes de instalar.
+
+O download usa HTTPS para a release exata do MathApp e permite redirecionamento somente para o CDN do GitHub, com limite de tamanho, cancelamento, arquivo parcial e renomeação após conferir tamanho/SHA-256. O arquivo pronto é revalidado antes de instalar ou retomar depois das configurações. A versão e o conjunto de certificados devem corresponder ao app instalado; downgrade, outro pacote ou outra chave são rejeitados. A chave privada de assinatura continua somente no computador do mantenedor.
+
+Uma atualização já verificada fica salva para nova tentativa se o usuário cancelar o instalador. O app limpa os arquivos de atualização antigos depois de reconhecer uma versão instalada mais nova. Partes antigas de download também são descartadas. O download pode ser interrompido se o Android encerrar o processo; uma nova tentativa baixa novamente a parte incompleta. Se o processo for recriado durante a autorização, o manifesto e o arquivo pronto permitem retomar sem confiar em dados não verificados. A limpeza é restrita à pasta de atualizações e não altera o histórico.
+
+Validação desta versão: build release, 12 testes Java (incluindo truncamento, bytes excedentes, alteração de conteúdo, cancelamento, redirecionamentos, versão/pacote e troca de assinatura), nove arquivos de testes Node, lint sem erros, assinatura e alinhamento do APK. Não havia dispositivo conectado ou emulador; a confirmação real da permissão e da instalação ainda precisa de teste em aparelho Android.
+
+Roteiro para aparelho: instalar esta versão por cima da anterior, publicar uma próxima versão com código maior e mesma chave, verificar atualizações, aceitar Atualizar agora, testar cancelamento do progresso, negar e depois conceder a autorização, cancelar e repetir a instalação, confirmar e conferir a versão e o histórico preservado.
+
+Referências: [FileProvider e permissões temporárias](https://developer.android.com/reference/androidx/core/content/FileProvider), [intenção de instalação e confirmação do Android](https://developer.android.com/reference/android/content/Intent#ACTION_INSTALL_PACKAGE).

@@ -92,7 +92,7 @@ O espaçamento de novos componentes usa uma base de 4 px, com passos de 4, 8, 12
 | Progresso | Nome, valor e limite acessíveis. Não converter checklist de estudo em domínio calculado. |
 | Estado vazio | Explica o motivo e oferece um próximo passo possível. Não inventa atividade, aulas ou resultados. |
 | Diálogo | Título claro, ação e saída; foco visível e rolagem interna em telas pequenas. |
-| Atualização | Aviso nativo usa as mesmas cores claras/escuras; o usuário escolhe baixar ou adiar. A instalação continua sendo confirmada pelo Android. |
+| Atualização | Aviso nativo usa as mesmas cores claras/escuras; o usuário escolhe atualizar ou adiar. O progresso ocorre dentro do app e a instalação é confirmada pelo Android. |
 
 Normal, hover, foco, pressionado e desabilitado têm estilos próprios. O foco usa contorno de 3 px, com afastamento de 3 px. A área de toque dos botões é de pelo menos 48 × 48 px; checkboxes têm uma área de rótulo maior que o desenho do controle.
 

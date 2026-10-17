@@ -122,6 +122,7 @@ public class MainActivity extends androidx.activity.ComponentActivity {
     }
     @Override protected void onActivityResult(int request,int result,Intent data){
         super.onActivityResult(request,result,data);
+        if(updates!=null)updates.onActivityResult(request,result);
         if(request==100){String text=pendingExport;pendingExport=null;if(result!=RESULT_OK||data==null||data.getData()==null||text==null)return;
             try(OutputStream stream=getContentResolver().openOutputStream(data.getData())){if(stream==null)throw new IllegalStateException();stream.write(text.getBytes(StandardCharsets.UTF_8));Toast.makeText(this,"Histórico exportado.",Toast.LENGTH_SHORT).show();}
             catch(Exception ignored){Toast.makeText(this,"Não foi possível salvar o arquivo.",Toast.LENGTH_LONG).show();}

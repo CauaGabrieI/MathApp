@@ -1,6 +1,7 @@
 package br.com.equacao.app;
 
 import java.net.URI;
+import java.util.Set;
 
 /** Release metadata is data only: it cannot choose another repository or app. */
 final class UpdatePolicy {
@@ -38,7 +39,8 @@ final class UpdatePolicy {
     }
 
     static final class Release {
-        final String version, apkUrl;
+        final String version, apkUrl, sha256;
+        final long size;
         final int versionCode;
         Release(String tag, int schema, String applicationId, String version, long code,
                 String apkUrl, String sha256, long size, long assetSize, String assetDigest) {
@@ -50,9 +52,26 @@ final class UpdatePolicy {
                 || (assetDigest != null && !assetDigest.isEmpty() && !("sha256:" + sha256).equals(assetDigest))) {
                 throw new IllegalArgumentException("Metadados de atualização incompatíveis");
             }
-            this.version = version; this.versionCode = (int) code; this.apkUrl = apkUrl;
+            this.version = version; this.versionCode = (int) code; this.apkUrl = apkUrl; this.sha256 = sha256; this.size = size;
         }
         boolean newerThan(int installedCode) { return versionCode > installedCode; }
+    }
+
+    static boolean allowsApkRequest(String address, Release release, int redirects) {
+        try {
+            URI uri = new URI(address);
+            if (redirects < 0 || redirects > 3 || !"https".equals(uri.getScheme()) || uri.getUserInfo() != null
+                || uri.getFragment() != null || (uri.getPort() != -1 && uri.getPort() != 443)) return false;
+            if (redirects == 0) return release.apkUrl.equals(address);
+            return "release-assets.githubusercontent.com".equals(uri.getHost()) || "objects.githubusercontent.com".equals(uri.getHost());
+        } catch (Exception ignored) { return false; }
+    }
+
+    static boolean installIdentityMatches(String packageName, String versionName, long code, long installedCode,
+                                           Release expected, Set<String> installedSigners, Set<String> archiveSigners) {
+        return APPLICATION_ID.equals(packageName) && expected.version.equals(versionName)
+            && code == expected.versionCode && code > installedCode && installedSigners != null
+            && !installedSigners.isEmpty() && installedSigners.equals(archiveSigners);
     }
 
     static boolean shouldOffer(Release release, int installedCode, boolean manual,
