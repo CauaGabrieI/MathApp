@@ -50,6 +50,7 @@ As chamadas individuais ao enem.dev são enfileiradas com intervalo de 1,1 segun
 Markdown: Marked 15.0.12. Sanitização HTML: DOMPurify 3.2.7. Bibliotecas servidas localmente; atributos de estilo e execução são removidos, mantendo parágrafos, listas, tabelas, imagens, sobrescritos e subscritos. As alternativas seguem a ordem original A–E. Há ampliação das imagens e rolagem de tabelas.
 
 ```sh
+npm ci # instala somente a dependência de teste fake-indexeddb
 npm test
 ```
 
@@ -58,3 +59,49 @@ Os testes verificam IDs, filtros, exclusões, alternativas e gabaritos, dificuld
 ## Licenças e créditos
 
 Os dados do enem.dev provêm de https://github.com/yunger7/enem-api, sob GPL-2.0; uma cópia está em ENEM-API-LICENSE. Os enunciados originais são do ENEM/INEP. A EnemHub fornece seu acervo segundo os termos do serviço. Marked e DOMPurify mantêm seus avisos de licença nos arquivos distribuídos. Este repositório não contém chaves de acesso.
+
+## Videoaulas e sugestões
+
+A aba Videoaulas permite filtrar 14 temas de matemática e os sete canais autorizados pelo usuário: Pedro Assaad, Universo Narrado, Método Questiona, Paulo Jubilut, Dicasdemat Sandro Curió, Gis com Giz e Universo Narrado Militares.
+
+Sem respostas concluídas, o app sugere matemática básica/introdução. Depois, usa o tema reconhecido no enunciado ou na classificação da fonte. Se não conseguir reconhecer o tema, não insere uma sugestão junto à questão. A aba permite escolher outro tema manualmente.
+
+`GET /api/videos?topic=basics&channel=all` pesquisa nas páginas públicas de busca dos canais, valida o ID do canal nos resultados e confirma cada vídeo no oEmbed oficial do YouTube. O catálogo curado de apoio também passa pela verificação ao vivo. Vídeos removidos, privados, de outro canal, não verificáveis ou sem relação confirmada com o tema são omitidos. A disponibilidade pode mudar depois da verificação; o cache de resultados dura até 10 minutos e a verificação de metadados até 15 minutos. Erros e ausência de resultados não geram recomendações substitutas. A indisponibilidade offline oculta novas sugestões.
+
+A busca pública do YouTube não é um contrato estável e pode ser bloqueada ou mudar de formato. Nesses casos, o catálogo de apoio continua sendo verificado; se a verificação também falhar, a lista fica vazia. Não há garantia de encontrar todas as aulas existentes nos canais. O app abre o vídeo original no YouTube; não baixa nem hospeda os vídeos e não requer uma chave adicional do YouTube.
+
+
+## Mapa de aprendizagem
+
+A rota `#mapa` integra o currículo de Matemática ao mesmo aplicativo JavaScript nativo, sem framework novo, iframe ou biblioteca de grafos. São 25 módulos e 199 subtópicos, preservados do Markdown fornecido. Os oito ramos usam HTML/CSS e conexões SVG decorativas; a versão mobile reorganiza os nós em cards legíveis. Há pesquisa sem acentos e por palavras, filtros combinados, acordeões, detalhes, conhecimentos recomendados, relações entre módulos, continuidade e prática por conteúdo.
+
+### Dados e manutenção
+
+- `public/curriculum.json`: disciplina, oito áreas, módulos, subtópicos, níveis de conteúdo, sequência e pré-requisitos recomendados. IDs como `math.m09.t01` não dependem do nome exibido.
+- `scripts/import-curriculum.mjs`: importador do Markdown e validação de quantidade, referências e ciclos. Para importar, execute `node scripts/import-curriculum.mjs /caminho/ENEM_mapa_mental_completo.md`. O currículo anterior é usado para preservar IDs. Mudanças ambíguas de nome e posição exigem revisão do diff antes de publicar.
+- `question-classifier.js`: regras explícitas de termos matemáticos aplicadas à classificação e ao enunciado durante a build.
+- `public/curriculum-index.json`: índice de IDs de questões por conteúdo. Não duplica enunciados, alternativas ou gabaritos e pode ser carregado sem carregar o banco inteiro.
+- `public/learning-model.js`: filtros, estatísticas, continuidade e validação do grafo.
+- `public/learning-map.js`: apresentação e eventos da tela; delega a persistência e a prática ao aplicativo existente.
+
+A ordem do Markdown foi preservada como sequência recomendada, mas não foi convertida em uma corrente obrigatória. Geometria não depende de progressões apenas por aparecer depois; estatística não depende de toda a geometria. Os avisos de bases recomendadas permitem navegar para elas e continuar livremente.
+
+### Exercícios e limitações pedagógicas
+
+O botão de prática envia os IDs de questões associadas ao mecanismo transacional existente. Mantém filtros de fonte, dificuldade da questão, prevenção de repetições, alternativas e correção. O nível curricular Básico/Intermediário/Avançado é independente da dificuldade Fácil/Médio/Difícil da questão. O retorno ao mapa preserva os filtros e o progresso.
+
+A associação inicial alcança 102 dos 199 subtópicos; os demais exibem a ausência de exercícios. Todos os 25 módulos têm ao menos uma associação. As regras são automáticas e podem omitir questões ou produzir associações imprecisas: não constituem curadoria pedagógica. Não se pressupõe que o acervo cubra integralmente o currículo. Há casos vazios mesmo quando o módulo mais amplo contém questões.
+
+Não há teoria própria cadastrada nem um modelo validado de domínio. A interface informa essas ausências. Marcar um tópico como estudado altera somente o checklist; abrir um tópico registra onde o aluno parou; respostas concluídas alimentam as contagens e a taxa de acerto. Nenhuma dessas ações gera domínio automaticamente.
+
+### Persistência e migração
+
+IndexedDB `equacao-history`, versão 2: as stores antigas `records` e `meta` são preservadas, e a store `learning` registra `id`, `studied`, `startedAt`, `studiedAt` e `updatedAt`. A store `meta` guarda o último tópico, os filtros do mapa e o contexto de prática. A exportação JSON inclui o estudo manual, último tópico e filtros, além das respostas concluídas e IDs vistos. Não há conta, backend de progresso, sincronização entre dispositivos ou importação do backup pela interface nesta versão.
+
+Limpar o histórico de exercícios não apaga o checklist de estudo. Limpar os dados do site pelo navegador apaga ambos. O cache é versionado separadamente dos dados IndexedDB; atualizar o aplicativo não reinicia o progresso. A navegação tenta obter a versão atual e recorre à cópia local quando offline. O banco de questões é carregado apenas ao entrar na prática, não para abrir o mapa.
+
+### Validação
+
+`npm test` cobre fidelidade ao Markdown, pré-requisitos e ciclos, IDs estáveis, filtros combinados, contagens e separação entre estudo/desempenho, associação de questões, migração IndexedDB v1→v2, reserva concorrente, persistência após reabrir e conservação do estudo ao limpar exercícios. Os testes de API, formatação, histórico e videoaulas continuam na mesma suíte. `fake-indexeddb` é apenas uma dependência de desenvolvimento; não vai para o app ou Worker.
+
+A validação manual no navegador incluiu desktop e celular de 390 e 320 pixels: ramos, busca, acordeões, detalhes, marcação de estudo, recarregamento, prática de coeficientes angular/linear, correção e retorno ao mapa, tópico sem questões, preferências no mobile, cards vazios sem respostas e videoaulas introdutórias. A confirmação ao vivo do YouTube depende de rede; indisponibilidade não gera vídeos inventados.

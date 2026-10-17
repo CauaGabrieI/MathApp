@@ -1,0 +1,1474 @@
+{
+  "version": 1,
+  "discipline": {
+    "id": "math",
+    "title": "Matemática"
+  },
+  "prerequisitePolicy": "recommended",
+  "prerequisiteNote": "Dependências pedagógicas recomendadas, sem bloqueio obrigatório. A ordem textual de origem é preservada separadamente em sourceStudyAfter.",
+  "source": {
+    "markdown": "ENEM_mapa_mental_completo.md",
+    "referenceHtml": "ENEM_mapa_mental_interativo.html",
+    "section": "Matemática — Matemática"
+  },
+  "branches": [
+    {
+      "id": "numbers",
+      "title": "Números e operações",
+      "description": "Operações, potências, radicais, unidades e estimativas.",
+      "color": "#6de4ae"
+    },
+    {
+      "id": "ratios",
+      "title": "Razões, proporções e matemática financeira",
+      "description": "Razões, porcentagens e decisões financeiras.",
+      "color": "#ffd07a"
+    },
+    {
+      "id": "algebra",
+      "title": "Álgebra e equações",
+      "description": "Expressões, equações, sistemas e polinômios.",
+      "color": "#a79bff"
+    },
+    {
+      "id": "functions",
+      "title": "Funções e gráficos",
+      "description": "Gráficos, relações entre variáveis e padrões de crescimento.",
+      "color": "#60c4ff"
+    },
+    {
+      "id": "geometry",
+      "title": "Geometria e trigonometria",
+      "description": "Formas, ângulos, áreas, volumes e coordenadas.",
+      "color": "#f29bc7"
+    },
+    {
+      "id": "statistics",
+      "title": "Estatística",
+      "description": "Organização de dados, variabilidade e interpretação de resultados.",
+      "color": "#f3ae70"
+    },
+    {
+      "id": "probability",
+      "title": "Combinatória e probabilidade",
+      "description": "Possibilidades, eventos e incerteza.",
+      "color": "#77d4d7"
+    },
+    {
+      "id": "modeling",
+      "title": "Modelagem e problemas avançados",
+      "description": "Modelos, conexões entre conteúdos e tópicos complementares.",
+      "color": "#d0d780"
+    }
+  ],
+  "foundations": [
+    {
+      "id": "math.foundation.interpretation",
+      "title": "Interpretação de problemas",
+      "description": "Apoio transversal para compreender informações, comandos e unidades antes de calcular.",
+      "sourceDiscipline": "Leitura e estudo",
+      "sourceModules": [
+        "Leitura literal",
+        "Interpretação inicial",
+        "Habilidades transversais"
+      ],
+      "skills": [
+        "Leitura de enunciados e comandos",
+        "Informações explícitas",
+        "Inferências simples",
+        "Interpretar comandos e unidades",
+        "Reconhecer estimativas plausíveis"
+      ],
+      "informational": true
+    },
+    {
+      "id": "math.foundation.visual",
+      "title": "Leitura de gráficos e representações",
+      "description": "Apoio transversal para relacionar informações verbais, tabelas, imagens e gráficos.",
+      "sourceDiscipline": "Leitura e estudo",
+      "sourceModules": [
+        "Linguagens visuais",
+        "Habilidades transversais"
+      ],
+      "skills": [
+        "Tabelas e gráficos elementares",
+        "Infográficos",
+        "Mapas e legendas",
+        "Relação texto e imagem",
+        "Relacionar texto, imagem e gráficos"
+      ],
+      "informational": true
+    }
+  ],
+  "modules": [
+    {
+      "id": "math.m01",
+      "title": "Números e operações",
+      "level": "Básico",
+      "order": 1,
+      "sourceNumber": 1,
+      "branchId": "numbers",
+      "prerequisiteIds": [],
+      "sourceStudyAfter": "Leitura e estudo",
+      "topics": [
+        {
+          "id": "math.m01.t01",
+          "title": "Naturais e sistema decimal",
+          "order": 1
+        },
+        {
+          "id": "math.m01.t02",
+          "title": "Inteiros e números negativos",
+          "order": 2
+        },
+        {
+          "id": "math.m01.t03",
+          "title": "Frações próprias e impróprias",
+          "order": 3
+        },
+        {
+          "id": "math.m01.t04",
+          "title": "Decimais e conversões",
+          "order": 4
+        },
+        {
+          "id": "math.m01.t05",
+          "title": "Adição, subtração, multiplicação e divisão",
+          "order": 5
+        },
+        {
+          "id": "math.m01.t06",
+          "title": "Ordem das operações e parênteses",
+          "order": 6
+        },
+        {
+          "id": "math.m01.t07",
+          "title": "Múltiplos e divisores",
+          "order": 7
+        },
+        {
+          "id": "math.m01.t08",
+          "title": "Critérios de divisibilidade",
+          "order": 8
+        },
+        {
+          "id": "math.m01.t09",
+          "title": "Números primos e fatoração",
+          "order": 9
+        },
+        {
+          "id": "math.m01.t10",
+          "title": "MMC e MDC",
+          "order": 10
+        }
+      ]
+    },
+    {
+      "id": "math.m02",
+      "title": "Razões e proporções",
+      "level": "Básico",
+      "order": 2,
+      "sourceNumber": 2,
+      "branchId": "ratios",
+      "prerequisiteIds": [
+        "math.m01"
+      ],
+      "sourceStudyAfter": "Números e operações",
+      "topics": [
+        {
+          "id": "math.m02.t01",
+          "title": "Razão e taxa",
+          "order": 1
+        },
+        {
+          "id": "math.m02.t02",
+          "title": "Proporcionalidade direta e inversa",
+          "order": 2
+        },
+        {
+          "id": "math.m02.t03",
+          "title": "Regra de três simples",
+          "order": 3
+        },
+        {
+          "id": "math.m02.t04",
+          "title": "Regra de três composta",
+          "order": 4
+        },
+        {
+          "id": "math.m02.t05",
+          "title": "Divisão em partes proporcionais",
+          "order": 5
+        },
+        {
+          "id": "math.m02.t06",
+          "title": "Escalas",
+          "order": 6
+        },
+        {
+          "id": "math.m02.t07",
+          "title": "Velocidade média como razão",
+          "order": 7
+        },
+        {
+          "id": "math.m02.t08",
+          "title": "Densidade e vazão",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m03",
+      "title": "Porcentagem e finanças básicas",
+      "level": "Básico",
+      "order": 3,
+      "sourceNumber": 3,
+      "branchId": "ratios",
+      "prerequisiteIds": [
+        "math.m02"
+      ],
+      "sourceStudyAfter": "Razões e proporções",
+      "topics": [
+        {
+          "id": "math.m03.t01",
+          "title": "Conversão fração-decimal-percentual",
+          "order": 1
+        },
+        {
+          "id": "math.m03.t02",
+          "title": "Cálculo percentual",
+          "order": 2
+        },
+        {
+          "id": "math.m03.t03",
+          "title": "Acréscimos e descontos",
+          "order": 3
+        },
+        {
+          "id": "math.m03.t04",
+          "title": "Variações sucessivas",
+          "order": 4
+        },
+        {
+          "id": "math.m03.t05",
+          "title": "Porcentagem reversa",
+          "order": 5
+        },
+        {
+          "id": "math.m03.t06",
+          "title": "Lucro e prejuízo",
+          "order": 6
+        },
+        {
+          "id": "math.m03.t07",
+          "title": "Juros simples",
+          "order": 7
+        },
+        {
+          "id": "math.m03.t08",
+          "title": "Juros compostos",
+          "order": 8
+        },
+        {
+          "id": "math.m03.t09",
+          "title": "Taxa de juros e inflação",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "id": "math.m04",
+      "title": "Potências e radicais",
+      "level": "Básico",
+      "order": 4,
+      "sourceNumber": 4,
+      "branchId": "numbers",
+      "prerequisiteIds": [
+        "math.m01"
+      ],
+      "sourceStudyAfter": "Porcentagem e finanças básicas",
+      "topics": [
+        {
+          "id": "math.m04.t01",
+          "title": "Potenciação e propriedades",
+          "order": 1
+        },
+        {
+          "id": "math.m04.t02",
+          "title": "Potências de dez",
+          "order": 2
+        },
+        {
+          "id": "math.m04.t03",
+          "title": "Notação científica",
+          "order": 3
+        },
+        {
+          "id": "math.m04.t04",
+          "title": "Ordem de grandeza",
+          "order": 4
+        },
+        {
+          "id": "math.m04.t05",
+          "title": "Raiz quadrada e cúbica",
+          "order": 5
+        },
+        {
+          "id": "math.m04.t06",
+          "title": "Simplificação de radicais",
+          "order": 6
+        },
+        {
+          "id": "math.m04.t07",
+          "title": "Racionalização simples",
+          "order": 7
+        },
+        {
+          "id": "math.m04.t08",
+          "title": "Expoentes fracionários",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m05",
+      "title": "Medidas e estimativas",
+      "level": "Básico",
+      "order": 5,
+      "sourceNumber": 5,
+      "branchId": "numbers",
+      "prerequisiteIds": [
+        "math.m01",
+        "math.m04"
+      ],
+      "sourceStudyAfter": "Potências e radicais",
+      "topics": [
+        {
+          "id": "math.m05.t01",
+          "title": "SI e prefixos",
+          "order": 1
+        },
+        {
+          "id": "math.m05.t02",
+          "title": "Conversões de comprimento, massa, volume, área e tempo",
+          "order": 2
+        },
+        {
+          "id": "math.m05.t03",
+          "title": "Relação litro e metro cúbico",
+          "order": 3
+        },
+        {
+          "id": "math.m05.t04",
+          "title": "Medidas angulares",
+          "order": 4
+        },
+        {
+          "id": "math.m05.t05",
+          "title": "Estimativas",
+          "order": 5
+        },
+        {
+          "id": "math.m05.t06",
+          "title": "Algarismos significativos",
+          "order": 6
+        },
+        {
+          "id": "math.m05.t07",
+          "title": "Arredondamento e erro de medida",
+          "order": 7
+        }
+      ]
+    },
+    {
+      "id": "math.m06",
+      "title": "Álgebra fundamental",
+      "level": "Intermediário",
+      "order": 6,
+      "sourceNumber": 6,
+      "branchId": "algebra",
+      "prerequisiteIds": [
+        "math.m01",
+        "math.m04"
+      ],
+      "sourceStudyAfter": "Medidas e estimativas",
+      "topics": [
+        {
+          "id": "math.m06.t01",
+          "title": "Variáveis e expressões",
+          "order": 1
+        },
+        {
+          "id": "math.m06.t02",
+          "title": "Propriedade distributiva",
+          "order": 2
+        },
+        {
+          "id": "math.m06.t03",
+          "title": "Produtos notáveis",
+          "order": 3
+        },
+        {
+          "id": "math.m06.t04",
+          "title": "Fatoração algébrica",
+          "order": 4
+        },
+        {
+          "id": "math.m06.t05",
+          "title": "Frações algébricas",
+          "order": 5
+        },
+        {
+          "id": "math.m06.t06",
+          "title": "Equação do primeiro grau",
+          "order": 6
+        },
+        {
+          "id": "math.m06.t07",
+          "title": "Inequações de primeiro grau",
+          "order": 7
+        },
+        {
+          "id": "math.m06.t08",
+          "title": "Sistemas lineares 2x2",
+          "order": 8
+        },
+        {
+          "id": "math.m06.t09",
+          "title": "Problemas com incógnitas",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "id": "math.m07",
+      "title": "Equações e polinômios",
+      "level": "Intermediário",
+      "order": 7,
+      "sourceNumber": 7,
+      "branchId": "algebra",
+      "prerequisiteIds": [
+        "math.m06"
+      ],
+      "sourceStudyAfter": "Álgebra fundamental",
+      "topics": [
+        {
+          "id": "math.m07.t01",
+          "title": "Equação de segundo grau",
+          "order": 1
+        },
+        {
+          "id": "math.m07.t02",
+          "title": "Fórmula de Bhaskara",
+          "order": 2
+        },
+        {
+          "id": "math.m07.t03",
+          "title": "Soma e produto das raízes",
+          "order": 3
+        },
+        {
+          "id": "math.m07.t04",
+          "title": "Discriminante",
+          "order": 4
+        },
+        {
+          "id": "math.m07.t05",
+          "title": "Sistemas com equação quadrática",
+          "order": 5
+        },
+        {
+          "id": "math.m07.t06",
+          "title": "Polinômios e operações",
+          "order": 6
+        },
+        {
+          "id": "math.m07.t07",
+          "title": "Equações biquadradas (aprofundamento)",
+          "order": 7
+        },
+        {
+          "id": "math.m07.t08",
+          "title": "Inequações quadráticas",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m08",
+      "title": "Introdução às funções",
+      "level": "Intermediário",
+      "order": 8,
+      "sourceNumber": 8,
+      "branchId": "functions",
+      "prerequisiteIds": [
+        "math.m06",
+        "math.m02"
+      ],
+      "sourceStudyAfter": "Equações e polinômios",
+      "topics": [
+        {
+          "id": "math.m08.t01",
+          "title": "Conceito de função",
+          "order": 1
+        },
+        {
+          "id": "math.m08.t02",
+          "title": "Domínio, contradomínio e imagem",
+          "order": 2
+        },
+        {
+          "id": "math.m08.t03",
+          "title": "Pares ordenados",
+          "order": 3
+        },
+        {
+          "id": "math.m08.t04",
+          "title": "Plano cartesiano",
+          "order": 4
+        },
+        {
+          "id": "math.m08.t05",
+          "title": "Gráfico e tabela",
+          "order": 5
+        },
+        {
+          "id": "math.m08.t06",
+          "title": "Crescimento e decrescimento",
+          "order": 6
+        },
+        {
+          "id": "math.m08.t07",
+          "title": "Taxa de variação",
+          "order": 7
+        },
+        {
+          "id": "math.m08.t08",
+          "title": "Zeros e interceptos",
+          "order": 8
+        },
+        {
+          "id": "math.m08.t09",
+          "title": "Composição e função inversa (quando pertinente)",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "id": "math.m09",
+      "title": "Função afim",
+      "level": "Intermediário",
+      "order": 9,
+      "sourceNumber": 9,
+      "branchId": "functions",
+      "prerequisiteIds": [
+        "math.m08"
+      ],
+      "sourceStudyAfter": "Introdução às funções",
+      "topics": [
+        {
+          "id": "math.m09.t01",
+          "title": "Coeficientes angular e linear",
+          "order": 1
+        },
+        {
+          "id": "math.m09.t02",
+          "title": "Equação da reta",
+          "order": 2
+        },
+        {
+          "id": "math.m09.t03",
+          "title": "Interpretação gráfica",
+          "order": 3
+        },
+        {
+          "id": "math.m09.t04",
+          "title": "Zero da função",
+          "order": 4
+        },
+        {
+          "id": "math.m09.t05",
+          "title": "Sinal da função",
+          "order": 5
+        },
+        {
+          "id": "math.m09.t06",
+          "title": "Taxa constante",
+          "order": 6
+        },
+        {
+          "id": "math.m09.t07",
+          "title": "Sistemas representados graficamente",
+          "order": 7
+        },
+        {
+          "id": "math.m09.t08",
+          "title": "Modelagem de tarifas e consumos",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m10",
+      "title": "Função quadrática",
+      "level": "Intermediário",
+      "order": 10,
+      "sourceNumber": 10,
+      "branchId": "functions",
+      "prerequisiteIds": [
+        "math.m08",
+        "math.m07"
+      ],
+      "sourceStudyAfter": "Função afim",
+      "topics": [
+        {
+          "id": "math.m10.t01",
+          "title": "Parábola e concavidade",
+          "order": 1
+        },
+        {
+          "id": "math.m10.t02",
+          "title": "Zeros e vértice",
+          "order": 2
+        },
+        {
+          "id": "math.m10.t03",
+          "title": "Máximos e mínimos",
+          "order": 3
+        },
+        {
+          "id": "math.m10.t04",
+          "title": "Intervalos de sinal",
+          "order": 4
+        },
+        {
+          "id": "math.m10.t05",
+          "title": "Gráfico e deslocamentos",
+          "order": 5
+        },
+        {
+          "id": "math.m10.t06",
+          "title": "Problemas de área/otimização",
+          "order": 6
+        },
+        {
+          "id": "math.m10.t07",
+          "title": "Modelagem de trajetórias",
+          "order": 7
+        }
+      ]
+    },
+    {
+      "id": "math.m11",
+      "title": "Exponencial e logaritmos",
+      "level": "Intermediário",
+      "order": 11,
+      "sourceNumber": 11,
+      "branchId": "functions",
+      "prerequisiteIds": [
+        "math.m08",
+        "math.m04"
+      ],
+      "sourceStudyAfter": "Função quadrática",
+      "topics": [
+        {
+          "id": "math.m11.t01",
+          "title": "Crescimento e decaimento exponencial",
+          "order": 1
+        },
+        {
+          "id": "math.m11.t02",
+          "title": "Função exponencial",
+          "order": 2
+        },
+        {
+          "id": "math.m11.t03",
+          "title": "Equações exponenciais",
+          "order": 3
+        },
+        {
+          "id": "math.m11.t04",
+          "title": "Conceito de logaritmo",
+          "order": 4
+        },
+        {
+          "id": "math.m11.t05",
+          "title": "Propriedades de logaritmos",
+          "order": 5
+        },
+        {
+          "id": "math.m11.t06",
+          "title": "Função logarítmica",
+          "order": 6
+        },
+        {
+          "id": "math.m11.t07",
+          "title": "Escalas logarítmicas (pH, decibéis, Richter)",
+          "order": 7
+        },
+        {
+          "id": "math.m11.t08",
+          "title": "Aplicações a juros e populações",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m12",
+      "title": "Sequências e progressões",
+      "level": "Intermediário",
+      "order": 12,
+      "sourceNumber": 12,
+      "branchId": "functions",
+      "prerequisiteIds": [
+        "math.m06",
+        "math.m04"
+      ],
+      "sourceStudyAfter": "Exponencial e logaritmos",
+      "topics": [
+        {
+          "id": "math.m12.t01",
+          "title": "Padrões e sequências",
+          "order": 1
+        },
+        {
+          "id": "math.m12.t02",
+          "title": "PA e termo geral",
+          "order": 2
+        },
+        {
+          "id": "math.m12.t03",
+          "title": "Soma da PA",
+          "order": 3
+        },
+        {
+          "id": "math.m12.t04",
+          "title": "PG e termo geral",
+          "order": 4
+        },
+        {
+          "id": "math.m12.t05",
+          "title": "Soma da PG finita",
+          "order": 5
+        },
+        {
+          "id": "math.m12.t06",
+          "title": "Crescimento geométrico",
+          "order": 6
+        },
+        {
+          "id": "math.m12.t07",
+          "title": "Sequências recorrentes simples",
+          "order": 7
+        },
+        {
+          "id": "math.m12.t08",
+          "title": "Modelos financeiros",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m13",
+      "title": "Geometria plana I",
+      "level": "Intermediário",
+      "order": 13,
+      "sourceNumber": 13,
+      "branchId": "geometry",
+      "prerequisiteIds": [
+        "math.m02",
+        "math.m05",
+        "math.m06"
+      ],
+      "sourceStudyAfter": "Sequências e progressões",
+      "topics": [
+        {
+          "id": "math.m13.t01",
+          "title": "Ponto, reta, segmento e ângulo",
+          "order": 1
+        },
+        {
+          "id": "math.m13.t02",
+          "title": "Retas paralelas e transversais",
+          "order": 2
+        },
+        {
+          "id": "math.m13.t03",
+          "title": "Triângulos e classificação",
+          "order": 3
+        },
+        {
+          "id": "math.m13.t04",
+          "title": "Soma dos ângulos",
+          "order": 4
+        },
+        {
+          "id": "math.m13.t05",
+          "title": "Congruência e semelhança",
+          "order": 5
+        },
+        {
+          "id": "math.m13.t06",
+          "title": "Teorema de Tales",
+          "order": 6
+        },
+        {
+          "id": "math.m13.t07",
+          "title": "Teorema de Pitágoras",
+          "order": 7
+        },
+        {
+          "id": "math.m13.t08",
+          "title": "Relações métricas do triângulo retângulo",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m14",
+      "title": "Geometria plana II",
+      "level": "Intermediário",
+      "order": 14,
+      "sourceNumber": 14,
+      "branchId": "geometry",
+      "prerequisiteIds": [
+        "math.m13"
+      ],
+      "sourceStudyAfter": "Geometria plana I",
+      "topics": [
+        {
+          "id": "math.m14.t01",
+          "title": "Quadriláteros e polígonos",
+          "order": 1
+        },
+        {
+          "id": "math.m14.t02",
+          "title": "Polígonos regulares",
+          "order": 2
+        },
+        {
+          "id": "math.m14.t03",
+          "title": "Perímetro e áreas",
+          "order": 3
+        },
+        {
+          "id": "math.m14.t04",
+          "title": "Triângulo e fórmula de Heron (aprofundamento)",
+          "order": 4
+        },
+        {
+          "id": "math.m14.t05",
+          "title": "Circunferência e círculo",
+          "order": 5
+        },
+        {
+          "id": "math.m14.t06",
+          "title": "Arcos, setores e coroas",
+          "order": 6
+        },
+        {
+          "id": "math.m14.t07",
+          "title": "Ângulo inscrito e central",
+          "order": 7
+        },
+        {
+          "id": "math.m14.t08",
+          "title": "Tangência e relações geométricas",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m15",
+      "title": "Trigonometria",
+      "level": "Intermediário",
+      "order": 15,
+      "sourceNumber": 15,
+      "branchId": "geometry",
+      "prerequisiteIds": [
+        "math.m14",
+        "math.m08"
+      ],
+      "sourceStudyAfter": "Geometria plana II",
+      "topics": [
+        {
+          "id": "math.m15.t01",
+          "title": "Seno, cosseno e tangente no triângulo retângulo",
+          "order": 1
+        },
+        {
+          "id": "math.m15.t02",
+          "title": "Ângulos notáveis",
+          "order": 2
+        },
+        {
+          "id": "math.m15.t03",
+          "title": "Lei dos senos",
+          "order": 3
+        },
+        {
+          "id": "math.m15.t04",
+          "title": "Lei dos cossenos",
+          "order": 4
+        },
+        {
+          "id": "math.m15.t05",
+          "title": "Ciclo trigonométrico (noções)",
+          "order": 5
+        },
+        {
+          "id": "math.m15.t06",
+          "title": "Funções seno e cosseno",
+          "order": 6
+        },
+        {
+          "id": "math.m15.t07",
+          "title": "Graus e radianos",
+          "order": 7
+        },
+        {
+          "id": "math.m15.t08",
+          "title": "Interpretação de fenômenos periódicos",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m16",
+      "title": "Geometria espacial",
+      "level": "Intermediário",
+      "order": 16,
+      "sourceNumber": 16,
+      "branchId": "geometry",
+      "prerequisiteIds": [
+        "math.m14"
+      ],
+      "sourceStudyAfter": "Trigonometria",
+      "topics": [
+        {
+          "id": "math.m16.t01",
+          "title": "Prismas e pirâmides",
+          "order": 1
+        },
+        {
+          "id": "math.m16.t02",
+          "title": "Cubo e paralelepípedo",
+          "order": 2
+        },
+        {
+          "id": "math.m16.t03",
+          "title": "Cilindros, cones e esferas",
+          "order": 3
+        },
+        {
+          "id": "math.m16.t04",
+          "title": "Planificações",
+          "order": 4
+        },
+        {
+          "id": "math.m16.t05",
+          "title": "Área lateral e total",
+          "order": 5
+        },
+        {
+          "id": "math.m16.t06",
+          "title": "Volume",
+          "order": 6
+        },
+        {
+          "id": "math.m16.t07",
+          "title": "Seções e relações de escala",
+          "order": 7
+        },
+        {
+          "id": "math.m16.t08",
+          "title": "Troncos de cone e pirâmide",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m17",
+      "title": "Geometria analítica",
+      "level": "Intermediário",
+      "order": 17,
+      "sourceNumber": 17,
+      "branchId": "geometry",
+      "prerequisiteIds": [
+        "math.m09",
+        "math.m14"
+      ],
+      "sourceStudyAfter": "Geometria espacial",
+      "topics": [
+        {
+          "id": "math.m17.t01",
+          "title": "Distância entre pontos",
+          "order": 1
+        },
+        {
+          "id": "math.m17.t02",
+          "title": "Ponto médio",
+          "order": 2
+        },
+        {
+          "id": "math.m17.t03",
+          "title": "Coeficiente angular",
+          "order": 3
+        },
+        {
+          "id": "math.m17.t04",
+          "title": "Retas e equações",
+          "order": 4
+        },
+        {
+          "id": "math.m17.t05",
+          "title": "Paralelismo e perpendicularismo",
+          "order": 5
+        },
+        {
+          "id": "math.m17.t06",
+          "title": "Interseção de retas",
+          "order": 6
+        },
+        {
+          "id": "math.m17.t07",
+          "title": "Circunferência no plano",
+          "order": 7
+        },
+        {
+          "id": "math.m17.t08",
+          "title": "Área por coordenadas",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m18",
+      "title": "Estatística descritiva",
+      "level": "Intermediário",
+      "order": 18,
+      "sourceNumber": 18,
+      "branchId": "statistics",
+      "prerequisiteIds": [
+        "math.m02",
+        "math.m04"
+      ],
+      "sourceStudyAfter": "Geometria analítica",
+      "topics": [
+        {
+          "id": "math.m18.t01",
+          "title": "Leitura de distribuição de frequência",
+          "order": 1
+        },
+        {
+          "id": "math.m18.t02",
+          "title": "Tabelas e gráficos",
+          "order": 2
+        },
+        {
+          "id": "math.m18.t03",
+          "title": "Média simples e ponderada",
+          "order": 3
+        },
+        {
+          "id": "math.m18.t04",
+          "title": "Mediana e moda",
+          "order": 4
+        },
+        {
+          "id": "math.m18.t05",
+          "title": "Amplitude",
+          "order": 5
+        },
+        {
+          "id": "math.m18.t06",
+          "title": "Quartis e interpretação",
+          "order": 6
+        },
+        {
+          "id": "math.m18.t07",
+          "title": "Variância e desvio padrão",
+          "order": 7
+        },
+        {
+          "id": "math.m18.t08",
+          "title": "Identificação de gráficos enganosos",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m19",
+      "title": "Análise combinatória",
+      "level": "Intermediário",
+      "order": 19,
+      "sourceNumber": 19,
+      "branchId": "probability",
+      "prerequisiteIds": [
+        "math.m01"
+      ],
+      "sourceStudyAfter": "Estatística descritiva",
+      "topics": [
+        {
+          "id": "math.m19.t01",
+          "title": "Princípio fundamental da contagem",
+          "order": 1
+        },
+        {
+          "id": "math.m19.t02",
+          "title": "Diagramas de árvore",
+          "order": 2
+        },
+        {
+          "id": "math.m19.t03",
+          "title": "Permutação simples",
+          "order": 3
+        },
+        {
+          "id": "math.m19.t04",
+          "title": "Permutação com repetição",
+          "order": 4
+        },
+        {
+          "id": "math.m19.t05",
+          "title": "Arranjo",
+          "order": 5
+        },
+        {
+          "id": "math.m19.t06",
+          "title": "Combinação",
+          "order": 6
+        },
+        {
+          "id": "math.m19.t07",
+          "title": "Contagem com restrições",
+          "order": 7
+        },
+        {
+          "id": "math.m19.t08",
+          "title": "Princípio aditivo e multiplicativo",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m20",
+      "title": "Probabilidade",
+      "level": "Intermediário",
+      "order": 20,
+      "sourceNumber": 20,
+      "branchId": "probability",
+      "prerequisiteIds": [
+        "math.m19",
+        "math.m02"
+      ],
+      "sourceStudyAfter": "Análise combinatória",
+      "topics": [
+        {
+          "id": "math.m20.t01",
+          "title": "Espaço amostral e eventos",
+          "order": 1
+        },
+        {
+          "id": "math.m20.t02",
+          "title": "Eventos equiprováveis",
+          "order": 2
+        },
+        {
+          "id": "math.m20.t03",
+          "title": "Complementar",
+          "order": 3
+        },
+        {
+          "id": "math.m20.t04",
+          "title": "União e interseção",
+          "order": 4
+        },
+        {
+          "id": "math.m20.t05",
+          "title": "Eventos independentes",
+          "order": 5
+        },
+        {
+          "id": "math.m20.t06",
+          "title": "Probabilidade condicional",
+          "order": 6
+        },
+        {
+          "id": "math.m20.t07",
+          "title": "Contagem em probabilidades",
+          "order": 7
+        },
+        {
+          "id": "math.m20.t08",
+          "title": "Probabilidade de múltiplas etapas",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m21",
+      "title": "Matemática financeira avançada",
+      "level": "Avançado",
+      "order": 21,
+      "sourceNumber": 21,
+      "branchId": "ratios",
+      "prerequisiteIds": [
+        "math.m03",
+        "math.m11",
+        "math.m12"
+      ],
+      "sourceStudyAfter": "Probabilidade",
+      "topics": [
+        {
+          "id": "math.m21.t01",
+          "title": "Capitalização composta",
+          "order": 1
+        },
+        {
+          "id": "math.m21.t02",
+          "title": "Taxas equivalentes",
+          "order": 2
+        },
+        {
+          "id": "math.m21.t03",
+          "title": "Valor presente e futuro",
+          "order": 3
+        },
+        {
+          "id": "math.m21.t04",
+          "title": "Parcelamentos e prestações",
+          "order": 4
+        },
+        {
+          "id": "math.m21.t05",
+          "title": "Comparação de investimentos",
+          "order": 5
+        },
+        {
+          "id": "math.m21.t06",
+          "title": "Inflação acumulada",
+          "order": 6
+        },
+        {
+          "id": "math.m21.t07",
+          "title": "Análise crítica de juros nominais e reais",
+          "order": 7
+        }
+      ]
+    },
+    {
+      "id": "math.m22",
+      "title": "Funções e modelagem integrada",
+      "level": "Avançado",
+      "order": 22,
+      "sourceNumber": 22,
+      "branchId": "modeling",
+      "prerequisiteIds": [
+        "math.m09",
+        "math.m10",
+        "math.m11"
+      ],
+      "sourceStudyAfter": "Matemática financeira avançada",
+      "topics": [
+        {
+          "id": "math.m22.t01",
+          "title": "Funções definidas por partes",
+          "order": 1
+        },
+        {
+          "id": "math.m22.t02",
+          "title": "Valor absoluto e módulo",
+          "order": 2
+        },
+        {
+          "id": "math.m22.t03",
+          "title": "Relação entre gráficos e fórmulas",
+          "order": 3
+        },
+        {
+          "id": "math.m22.t04",
+          "title": "Otimização contextualizada",
+          "order": 4
+        },
+        {
+          "id": "math.m22.t05",
+          "title": "Composição de modelos",
+          "order": 5
+        },
+        {
+          "id": "math.m22.t06",
+          "title": "Modelos não lineares",
+          "order": 6
+        },
+        {
+          "id": "math.m22.t07",
+          "title": "Comparação de crescimento linear e exponencial",
+          "order": 7
+        }
+      ]
+    },
+    {
+      "id": "math.m23",
+      "title": "Estatística e inferência",
+      "level": "Avançado",
+      "order": 23,
+      "sourceNumber": 23,
+      "branchId": "statistics",
+      "prerequisiteIds": [
+        "math.m18",
+        "math.m20",
+        "math.m09"
+      ],
+      "sourceStudyAfter": "Funções e modelagem integrada",
+      "topics": [
+        {
+          "id": "math.m23.t01",
+          "title": "Amostragem e representatividade",
+          "order": 1
+        },
+        {
+          "id": "math.m23.t02",
+          "title": "Viés amostral",
+          "order": 2
+        },
+        {
+          "id": "math.m23.t03",
+          "title": "Correlação e causalidade",
+          "order": 3
+        },
+        {
+          "id": "math.m23.t04",
+          "title": "Interpolação e extrapolação",
+          "order": 4
+        },
+        {
+          "id": "math.m23.t05",
+          "title": "Séries temporais",
+          "order": 5
+        },
+        {
+          "id": "math.m23.t06",
+          "title": "Leitura de boxplots",
+          "order": 6
+        },
+        {
+          "id": "math.m23.t07",
+          "title": "Distribuição normal (intuição)",
+          "order": 7
+        },
+        {
+          "id": "math.m23.t08",
+          "title": "Variabilidade e tomada de decisões",
+          "order": 8
+        }
+      ]
+    },
+    {
+      "id": "math.m24",
+      "title": "Problemas integrados",
+      "level": "Avançado",
+      "order": 24,
+      "sourceNumber": 24,
+      "branchId": "modeling",
+      "prerequisiteIds": [
+        "math.m15",
+        "math.m16",
+        "math.m20",
+        "math.m21",
+        "math.m22",
+        "math.m23"
+      ],
+      "sourceStudyAfter": "Estatística e inferência",
+      "topics": [
+        {
+          "id": "math.m24.t01",
+          "title": "Proporção + geometria",
+          "order": 1
+        },
+        {
+          "id": "math.m24.t02",
+          "title": "Probabilidade + combinatória",
+          "order": 2
+        },
+        {
+          "id": "math.m24.t03",
+          "title": "Função + finanças",
+          "order": 3
+        },
+        {
+          "id": "math.m24.t04",
+          "title": "Geometria espacial + conversões",
+          "order": 4
+        },
+        {
+          "id": "math.m24.t05",
+          "title": "Trigonometria + topografia",
+          "order": 5
+        },
+        {
+          "id": "math.m24.t06",
+          "title": "Estatística + interpretação",
+          "order": 6
+        },
+        {
+          "id": "math.m24.t07",
+          "title": "Estimativa e análise dimensional",
+          "order": 7
+        }
+      ]
+    },
+    {
+      "id": "math.m25",
+      "title": "Tópicos complementares",
+      "level": "Avançado",
+      "order": 25,
+      "sourceNumber": 25,
+      "branchId": "modeling",
+      "prerequisiteIds": [
+        "math.m07",
+        "math.m15",
+        "math.m17",
+        "math.m22"
+      ],
+      "sourceStudyAfter": "Problemas integrados",
+      "topics": [
+        {
+          "id": "math.m25.t01",
+          "title": "Matrizes e determinantes básicos",
+          "order": 1
+        },
+        {
+          "id": "math.m25.t02",
+          "title": "Sistemas lineares por matrizes",
+          "order": 2
+        },
+        {
+          "id": "math.m25.t03",
+          "title": "Números complexos noções",
+          "order": 3
+        },
+        {
+          "id": "math.m25.t04",
+          "title": "Identidades trigonométricas básicas",
+          "order": 4
+        },
+        {
+          "id": "math.m25.t05",
+          "title": "Equações modulares",
+          "order": 5
+        },
+        {
+          "id": "math.m25.t06",
+          "title": "Cônicas em nível interpretativo",
+          "order": 6
+        },
+        {
+          "id": "math.m25.t07",
+          "title": "Raciocínio lógico e conjuntos",
+          "order": 7
+        }
+      ]
+    }
+  ]
+}
