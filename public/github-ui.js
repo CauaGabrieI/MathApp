@@ -1,5 +1,5 @@
-import {snapshot,backupSettings,restoreBackup} from './db.js?v=journey33';
-import {makeBackup,validateBackup,mergeBackups,hydrateRecords} from './backup-model.js?v=journey33';
+import {snapshot,backupSettings,restoreBackup} from './db.js?v=path16';
+import {makeBackup,validateBackup,mergeBackups,hydrateRecords} from './backup-model.js?v=path16';
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let user=null,configured=false,settings={},flow=null,pollTimer,saveTimer,busy=false,queue=Promise.resolve(),epoch=0,notice='',options,bankPromise,backupGeneration=0;
 const bank=()=>bankPromise??=(Promise.all(['/bank.json','/study-bank.json'].map(path=>fetch(path).then(r=>{if(!r.ok)throw new Error('Banco de questões indisponível.');return r.json();}))).then(rows=>rows.flat()).catch(e=>{bankPromise=null;throw e;}));

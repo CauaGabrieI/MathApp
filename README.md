@@ -136,3 +136,9 @@ A versão Android 1.2.0 e o site incluem conexão opcional ao GitHub, backup pri
 ## Aprender → aulas → prova → prática e cards · 1.3.0
 
 O novo fluxo segue o roadmap do usuário, com 11 módulos, 98 aulas e 392 exercícios autorais, além do acervo ENEM preservado. Prática e perguntas rápidas dos cards usam todos os módulos com aulas concluídas, sem exigir nota mínima na prova. Veja [LEARNING-FLOW.md](LEARNING-FLOW.md) para conteúdo, vídeos, dados, migração e validação.
+
+## Learning Path · 1.4.0
+
+A versão atual importa do Markdown 25 módulos e 199 aulas: 5 módulos/42 aulas no Básico, 15/121 no Intermediário e 5/36 no Avançado. Módulos expandem de forma independente; cada aula persiste os estados não iniciada, em andamento e concluída. Exercícios inline reutilizam renderização, correção e IndexedDB, com IDs únicos. Prática global e cards só são liberados quando todas as aulas do módulo terminam; a prova é opcional.
+
+O caminho reaproveita recursos relacionados em 154 aulas e informa honestamente as 45 sem teoria cadastrada. O roadmap legado de 98 aulas e 392 exercícios continua preservado em arquivo, histórico e backups. O schema 2 já existia na versão 1.3 e agora inclui os novos IDs `math.*`. O usuário preferiu testar o GitHub real no celular; o aparelho físico e o upload real entre dispositivos ainda não foram testados. Consulte [LEARNING-PATH.md](LEARNING-PATH.md) para migração, limitações e checklist de release.

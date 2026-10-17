@@ -1,3 +1,4 @@
+import {pathVideoSeeds} from '../content/path-video-seeds.mjs';
 import {generateDesignSystem} from './design-system.mjs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -25,6 +26,6 @@ await fs.cp(path.join(root,'android/fonts'),path.join(target,'fonts'),{recursive
 await fs.copyFile(path.join(root,'android/web/android-runtime.js'),path.join(target,'android-runtime.js'));
 let service=await fs.readFile(path.join(root,'video-service.js'),'utf8');service=service.replaceAll("'./public/","'./");await fs.writeFile(path.join(target,'android-video-service.js'),service);
 let extraVideos=[];try{extraVideos=JSON.parse(await fs.readFile(path.join(root,'video-catalog-roadmap.json'),'utf8'));}catch{}
-await fs.writeFile(path.join(target,'video-catalog.json'),JSON.stringify([...JSON.parse(await fs.readFile(path.join(root,'video-catalog.json'),'utf8')),...extraVideos]));
+await fs.writeFile(path.join(target,'video-catalog.json'),JSON.stringify(pathVideoSeeds(JSON.parse(await fs.readFile(path.join(root,'public/learning-path.json'),'utf8')),[...JSON.parse(await fs.readFile(path.join(root,'video-catalog.json'),'utf8')),...extraVideos])));
 await fs.copyFile(path.join(root,'ENEM-API-LICENSE'),path.join(target,'ENEM-API-LICENSE.txt'));
 console.log('Android assets prepared; no API credentials or hosted-site login required.');

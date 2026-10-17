@@ -1,3 +1,6 @@
+import {createLearningPath} from '../content/learning-path.mjs';
+import {parseMathMarkdown,buildCurriculum} from './import-curriculum.mjs';
+import {pathVideoSeeds} from '../content/path-video-seeds.mjs';
 import {createRoadmap} from '../content/roadmap.mjs';
 import {validateRoadmap,roadmapIndex} from '../public/journey-model.js';
 import {generateDesignSystem} from './design-system.mjs';
@@ -10,13 +13,17 @@ const hub=JSON.parse(await fs.readFile('public/enemhub.json','utf8'));
 const dev=JSON.parse(await fs.readFile('public/enemdev.json','utf8'));
 const bank=normalizeSources(hub,dev);
 await fs.writeFile('public/bank.json',JSON.stringify(bank));
-const curriculum=JSON.parse(await fs.readFile('public/curriculum.json','utf8'));validateLearningCurriculum(curriculum);
+const curriculum=buildCurriculum(parseMathMarkdown(await fs.readFile('content/math-curriculum.md','utf8')),JSON.parse(await fs.readFile('public/curriculum.json','utf8')));validateLearningCurriculum(curriculum);
+await fs.writeFile('public/curriculum.json',JSON.stringify(curriculum,null,2)+'\n');
 const legacyIndex=makeCurriculumIndex(bank,curriculum);
 await fs.writeFile('public/curriculum-index.json',JSON.stringify(legacyIndex));
 const {roadmap,questions:studyBank}=createRoadmap();validateRoadmap(roadmap);
 await fs.writeFile('public/roadmap.json',JSON.stringify(roadmap));
 await fs.writeFile('public/study-bank.json',JSON.stringify(studyBank));
 await fs.writeFile('public/roadmap-index.json',JSON.stringify(roadmapIndex(roadmap,legacyIndex)));
+const {path:learningPath,index:learningPathIndex}=createLearningPath(curriculum,roadmap,legacyIndex);validateRoadmap(learningPath);
+await fs.writeFile('public/learning-path.json',JSON.stringify(learningPath));
+await fs.writeFile('public/learning-path-index.json',JSON.stringify(learningPathIndex));
 
 const files=(await fs.readdir('public')).filter(file=>!['questions.json','enemdev.json','enemhub.json'].includes(file));const assets={};
 const types={html:'text/html; charset=utf-8',css:'text/css; charset=utf-8',js:'text/javascript; charset=utf-8',json:'application/json; charset=utf-8',webmanifest:'application/manifest+json',svg:'image/svg+xml',png:'image/png'};
@@ -26,7 +33,7 @@ const videoTopics=(await fs.readFile('public/video-topics.js','utf8')).replace(/
 const lessonTopics=(await fs.readFile('public/lesson-topics.js','utf8')).replace(/^import[^;]+;\s*/gm,'').replace(/export /g,'');
 const videoService=(await fs.readFile('video-service.js','utf8')).replace(/^import[^;]+;\s*/gm,'').replace(/export /g,'');
 let roadmapVideos=[];try{roadmapVideos=JSON.parse(await fs.readFile('video-catalog-roadmap.json','utf8'));}catch{}
-const videoSeeds=[...JSON.parse(await fs.readFile('video-catalog.json','utf8')),...roadmapVideos];
+const videoSeeds=pathVideoSeeds(learningPath,[...JSON.parse(await fs.readFile('video-catalog.json','utf8')),...roadmapVideos]);
 const githubService=(await fs.readFile('github-service.js','utf8')).replace(/export /g,'');
 const githubClientId=JSON.parse(await fs.readFile('public/github-config.json','utf8')).clientId;
 const worker=await fs.readFile('worker.js','utf8');
