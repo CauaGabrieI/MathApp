@@ -1,0 +1,9 @@
+import fs from 'node:fs/promises';
+import {createRoadmap} from '../content/roadmap.mjs';
+import {learningLesson} from '../public/lesson-topics.js';
+import {recommendVideos} from '../video-service.js';
+const {roadmap}=createRoadmap(),report=JSON.parse(await fs.readFile('content/video-coverage.json')),rows=JSON.parse(await fs.readFile('video-catalog-roadmap.json'));
+const queries={'roadmap.m01.l01':'operações básicas','roadmap.m03.l06':'função composta','roadmap.m04.l09':'diagonal retângulo','roadmap.m04.l11':'semelhança áreas','roadmap.m05.l03':'lei dos senos','roadmap.m05.l04':'área seno','roadmap.m06.l03':'prismas','roadmap.m06.l07':'sólidos inscritos','roadmap.m08.l09':'probabilidade união interseção','roadmap.m10.l02':'área triângulo geometria analítica','roadmap.m10.l04':'retas paralelas perpendiculares','roadmap.m11.l02':'função seno período','roadmap.m11.l09':'soma PG infinita','roadmap.m11.l10':'limites'};
+let cursor=0;const missing=report.filter(x=>!x.videos.length);
+async function worker(){while(cursor<missing.length){const r=missing[cursor++],lesson=learningLesson(roadmap,r.id);lesson.query=queries[r.id]??lesson.query;const videos=await recommendVideos(lesson.topic,'all',{lesson,useCache:false});r.videos=videos.map(v=>({id:v.id,title:v.title,channel:v.channelHandle}));for(const v of videos.slice(0,2)){const old=rows.find(x=>x.id===v.id&&x.topic===v.topic);if(old)old.lessonIds.push(r.id);else rows.push({id:v.id,title:v.title,channelHandle:v.channelHandle,topic:v.topic,lessonIds:[r.id],curated:true,sourceUrl:v.url});}console.log(r.title+': '+videos.length);}}
+await Promise.all(Array.from({length:3},worker));await fs.writeFile('video-catalog-roadmap.json',JSON.stringify(rows,null,2)+'\n');await fs.writeFile('content/video-coverage.json',JSON.stringify(report,null,2)+'\n');console.log('Confirmed:',report.filter(x=>x.videos.length).length,'/',report.length);

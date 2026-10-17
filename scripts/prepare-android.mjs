@@ -24,6 +24,7 @@ css+='\nhtml{overscroll-behavior-y:none}.bottom-nav{padding-bottom:9px}html,body
 await fs.cp(path.join(root,'android/fonts'),path.join(target,'fonts'),{recursive:true});
 await fs.copyFile(path.join(root,'android/web/android-runtime.js'),path.join(target,'android-runtime.js'));
 let service=await fs.readFile(path.join(root,'video-service.js'),'utf8');service=service.replaceAll("'./public/","'./");await fs.writeFile(path.join(target,'android-video-service.js'),service);
-await fs.copyFile(path.join(root,'video-catalog.json'),path.join(target,'video-catalog.json'));
+let extraVideos=[];try{extraVideos=JSON.parse(await fs.readFile(path.join(root,'video-catalog-roadmap.json'),'utf8'));}catch{}
+await fs.writeFile(path.join(target,'video-catalog.json'),JSON.stringify([...JSON.parse(await fs.readFile(path.join(root,'video-catalog.json'),'utf8')),...extraVideos]));
 await fs.copyFile(path.join(root,'ENEM-API-LICENSE'),path.join(target,'ENEM-API-LICENSE.txt'));
 console.log('Android assets prepared; no API credentials or hosted-site login required.');

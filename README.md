@@ -132,3 +132,7 @@ Testes adicionais em `tests/learning-flow.test.mjs`: restauração sem dificulda
 ## Conta e backup no GitHub
 
 A versão Android 1.2.0 e o site incluem conexão opcional ao GitHub, backup privado na conta do usuário e restauração com mesclagem. Veja [GITHUB-BACKUP.md](GITHUB-BACKUP.md) para configuração, privacidade, permissões e verificação.
+
+## Aprender → aulas → prova → prática e cards · 1.3.0
+
+O novo fluxo segue o roadmap do usuário, com 11 módulos, 98 aulas e 392 exercícios autorais, além do acervo ENEM preservado. Prática e perguntas rápidas dos cards usam todos os módulos com aulas concluídas, sem exigir nota mínima na prova. Veja [LEARNING-FLOW.md](LEARNING-FLOW.md) para conteúdo, vídeos, dados, migração e validação.

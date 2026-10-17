@@ -1,5 +1,5 @@
 export const LEVELS={EASY:'Fácil',MEDIUM:'Médio',HARD:'Difícil'};
-export const SOURCES={enemhub:'EnemHub',enemdev:'enem.dev'};
+export const SOURCES={equacao:'Equação · autoral',enemhub:'EnemHub',enemdev:'enem.dev'};
 export function plainText(value=''){return String(value).replace(/!\[[^\]]*\]\([^)]*\)/g,' ').replace(/<[^>]*>/g,' ').replace(/&nbsp;|&#160;/g,' ').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#(\d+);/g,(_,n)=>String.fromCodePoint(Number(n))).replace(/\[([^\]]+)\]\([^)]*\)/g,'$1').replace(/\s+/g,' ').trim();}
 export function canonicalText(value){return plainText(value).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');}
 export function contentKey(q){return 'enem-content:'+canonicalText((q.statement??q.question??'')+' '+(q.introduction??''));}

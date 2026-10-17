@@ -125,3 +125,7 @@ Referências: [FileProvider e permissões temporárias](https://developer.androi
 Login opcional pelo GitHub com Device Flow; backup privado em `equacao-backup` da conta conectada, restauração com mesclagem e automático opcional enquanto o app estiver aberto. Histórico e prática offline continuam independentes da conexão. A assinatura e o pacote Android são os mesmos das versões anteriores.
 
 Veja [GITHUB-BACKUP.md](../GITHUB-BACKUP.md) para uso, configuração, escopo `repo`, proteção das credenciais, conflitos, limites e roteiro de validação com uma conta real.
+
+## Fluxo de aprendizado · versão 1.3.0
+
+O APK inclui o novo roadmap, aulas, exemplos, provas, exercícios e cards para estudar offline. A conclusão de todas as aulas de um módulo libera a prática misturada e a revisão rápida, sem nota mínima. Videoaulas continuam dependendo da confirmação no YouTube; agora também é permitido o canal Umberto Mannarino. O backup schema 2 inclui provas e revisões e mantém compatibilidade de leitura com o schema 1. Atualize todos os aparelhos antes de restaurar dados do novo formato. Detalhes em [LEARNING-FLOW.md](../LEARNING-FLOW.md).

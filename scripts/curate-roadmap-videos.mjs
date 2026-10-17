@@ -1,0 +1,7 @@
+import fs from 'node:fs/promises';
+import {createRoadmap} from '../content/roadmap.mjs';
+import {learningLesson} from '../public/lesson-topics.js';
+import {recommendVideos} from '../video-service.js';
+const {roadmap}=createRoadmap(),lessons=roadmap.modules.flatMap(m=>m.lessons);let cursor=0,found=0,done=0;const rows=[],report=[];const seeds=JSON.parse(await fs.readFile('video-catalog.json','utf8'));
+async function worker(){while(cursor<lessons.length){const l=lessons[cursor++],lesson=learningLesson(roadmap,l.id);const videos=await recommendVideos(lesson.topic,'all',{seedVideos:seeds,useCache:false,lesson});report.push({id:l.id,title:l.title,videos:videos.map(v=>({id:v.id,title:v.title,channel:v.channelHandle}))});if(videos.length){found++;for(const v of videos.slice(0,2))rows.push({id:v.id,channelHandle:v.channelHandle,topic:v.topic,lessonIds:[l.id],curated:true,sourceUrl:v.url});}done++;if(done%10===0)console.log(`${done}/${lessons.length} aulas consultadas; ${found} com vídeo confirmado.`);}}
+await Promise.all(Array.from({length:3},worker));const unique=new Map();for(const r of rows){const key=r.id+':'+r.topic,old=unique.get(key);if(old)old.lessonIds.push(...r.lessonIds);else unique.set(key,r);}await fs.writeFile('video-catalog-roadmap.json',JSON.stringify([...unique.values()],null,2)+'\n');await fs.writeFile('content/video-coverage.json',JSON.stringify(report.sort((a,b)=>a.id.localeCompare(b.id)),null,2)+'\n');console.log(`Curadoria concluída: ${found}/${lessons.length} aulas com vídeos disponíveis.`);

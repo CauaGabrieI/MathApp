@@ -1,4 +1,5 @@
 export const VIDEO_CHANNELS=[
+ {handle:'umbertomann',id:'UC3KTSc6Ihj3vKI6aaYYpN_A',name:'Umberto Mannarino'},
  {handle:'PedroAssaad',id:'UC6vF2MME3Xc3FV-a_33DKsQ',name:'Pedro Assaad'},
  {handle:'UniversoNarrado',id:'UCcdK7fNDtCuiERTzTZdWY7w',name:'Universo Narrado'},
  {handle:'MétodoQuestiona',id:'UCpRZYty4rAOjX3PN_N5NyUg',name:'Método Questiona'},

@@ -1,7 +1,7 @@
-import {fromDev} from './core.js?v=github22';
+import {fromDev} from './core.js?v=journey33';
 import {recommendVideos} from './android-video-service.js';
-import {VIDEO_TOPICS,VIDEO_CHANNELS} from './video-topics.js?v=github22';
-import {learningLesson} from './lesson-topics.js?v=github22';
+import {VIDEO_TOPICS,VIDEO_CHANNELS} from './video-topics.js?v=journey33';
+import {learningLesson} from './lesson-topics.js?v=journey33';
 const browserFetch=window.fetch.bind(window),pending=new Map();let serial=0;
 AndroidNetwork.onmessage=event=>{let data;try{data=JSON.parse(event.data);}catch{return;}const task=pending.get(data.id);if(!task)return;pending.delete(data.id);clearTimeout(task.timer);task.cleanup();data.error?task.reject(Object.assign(new Error(data.error),{status:data.status})):task.resolve(data);};
 function nativeMessage(message,signal){return new Promise((resolve,reject)=>{if(signal?.aborted){reject(new DOMException('Cancelado','AbortError'));return;}const id=String(Date.now())+':'+(++serial);const abort=()=>{pending.delete(id);clearTimeout(timer);reject(new DOMException('Cancelado','AbortError'));};const timer=setTimeout(()=>{pending.delete(id);signal?.removeEventListener('abort',abort);reject(new Error('Tempo esgotado'));},message.kind==='github'?90000:25000);pending.set(id,{resolve,reject,timer,cleanup:()=>signal?.removeEventListener('abort',abort)});signal?.addEventListener('abort',abort,{once:true});AndroidNetwork.postMessage(JSON.stringify({...message,id}));});}
@@ -10,13 +10,14 @@ const config=await nativeMessage({kind:'config'});
 window.EquacaoAndroid={githubRequest:(action,input={})=>nativeMessage({kind:'github',action,input}),version:config.versionName,systemDark:config.systemDark===true,checkUpdates:()=>AndroidNetwork.postMessage(JSON.stringify({kind:'check-updates'})),exportHistory:body=>AndroidNetwork.postMessage(JSON.stringify({kind:'export',body}))};
 const bankPromise=browserFetch('/bank.json').then(r=>r.json());
 const curriculumPromise=browserFetch('/curriculum.json').then(r=>r.json());
+const roadmapPromise=browserFetch('/roadmap.json').then(r=>r.json());
 const seedsPromise=browserFetch('/video-catalog.json').then(r=>r.json());
 const json=(body,status=200)=>new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json; charset=utf-8'}});
 let lastDevRequest=0;
 window.fetch=async(input,options={})=>{const url=new URL(typeof input==='string'?input:input.url,location.origin);if(url.origin!==location.origin||!url.pathname.startsWith('/api'))return browserFetch(input,options);
  if(url.pathname==='/api'){const bank=await bankPromise;return json(bank.filter(q=>(!url.searchParams.get('source')||url.searchParams.get('source')==='all'||q.source===url.searchParams.get('source'))&&(!url.searchParams.get('level')||q.level===url.searchParams.get('level'))));}
  if(url.pathname==='/api/question'){const bank=await bankPromise,q=bank.find(q=>q.id===url.searchParams.get('id'));if(!q)return json({error:'Questão não encontrada'},404);if(q.source==='enemdev'&&Date.now()-lastDevRequest>1100){lastDevRequest=Date.now();try{const r=await nativeFetch(`https://api.enem.dev/v1/exams/${q.year}/questions/${q.index}`,{signal:AbortSignal.timeout(10000)});if(r.ok){const current=fromDev(await r.json());if(current?.id===q.id)return json(current);}}catch{}}return json(q);}
- if(url.pathname==='/api/videos'){const content=url.searchParams.get('content'),lesson=content?learningLesson(await curriculumPromise,content):null;if(content&&!lesson)return json({error:'Conteúdo inválido'},400);const topic=lesson?.topic??url.searchParams.get('topic')??'basics',channel=url.searchParams.get('channel')??'all';if(!VIDEO_TOPICS[topic]||channel!=='all'&&!VIDEO_CHANNELS.some(c=>c.handle===channel))return json({error:'Filtro inválido'},400);return json({topic,contentId:content,videos:await recommendVideos(topic,channel,{fetchImpl:nativeFetch,seedVideos:await seedsPromise,lesson})});}
+ if(url.pathname==='/api/videos'){const content=url.searchParams.get('content'),lesson=content?learningLesson(await (content.startsWith('roadmap.')?roadmapPromise:curriculumPromise),content):null;if(content&&!lesson)return json({error:'Conteúdo inválido'},400);const topic=lesson?.topic??url.searchParams.get('topic')??'basics',channel=url.searchParams.get('channel')??'all';if(!VIDEO_TOPICS[topic]||channel!=='all'&&!VIDEO_CHANNELS.some(c=>c.handle===channel))return json({error:'Filtro inválido'},400);return json({topic,contentId:content,videos:await recommendVideos(topic,channel,{fetchImpl:nativeFetch,seedVideos:await seedsPromise,lesson})});}
  if(url.pathname==='/api/random'){const pool=(await bankPromise).filter(q=>(!url.searchParams.get('source')||url.searchParams.get('source')==='all'||q.source===url.searchParams.get('source'))&&!url.searchParams.getAll('exclude').includes(q.id));return pool.length?json(pool[Math.floor(Math.random()*pool.length)]):json({error:'Nenhuma questão inédita'},404);}
  return json({error:'Rota não encontrada'},404);
 };
