@@ -2,9 +2,22 @@
 <resources>
     <style name="AppTheme" parent="android:style/Theme.Material.Light.NoActionBar">
         <item name="android:fontFamily">sans</item>
-        <item name="android:colorAccent">#7460AC</item>
+        <item name="android:colorAccent">@color/eq_color_primary</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowActionModeOverlay">true</item>
-        <item name="android:windowBackground">#1B1921</item>
+        <item name="android:windowBackground">@color/eq_color_canvas</item>
+        <item name="android:alertDialogTheme">@style/EquacaoDialogLight</item>
+    </style>
+    <style name="EquacaoDialogLight" parent="android:style/Theme.Material.Light.Dialog.Alert">
+        <item name="android:colorAccent">@color/eq_light_primary</item>
+        <item name="android:colorBackground">@color/eq_light_surface</item>
+        <item name="android:textColorPrimary">@color/eq_light_text</item>
+        <item name="android:textColorSecondary">@color/eq_light_text_secondary</item>
+    </style>
+    <style name="EquacaoDialogDark" parent="android:style/Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">@color/eq_dark_primary</item>
+        <item name="android:colorBackground">@color/eq_dark_surface</item>
+        <item name="android:textColorPrimary">@color/eq_dark_text</item>
+        <item name="android:textColorSecondary">@color/eq_dark_text_secondary</item>
     </style>
 </resources>

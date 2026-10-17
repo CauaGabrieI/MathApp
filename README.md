@@ -10,6 +10,12 @@ Aplicativo Android e versão web instalável (PWA), em português, para praticar
 
 Documentação: https://docs.enem.dev e https://docs.enemhub.com.br.
 
+## Design system
+
+O [design system do Equação](design/README.md) centraliza cores semânticas claras/escuras, tipografia, espaçamento, formas, movimento e componentes. `design/tokens.json` gera as variáveis CSS e as cores Android. As telas compartilham `public/components.css`; os valores anteriores de cor e tamanho de texto foram substituídos por tokens.
+
+Execute `npm run build` e `npm run dev`, e abra `/design-system.html` para o guia interativo. `npm run design:check` verifica se os recursos gerados estão atualizados. O guia pode ser exportado como HTML independente, com fontes incluídas, conforme a documentação. A versão Android 1.1.0 aplica o sistema e conserva o histórico e a assinatura das versões anteriores.
+
 ## Executar localmente
 
 Requer Node.js 22 ou mais recente; o projeto não tem dependências de build.

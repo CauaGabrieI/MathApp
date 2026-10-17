@@ -2,7 +2,6 @@ package br.com.equacao.app;
 
 import android.app.*;
 import android.content.*;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.*;
 import android.view.*;
@@ -25,9 +24,10 @@ public class MainActivity extends androidx.activity.ComponentActivity {
     private GitHubUpdates updates;
     private String pendingExport;
     private volatile String pageError;
-    private int background=Color.rgb(27,25,33);
+    private int background;
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        background=getColor(R.color.eq_color_canvas);
         root=new FrameLayout(this);root.setBackgroundColor(background);setContentView(root);
         if(Build.VERSION.SDK_INT>=30){
             getWindow().setDecorFitsSystemWindows(false);
@@ -105,7 +105,7 @@ public class MainActivity extends androidx.activity.ComponentActivity {
     private boolean isSystemDark(){return (getResources().getConfiguration().uiMode&android.content.res.Configuration.UI_MODE_NIGHT_MASK)==android.content.res.Configuration.UI_MODE_NIGHT_YES;}
     @Override public void onConfigurationChanged(android.content.res.Configuration config){super.onConfigurationChanged(config);if(web!=null)web.evaluateJavascript("if(window.EquacaoAndroid){window.EquacaoAndroid.systemDark="+isSystemDark()+";window.dispatchEvent(new Event(\"android-system-theme\"));}",null);}
     private void applyTheme(boolean dark){
-        background=Color.parseColor(dark?"#1b1921":"#f8f7fc");root.setBackgroundColor(background);web.setBackgroundColor(background);
+        background=getColor(dark?R.color.eq_dark_canvas:R.color.eq_light_canvas);root.setBackgroundColor(background);web.setBackgroundColor(background);if(updates!=null)updates.setDark(dark);
         if(Build.VERSION.SDK_INT>=30){WindowInsetsController controller=getWindow().getInsetsController();if(controller!=null)controller.setSystemBarsAppearance(dark?0:WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);}
         else {getWindow().setStatusBarColor(background);getWindow().setNavigationBarColor(background);getWindow().getDecorView().setSystemUiVisibility(dark?0:View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR|View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);}
     }

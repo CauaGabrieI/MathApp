@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generated from design/tokens.json. -->
+<resources>
+    <color name="eq_color_canvas">@color/eq_dark_canvas</color>
+    <color name="eq_color_surface">@color/eq_dark_surface</color>
+    <color name="eq_color_surface_subtle">@color/eq_dark_surface_subtle</color>
+    <color name="eq_color_text">@color/eq_dark_text</color>
+    <color name="eq_color_text_secondary">@color/eq_dark_text_secondary</color>
+    <color name="eq_color_text_tertiary">@color/eq_dark_text_tertiary</color>
+    <color name="eq_color_primary">@color/eq_dark_primary</color>
+    <color name="eq_color_primary_hover">@color/eq_dark_primary_hover</color>
+    <color name="eq_color_on_primary">@color/eq_dark_on_primary</color>
+    <color name="eq_color_primary_container">@color/eq_dark_primary_container</color>
+    <color name="eq_color_border">@color/eq_dark_border</color>
+    <color name="eq_color_border_strong">@color/eq_dark_border_strong</color>
+    <color name="eq_color_success">@color/eq_dark_success</color>
+    <color name="eq_color_success_container">@color/eq_dark_success_container</color>
+    <color name="eq_color_error">@color/eq_dark_error</color>
+    <color name="eq_color_error_container">@color/eq_dark_error_container</color>
+    <color name="eq_color_warning">@color/eq_dark_warning</color>
+    <color name="eq_color_warning_container">@color/eq_dark_warning_container</color>
+    <color name="eq_color_info">@color/eq_dark_info</color>
+    <color name="eq_color_info_container">@color/eq_dark_info_container</color>
+    <color name="eq_color_media">@color/eq_dark_media</color>
+    <color name="eq_color_on_media">@color/eq_dark_on_media</color>
+    <color name="eq_color_scrim">@color/eq_dark_scrim</color>
+    <color name="eq_color_mask">@color/eq_dark_mask</color>
+    <color name="eq_color_paper">@color/eq_dark_paper</color>
+    <color name="eq_color_branch_1">@color/eq_dark_branch_1</color>
+    <color name="eq_color_branch_2">@color/eq_dark_branch_2</color>
+    <color name="eq_color_branch_3">@color/eq_dark_branch_3</color>
+    <color name="eq_color_branch_4">@color/eq_dark_branch_4</color>
+    <color name="eq_color_branch_5">@color/eq_dark_branch_5</color>
+    <color name="eq_color_branch_6">@color/eq_dark_branch_6</color>
+    <color name="eq_color_branch_7">@color/eq_dark_branch_7</color>
+    <color name="eq_color_branch_8">@color/eq_dark_branch_8</color>
+</resources>

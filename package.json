@@ -9,7 +9,9 @@
     "test": "node --test tests/*.test.mjs",
     "android:prepare": "node scripts/prepare-android.mjs",
     "android:release-files": "node scripts/android-release.mjs",
-    "pretest": "node scripts/prepare-android.mjs"
+    "pretest": "node scripts/prepare-android.mjs",
+    "design:build": "node scripts/design-system.mjs",
+    "design:check": "node scripts/design-system.mjs --check"
   },
   "devDependencies": {
     "fake-indexeddb": "^6.2.6"

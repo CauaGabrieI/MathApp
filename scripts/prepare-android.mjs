@@ -1,5 +1,7 @@
+import {generateDesignSystem} from './design-system.mjs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+await generateDesignSystem();
 const root=path.resolve(import.meta.dirname,'..'),target=path.join(root,'android/app/src/main/assets');
 await fs.mkdir(target,{recursive:true});
 const excluded=new Set(['sw.js','questions.json','enemhub.json','enemdev.json']);

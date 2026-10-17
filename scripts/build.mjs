@@ -1,7 +1,9 @@
+import {generateDesignSystem} from './design-system.mjs';
 import fs from 'node:fs/promises';
 import {normalizeSources,LEVELS} from '../public/core.js';
 import {makeCurriculumIndex} from '../question-classifier.js';
 import {validateLearningCurriculum} from '../public/learning-model.js';
+await generateDesignSystem();
 const hub=JSON.parse(await fs.readFile('public/enemhub.json','utf8'));
 const dev=JSON.parse(await fs.readFile('public/enemdev.json','utf8'));
 const bank=normalizeSources(hub,dev);

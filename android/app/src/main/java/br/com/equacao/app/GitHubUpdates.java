@@ -28,13 +28,16 @@ final class GitHubUpdates implements AutoCloseable {
     private final ExecutorService worker = Executors.newSingleThreadExecutor();
     private final Handler main = new Handler(Looper.getMainLooper());
     private boolean checking, resumed, closed;
+    private boolean dark;
     private Result pending;
     private AlertDialog dialog;
 
     GitHubUpdates(Activity activity) {
         this.activity = activity;
+        dark = (activity.getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES;
         preferences = activity.getSharedPreferences("github-updates", Context.MODE_PRIVATE);
     }
+    void setDark(boolean dark) { this.dark = dark; }
 
     void onResume() {
         resumed = true;
@@ -156,7 +159,7 @@ final class GitHubUpdates implements AutoCloseable {
         }
         if (!UpdatePolicy.shouldOffer(release, BuildConfig.VERSION_CODE, result.manual,
             preferences.getInt("deferredVersion", 0), preferences.getLong("deferredUntil", 0), System.currentTimeMillis())) return;
-        dialog = new AlertDialog.Builder(activity).setTitle("Atualização disponível")
+        dialog = new AlertDialog.Builder(activity, dark ? R.style.EquacaoDialogDark : R.style.EquacaoDialogLight).setTitle("Atualização disponível")
             .setMessage("A versão " + release.version + " do Equação está disponível no GitHub. Você está usando a "
                 + BuildConfig.VERSION_NAME + ".\n\nQuer baixar agora? O download será aberto no navegador. Depois, abra o APK e confirme a atualização no Android."
                 + "\n\nAo atualizar com a mesma assinatura, seu histórico e seus estudos são mantidos.")
