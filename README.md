@@ -25,6 +25,8 @@ Abra http://localhost:4173. Para consultar a EnemHub ao vivo no servidor local, 
 
 O projeto Android está em [`android/`](android/README.md), com instruções para gerar o APK. Requer Android 8.0 ou superior. O aplicativo inclui a interface e o acervo localmente, com histórico próprio, exportação pelo seletor de arquivos e integração nativa de rede. Imagens ainda não carregadas e videoaulas precisam de internet. Consulte o README Android para os requisitos de compilação e as limitações de validação.
 
+Baixe o APK em [GitHub Releases](https://github.com/CauaGabrieI/MathApp/releases/latest). A partir da versão 1.0.1, o app verifica novas releases ao abrir e oferece baixar ou adiar a atualização. Há consulta manual em Preferências. O download abre no navegador e a instalação é confirmada pelo Android. As próximas versões precisam ser publicadas com APK assinado e manifesto, conforme o [guia Android](android/README.md#atualizações-pelo-github).
+
 Também é possível instalar a versão web publicada pelo menu do Chrome → Instalar aplicativo / Adicionar à tela inicial. Na PWA, textos, alternativas e histórico ficam disponíveis offline após o primeiro carregamento completo. As últimas 100 imagens visualizadas são guardadas em cache. As imagens ainda não visitadas precisam de conexão. Um aviso aparece quando uma imagem não carrega.
 
 ## Identificação e histórico

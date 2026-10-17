@@ -10,7 +10,8 @@ app=app.replace("if('serviceWorker'in navigator)","if(!window.EquacaoAndroid&&'s
 app=app.replaceAll("matchMedia('(prefers-color-scheme: dark)').matches","window.EquacaoAndroid.systemDark");
 app+="\nwindow.addEventListener('android-system-theme',applyTheme);\n";
 app=app.replaceAll('neste navegador','neste aplicativo').replaceAll('dados do navegador','dados do aplicativo');
-app=app.replaceAll('<button class="button secondary" data-action="install">Instalar app</button>','');
+app=app.replaceAll('<button class="button secondary" data-action="install">Instalar app</button>','<button class="button secondary" data-action="check-updates">Verificar atualizações</button>');
+app=app.replace('<div class="settings-row"><span>Histórico neste dispositivo</span>', '<div class="settings-row"><span>Versão do app</span><strong>${window.EquacaoAndroid.version}</strong></div><div class="settings-row"><span>Histórico neste dispositivo</span>');
 app=app.replace('const url=URL.createObjectURL(blob);',"if(window.EquacaoAndroid){blob.text().then(text=>window.EquacaoAndroid.exportHistory(text));return;}const url=URL.createObjectURL(blob);");
 app=app.replace('A chave de acesso fica no servidor.','O acervo EnemHub desta versão está incluído no APK. Nenhuma chave de API é armazenada no aplicativo.');
 app=app.replace(' é a fonte alternativa e fornece a dificuldade.',' fornece a dificuldade dos registros incluídos no app.');

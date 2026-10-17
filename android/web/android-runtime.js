@@ -7,7 +7,7 @@ AndroidNetwork.onmessage=event=>{let data;try{data=JSON.parse(event.data);}catch
 function nativeMessage(message,signal){return new Promise((resolve,reject)=>{if(signal?.aborted){reject(new DOMException('Cancelado','AbortError'));return;}const id=String(Date.now())+':'+(++serial);const abort=()=>{pending.delete(id);clearTimeout(timer);reject(new DOMException('Cancelado','AbortError'));};const timer=setTimeout(()=>{pending.delete(id);signal?.removeEventListener('abort',abort);reject(new Error('Tempo esgotado'));},25000);pending.set(id,{resolve,reject,timer,cleanup:()=>signal?.removeEventListener('abort',abort)});signal?.addEventListener('abort',abort,{once:true});AndroidNetwork.postMessage(JSON.stringify({...message,id}));});}
 export async function nativeFetch(address,options={}){const url=new URL(address);if(url.protocol!=='https:')throw new Error('HTTPS obrigatório');const data=await nativeMessage({kind:'fetch',url:url.href},options.signal);return new Response(data.body,{status:data.status,headers:{'Content-Type':data.type}});}
 const config=await nativeMessage({kind:'config'});
-window.EquacaoAndroid={version:'1.0.0',systemDark:config.systemDark===true,exportHistory:body=>AndroidNetwork.postMessage(JSON.stringify({kind:'export',body}))};
+window.EquacaoAndroid={version:config.versionName,systemDark:config.systemDark===true,checkUpdates:()=>AndroidNetwork.postMessage(JSON.stringify({kind:'check-updates'})),exportHistory:body=>AndroidNetwork.postMessage(JSON.stringify({kind:'export',body}))};
 const bankPromise=browserFetch('/bank.json').then(r=>r.json());
 const curriculumPromise=browserFetch('/curriculum.json').then(r=>r.json());
 const seedsPromise=browserFetch('/video-catalog.json').then(r=>r.json());
@@ -23,5 +23,6 @@ window.fetch=async(input,options={})=>{const url=new URL(typeof input==='string'
 function sendTheme(){AndroidNetwork.postMessage(JSON.stringify({kind:'theme',dark:document.documentElement.dataset.theme==='dark'}));}
 new MutationObserver(sendTheme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 document.addEventListener('click',event=>{const link=event.target.closest('a[href]');if(!link)return;try{const url=new URL(link.href,location.href);if(url.origin!==location.origin&&url.protocol==='https:'){event.preventDefault();AndroidNetwork.postMessage(JSON.stringify({kind:'open',url:url.href}));}}catch{}});
+document.addEventListener('click',event=>{if(event.target.closest('[data-action="check-updates"]'))window.EquacaoAndroid.checkUpdates();});
 function androidUI(){document.querySelectorAll('[data-action="install"]').forEach(button=>button.remove());}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',androidUI,{once:true});else androidUI();

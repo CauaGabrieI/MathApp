@@ -1,6 +1,6 @@
 # Equação para Android
 
-Aplicativo Android instalável (`br.com.equacao.app`, versão 1.0.0), Android 8.0/API 26 ou superior. É um app híbrido: uma Activity Android reutiliza a interface existente em uma WebView local, com assets incluídos no APK, armazenamento próprio e integração nativa para rede, links, exportação e botão de voltar. Não é um atalho do navegador e não abre o site privado para funcionar.
+Aplicativo Android instalável (`br.com.equacao.app`, versão 1.0.1), Android 8.0/API 26 ou superior. É um app híbrido: uma Activity Android reutiliza a interface existente em uma WebView local, com assets incluídos no APK, armazenamento próprio e integração nativa para rede, links, exportação e botão de voltar. Não é um atalho do navegador e não abre o site privado para funcionar.
 
 ## Incluído no app
 
@@ -63,3 +63,35 @@ Os dados do enem.dev são creditados sob GPL-2.0, com a licença incluída nos a
 - Não houve teste em aparelho físico: nenhum dispositivo Android estava conectado. Não havia imagem de emulador disponível no ambiente.
 
 As limitações pedagógicas do acervo e da associação automática dos exercícios permanecem as mesmas da versão web. A disponibilidade do YouTube depende do serviço e da rede; falha de confirmação não gera recomendações inventadas.
+
+## Atualizações pelo GitHub
+
+O app consulta somente a última release pública estável de [CauaGabrieI/MathApp](https://github.com/CauaGabrieI/MathApp/releases). Não usa login nem token de GitHub. Não envia histórico, respostas ou dados de estudo: faz somente GET dos metadados públicos de versão. O GitHub recebe a conexão HTTP normal, incluindo o IP e a versão do app no User-Agent.
+
+A consulta automática acontece ao abrir/retomar o app, no máximo uma vez por dia. Há também Preferências → Verificar atualizações. Quando encontra uma versão mais nova, o aviso oferece Baixar atualização e Agora não. Adiar silencia aquela versão por 24 horas; a consulta manual ignora o adiamento. Falhas automáticas ficam silenciosas e permitem nova consulta após uma hora; consultas manuais informam problemas de conexão/limite do GitHub.
+
+A release precisa conter `android-update.json` e o APK com o nome indicado nele. O app compara o `versionCode` Android, confere o identificador do aplicativo, a tag estável, o nome, o tamanho e o endereço do APK no mesmo repositório. Quando o GitHub fornece um digest, compara-o com o SHA-256 do manifesto. O download abre no navegador após o usuário aceitar; o app não baixa nem instala silenciosamente. O Android confirma a instalação e verifica a compatibilidade da assinatura do APK. Os dados locais são mantidos numa atualização normal, com mesmo pacote e assinatura.
+
+Sem release pública ou arquivo Android válido, nenhum download é sugerido. Rascunhos, pré-lançamentos e versões com código igual ou menor são ignorados. A versão 1.0.0 não tinha esse recurso: instale a 1.0.1 uma vez por cima dela. Não desinstale para atualizar, pois isso apaga os dados do app. O recurso é exclusivo do APK; a versão web conserva seu mecanismo de cache.
+
+### Publicar uma próxima versão
+
+1. Aumente `versionCode` e `versionName` em `app/build.gradle`. Exemplo: código 3 e nome 1.0.2. Use sempre a chave de assinatura original, guardada localmente.
+2. Na raiz, execute `npm ci`, `npm run build` e `npm test`. Em `android/`, execute `./gradlew --no-daemon assembleRelease testDebugUnitTest lintRelease`.
+3. Na raiz, com `ANDROID_HOME` configurado, execute `npm run android:release-files`. O script verifica assinatura, alinhamento, pacote e versão do APK antes de gerar os arquivos em `android/build/github-release/` (fora do Git).
+4. Faça commit e push do código. Crie uma release estável `v<versionName>` apontando para esse commit, com os três arquivos gerados: APK, `android-update.json` e `.sha256`. Publique os arquivos juntos, inicialmente em rascunho e depois tornando a release pública e latest.
+
+Exemplo para uma próxima versão 1.0.2, depois dos testes e da preparação dos arquivos:
+
+```sh
+gh release create v1.0.2 android/build/github-release/equacao-android-1.0.2.apk android/build/github-release/android-update.json android/build/github-release/equacao-android-1.0.2.apk.sha256 --repo CauaGabrieI/MathApp --target main --title "Equação 1.0.2" --notes-file /caminho/notas.md --draft
+gh release edit v1.0.2 --repo CauaGabrieI/MathApp --draft=false --latest
+```
+
+Um push de código sozinho não produz uma atualização instalável: é necessário publicar uma release com o APK assinado e seu manifesto. O script de preparação não publica nem inclui chaves privadas. A publicação usa a autenticação local do mantenedor via `gh`, fora do app. O repositório precisa permanecer público para a consulta sem login funcionar.
+
+Referências: [GitHub Releases API](https://docs.github.com/en/rest/releases/releases#get-the-latest-release) e [limites da API pública](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api).
+
+### Verificação da atualização 1.0.1
+
+`npm test` cobre oito arquivos de testes, incluindo preparação do manifesto e o botão/ponte Android. Os cinco testes Java adicionais cobrem comparação por código Android, adiamento e consulta manual, rejeição de aplicativo/artefato incompatível e restrição de origens/redirecionamentos. A compilação release, os sete testes Java e o lint passaram. A assinatura original e o alinhamento foram verificados. Ainda não houve teste do aviso e da instalação em aparelho físico ou emulador.

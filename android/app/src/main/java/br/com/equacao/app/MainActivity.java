@@ -22,6 +22,7 @@ public class MainActivity extends androidx.activity.ComponentActivity {
     private WebChromeClient.CustomViewCallback fullscreenCallback;
     private final ExecutorService requests=Executors.newFixedThreadPool(8);
     private NativeHttp http;
+    private GitHubUpdates updates;
     private String pendingExport;
     private volatile String pageError;
     private int background=Color.rgb(27,25,33);
@@ -33,6 +34,7 @@ public class MainActivity extends androidx.activity.ComponentActivity {
             root.setOnApplyWindowInsetsListener((view,insets)->{android.graphics.Insets bars=insets.getInsets(WindowInsets.Type.systemBars()|WindowInsets.Type.displayCutout());view.setPadding(bars.left,bars.top,bars.right,bars.bottom);return insets;});
         } else {root.setFitsSystemWindows(true);getWindow().setStatusBarColor(background);getWindow().setNavigationBarColor(background);}
         http=new NativeHttp(this);
+        updates=new GitHubUpdates(this);
         web=new WebView(this);web.setBackgroundColor(background);
         root.addView(web,new FrameLayout.LayoutParams(-1,-1));
         WebSettings settings=web.getSettings();
@@ -84,7 +86,8 @@ public class MainActivity extends androidx.activity.ComponentActivity {
             if(!mainFrame||!("https".equals(origin.getScheme())&&"appassets.androidplatform.net".equals(origin.getHost())))return;
             try{
                 JSONObject input=new JSONObject(message.getData());String kind=input.optString("kind");
-                if("config".equals(kind)){if(WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER))reply.postMessage(new JSONObject().put("id",input.getString("id")).put("systemDark",isSystemDark()).toString());return;}
+                if("config".equals(kind)){if(WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER))reply.postMessage(new JSONObject().put("id",input.getString("id")).put("systemDark",isSystemDark()).put("versionName",BuildConfig.VERSION_NAME).toString());return;}
+                if("check-updates".equals(kind)){updates.check(true);return;}
                 if("theme".equals(kind)){applyTheme(input.optBoolean("dark",true));return;}
                 if("open".equals(kind)){openExternal(input.optString("url"));return;}
                 if("export".equals(kind)){exportHistory(input.optString("body"));return;}
@@ -130,9 +133,9 @@ public class MainActivity extends androidx.activity.ComponentActivity {
         if(fullscreen!=null){hideFullscreen();return;}
         web.evaluateJavascript("(()=>{const d=[...document.querySelectorAll('dialog[open]')].pop();if(d){d.close();return true;}if(location.hash!=='#mapa'){location.hash='#mapa';return true;}return false;})()",handled->{if("false".equals(handled))finish();});
     }
-    @Override protected void onPause(){if(web!=null){web.evaluateJavascript("document.querySelector('#learning-dialog')?.close();document.querySelectorAll('iframe').forEach(f=>f.remove());",null);web.onPause();}super.onPause();}
-    @Override protected void onResume(){super.onResume();if(web!=null)web.onResume();}
-    @Override protected void onDestroy(){requests.shutdownNow();if(web!=null){web.loadUrl("about:blank");web.destroy();}super.onDestroy();}
+    @Override protected void onPause(){if(updates!=null)updates.onPause();if(web!=null){web.evaluateJavascript("document.querySelector('#learning-dialog')?.close();document.querySelectorAll('iframe').forEach(f=>f.remove());",null);web.onPause();}super.onPause();}
+    @Override protected void onResume(){super.onResume();if(web!=null)web.onResume();if(updates!=null)updates.onResume();}
+    @Override protected void onDestroy(){if(updates!=null)updates.close();requests.shutdownNow();if(web!=null){web.loadUrl("about:blank");web.destroy();}super.onDestroy();}
     WebView testWebView(){return web;}
     String testPageError(){return pageError;}
 }
