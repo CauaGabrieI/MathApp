@@ -1,5 +1,5 @@
-import {journeyProgress,nextLesson,validateRoadmap,lessonState,examComparison} from './journey-model.js?v=math24';
-import * as contentVideo from './videos.js?v=math24';
+import {journeyProgress,nextLesson,validateRoadmap,lessonState,examComparison} from './journey-model.js?v=math26';
+import * as contentVideo from './videos.js?v=math26';
 const $=s=>document.querySelector(s),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const labels={not_started:'Não iniciada',in_progress:'Em andamento',completed:'Concluída'};
 let config,roadmap,activeModule=null,activeLesson=null,loading,view=null,dialogInvoker=null,lessonTab='theory',lessonTabScroll={};

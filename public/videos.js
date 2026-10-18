@@ -1,18 +1,70 @@
-import {VIDEO_CHANNELS,VIDEO_TOPICS,detectVideoTopic} from './video-topics.js?v=math24';
-import {completedRecords} from './core.js?v=math24';
+import {VIDEO_CHANNELS,VIDEO_TOPICS,detectVideoTopic} from './video-topics.js?v=math26';
+import {completedRecords} from './core.js?v=math26';
+import {videoCategories,videoModules,videoLessons,defaultVideoSelection,isValidVideoSelection} from './video-categories.js?v=math26';
 const $=s=>document.querySelector(s);
 const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const play='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg>';
-let stateProvider,practiceKey='',practiceToken=0,libraryToken=0,manualTopic=false;
+let stateProvider,practiceKey='',practiceToken=0,libraryToken=0,manualTopic=false,selectedModule='',selectedLesson='',roadmapData=null,roadmapPromise=null;
 const videoCache=new Map(),pending=new Map();
 function card(video,compact=false){return `<a class="video-card ${compact?'compact-video':''}" href="${escapeHTML(video.url)}" target="_blank" rel="noopener noreferrer" aria-label="Assistir ${escapeHTML(video.title)} no YouTube, canal ${escapeHTML(video.channel)}"><span class="video-thumbnail"><img src="${escapeHTML(video.thumbnail)}" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="video-play">${play}</span></span><span class="video-information"><span class="video-channel">${escapeHTML(video.channel)}</span><strong>${escapeHTML(video.title)}</strong><span class="video-watch">Assistir no YouTube <span aria-hidden="true">↗</span></span></span></a>`;}
 async function fetchVideos(topic,channel='all'){const key=topic+':'+channel;const hit=videoCache.get(key);if(hit&&Date.now()-hit.at<300000)return hit.videos;if(pending.has(key))return pending.get(key);const promise=(async()=>{try{const response=await fetch('/api/videos?topic='+encodeURIComponent(topic)+'&channel='+encodeURIComponent(channel),{signal:AbortSignal.timeout(25000)});if(!response.ok)return [];const data=await response.json();const videos=Array.isArray(data.videos)?data.videos:[];videoCache.set(key,{at:Date.now(),videos});return videos;}catch{return [];}finally{pending.delete(key);}})();pending.set(key,promise);return promise;}
 function context(){const state=stateProvider?.();if(!state)return null;const hasHistory=completedRecords(state.records).length>0,question=state.question,questionId=question?.id??null;return {hasHistory,question,questionId,content:state.content,topic:question?detectVideoTopic(question,true):state.content?detectVideoTopic({topic:state.content.title+' '+(state.content.moduleTitle??'')},true):detectVideoTopic(null,hasHistory)};}
-export function initVideoUI(provider){stateProvider=provider;$('#video-topic-filter').innerHTML=Object.entries(VIDEO_TOPICS).map(([key,spec])=>`<option value="${key}">${escapeHTML(spec.label)}</option>`).join('');$('#video-channel-filter').innerHTML='<option value="all">Todos os canais autorizados</option>'+VIDEO_CHANNELS.map(c=>`<option value="${escapeHTML(c.handle)}">${escapeHTML(c.name)}</option>`).join('');$('#video-channel-list').innerHTML=VIDEO_CHANNELS.map(c=>`<a href="https://www.youtube.com/@${encodeURIComponent(c.handle)}" target="_blank" rel="noopener noreferrer">${escapeHTML(c.name)} ↗</a>`).join('');$('#video-topic-filter').addEventListener('change',()=>{manualTopic=true;loadVideoLibrary();});$('#video-channel-filter').addEventListener('change',loadVideoLibrary);window.addEventListener('online',()=>{videoCache.clear();contentVideoCache.clear();questionVideoCache.clear();practiceKey='';updateVideoRecommendations();if(!$('#page-videos').hidden)loadVideoLibrary();});}
+async function ensureRoadmap(){
+ const provided=stateProvider?.()?.roadmap;
+ if(provided){roadmapData=provided;return provided;}
+ if(roadmapData)return roadmapData;
+ if(!roadmapPromise)roadmapPromise=fetch('/learning-path.json?v=math26',{signal:AbortSignal.timeout(25000)}).then(response=>{if(!response.ok)throw new Error('Não foi possível carregar os módulos de videoaula.');return response.json();}).then(data=>{roadmapData=data;return data;}).catch(error=>{roadmapPromise=null;throw error;});
+ return roadmapPromise;
+}
+function contextOptionAvailable(current){return Boolean(current?.questionId||current?.content?.topicId||current?.content?.moduleId);}
+function renderVideoCategories(curriculum,current){
+ const topicFilter=$('#video-topic-filter'),lessonFilter=$('#video-lesson-filter');
+ const groups=videoCategories(curriculum),available=videoModules(curriculum);
+ if(!available.length)throw new Error('Nenhum assunto disponível.');
+ if(!available.some(module=>module.id===selectedModule)){
+  const first=defaultVideoSelection(curriculum);selectedModule=first.moduleId;selectedLesson=first.lessonId;
+ }
+ if(!isValidVideoSelection(curriculum,selectedModule,selectedLesson))selectedLesson='';
+ const contextMode=!manualTopic&&contextOptionAvailable(current);
+ topicFilter.innerHTML=(contextOptionAvailable(current)?'<option value="context">Relacionado à minha atividade</option>':'')+groups.map(group=>`<optgroup label="${escapeHTML(group.label)}">${group.modules.map(module=>`<option value="${escapeHTML(module.id)}">${escapeHTML(module.title)}</option>`).join('')}</optgroup>`).join('');
+ topicFilter.disabled=false;topicFilter.value=contextMode?'context':selectedModule;
+ const lessons=videoLessons(curriculum,selectedModule);
+ lessonFilter.innerHTML=contextMode?'<option value="">Conforme a atividade atual</option>':'<option value="">Todas as aulas do módulo</option>'+lessons.map(lesson=>`<option value="${escapeHTML(lesson.id)}">${escapeHTML(String(lesson.order).padStart(2,'0')+'. '+lesson.title)}</option>`).join('');
+ lessonFilter.value=contextMode?'':selectedLesson;lessonFilter.disabled=contextMode;
+ const module=available.find(m=>m.id===selectedModule),lesson=lessons.find(l=>l.id===selectedLesson);
+ $('#video-filter-description').textContent=contextMode?'Sugestões para sua atividade atual. Escolha um assunto para explorar outras aulas.':lesson?`Aula ${String(lesson.order).padStart(2,'0')} de ${lessons.length}: ${lesson.title}.`:`${lessons.length} aulas de ${module.title}. Escolha uma aula ou explore o módulo completo.`;
+}
+export function initVideoUI(provider){
+ stateProvider=provider;
+ $('#video-channel-filter').innerHTML='<option value="all">Todos os canais autorizados</option>'+VIDEO_CHANNELS.map(c=>`<option value="${escapeHTML(c.handle)}">${escapeHTML(c.name)}</option>`).join('');
+ $('#video-channel-list').innerHTML=VIDEO_CHANNELS.map(c=>`<a href="https://www.youtube.com/@${encodeURIComponent(c.handle)}" target="_blank" rel="noopener noreferrer">${escapeHTML(c.name)} ↗</a>`).join('');
+ $('#video-topic-filter').addEventListener('change',()=>{const value=$('#video-topic-filter').value;if(value==='context'){manualTopic=false;selectedLesson='';}else{manualTopic=true;selectedModule=value;selectedLesson='';}loadVideoLibrary();});
+ $('#video-lesson-filter').addEventListener('change',()=>{manualTopic=true;selectedLesson=$('#video-lesson-filter').value;loadVideoLibrary();});
+ $('#video-channel-filter').addEventListener('change',loadVideoLibrary);
+ window.addEventListener('online',()=>{videoCache.clear();contentVideoCache.clear();questionVideoCache.clear();practiceKey='';updateVideoRecommendations();if(!$('#page-videos').hidden)loadVideoLibrary();});
+}
 export async function updateVideoRecommendations(){const current=context();if(!current)return;const contentId=current.content?.topicId??current.content?.moduleId;const key=(current.questionId??contentId??current.topic)+':'+current.hasHistory;if(key===practiceKey)return;practiceKey=key;const token=++practiceToken;$('#question-videos').hidden=true;if(!current.topic&&!contentId&&!current.questionId)return;const videos=current.questionId?await fetchQuestionVideos(current.questionId):contentId?await fetchContentVideos(contentId):await fetchVideos(current.topic);if(token!==practiceToken||!videos.length)return;const backendTopic=current.questionId?questionVideoCache.get(current.questionId+':all')?.topic:null;const exact=backendTopic?VIDEO_TOPICS[backendTopic]?.label:current.question?.topic??current.question?.title;$('#question-videos-title').textContent=current.questionId||current.hasHistory?'Videoaulas para este tema':'Comece pela base';$('#question-videos-copy').textContent=current.questionId?(exact??VIDEO_TOPICS[current.topic]?.label??'Este conteúdo')+' · sugestões dos canais que você escolheu':current.hasHistory?(current.content?.title??VIDEO_TOPICS[current.topic]?.label??'Este conteúdo')+' · sugestões dos canais que você escolheu':'Uma introdução à matemática para acompanhar seus primeiros passos.';$('#question-video-cards').innerHTML=videos.slice(0,6).map(v=>card(v,true)).join('');$('#question-videos').hidden=false;}
-export async function loadVideoLibrary(){const current=context();if(!manualTopic)$('#video-topic-filter').value=current?.topic??'basics';$('#video-personalization').textContent=current?.questionId?'Aulas relacionadas a esta questão e ao seu percurso.':current?.hasHistory?'Escolha um tema ou explore aulas relacionadas à sua prática.':'Ainda sem histórico? Comece com uma aula básica de matemática.';const topic=$('#video-topic-filter').value,channel=$('#video-channel-filter').value;const token=++libraryToken;$('#video-results').innerHTML='<div class="video-loading" role="status">Conferindo as aulas nos canais autorizados…</div>';const contentId=current?.content?.topicId??current?.content?.moduleId;const videos=!manualTopic&&current?.questionId?await fetchQuestionVideos(current.questionId,channel):!manualTopic&&contentId?await fetchContentVideos(contentId,channel):await fetchVideos(topic,channel);if(token!==libraryToken)return;$('#video-results').innerHTML=videos.length?`<div class="video-grid">${videos.map(v=>card(v)).join('')}</div><p class="video-verified-note">${videos.length} ${videos.length===1?'videoaula verificada':'videoaulas verificadas'} · Disponibilidade e autoria verificadas no YouTube. Os vídeos abrem no canal original.</p>`:'<div class="video-empty"><h2>Nenhuma aula confirmada para este filtro.</h2><p>Experimente outro tema ou canal. Só mostramos vídeos cuja disponibilidade e autoria conseguimos verificar.</p></div>';}
-
-export function openVideoTopic(topic){if(!VIDEO_TOPICS[topic])return;manualTopic=true;$('#video-topic-filter').value=topic;}
+export async function loadVideoLibrary(){
+ const token=++libraryToken;
+ const current=context();
+ let curriculum;
+ try{curriculum=await ensureRoadmap();if(!videoModules(curriculum).length){roadmapData=null;roadmapPromise=null;throw new Error('Assuntos indisponíveis.');}}catch(error){if(token!==libraryToken)return;$('#video-results').innerHTML=`<div class="video-empty"><h2>Não foi possível carregar os módulos.</h2><p>Verifique sua conexão e tente novamente.</p><button class="button secondary" type="button" data-video-retry>Tentar novamente</button></div>`;$('#video-results').querySelector('[data-video-retry]')?.addEventListener('click',()=>loadVideoLibrary());return;}
+ if(token!==libraryToken)return;
+ renderVideoCategories(curriculum,current);
+ const contextMode=!manualTopic&&contextOptionAvailable(current);
+ const channel=$('#video-channel-filter').value;
+ $('#video-personalization').textContent=contextMode?(current.questionId?'Aulas relacionadas a esta questão e ao seu percurso.':'Aulas relacionadas ao conteúdo aberto.'):manualTopic?'Explore os módulos e aulas do seu caminho de Matemática.':current?.hasHistory?'Escolha um módulo ou explore aulas relacionadas à sua prática.':'Comece pelo primeiro módulo e avance no seu ritmo.';
+ $('#video-results').innerHTML='<div class="video-loading" role="status">Conferindo as aulas nos canais autorizados…</div>';
+ let videos;
+ if(contextMode&&current.questionId)videos=await fetchQuestionVideos(current.questionId,channel);
+ else if(contextMode&&current.content)videos=await fetchContentVideos(current.content.topicId??current.content.moduleId,channel);
+ else if(selectedLesson)videos=await fetchContentVideos(selectedLesson,channel);
+ else videos=await fetchContentVideos(selectedModule,channel);
+ if(token!==libraryToken)return;
+ $('#video-results').innerHTML=videos.length?`<div class="video-grid">${videos.map(v=>card(v)).join('')}</div><p class="video-verified-note">${videos.length} ${videos.length===1?'videoaula verificada':'videoaulas verificadas'} · Disponibilidade e autoria verificadas no YouTube. Os vídeos abrem no canal original.</p>`:'<div class="video-empty"><h2>Nenhuma aula confirmada para este filtro.</h2><p>Experimente outra aula ou canal. Só mostramos vídeos cuja disponibilidade e autoria conseguimos verificar.</p></div>';
+}
+const LEGACY_TOPIC_MODULE={basics:'math.m01',ratios:'math.m02',percentage:'math.m03',units:'math.m05',equations:'math.m06',functions:'math.m08',progressions:'math.m12',geometry:'math.m13',trigonometry:'math.m15',statistics:'math.m18',combinatorics:'math.m19',probability:'math.m20',finance:'math.m21',fractions:'math.m01'};
+export function openVideoTopic(topic){const moduleId=LEGACY_TOPIC_MODULE[topic];if(!moduleId)return;manualTopic=true;selectedModule=moduleId;selectedLesson='';const filter=$('#video-topic-filter');if(filter)filter.value=moduleId;const lessonFilter=$('#video-lesson-filter');if(lessonFilter)lessonFilter.value='';}
 
 const contentVideoCache=new Map(),contentVideoPending=new Map(),contentVideoStates=new WeakMap();
 const questionVideoCache=new Map(),questionVideoPending=new Map();

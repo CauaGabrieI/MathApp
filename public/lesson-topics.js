@@ -1,18 +1,26 @@
-import {normalizeVideoTitle} from './video-topics.js?v=math24';
+import {normalizeVideoTitle} from './video-topics.js?v=math26';
 export const MODULE_VIDEO_TOPICS={1:'basics',2:'ratios',3:'percentage',4:'basics',5:'units',6:'equations',7:'equations',8:'functions',9:'functions',10:'functions',11:'functions',12:'progressions',13:'geometry',14:'geometry',15:'trigonometry',16:'geometry',17:'geometry',18:'statistics',19:'combinatorics',20:'probability',21:'finance',22:'functions',23:'statistics',24:'basics',25:'basics'};
 export function learningLesson(curriculum,contentId){if(curriculum.modules?.[0]?.lessons){for(const m of curriculum.modules){const l=m.lessons.find(l=>l.id===contentId);if(l||m.id===contentId)return {id:contentId,title:l?.title??m.title,videoTerms:l?.videoTerms??m.title,moduleTitle:m.title,topic:l?.videoTopic??m.videoTopic,query:l?.videoTerms??m.title,isModule:!l};}return null;}for(const m of curriculum.modules){const t=m.topics.find(t=>t.id===contentId);if(t||m.id===contentId)return {id:contentId,title:t?.title??m.title,moduleTitle:m.title,topic:MODULE_VIDEO_TOPICS[m.sourceNumber??m.order]??'basics',query:(t?.title??m.title)+' matemática aula explicação',isModule:!t};}return null;}
 const normalizeWords=value=>normalizeVideoTitle(value).replace(/\b(aprofundamento|introducao|introdução|noc\.?es|noções|quando pertinente|aplicacoes|aplicações)\b/g,' ').replace(/\s+/g,' ').trim();
+const EARLY_ARITHMETIC_VIDEO_GUARDS={
+ 'math.m01':{reject:/\b(?:monom(?:io|ios)|polinom(?:io|ios)|radic(?:al|ais)|raiz(?:es)? quadrad|func(?:ao|oes)|trigonom(?:etria)?|logaritm[a-z]*|derivad[a-z]*|integrais|calculo (?:1|diferencial|integral)|calculus)\b/},
+ 'math.m01.t01':{reject:/\b(?:operac(?:ao|oes)|adicao|subtracao|multiplicacao|divisao|monom(?:io|ios)|polinom(?:io|ios)|radic(?:al|ais)|raiz(?:es)? quadrad|func(?:ao|oes)|trigonom(?:etria)?|logaritm[a-z]*|derivad[a-z]*|integrais|calculo (?:1|diferencial|integral)|calculus)\b/},
+ 'math.m01.t05':{reject:/\b(?:monom(?:io|ios)|polinom(?:io|ios)|radic(?:al|ais)|raiz(?:es)? quadrad|frac(?:ao|oes)|func(?:ao|oes)|trigonom(?:etria)?|logaritm[a-z]*|derivad[a-z]*|integrais|calculo (?:1|diferencial|integral)|calculus)\b/},
+ 'math.m01.t10':{reject:/\b(?:monom(?:io|ios)|polinom(?:io|ios)|radic(?:al|ais)|raiz(?:es)? quadrad|frac(?:ao|oes)|func(?:ao|oes)|trigonom(?:etria)?|logaritm[a-z]*|derivad[a-z]*|integrais|calculo (?:1|diferencial|integral)|calculus)\b/}
+};
 const EDITORIAL_QUERY_ALIASES=[
  [/calculo percentual/,'porcentagem'],[/funcao quadratica/,'funcao do segundo grau'],[/funcao afim/,'funcao do primeiro grau'],
- [/naturais|sistema decimal/,'sistema de numeracao decimal'],[/coeficientes? angular/,'inclinacao da reta'],[/ordem das operacoes/,'expressoes numericas'],
+ [/naturais|sistema decimal/,'sistema de numeracao decimal ordens classes decomposicao'],[/adicao, subtracao.*multiplicacao.*divisao/,'quatro operacoes basicas numeros inteiros decimais'],[/coeficientes? angular/,'inclinacao da reta'],[/ordem das operacoes/,'expressoes numericas'],
  [/mmc e mdc/,'minimo multiplo comum maximo divisor comum'],[/fracoes proprias/,'tipos de fracoes']
 ];
 export function lessonVideoQueries(lesson){
  if(!lesson)return[];
  const base=normalizeWords(lesson.videoTerms??lesson.title);
  if(!base)return[];
+ const moduleContext=lesson.moduleTitle==null?'':normalizeWords(lesson.moduleTitle);
+ const contextual=/^math\.m10\./.test(lesson.id??'')&&/maxim|minim/.test(base)?`${base} ${moduleContext}`.trim():base;
  const alias=EDITORIAL_QUERY_ALIASES.find(([pattern])=>pattern.test(base))?.[1];
- return [...new Set([base,alias].filter(Boolean))].slice(0,2);
+ return [...new Set([contextual,alias].filter(Boolean))].slice(0,2);
 }
 // Resolve a bank question to the smallest trustworthy curriculum concept. The
 // route supplies an id and local record; arbitrary client text is never looked up.
@@ -63,6 +71,9 @@ export function scoreLessonVideo(title,lesson){
  const text=normalizeVideoTitle(title),target=normalizeWords(lesson.videoTerms??lesson.title);
  if(!target)return 0;
  if(/\b(dicas? de estudo|como estudar|maratona|revisao geral|aul[aã]o completo)\b/.test(text)&&!text.includes(target))return 0;
+ const guard=EARLY_ARITHMETIC_VIDEO_GUARDS[lesson.id];
+ if(guard?.reject.test(text))return 0;
+ if(lesson.id==='math.m10.t03'&&!/quadratic|parabol|segundo grau|2\s*[º°o]?\s*grau/.test(text))return 0;
  if(ROADMAP_VIDEO_MATCH[lesson.id])return ROADMAP_VIDEO_MATCH[lesson.id].test(text)?20:0;
  const override=aliases.find(([key])=>key.test(target));
  if(override)return override[1].test(text)?(text.includes(target)?40:20):0;

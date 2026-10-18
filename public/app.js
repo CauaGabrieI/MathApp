@@ -1,15 +1,15 @@
-import {initGitHub,disableAutoBackup} from './github-ui.js?v=math24';
-import {openDB,snapshot,reserveQuestion,submitAnswer,clearHistory,setActive,saveLearningTopic,saveCardReview,beginModuleExam,saveExamAnswer,touchExamQuestion,migrateRoadmap,saveLearningFilters} from './db.js?v=math24';
-import {statementHTML,inlineHTML,richOptionHTML,imageURL,initQuestionMedia} from './render.js?v=math24';
-import {SOURCES,completedRecords,localDay,stats} from './core.js?v=math24';
-import {journeyProgress,learnedQuestions,learnedCards,examSelection,examResult,examComparison,normalizeExamKind} from './journey-model.js?v=math24';
-import {initJourney,loadJourney,refreshJourney,openJourneyModule,openJourneyLesson} from './journey-ui.js?v=math24';
-import {initVideoUI,updateVideoRecommendations,loadVideoLibrary} from './videos.js?v=math24';
-import {ICONS as icons} from './icons.js?v=math24';
-import {answerOrderKey,displayChoiceFor,displayChoices} from './answer-shuffle.js?v=math24';
-import {refreshQuestionContent} from './question-content.js?v=math24';
-import {initFlashcardsUI} from './flashcards-ui.js?v=math24';
-import {normalizeCard,reviewQueue,previewIntervals} from './flashcard-model.js?v=math24';
+import {initGitHub,disableAutoBackup} from './github-ui.js?v=math26';
+import {openDB,snapshot,reserveQuestion,submitAnswer,clearHistory,setActive,saveLearningTopic,saveCardReview,beginModuleExam,saveExamAnswer,touchExamQuestion,migrateRoadmap,saveLearningFilters} from './db.js?v=math26';
+import {statementHTML,inlineHTML,richOptionHTML,imageURL,initQuestionMedia} from './render.js?v=math26';
+import {SOURCES,completedRecords,localDay,stats} from './core.js?v=math26';
+import {journeyProgress,learnedQuestions,learnedCards,examSelection,examResult,examComparison,normalizeExamKind} from './journey-model.js?v=math26';
+import {initJourney,loadJourney,refreshJourney,openJourneyModule,openJourneyLesson} from './journey-ui.js?v=math26';
+import {initVideoUI,updateVideoRecommendations,loadVideoLibrary} from './videos.js?v=math26';
+import {ICONS as icons} from './icons.js?v=math26';
+import {answerOrderKey,displayChoiceFor,displayChoices} from './answer-shuffle.js?v=math26';
+import {refreshQuestionContent} from './question-content.js?v=math26';
+import {initFlashcardsUI} from './flashcards-ui.js?v=math26';
+import {normalizeCard,reviewQueue,previewIntervals} from './flashcard-model.js?v=math26';
 const svg=(name)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name]??icons.cards}</svg>`;
 const $=s=>document.querySelector(s);const $$=s=>[...document.querySelectorAll(s)];
 const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -24,7 +24,7 @@ function showDialog(title,body){$('#dialog-content').innerHTML=`<div class="dial
 const countText=n=>new Intl.NumberFormat('pt-BR').format(n);
 const dateLabel=value=>new Date(value).toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'});
 const currentState=()=>({records,learningEntries,learningLastTopicId,learningFilters,exams,cards,bank:data?.bank??[]});
-async function loadCourse(){if(data)return data;if(coursePromise)return coursePromise;coursePromise=Promise.all(['/learning-path.json','/study-bank.json','/bank.json','/learning-path-index.json'].map(async path=>{const r=await fetch(path+'?v=math24');if(!r.ok)throw new Error('Não foi possível abrir os conteúdos.');return r.json();})).then(([roadmap,study,enem,index])=>{data={roadmap,study,bank:[...study,...enem],index};return data;}).finally(()=>coursePromise=null);return coursePromise;}
+async function loadCourse(){if(data)return data;if(coursePromise)return coursePromise;coursePromise=Promise.all(['/learning-path.json','/study-bank.json','/bank.json','/learning-path-index.json'].map(async path=>{const r=await fetch(path+'?v=math26');if(!r.ok)throw new Error('Não foi possível abrir os conteúdos.');return r.json();})).then(([roadmap,study,enem,index])=>{data={roadmap,study,bank:[...study,...enem],index};return data;}).finally(()=>coursePromise=null);return coursePromise;}
 function progress(){return data?journeyProgress(data.roadmap,learningEntries,exams):{modules:[],learnedIds:[],completed:0,total:199};}
 function eligibleQuestions(){return data?learnedQuestions(data.roadmap,learningEntries,data.bank,data.index):[];}
 function activeRecord(){return records.find(r=>r.id===activeId);}
@@ -113,11 +113,11 @@ document.addEventListener('click',async event=>{const zoom=event.target.closest(
  switch(button.dataset.action){case'next':case'skip':await nextQuestion();break;case'answer':await answer();break;case'attempts':attempts();break;case'settings':settings();break;case'close':$('#dialog').close();break;case'install':install();break;case'export':exportHistory();break;case'about':showDialog('Matemática no seu ritmo.', '<p class="dialog-copy">25 módulos e 199 aulas do currículo Markdown de Matemática do ENEM, com explicações, exemplos, videoaulas verificadas e exercícios autorais do Equação. O acervo ENEM continua disponível na prática dos módulos aprendidos.</p><p class="dialog-copy">As questões ENEM são associadas automaticamente por tema. Essa associação pode exigir revisão pedagógica. A conclusão das aulas é registrada por você; o app não certifica domínio.</p>');break;case'reset':showDialog('Apagar o histórico de exercícios?','<p class="dialog-copy">Remove as questões vistas e respostas deste aparelho e desativa o backup automático. Aulas concluídas, provas e revisões dos cards são mantidas. As cópias no GitHub também são mantidas.</p><div class="dialog-actions"><button class="button secondary" data-action="close">Manter histórico</button><button class="button danger-button" data-action="confirm-reset">Apagar exercícios locais</button></div>');break;case'confirm-reset':await disableAutoBackup();await clearHistory();location.reload();break;}
  }catch(error){toast(error.message??'Não foi possível concluir esta ação.');}});
 initJourney({saveView:async value=>{learningFilters=value;await saveLearningFilters(value);},exercise:renderLessonExercise,loadRoadmap:async()=>(await loadCourse()).roadmap,state:currentState,touch:async id=>{await saveLearningTopic(id);await sync();},study:async(id,studied)=>{await saveLearningTopic(id,studied);await sync();broadcast?.postMessage('updated');},exam:startExam,result:async id=>{currentExamId=id;navigate('prova');},navigate,toast});
-initVideoUI(()=>({records,question:activeRecord()?.question,content:activeRecord()?.question.learning?.lessonId?{topicId:activeRecord().question.learning.lessonId,title:activeRecord().question.title}:null}));
+initVideoUI(()=>({records,roadmap:data?.roadmap,question:activeRecord()?.question,content:activeRecord()?.question.learning?.lessonId?{topicId:activeRecord().question.learning.lessonId,title:activeRecord().question.title}:null}));
 try{broadcast=new BroadcastChannel('equacao-history');broadcast.onmessage=async()=>{if(dbReady){await sync();if(page==='prova')renderExam();}};}catch{}
 window.addEventListener('focus',async()=>{if(dbReady){await sync();if(page==='prova')renderExam();}});
 $('#date-chip').textContent=new Date().toLocaleDateString('pt-BR',{day:'numeric',month:'long'});
-async function init(){try{await openDB();dbReady=true;await loadCourse();await migrateRoadmap(data.roadmap);await sync();initGitHub({showDialog,toast,refresh:async()=>{await migrateRoadmap(data.roadmap);await sync();},broadcast:()=>broadcast?.postMessage('updated')}).catch(()=>{});navigator.storage?.persist?.().catch(()=>{});navigate(location.hash.slice(1)||'mapa',false);}catch(error){toast('Não foi possível abrir os conteúdos. Seu histórico foi preservado.');$('#learning-root').innerHTML='<div class="learning-empty"><h2>Vamos tentar de novo?</h2><p>Verifique a conexão ou o armazenamento e reabra o app.</p><button class="button primary" onclick="location.reload()">Recarregar</button></div>';console.error(error);}if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js?v=math24').catch(()=>{});}
+async function init(){try{await openDB();dbReady=true;await loadCourse();await migrateRoadmap(data.roadmap);await sync();initGitHub({showDialog,toast,refresh:async()=>{await migrateRoadmap(data.roadmap);await sync();},broadcast:()=>broadcast?.postMessage('updated')}).catch(()=>{});navigator.storage?.persist?.().catch(()=>{});navigate(location.hash.slice(1)||'mapa',false);}catch(error){toast('Não foi possível abrir os conteúdos. Seu histórico foi preservado.');$('#learning-root').innerHTML='<div class="learning-empty"><h2>Vamos tentar de novo?</h2><p>Verifique a conexão ou o armazenamento e reabra o app.</p><button class="button primary" onclick="location.reload()">Recarregar</button></div>';console.error(error);}if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js?v=math26').catch(()=>{});}
 init();
 
 document.addEventListener('keydown',event=>{if((event.key==='Enter'||event.key===' ')&&event.target.matches('img[data-zoom]')){event.preventDefault();event.target.click();}});

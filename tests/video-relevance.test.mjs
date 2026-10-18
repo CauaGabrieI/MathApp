@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {isVideoLesson,matchesVideoTopic} from '../public/video-topics.js';
 import {lessonVideoQueries, matchesLessonVideo, questionVideoContext, scoreLessonVideo} from '../public/lesson-topics.js';
 
 const lesson=(title,videoTerms=title)=>({id:'math.m99.t01',title,videoTerms});
@@ -31,6 +32,33 @@ test('mantém aliases editoriais, rejeita marketing e não aceita aula sem liç�
  assert.equal(scoreLessonVideo('Função quadrática',null),0);
 });
 
+test('não trata dicas genéricas de matemática como aula de vídeo',()=>{
+ assert.equal(isVideoLesson('Como melhorar em matemática'),false);
+ assert.equal(isVideoLesson('Revisar matemática para a prova'),false);
+ assert.equal(isVideoLesson('Dicas para estudar matemática básica'),false);
+ assert.equal(isVideoLesson('Revisão de operações básicas com inteiros'),true);
+ assert.equal(matchesVideoTopic('Como melhorar matemática básica','basics'),false);
+});
+
+test('operações fundamentais não aceitam conteúdo avançado ou de frações',()=>{
+ const operations={id:'math.m01.t05',title:'Adição, subtração, multiplicação e divisão',videoTerms:'Adição, subtração, multiplicação e divisão'};
+ assert.ok(scoreLessonVideo('Operações básicas com inteiros e decimais: adição, subtração, multiplicação e divisão',operations)>0);
+ assert.equal(scoreLessonVideo('Operações com frações e radicais',operations),0);
+ assert.equal(scoreLessonVideo('Monômios: adição e multiplicação algébrica',operations),0);
+ const naturals={id:'math.m01.t01',title:'Naturais e sistema decimal',videoTerms:'Naturais e sistema decimal'};
+ assert.ok(scoreLessonVideo('Números naturais e sistema decimal: aula completa',naturals)>0);
+ assert.ok(scoreLessonVideo('Conjuntos numéricos: números naturais e inteiros',naturals)>0);
+ assert.ok(scoreLessonVideo('Decomposição de números naturais: classes e ordens',naturals)>0);
+ assert.equal(scoreLessonVideo('Multiplicação de números naturais',naturals),0);
+ assert.equal(scoreLessonVideo('Radicais e raízes quadradas',naturals),0);
+});
+
+test('MMC e MDC fica restrito ao conceito de múltiplo/divisor comum',()=>{
+ const lesson={id:'math.m01.t10',title:'MMC e MDC',videoTerms:'MMC e MDC'};
+ assert.ok(scoreLessonVideo('Mínimo múltiplo comum e máximo divisor comum passo a passo',lesson)>0);
+ assert.equal(scoreLessonVideo('Frações algébricas com radicais',lesson),0);
+});
+
 test('as consultas de uma aula são curtas, relevantes e limitadas a duas',()=>{
  const queries=lessonVideoQueries({title:'Razão e proporção (aprofundamento)',videoTerms:'Razão e proporção (quando pertinente)'});
  assert.equal(queries.length,1);
@@ -40,6 +68,8 @@ test('as consultas de uma aula são curtas, relevantes e limitadas a duas',()=>{
  assert.deepEqual(single,['funcao exponencial']);
  const editorial=lessonVideoQueries({title:'Função quadrática',videoTerms:'Função quadrática'});
  assert.deepEqual(editorial,['funcao quadratica','funcao do segundo grau']);
+ const maxMin=lessonVideoQueries({id:'math.m10.t03',title:'Máximos e mínimos',videoTerms:'Máximos e mínimos',moduleTitle:'Função quadrática'});
+ assert.ok(maxMin.some(query=>query.includes('maximos e minimos')&&query.includes('funcao quadratica')));
 });
 
 test('fallback de questão estatística respeita o enunciado',()=>{
@@ -50,4 +80,15 @@ test('fallback de questão estatística respeita o enunciado',()=>{
  const unknown=questionVideoContext({id:'q-unknown',question:'Enunciado contextual sem habilidade matemática explícita.'},{curriculum});
  assert.equal(unknown.topic,null);
  assert.deepEqual(unknown.candidates,[]);
+});
+
+test('categorias de operações e máximos preservam o contexto do módulo',()=>{
+ const operations={id:'math.m01.t05',title:'Adição, subtração, multiplicação e divisão'};
+ assert.ok(scoreLessonVideo('Cálculo mental: adição e subtração com números inteiros',operations)>0);
+ const maximum={id:'math.m10.t03',title:'Máximos e mínimos',moduleTitle:'Função quadrática'};
+ assert.ok(matchesLessonVideo('Máximo e mínimo da função do segundo grau',maximum));
+ assert.equal(matchesLessonVideo('Máximos e mínimos com derivadas - Cálculo 1',maximum),false);
+ assert.equal(isVideoLesson('COMO REVISAR MATEMÁTICA BÁSICA | Exatas Exatas'),false);
+ assert.equal(isVideoLesson('Como melhorar sua matemática básica em 5 passos'),false);
+ assert.equal(isVideoLesson('Revisão de potências e radicais - Aula 1'),true);
 });

@@ -876,3 +876,8 @@ select option{background:var(--eq-color-surface);color:var(--eq-color-text)}
 @media(max-width:560px){.flashcard{padding:17px;min-height:350px;border-radius:18px}.flashcard-face{padding:23px 15px}.flashcard-question{margin-top:20px}.flashcard-face h2{font-size:var(--eq-font-size-title)}.flashcard-answer p{font-size:var(--eq-font-size-label)}.flashcard-grades{grid-template-columns:repeat(2,1fr)}.flashcard-grade{min-height:52px}.flashcard-meta{font-size:var(--eq-font-size-caption)}}
 
 .question-image-status{margin:16px 0;padding:14px 16px;border:1px solid var(--eq-color-border);border-radius:12px;background:var(--eq-color-surface-subtle);font-size:.85rem;line-height:1.7}.question-image-status p{margin:0 0 10px}.question-image-status .button{white-space:normal}img[data-image-failed]{min-height:70px;border:1px dashed var(--eq-color-border)}
+
+/* Catálogo de videoaulas: assunto → aula, com o canal como filtro adicional. */
+.video-filters{grid-template-columns:minmax(0,1.1fr) minmax(0,1.2fr) minmax(0,1fr);gap:16px;margin-bottom:12px}.video-filters label{min-width:0}.video-filters select{font-size:var(--eq-font-size-label);padding-right:36px;min-height:48px;text-overflow:ellipsis}.video-filters select:disabled{opacity:.65;cursor:default}.video-filters optgroup{font-weight:700}.video-filters option{font-weight:400}.video-filter-description{color:var(--muted);font-size:var(--eq-font-size-caption);line-height:1.7;margin:0 0 24px}.video-empty .button{margin-top:16px}
+@media(max-width:1000px) and (min-width:651px){.video-filters{grid-template-columns:1fr 1fr}.video-filters label:first-child{grid-column:1/-1}}
+@media(max-width:650px){.video-filters{grid-template-columns:1fr;gap:13px}.video-filter-description{margin-bottom:20px}}
