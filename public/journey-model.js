@@ -71,16 +71,42 @@ export function learnedQuestions(roadmap,entries,bank,index){
 }
 export function learnedCards(roadmap,entries){return journeyProgress(roadmap,entries).modules.filter(m=>m.learned).flatMap(m=>m.lessons.filter(l=>l.card?.question&&l.card?.answer).map(l=>({...l.card,id:l.id,moduleId:m.id,moduleTitle:m.title,lessonTitle:l.title})));}
 export function nextLesson(roadmap,entries,lastId){const byId=new Map(entries.map(e=>[e.id,e]));const all=roadmap.modules.flatMap(m=>m.lessons.map(l=>({...l,moduleId:m.id,moduleTitle:m.title})));return all.find(l=>l.id===lastId&&!byId.get(l.id)?.studied)||all.find(l=>!byId.get(l.id)?.studied)||all[0];}
-export function examSelection(module,bank,records=[],random=Math.random){
-  const allowed=new Set(module.lessons.flatMap(l=>l.questionIds)),seen=new Set(records.map(r=>r.id)),pool=bank.filter(q=>allowed.has(q.id));
+export function examSelection(module,bank,records=[],random=Math.random,options={}){
+  const allowed=new Set(module.lessons.flatMap(l=>l.questionIds)),seen=new Set(records.map(r=>r.id)),prior=new Set(),priorKeys=new Set();
+  if(Array.isArray(options.exams)) for(const exam of options.exams) if(exam.moduleId===module.id) for(const id of exam.questionIds??[]) {prior.add(id);const q=bank.find(row=>row.id===id);if(q?.dedupeKey)priorKeys.add(q.dedupeKey);}
+  const pool=bank.filter(q=>allowed.has(q.id)&&!prior.has(q.id)&&(!q.dedupeKey||!priorKeys.has(q.dedupeKey)));
   const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
-  const count=Math.min(10,Math.max(5,module.lessons.length),pool.length),ordered=shuffle(module.lessons),chosen=[];
+  const target=Math.min(10,Math.max(5,module.lessons.length));
+  if(pool.length<target)return [];
+  const count=target,ordered=shuffle(module.lessons),chosen=[],chosenKeys=new Set();
   for(const lesson of ordered){
-    const lessonIds=new Set(lesson.questionIds),options=shuffle(pool.filter(q=>lessonIds.has(q.id)&&!chosen.some(p=>p.id===q.id))).sort((a,b)=>Number(seen.has(a.id))-Number(seen.has(b.id)));
-    if(options[0])chosen.push(options[0]);if(chosen.length===count)break;
+    const lessonIds=new Set(lesson.questionIds),options=shuffle(pool.filter(q=>lessonIds.has(q.id)&&!chosen.some(p=>p.id===q.id)&&(!q.dedupeKey||!chosenKeys.has(q.dedupeKey)))).sort((a,b)=>Number(seen.has(a.id))-Number(seen.has(b.id)));
+    if(options[0]){chosen.push(options[0]);if(options[0].dedupeKey)chosenKeys.add(options[0].dedupeKey);}if(chosen.length===count)break;
   }
-  if(chosen.length<count)chosen.push(...shuffle(pool.filter(q=>!chosen.some(p=>p.id===q.id))).sort((a,b)=>Number(seen.has(a.id))-Number(seen.has(b.id))).slice(0,count-chosen.length));
+  if(chosen.length<count){
+    const remainder=shuffle(pool.filter(q=>!chosen.some(p=>p.id===q.id)&&(!q.dedupeKey||!chosenKeys.has(q.dedupeKey)))).sort((a,b)=>Number(seen.has(a.id))-Number(seen.has(b.id)));
+    for(const q of remainder){if(chosen.length===count)break;if(q.dedupeKey&&chosenKeys.has(q.dedupeKey))continue;chosen.push(q);if(q.dedupeKey)chosenKeys.add(q.dedupeKey);}
+  }
+  if(chosen.length<count)return [];
   return chosen.map(q=>q.id);
 }
 export function examResult(exam,bank){const byId=new Map(bank.map(q=>[q.id,q]));let correct=0,answered=0;for(const id of exam.questionIds){if(exam.answers[id]){answered++;if(exam.answers[id]===byId.get(id)?.answer)correct++;}}return{correct,answered,total:exam.questionIds.length,percent:exam.questionIds.length?Math.round(correct/exam.questionIds.length*100):0};}
+export function normalizeExamKind(kind){return kind===undefined?'legacy':kind;}
+export function examComparison(moduleId,exams,bank){
+  const completed=(exams??[]).filter(e=>e.moduleId===moduleId&&e.completedAt);
+  const diagnostics=completed.filter(e=>normalizeExamKind(e.kind)==='diagnostic').sort((a,b)=>a.completedAt-b.completedAt);
+  const finals=completed.filter(e=>normalizeExamKind(e.kind)==='final').sort((a,b)=>b.completedAt-a.completedAt);
+  const baseline=diagnostics[0]??null;
+  const latestFinal=finals[0]??null;
+  const final=baseline?finals.find(e=>e.startedAt>=baseline.completedAt)??null:latestFinal;
+  const score=exam=>exam?examResult(exam,bank):null;
+  const baselineResult=score(baseline),finalResult=score(final);
+  const baselineIds=new Set(baseline?.questionIds??[]),finalIds=new Set(final?.questionIds??[]);
+  const sharedQuestionCount=baseline&&final?[...baselineIds].filter(id=>finalIds.has(id)).length:null;
+  const differentQuestionCount=baseline&&final?[...new Set([...baselineIds,...finalIds])].filter(id=>!baselineIds.has(id)||!finalIds.has(id)).length:null;
+  const percentDelta=baselineResult&&finalResult?finalResult.percent-baselineResult.percent:null;
+  return {moduleId,baseline,final,baselineResult,finalResult,baselineCounts:baselineResult,finalCounts:finalResult,
+    percentDelta,deltaPoints:percentDelta,sharedQuestionCount,differentQuestionCount,differentCount:differentQuestionCount,
+    baselinePercent:baselineResult?.percent??null,finalPercent:finalResult?.percent??null};
+}
 export function roadmapIndex(roadmap,legacyIndex){const map={1:1,2:1,3:1,4:1,5:1,6:1,7:1,8:3,9:3,10:3,11:3,12:7,13:4,14:4,15:5,16:6,17:10,18:9,19:8,20:8,21:1,22:3,23:9,25:11};const requiredModules={};for(const [id,tags]of Object.entries(legacyIndex.questionTags)){const required=[...new Set(tags.moduleIds.map(x=>map[Number(x.split('m').pop())]).filter(Boolean))].map(n=>'roadmap.m'+String(n).padStart(2,'0'));if(required.length)requiredModules[id]=required;}return{schemaVersion:1,method:'conservative_legacy_module_mapping',requiredModules,description:'Questões ENEM entram apenas quando todos os módulos associados foram concluídos. A associação temática é automática e pode exigir revisão pedagógica.'};}

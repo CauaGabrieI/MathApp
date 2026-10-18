@@ -49,6 +49,21 @@ select, .search-box, .learning-filters input, .learning-filters select, .eq-inpu
   font-size: var(--eq-font-size-label); padding: var(--eq-space-3) var(--eq-space-4);
 }
 .search-box { padding-block: 0; }
+select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--eq-color-text-secondary) 50%), linear-gradient(135deg, var(--eq-color-text-secondary) 50%, transparent 50%);
+  background-position: calc(100% - 19px) 50%, calc(100% - 14px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 38px;
+  cursor: pointer;
+}
+select:hover { border-color: var(--eq-color-primary); }
+select option { background: var(--eq-color-surface); color: var(--eq-color-text); }
+.dialog-actions > .button { flex: 1 1 160px; min-width: 0; }
+@media (max-width: 480px) {
+  .dialog-actions > .button { flex-basis: 100%; width: 100%; }
+}
 .search-box input { min-height: var(--eq-size-control); font-size: var(--eq-font-size-label); }
 input::placeholder, .search-box input::placeholder, .learning-filters input::placeholder { color: var(--eq-color-text-tertiary); font-size: var(--eq-font-size-label); }
 .eq-input[aria-invalid="true"] { border-color: var(--eq-color-error); }
@@ -96,8 +111,7 @@ input::placeholder, .search-box input::placeholder, .learning-filters input::pla
 .card-context-topic, .video-information strong { font-size: var(--eq-font-size-label); }
 .card-meta { flex-wrap: wrap; font-size: var(--eq-font-size-caption); }
 .card-date, .card-source, .card-action-summary { font-size: var(--eq-font-size-caption); }
-.tip-card, .practice-content-banner, .learning-detail-practice { background: var(--eq-color-primary-container); }
-.tip-card h3, .random-button strong, .empty-icon { color: var(--eq-color-primary); }
+.random-button strong, .empty-icon { color: var(--eq-color-primary); }
 .learning-module>summary { min-height: 96px; padding: var(--eq-space-5); }
 .learning-module-label>strong, .learning-topic-open strong { font-size: var(--eq-font-size-label); }
 .learning-module-label>small, .learning-topic-open>span { font-size: var(--eq-font-size-caption); }

@@ -142,3 +142,15 @@ O novo fluxo segue o roadmap do usuário, com 11 módulos, 98 aulas e 392 exerc�
 A versão atual importa do Markdown 25 módulos e 199 aulas: 5 módulos/42 aulas no Básico, 15/121 no Intermediário e 5/36 no Avançado. Módulos expandem de forma independente; cada aula persiste os estados não iniciada, em andamento e concluída. Exercícios inline reutilizam renderização, correção e IndexedDB, com IDs únicos. Prática global e cards só são liberados quando todas as aulas do módulo terminam; a prova é opcional.
 
 O caminho reaproveita recursos relacionados em 154 aulas e informa honestamente as 45 sem teoria cadastrada. O roadmap legado de 98 aulas e 392 exercícios continua preservado em arquivo, histórico e backups. O schema 2 já existia na versão 1.3 e agora inclui os novos IDs `math.*`. O usuário preferiu testar o GitHub real no celular; o aparelho físico e o upload real entre dispositivos ainda não foram testados. Consulte [LEARNING-PATH.md](LEARNING-PATH.md) para migração, limitações e checklist de release.
+
+## Release 1.5.0 · diagnóstico, prova final e matérias
+
+O fluxo agora começa com um diagnóstico antes de concluir as aulas e oferece uma avaliação final depois delas. A avaliação compara o primeiro diagnóstico com o resultado posterior para mostrar a evolução, sem bloquear prática, cards ou continuidade.
+
+As aulas são organizadas por **Aprender → Matérias**. O hero foi removido, as rails ficam dentro da etapa correspondente e a prática deixou de mostrar banner, dica e fonte. Selects e ícones foram padronizados.
+
+As provas autorais não repetem questões usadas anteriormente enquanto houver questões inéditas. Quando o conjunto se esgota, o app informa a situação sem fingir variedade. O login, backup privado do GitHub e atualização pelo GitHub são preservados.
+
+As videoaulas usam o contexto da questão autoral e do ENEM. Canal e oEmbed oficial do YouTube são validados; a heurística pode errar e, sem confirmação, o resultado fica vazio.
+
+Para esta entrega, os 15 arquivos de testes Node passaram. `assembleRelease`, testes unitários Android, lint e `android:release-files` concluíram com a assinatura e o `versionCode 8` verificados. A validação no navegador confirmou o ciclo diagnóstico → aulas → avaliação final, a comparação após recarregar, as três rails em suas próprias etapas e ausência de overflow. Não havia aparelho ou emulador disponível, e o backup real não foi testado por escolha do usuário. O APK usa `versionCode 8` e `versionName 1.5.0`.

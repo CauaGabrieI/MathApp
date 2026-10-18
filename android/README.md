@@ -1,15 +1,16 @@
 # Equação para Android
 
-Aplicativo Android instalável (`br.com.equacao.app`, versão 1.1.1), Android 8.0/API 26 ou superior. É um app híbrido: uma Activity Android reutiliza a interface existente em uma WebView local, com assets incluídos no APK, armazenamento próprio e integração nativa para rede, links, exportação e botão de voltar. Não é um atalho do navegador e não abre o site privado para funcionar.
+Aplicativo Android instalável (`br.com.equacao.app`, versão 1.5.0, `versionCode 8`), Android 8.0/API 26 ou superior. É um app híbrido: uma Activity Android reutiliza a interface existente em uma WebView local, com assets incluídos no APK, armazenamento próprio e integração nativa para rede, links, exportação e botão de voltar. Não é um atalho do navegador e não abre o site privado para funcionar.
 
 ## Incluído no app
 
 - Mapa de 25 módulos e 199 subtópicos; prática por matéria e subtópico; correção e cards após responder.
+- Fluxo de aprendizagem com diagnóstico inicial, aulas por matéria e avaliação final comparável ao diagnóstico.
 - Banco de 1.305 questões incluídas no APK: 581 do enem.dev e 724 da EnemHub. IDs originais e prevenção de repetições são preservados.
 - Histórico, estudo e preferências persistidos no armazenamento privado da WebView, separados do navegador.
 - Fontes e arquivos da interface locais. O app abre e permite praticar sem internet desde a primeira instalação; imagens ainda não carregadas e videoaulas precisam de conexão.
 - Atualização individual de questões do enem.dev quando online. O acervo EnemHub desta versão é a cópia importada: o APK não contém a chave e não faz consultas autenticadas à EnemHub.
-- Busca e confirmação de videoaulas nos sete canais autorizados, reutilizando o serviço JavaScript existente através de um transporte HTTPS nativo. Somente resultados confirmados são sugeridos.
+- Busca e confirmação de videoaulas por contexto de questão autoral e ENEM nos canais autorizados, reutilizando o serviço JavaScript existente através de um transporte HTTPS nativo. Canal e oEmbed oficial são verificados; somente resultados confirmados são sugeridos.
 - Exportação de resultados pelo seletor de arquivos Android, sem solicitar acesso amplo ao armazenamento.
 - Links externos abrem no app correspondente. Player de aula integrado com alternativa Abrir no YouTube quando a incorporação estiver restrita.
 - Back/gesto de voltar fecha primeiro o painel, volta ao mapa e então encerra a tela. AndroidX Activity faz a compatibilidade com o gesto de voltar dos Androids recentes.
@@ -129,3 +130,11 @@ Veja [GITHUB-BACKUP.md](../GITHUB-BACKUP.md) para uso, configuração, escopo `r
 ## Fluxo de aprendizado · versão 1.3.0
 
 O APK inclui o novo roadmap, aulas, exemplos, provas, exercícios e cards para estudar offline. A conclusão de todas as aulas de um módulo libera a prática misturada e a revisão rápida, sem nota mínima. Videoaulas continuam dependendo da confirmação no YouTube; agora também é permitido o canal Umberto Mannarino. O backup schema 2 inclui provas e revisões e mantém compatibilidade de leitura com o schema 1. Atualize todos os aparelhos antes de restaurar dados do novo formato. Detalhes em [LEARNING-FLOW.md](../LEARNING-FLOW.md).
+
+## Diagnóstico e avaliação final · versão 1.5.0
+
+Antes de concluir as aulas, o aluno pode responder ao diagnóstico inicial. Depois das aulas, a avaliação final permite comparar os dois resultados. A comparação não cria uma nota de domínio nem bloqueia a prática. As provas autorais evitam repetir questões de tentativas anteriores enquanto existirem questões inéditas; ao esgotar o conjunto, informam a situação honestamente.
+
+A navegação usa **Aprender → Matérias**. O hero foi removido, as rails ficam dentro da etapa e a prática não exibe banner, dica ou fonte. Login, backup privado do GitHub e atualização pelo GitHub continuam disponíveis. Videoaulas usam o contexto da questão autoral e do ENEM; canal e oEmbed são confirmados, e a resposta fica vazia sem confirmação.
+
+O `versionCode` desta entrega é 8. `assembleRelease`, `testDebugUnitTest`, `lintRelease` e `android:release-files` concluíram com a assinatura verificada. A validação no navegador confirmou o ciclo diagnóstico → aulas → avaliação final, a comparação após recarregar, as três rails em suas próprias etapas e ausência de overflow. Não houve aparelho ou emulador, e o backup real ficou fora do teste por escolha do usuário.

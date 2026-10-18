@@ -1,0 +1,27 @@
+// Coherent 24px outline icon paths. The caller supplies the shared SVG shell.
+export const ICONS=Object.freeze({
+  map:'<path d="M4 5.5c2.8-.9 5.4-.4 8 1.5v14c-2.6-1.9-5.2-2.4-8-1.5z"/><path d="M20 5.5c-2.8-.9-5.4-.4-8 1.5v14c2.6-1.9 5.2-2.4 8-1.5z"/><path d="M12 7v14"/>',
+  bookOpen:'<path d="M4 5.5c2.8-.9 5.4-.4 8 1.5v14c-2.6-1.9-5.2-2.4-8-1.5z"/><path d="M20 5.5c-2.8-.9-5.4-.4-8 1.5v14c2.6-1.9 5.2-2.4 8-1.5z"/><path d="M12 7v14"/>',
+  learn:'<path d="M4 5.5c2.8-.9 5.4-.4 8 1.5v14c-2.6-1.9-5.2-2.4-8-1.5z"/><path d="M20 5.5c-2.8-.9-5.4-.4-8 1.5v14c2.6-1.9 5.2-2.4 8-1.5z"/><path d="M12 7v14"/>',
+  video:'<rect x="3.5" y="5.5" width="17" height="13" rx="3.5"/><path d="m10 9 5.5 3.5-5.5 3.5z"/>',
+  videoPlay:'<rect x="3.5" y="5.5" width="17" height="13" rx="3.5"/><path d="m10 9 5.5 3.5-5.5 3.5z"/>',
+  practice:'<path d="m5 19 1.2-4.1L16.8 4.3a2.1 2.1 0 0 1 3 3L9.2 18.8z"/><path d="m14.8 6.3 3 3M5 19l4.2-1.2"/>',
+  cards:'<rect x="7" y="6.5" width="13.5" height="14" rx="2.5"/><path d="M7 10H5.5A2.5 2.5 0 0 1 3 7.5v-2A2.5 2.5 0 0 1 5.5 3H16a2.5 2.5 0 0 1 2.5 2.5"/><path d="M10 11h7m-7 4h5"/>',
+  chart:'<path d="M4 20h17"/><path d="M6.5 17V11m5 6V7m5 10V4"/><path d="m5.5 8 5-3 5 2 4-4"/>',
+  settings:'<path d="M4 7h16M4 12h16M4 17h16"/><circle cx="9" cy="7" r="2" fill="currentColor"/><circle cx="15" cy="12" r="2" fill="currentColor"/><circle cx="10" cy="17" r="2" fill="currentColor"/>',
+  sliders:'<path d="M4 7h16M4 12h16M4 17h16"/><circle cx="9" cy="7" r="2" fill="currentColor"/><circle cx="15" cy="12" r="2" fill="currentColor"/><circle cx="10" cy="17" r="2" fill="currentColor"/>',
+  arrow:'<path d="M4 12h15"/><path d="m13 6 6 6-6 6"/>',
+  lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/>',
+  download:'<path d="M12 3v12m-5-5 5 5 5-5M4 17v3h16v-3"/>',
+  user:'<circle cx="12" cy="8" r="3.5"/><path d="M5 20v-1.5a7 7 0 0 1 14 0V20"/>',
+  dice:'<rect x="4.5" y="4.5" width="15" height="15" rx="3"/><path d="M8 8h.01M16 8h.01M12 12h.01M8 16h.01M16 16h.01" stroke-width="2.5"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4m10.6 10.6 1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"/>',
+  bulb:'<path d="M9 17h6m-5 3h4"/><path d="M9.2 14.5c-.8-1-2.2-2.3-2.2-4.5a5 5 0 0 1 10 0c0 2.2-1.4 3.5-2.2 4.5-.5.6-.8 1.1-.8 2.5h-4c0-1.4-.3-1.9-.8-2.5Z"/><path d="m9 9 3 2 3-2"/>',
+  database:'<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/>',
+  external:'<path d="M14 3h7v7m0-7L10 14"/><path d="M19 13v7H4V5h7"/>',
+  search:'<circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/>',
+  leaf:'<path d="M20 3c1 10-3 16-10 16C4 19 3 11 8 8c3-2 7-1 12-5Z"/><path d="M4 21 15 10"/>',
+  close:'<path d="m6 6 12 12M18 6 6 18"/>',
+  check:'<path d="m5 12 4 4L19 6"/>',
+  refresh:'<path d="M20 7v5h-5M4 17v-5h5"/><path d="M5 7a8 8 0 0 1 13-2l2 3M4 16l2 3a8 8 0 0 0 13-2"/>'
+});

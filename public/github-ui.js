@@ -1,8 +1,10 @@
-import {snapshot,backupSettings,restoreBackup} from './db.js?v=path16';
-import {makeBackup,validateBackup,mergeBackups,hydrateRecords} from './backup-model.js?v=path16';
+import {snapshot,backupSettings,restoreBackup} from './db.js?v=polish20';
+import {makeBackup,validateBackup,mergeBackups,hydrateRecords} from './backup-model.js?v=polish20';
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let user=null,configured=false,settings={},flow=null,pollTimer,saveTimer,busy=false,queue=Promise.resolve(),epoch=0,notice='',options,bankPromise,backupGeneration=0;
 const bank=()=>bankPromise??=(Promise.all(['/bank.json','/study-bank.json'].map(path=>fetch(path).then(r=>{if(!r.ok)throw new Error('Banco de questões indisponível.');return r.json();}))).then(rows=>rows.flat()).catch(e=>{bankPromise=null;throw e;}));
+let catalogPromise;
+const examCatalog=()=>catalogPromise??=fetch('/learning-path.json').then(r=>{if(!r.ok)throw new Error('Catálogo de avaliações indisponível.');return r.json();}).then(path=>Object.fromEntries(path.modules.map(m=>[m.id,m.lessons.flatMap(l=>l.questionIds)]))).catch(error=>{catalogPromise=null;throw error;});
 function request(action,input={}){const next=queue.catch(()=>{}).then(async()=>{if(window.EquacaoAndroid?.githubRequest)return window.EquacaoAndroid.githubRequest(action,input);const r=await fetch('/api/github/'+action,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify(input),signal:AbortSignal.timeout(90000)});const data=await r.json();if(!r.ok)throw Object.assign(new Error(data.error??'Não foi possível conectar ao GitHub.'),{status:r.status});return data;});queue=next;return next;}
 const fingerprint=async value=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(value))))).map(b=>b.toString(16).padStart(2,'0')).join('');
 const labelDate=value=>value?new Date(value).toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'}):'Nenhum backup neste aparelho';
@@ -20,14 +22,14 @@ async function syncBackup(automatic=false){
   if(busy||flow||!user)return;if(automatic&&(!settings.auto||settings.ownerId!==user.id))return;
   busy=true;notice=automatic?'Salvando alterações…':'Conferindo seu backup…';paint();const identity=user.id,generation=backupGeneration;
   try{
-    const questions=await bank(),initial=makeBackup(await snapshot(),identity),initialHash=await fingerprint(initial);
+    const questions=await bank(),catalog=await examCatalog(),initial=makeBackup(await snapshot(),identity),initialHash=await fingerprint(initial);
     if(automatic&&initialHash===settings.fingerprint)return;
     let saved,merged;
     for(let attempt=0;attempt<3;attempt++){
-      const remote=await request('read');const local=makeBackup(await snapshot(),identity);merged=remote.backup?mergeBackups(local,validateBackup(remote.backup,identity)):local;hydrateRecords(merged,questions);
+      const remote=await request('read');const local=makeBackup(await snapshot(),identity);merged=remote.backup?mergeBackups(local,validateBackup(remote.backup,identity)):local;hydrateRecords(merged,questions,catalog);
       try{saved=await request('write',{backup:merged,sha:remote.sha??null});break;}catch(error){if(error.status!==409||attempt===2)throw error;}
     }
-    if(generation!==backupGeneration)return;await restoreBackup(merged,questions,identity);settings={...settings,ownerId:identity,lastSync:saved.savedAt,fingerprint:await fingerprint(merged)};await backupSettings(settings);notice='Backup salvo no seu GitHub. Dados dos aparelhos reunidos.';await options.refresh();options.broadcast?.();if(!automatic)options.toast(notice);
+    if(generation!==backupGeneration)return;await restoreBackup(merged,questions,identity,catalog);settings={...settings,ownerId:identity,lastSync:saved.savedAt,fingerprint:await fingerprint(merged)};await backupSettings(settings);notice='Backup salvo no seu GitHub. Dados dos aparelhos reunidos.';await options.refresh();options.broadcast?.();if(!automatic)options.toast(notice);
     if(await fingerprint(makeBackup(await snapshot(),identity))!==settings.fingerprint)schedule();
   }catch(error){await failed(error);if(!automatic)options.toast(notice);}
   finally{busy=false;paint();}
@@ -46,7 +48,7 @@ export async function initGitHub(callbacks){options=callbacks;settings=await bac
       if(action==='login'){const result=await request('start');flow=result;pollTimer=setTimeout(()=>poll(++epoch),Math.max(5,result.interval)*1000);}
       if(action==='cancel'||action==='logout'){++epoch;clearTimeout(pollTimer);clearTimeout(saveTimer);await request('logout');user=null;flow=null;settings={...settings,auto:false};await backupSettings(settings);notice='Conta desconectada neste aparelho. Seu histórico local foi mantido.';}
       if(action==='restore'){
-        const result=await request('read');if(!result.backup){notice='Sua conta ainda não tem um backup do Equação.';}else{const remote=validateBackup(result.backup,user.id);await restoreBackup(remote,await bank(),user.id);await options.refresh();options.broadcast?.();notice='Progresso restaurado e reunido com os dados deste aparelho.';schedule();}options.toast(notice);
+        const result=await request('read');if(!result.backup){notice='Sua conta ainda não tem um backup do Equação.';}else{const remote=validateBackup(result.backup,user.id);await restoreBackup(remote,await bank(),user.id,await examCatalog());await options.refresh();options.broadcast?.();notice='Progresso restaurado e reunido com os dados deste aparelho.';schedule();}options.toast(notice);
       }
     }catch(error){await failed(error);}finally{busy=false;paint();}
   });

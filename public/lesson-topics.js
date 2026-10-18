@@ -1,6 +1,29 @@
-import {normalizeVideoTitle} from './video-topics.js?v=path16';
+import {normalizeVideoTitle} from './video-topics.js?v=polish20';
 export const MODULE_VIDEO_TOPICS={1:'basics',2:'ratios',3:'percentage',4:'basics',5:'units',6:'equations',7:'equations',8:'functions',9:'functions',10:'functions',11:'functions',12:'progressions',13:'geometry',14:'geometry',15:'trigonometry',16:'geometry',17:'geometry',18:'statistics',19:'combinatorics',20:'probability',21:'finance',22:'functions',23:'statistics',24:'basics',25:'basics'};
 export function learningLesson(curriculum,contentId){if(curriculum.modules?.[0]?.lessons){for(const m of curriculum.modules){const l=m.lessons.find(l=>l.id===contentId);if(l||m.id===contentId)return {id:contentId,title:l?.title??m.title,videoTerms:l?.videoTerms??m.title,moduleTitle:m.title,topic:l?.videoTopic??m.videoTopic,query:l?.videoTerms??m.title,isModule:!l};}return null;}for(const m of curriculum.modules){const t=m.topics.find(t=>t.id===contentId);if(t||m.id===contentId)return {id:contentId,title:t?.title??m.title,moduleTitle:m.title,topic:MODULE_VIDEO_TOPICS[m.sourceNumber??m.order]??'basics',query:(t?.title??m.title)+' matemática aula explicação',isModule:!t};}return null;}
+// Resolve a bank question to the smallest trustworthy curriculum concept. The
+// route supplies an id and local record; arbitrary client text is never looked up.
+export function questionVideoContext(question,{curriculum,index,roadmap}={}){
+ if(!question||typeof question!=='object')return {questionId:null,topic:null,candidates:[],reason:'missing-question'};
+ const questionId=String(question.id??''),tags=index?.questionTags?.[questionId];
+ const raw=normalizeVideoTitle((question.topic??'')+' '+(question.title??'')+' '+(question.question??'')+' '+(question.statement??''));
+ const moduleIds=[...(tags?.moduleIds??[])],topicIds=[...(tags?.topicIds??[])];
+ const exactLessonId=question.learning?.lessonId??question.lessonId;
+ if(exactLessonId&&roadmap){const exact=learningLesson(roadmap,exactLessonId);if(exact)return {questionId,topic:exact.topic??'basics',moduleIds,topicIds,candidates:[exact],lesson:exact,reason:'authorial-lesson'};}
+ // Order is deliberate: concrete skills win over incidental words such as
+ // "vazão", "área" or "média" in a word problem.
+ const rules=[['finance',/juros|financeir|capitaliza|investimento/],['percentage',/porcent|percentua|desconto|acrescimo|\d\s*%/],['probability',/probabilidade|chance|sorteio|espaco amostral/],['combinatorics',/combinatoria|permutacao|arranjo|combinacao/],['trigonometry',/trigonom|seno|cosseno|tangente|funcao trigonom/],['statistics',/estatistica|mediana|media aritmetica|media de altura|media da altura|media altura|desvio padrao|moda|frequencia/],['progressions',/progressao|sequencia aritmetica|sequencia geometrica/],['functions',/funcao|funcoes|parabola|logaritm/],['ratios',/proporc|regra de tres|escala|razao entre/],['geometry',/geometr|triangulo|quadrilatero|retangulo|trapezio|circunferencia|circulo|area|volume/],['equations',/equacao|sistema linear|inequacao/],['fractions',/fracao|fracoes/],['units',/unidade de medida|conversao|mililitro|centimetro cubico/],['basics',/numeros naturais|operacoes basicas|operacoes fundamentais|adicao|subtracao|multiplicacao|divisao/]];
+ const topic=rules.find(([,pattern])=>pattern.test(raw))?.[0]??null,candidates=[];
+ for(const m of curriculum?.modules??[])for(const t of (m.topics??[])){
+  const terms=normalizeVideoTitle(t.title).split(/\s+/).filter(w=>w.length>3).slice(0,3);
+  const moduleTopic=MODULE_VIDEO_TOPICS[m.sourceNumber??m.order]??null;
+  const tagMatch=topicIds.includes(t.id), cueMatch=terms.filter(w=>w.length>3).filter(w=>raw.includes(w)).length;
+  if(tagMatch&&(topic?moduleTopic===topic:true) || (!topic&&topicIds.length===0&&cueMatch>=2))candidates.push({id:t.id,title:t.title,moduleTitle:m.title,topic:moduleTopic??topic??'basics',query:t.title+' matemática aula explicação',score:(tagMatch?10:0)+cueMatch});
+ }
+ const selected=candidates.sort((a,b)=>b.score-a.score).slice(0,4);
+ if(topic&&!selected.length)return {questionId,topic,candidates:[{id:'question:'+questionId,title:topic==='statistics'?'Média aritmética':topic==='trigonometry'?'Funções trigonométricas':topic,moduleTitle:'Questão',topic,query:(topic==='statistics'?'média aritmética':topic)+' matemática aula explicação'}],moduleIds,topicIds,reason:'cue-fallback'};
+ return {questionId,topic:topic??selected[0]?.topic??null,moduleIds,topicIds,candidates:selected,reason:(topic||selected.length)?'matched':'unknown'};
+}
 const aliases=[[/calculo percentual/,/porcentagem|calculo percentual/],[/funcao quadratica/,/funcao quadratica|funcao do (segundo|2.?|2°) grau/],[/^numeros e operacoes$/,/matematica basica|operacoes fundamentais|operacoes basicas|numeros naturais/],[/naturais|sistema decimal/,/numeros? naturais|sistema (de numeracao )?decimal/],[/coeficientes? angular/,/coeficientes? angular|inclinacao da reta/],[/inteiros e numeros negativos/,/numeros? inteiros|numeros? negativos/],[/adicao, subtracao/,/operacoes basicas|operacoes fundamentais|adicao|subtracao|multiplicacao|divisao/],[/ordem das operacoes/,/ordem das operacoes|expressoes numericas/],[/mmc e mdc/,/\bmmc\b|\bmdc\b|multiplo comum|divisor comum/],[/funcao afim/,/funcao afim|funcao do (primeiro|1.?|1°) grau/],[/equacao da reta/,/equacao da reta|funcao afim/],[/fracoes proprias/,/fracoes proprias|fracoes improprias|tipos de fracoes/]];
 const ROADMAP_VIDEO_MATCH={
  'roadmap.m02.l01':/^(?!.*(?:conjunto solucao|trigonom|equacao|conjuntos numericos)).*(?:conjuntos?|diagrama de venn)/,

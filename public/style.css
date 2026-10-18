@@ -829,3 +829,19 @@ dialog{max-height:90dvh;overflow-y:auto}
   .journey-lesson-sections a{flex:1 1 auto;text-align:center}
   .journey-lesson-navigation{gap:10px}
 }
+
+/* Cada etapa mantém sua própria trilha; matérias não formam uma linha única. */
+.journey-path:before{display:none}
+.journey-stage-body{position:relative;padding-left:52px}
+.journey-stage-body:before{content:"";position:absolute;left:25px;top:0;bottom:18px;width:2px;background:var(--line)}
+.journey-path-module{position:relative}
+.journey-path-module:before{content:"";position:absolute;left:-40px;top:25px;width:14px;height:14px;border:3px solid var(--bg);outline:1px solid var(--line);border-radius:50%;background:var(--eq-color-primary-container);z-index:1}
+.journey-path-module.is-learned:before{background:var(--primary)}
+select{appearance:none;background-color:var(--eq-color-surface);background-image:linear-gradient(45deg,transparent 50%,var(--eq-color-text-secondary) 50%),linear-gradient(135deg,var(--eq-color-text-secondary) 50%,transparent 50%);background-position:calc(100% - 17px) 50%,calc(100% - 12px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:34px;color:var(--eq-color-text);border-color:var(--eq-color-border)}
+select:hover{border-color:var(--eq-color-primary)}
+select:focus-visible{outline:3px solid var(--eq-color-border);outline-offset:2px}
+select option{background:var(--eq-color-surface);color:var(--eq-color-text)}
+.exam-comparison{display:grid;gap:9px;margin-top:15px;padding:14px 16px;border:1px solid var(--eq-color-border);border-radius:12px;background:var(--eq-color-surface);font-size:.78rem}
+.exam-comparison>div{display:grid;grid-template-columns:1fr 1fr;gap:10px;color:var(--eq-color-text-secondary)}
+.exam-comparison span{display:grid;gap:3px}.exam-comparison b{font-size:.95rem;color:var(--eq-color-text)}
+@media(max-width:650px){.journey-stage-body{padding-left:36px}.journey-stage-body:before{left:17px;bottom:9px}.journey-path-module:before{left:-28px;top:21px;width:11px;height:11px;border-width:2px}}

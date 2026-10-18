@@ -1,4 +1,4 @@
-# Learning Path · versão 1.4.0
+# Learning Path · versão 1.5.0
 
 Esta versão importa do Markdown o currículo exato de Matemática do ENEM: 25 módulos e 199 aulas. A divisão é:
 
@@ -24,13 +24,21 @@ O usuário preferiu testar o GitHub real no celular. O fluxo foi preparado para 
 
 ## Estado de release
 
-- Android 1.4.0 usa versionCode 7; a assinatura ainda precisa ser conferida antes da publicação.
-- 14 arquivos de teste Node passaram.
-- `assembleRelease`, `testDebugUnitTest` e `lintRelease` Android passaram: 12 testes JUnit, 0 erros e 95 avisos não bloqueadores.
-- QA validou 320, 390 e 1280 px; módulos independentes persistentes; resposta, correção e salvamento inline; conclusão de 8 aulas liberando prática global e cards sem quiz; troca para outro módulo com mistura alternada; retomada da questão 2 da prova após reload; e caminho Avançado sem pré-requisitos obrigatórios.
-- O backend corrige associações ENEM exclusivas por aula e prova, evita exigir módulos alheios, corrige “em razão de” como causa em vez de proporção e calcula estatísticas de altura média. Testes gerados finais desse ajuste ainda ficam pendentes.
+- Android 1.5.0 usa versionCode 8; a assinatura ainda precisa ser conferida antes da publicação.
+- 15 arquivos de teste Node passaram.
+- `assembleRelease`, `testDebugUnitTest`, `lintRelease` Android e `android:release-files` concluíram com a assinatura e o `versionCode 8` verificados.
+- A validação no navegador confirmou o ciclo diagnóstico → aulas → avaliação final, a comparação após recarregar, as três rails em suas próprias etapas e ausência de overflow.
+- Não havia aparelho físico ou emulador disponível; o backup real não foi testado por escolha do usuário.
 
 O schema 2 já existia na versão 1.3; esta versão apenas expande os IDs para `math.*`. `LEARNING-FLOW.md` documenta o fluxo 1.3.0 e permanece como histórico.
+
+## Alterações da 1.5.0
+
+O caminho agora inclui diagnóstico antes da conclusão das aulas e avaliação final depois dela, com comparação entre o primeiro diagnóstico e o resultado posterior. A comparação é um indicador de evolução, sem certificação de domínio ou bloqueio da prática.
+
+A entrada do conteúdo é **Aprender → Matérias**. O hero foi removido, as rails ficam dentro da etapa e a prática não exibe banner, dica ou fonte. Cada nova prova autoral exclui questões usadas enquanto houver alternativas inéditas; ao esgotar o conjunto, o app informa a situação. Login, backup e atualização pelo GitHub permanecem preservados.
+
+As sugestões de vídeo são contextuais à questão autoral e ao ENEM. O serviço verifica canal e oEmbed; a heurística pode falhar e a resposta fica vazia sem confirmação. Nesta entrega, 15 arquivos de testes Node passaram; assemble/unit/lint Android, preparação dos arquivos de release e navegador concluíram. Não havia aparelho ou emulador, e o backup real não foi testado por escolha do usuário.
 
 ## Validação final
 

@@ -28,6 +28,10 @@ A iniciação real do Device Flow e o login web na prévia com a conta do usuár
 
 Referências: [Device Flow](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#device-flow), [escopos OAuth](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps), [Contents API](https://docs.github.com/en/rest/repos/contents#create-or-update-file-contents), [Android Keystore](https://developer.android.com/privacy-and-security/keystore).
 
+## Atualização 1.5.0
+
+O diagnóstico, a avaliação final e a comparação de evolução convivem com o login e o backup privado existentes. A atualização pelo GitHub também permanece disponível; o Android desta versão usa `versionCode 8`. O backup real não foi testado nesta entrega por escolha do usuário, portanto a validação documentada não substitui a confirmação em um aparelho com uma conta real.
+
 ## Atualização 1.3.0
 
 O schema 2 inclui as aulas do novo roadmap, tentativas de prova e revisões dos cards. A leitura do schema 1 permanece suportada. O repositório e a autenticação não mudaram. Versões antigas do app recusam o novo formato antes de gravar; atualize os aparelhos para restaurá-lo. Veja [LEARNING-FLOW.md](LEARNING-FLOW.md).
