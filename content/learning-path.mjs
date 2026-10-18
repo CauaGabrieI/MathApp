@@ -95,11 +95,16 @@ export function createLearningPath(curriculum, legacyRoadmap, legacyIndex) {
       const questionIds = unique([...resources.flatMap(resource => resource.questionIds), ...exclusiveQuestions]);
       lessonQuestions[topic.id] = questionIds;
       const legacyIds = (DIRECT_EQUIVALENTS[key] ?? []).map(([m,l]) => rid(m,l));
-      const card = resources[0]?.card ? {...resources[0].card, id:topic.id} : undefined;
+      const guide = guideForLesson(topic,module);
+      const card = resources[0]?.card
+        ? {...resources[0].card, id:topic.id}
+        : guide?.example?.question && guide?.example?.answer
+          ? {id:topic.id,question:guide.example.question,answer:guide.example.answer}
+          : undefined;
       return {id:topic.id,title:topic.title,order:topic.order,resources,questionIds,legacyIds,
         ...(card ? {card} : {}),
         videoTopic:resources[0]?.videoTopic ?? 'basics',videoTerms:topic.title,
-        guide:guideForLesson(topic,module),
+        guide,
       };
     });
     moduleQuestions[module.id] = unique(lessons.flatMap(lesson => lesson.questionIds));

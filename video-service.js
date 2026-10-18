@@ -11,12 +11,13 @@ export async function recommendVideos(topic,channelFilter='all',{fetchImpl=fetch
  const cacheKey=topic+':'+channelFilter+':'+(lesson?.id??'')+':'+contextKey,cached=useCache&&videoResults.get(cacheKey);
  if(cached&&cached.expires>now)return cached.videos;
  const deadline=Date.now()+18000, verified=new Map(), attempted=new Set();
- const check=async candidate=>{if(verified.has(candidate.id)||attempted.has(candidate.id)||attempted.size>=32)return null;attempted.add(candidate.id);const remaining=deadline-Date.now();if(remaining<=0)return null;const value=await verifyYouTubeVideo(candidate,topic,{fetchImpl,now,useCache,lesson,timeoutMs:Math.min(3500,remaining)});if(value)verified.set(value.id,value);return value;};
- const targeted=lesson?seedVideos.filter(v=>v.lessonIds?.includes(lesson.id)&&(channelFilter==='all'||v.channelHandle===channelFilter)).slice(0,12):[];
- await bounded(targeted,6,check);
  const channels=VIDEO_CHANNELS.filter(c=>channelFilter==='all'||c.handle===channelFilter);
  const queries=lesson?lessonVideoQueries(lesson):[VIDEO_TOPICS[topic].query];
  const jobs=channels.flatMap(channel=>queries.map(query=>({channel,query})));
+ const verifyLimit=Math.min(32,Math.max(0,48-jobs.length));
+ const check=async candidate=>{if(verified.has(candidate.id)||attempted.has(candidate.id)||attempted.size>=verifyLimit)return null;attempted.add(candidate.id);const remaining=deadline-Date.now();if(remaining<=0)return null;const value=await verifyYouTubeVideo(candidate,topic,{fetchImpl,now,useCache,lesson,timeoutMs:Math.min(3500,remaining)});if(value)verified.set(value.id,value);return value;};
+ const targeted=lesson?seedVideos.filter(v=>v.lessonIds?.includes(lesson.id)&&(channelFilter==='all'||v.channelHandle===channelFilter)).slice(0,12):[];
+ await bounded(targeted,6,check);
  const discovered=(await bounded(jobs,6,async({channel,query})=>{
    if(Date.now()>=deadline)return [];
    const url='https://www.youtube.com/@'+encodeURIComponent(channel.handle)+'/search?query='+encodeURIComponent(query);

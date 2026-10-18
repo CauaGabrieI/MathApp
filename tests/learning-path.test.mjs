@@ -89,6 +89,8 @@ test('apoios e exercícios mantêm suas identidades e associações; tópicos se
   for (const module of path.modules) {
     for (const lesson of module.lessons) {
       for (const resource of lesson.resources) assert.deepEqual(resource, oldLessons.get(resource.id), `Material alterado ou inventado: ${resource.id}`);
+      if (lesson.resources[0]?.card) assert.equal(lesson.card.question, lesson.resources[0].card.question, `Card existente alterado: ${lesson.id}`);
+      else assert.deepEqual(lesson.card, {id:lesson.id,question:lesson.guide.example.question,answer:lesson.guide.example.answer}, `Card didático ausente ou incorreto: ${lesson.id}`);
       const expected = unique([
         ...lesson.resources.flatMap(resource => resource.questionIds),
         ...(legacyIndex.topicQuestions[lesson.id] ?? []).filter(id => {
@@ -100,10 +102,13 @@ test('apoios e exercícios mantêm suas identidades e associações; tópicos se
       assert.deepEqual(index.lessonQuestions[lesson.id], expected);
       assert.ok(lesson.questionIds.every(id => questionIds.has(id)), `Questão inexistente em ${lesson.id}`);
       assert.ok(lesson.legacyIds.every(id => oldLessons.has(id)));
-      if (!lesson.resources.length) assert.equal(lesson.card, undefined, 'Não criar cards sem conteúdo de apoio');
+      if (!lesson.resources.length) assert.ok(lesson.card, 'Aula sem apoio ainda recebe card didático do guia');
     }
     assert.deepEqual(index.moduleQuestions[module.id], unique(module.lessons.flatMap(lesson => lesson.questionIds)));
   }
+  const lessons=path.modules.flatMap(module=>module.lessons);
+  assert.equal(lessons.length,199);
+  assert.equal(lessons.filter(lesson=>lesson.card).length,199);
   for (const [id, tags] of Object.entries(legacyIndex.questionTags)) if (tags.moduleIds.length) assert.deepEqual(index.requiredModules[id], tags.moduleIds, `Associação temática alterada: ${id}`);
   assert.ok(path.modules.flatMap(module => module.lessons).some(lesson => !lesson.resources.length));
   assert.ok(path.modules.flatMap(module => module.lessons).some(lesson => !lesson.questionIds.length));

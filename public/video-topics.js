@@ -6,7 +6,8 @@ export const VIDEO_CHANNELS=[
  {handle:'paulojubilut',id:'UCG-eghyORxNrzSG8FkAWKyw',name:'Paulo Jubilut'},
  {handle:'sandrocuriodicasdemat',id:'UCXBJ_Ef8qfYrwN5cY8W7ziA',name:'Dicasdemat Sandro Curió'},
  {handle:'Giscomgiz',id:'UCCTHtVMXy9gQA8X_HOEJA2A',name:'Gis com Giz'},
- {handle:'UniversoMilitares',id:'UCX6DjOoxXoB2pE4dCmdbd4A',name:'Universo Narrado Militares'}
+ {handle:'UniversoMilitares',id:'UCX6DjOoxXoB2pE4dCmdbd4A',name:'Universo Narrado Militares'},
+ {handle:'professorferretto',id:'UCW9_n8p_Byz-4k8wV1tnUBg',name:'Professor Ferretto | ENEM e Vestibulares'}
 ];
 export const VIDEO_TOPICS={
  basics:{label:'Matemática básica',query:'matemática básica aula 1 introdução do zero',pattern:'matematica basica|matematica do zero|operacoes basicas|operacoes fundamentais|introducao a matematica|fundamentos da matematica'},

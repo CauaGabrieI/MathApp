@@ -1,10 +1,34 @@
-import {marked} from './marked.esm.js?v=math23';
-import {plainText} from './core.js?v=math23';
+import {marked} from './marked.esm.js?v=math24';
+import {plainText} from './core.js?v=math24';
 const allowedHosts=new Set(['img.enemhub.com.br','enem.dev','api.enem.dev']);
-export function imageURL(value){try{const u=new URL(value);return u.protocol==='https:'&&allowedHosts.has(u.hostname)?'/api/image?url='+encodeURIComponent(u.href):null;}catch{return null;}}
+export function imageURL(value,base){try{const u=base?new URL(value,base):new URL(value);return u.protocol==='https:'&&allowedHosts.has(u.hostname)&&!u.username&&!u.password&&(!u.port||u.port==='443')?'/api/image?url='+encodeURIComponent(u.href):null;}catch{return null;}}
 function sanitize(html){const clean=DOMPurify.sanitize(html,{ALLOWED_TAGS:['p','br','b','strong','em','i','u','sub','sup','ul','ol','li','blockquote','figure','figcaption','img','table','thead','tbody','tfoot','tr','td','th','span','div','h2','h3','h4','hr'],ALLOWED_ATTR:['src','alt','colspan','rowspan'],FORBID_TAGS:['script','style','iframe','object','embed','svg','math','form','input']});const template=document.createElement('template');template.innerHTML=clean;template.content.querySelectorAll('img').forEach(img=>{const url=imageURL(img.getAttribute('src'));if(!url){img.remove();return;}img.src=url;img.alt=img.alt||'Imagem de apoio da questão';img.loading='lazy';img.decoding='async';img.dataset.zoom='true';img.tabIndex=0;img.setAttribute('role','button');img.setAttribute('aria-label','Ampliar: '+img.alt);});template.content.querySelectorAll('table').forEach(table=>{const wrap=document.createElement('div');wrap.className='table-scroll';wrap.tabIndex=0;wrap.setAttribute('aria-label','Tabela da questão. Deslize para ver todas as colunas.');table.replaceWith(wrap);wrap.append(table);});return template.innerHTML;}
-export function statementHTML(q){let html=q.format==='html'?q.statement:marked.parse(q.statement??'',{gfm:true,breaks:true});const rendered=sanitize(html);const present=new Set();const t=document.createElement('template');t.innerHTML=rendered;t.content.querySelectorAll('img').forEach(i=>present.add(new URL(i.getAttribute('src'),location.origin).href));const extra=(q.files??[]).map(imageURL).filter(Boolean).filter(src=>!present.has(new URL(src,location.origin).href));return rendered+extra.map(src=>`<figure><img src="${src}" alt="Imagem de apoio da questão" loading="lazy" data-zoom="true" tabindex="0" role="button" aria-label="Ampliar imagem de apoio"></figure>`).join('');}
+export function statementHTML(q){let html=q.format==='html'?q.statement:marked.parse(q.statement??'',{gfm:true,breaks:true});const rendered=sanitize(html);const present=new Set();const t=document.createElement('template');t.innerHTML=rendered;t.content.querySelectorAll('img').forEach(i=>present.add(new URL(i.getAttribute('src'),location.origin).href));const extra=(q.files??[]).map(file=>imageURL(file)).filter(Boolean).filter(src=>!present.has(new URL(src,location.origin).href));return rendered+extra.map(src=>`<figure><img src="${src}" alt="Imagem de apoio da questão" loading="lazy" data-zoom="true" tabindex="0" role="button" aria-label="Ampliar imagem de apoio"></figure>`).join('');}
 export function inlineHTML(text){return sanitize(marked.parse(String(text??''),{gfm:true,breaks:true}));}
 export function previewText(q){return plainText(q.statement??q.question??'');}
 
 export function optionHTML(text){return String(text??'').replace(/[&<>"\']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"\'":'&#39;'}[c])).replace(/\n/g,'<br>');}
+
+// Alternatives are inline content, so "4." must remain text rather than an
+// empty ordered list. Rich source content still passes the same sanitizer.
+export function richOptionHTML(text,format='text'){
+ if(format==='html')return sanitize(String(text??''));
+ if(format==='markdown')return sanitize(marked.parseInline(String(text??''),{gfm:true,breaks:true}).replace(/\n/g,'<br>'));
+ return optionHTML(text);
+}
+
+export function initQuestionMedia(root=document){
+ root.addEventListener('error',event=>{
+  const img=event.target;
+  if(img?.tagName!=='IMG'||!img.closest('.statement-content,.problem-ask,.option-content,.question-zoom'))return;
+  const body=img.closest('.question-body,.problem-context,.dialog-content')??img.parentElement;
+  if(!body)return;
+  img.dataset.imageFailed='true';
+  if(body.querySelector('.question-image-status'))return;
+  const status=document.createElement('div');status.className='question-image-status';status.setAttribute('role','status');
+  const text=document.createElement('p');text.textContent='Uma imagem da questão não carregou. Confira a conexão antes de responder.';
+  const retry=document.createElement('button');retry.type='button';retry.className='button secondary';retry.textContent='Tentar carregar imagens';
+  retry.addEventListener('click',event=>{event.stopPropagation();const images=[...body.querySelectorAll('img[data-image-failed]')];status.remove();for(const image of images){delete image.dataset.imageFailed;const src=image.getAttribute('src');image.removeAttribute('src');image.setAttribute('src',src);}});
+  status.append(text,retry);body.append(status);
+ },true);
+}

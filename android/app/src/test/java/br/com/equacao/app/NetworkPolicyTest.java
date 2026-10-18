@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 public class NetworkPolicyTest {
     @Test public void allowsOnlyTheRequiredPublicServices(){
         assertTrue(NetworkPolicy.allowsApi("https://www.youtube.com/@Giscomgiz/search?query=matematica"));
+        assertTrue(NetworkPolicy.allowsApi("https://www.youtube.com/@professorferretto/search?query=matematica"));
         assertTrue(NetworkPolicy.allowsApi("https://www.youtube.com/@M%C3%A9todoQuestiona/search?query=porcentagem"));
         assertTrue(NetworkPolicy.allowsApi("https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3Y0u8kPYvko&format=json"));
         assertTrue(NetworkPolicy.allowsApi("https://api.enem.dev/v1/exams/2016/questions/149"));

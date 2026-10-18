@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public final class NetworkPolicy {
     public static final String ORIGIN = "https://appassets.androidplatform.net";
-    private static final Set<String> CHANNELS = new HashSet<>(Arrays.asList("umbertomann", "PedroAssaad", "UniversoNarrado", "MétodoQuestiona", "paulojubilut", "sandrocuriodicasdemat", "Giscomgiz", "UniversoMilitares"));
+    private static final Set<String> CHANNELS = new HashSet<>(Arrays.asList("umbertomann", "PedroAssaad", "UniversoNarrado", "MétodoQuestiona", "paulojubilut", "sandrocuriodicasdemat", "Giscomgiz", "UniversoMilitares", "professorferretto"));
     private static final Set<String> IMAGE_HOSTS = new HashSet<>(Arrays.asList("img.enemhub.com.br", "enem.dev", "api.enem.dev"));
     private NetworkPolicy() {}
     private static URI parsed(String url) {

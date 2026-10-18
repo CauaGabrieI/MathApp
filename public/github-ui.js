@@ -1,10 +1,10 @@
-import {snapshot,backupSettings,restoreBackup} from './db.js?v=math23';
-import {makeBackup,validateBackup,mergeBackups,hydrateRecords} from './backup-model.js?v=math23';
+import {snapshot,backupSettings,restoreBackup} from './db.js?v=math24';
+import {makeBackup,validateBackup,mergeBackups,hydrateRecords} from './backup-model.js?v=math24';
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let user=null,configured=false,settings={},flow=null,pollTimer,saveTimer,busy=false,queue=Promise.resolve(),epoch=0,notice='',options,bankPromise,backupGeneration=0;
 const bank=()=>bankPromise??=(Promise.all(['/bank.json','/study-bank.json'].map(path=>fetch(path).then(r=>{if(!r.ok)throw new Error('Banco de questões indisponível.');return r.json();}))).then(rows=>rows.flat()).catch(e=>{bankPromise=null;throw e;}));
 let catalogPromise;
-const examCatalog=()=>catalogPromise??=fetch('/learning-path.json?v=math23').then(r=>{if(!r.ok)throw new Error('Catálogo de avaliações indisponível.');return r.json();}).then(path=>Object.fromEntries(path.modules.map(m=>[m.id,m.lessons.flatMap(l=>l.questionIds)]))).catch(error=>{catalogPromise=null;throw error;});
+const examCatalog=()=>catalogPromise??=fetch('/learning-path.json?v=math24').then(r=>{if(!r.ok)throw new Error('Catálogo de avaliações indisponível.');return r.json();}).then(path=>Object.fromEntries(path.modules.map(m=>[m.id,m.lessons.flatMap(l=>l.questionIds)]))).catch(error=>{catalogPromise=null;throw error;});
 function request(action,input={}){const next=queue.catch(()=>{}).then(async()=>{if(window.EquacaoAndroid?.githubRequest)return window.EquacaoAndroid.githubRequest(action,input);const r=await fetch('/api/github/'+action,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify(input),signal:AbortSignal.timeout(90000)});const data=await r.json();if(!r.ok)throw Object.assign(new Error(data.error??'Não foi possível conectar ao GitHub.'),{status:r.status});return data;});queue=next;return next;}
 const fingerprint=async value=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(value))))).map(b=>b.toString(16).padStart(2,'0')).join('');
 const labelDate=value=>value?new Date(value).toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'}):'Nenhum backup neste aparelho';
