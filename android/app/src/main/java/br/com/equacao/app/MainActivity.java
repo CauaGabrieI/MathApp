@@ -88,7 +88,25 @@ public class MainActivity extends androidx.activity.ComponentActivity {
             if(!mainFrame||!("https".equals(origin.getScheme())&&"appassets.androidplatform.net".equals(origin.getHost())))return;
             try{
                 JSONObject input=new JSONObject(message.getData());String kind=input.optString("kind");
-                if("config".equals(kind)){if(WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER))reply.postMessage(new JSONObject().put("id",input.getString("id")).put("systemDark",isSystemDark()).put("versionName",BuildConfig.VERSION_NAME).toString());return;}
+                if("config".equals(kind)){if(WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER))reply.postMessage(new JSONObject().put("id",input.getString("id")).put("systemDark",isSystemDark()).put("versionName",BuildConfig.VERSION_NAME).put("autoUpdateEnabled",updates.autoUpdateEnabled()).toString());return;}
+                if("set-auto-updates".equals(kind)){
+                    String id=input.getString("id");
+                    if(!input.has("enabled") || !(input.get("enabled") instanceof Boolean))return;
+                    boolean enabled=input.getBoolean("enabled");
+                    requests.execute(() -> {
+                        boolean saved=updates.setAutoUpdateEnabled(enabled);
+                        runOnUiThread(() -> {
+                            if(isFinishing()||isDestroyed())return;
+                            try {
+                                JSONObject result=new JSONObject().put("id",id).put("autoUpdateEnabled",updates.autoUpdateEnabled()).put("saved",saved);
+                                if(!saved)result.put("error","Não foi possível salvar a preferência.");
+                                reply.postMessage(result.toString());
+                                if(saved&&enabled){getSharedPreferences(GitHubUpdates.PREFERENCES_NAME, Context.MODE_PRIVATE).edit().putLong("nextCheckAt",0).commit();updates.check(false);}
+                            } catch(Exception ignored) {}
+                        });
+                    });
+                    return;
+                }
                 if("check-updates".equals(kind)){updates.check(true);return;}
                 if("theme".equals(kind)){applyTheme(input.optBoolean("dark",true));return;}
                 if("open".equals(kind)){openExternal(input.optString("url"));return;}

@@ -1,13 +1,13 @@
-import {fromDev} from './core.js?v=math22';
+import {fromDev} from './core.js?v=math23';
 import {recommendVideos} from './android-video-service.js';
-import {VIDEO_TOPICS,VIDEO_CHANNELS} from './video-topics.js?v=math22';
-import {learningLesson,questionVideoContext} from './lesson-topics.js?v=math22';
+import {VIDEO_TOPICS,VIDEO_CHANNELS} from './video-topics.js?v=math23';
+import {learningLesson,questionVideoContext} from './lesson-topics.js?v=math23';
 const browserFetch=window.fetch.bind(window),pending=new Map();let serial=0;
 AndroidNetwork.onmessage=event=>{let data;try{data=JSON.parse(event.data);}catch{return;}const task=pending.get(data.id);if(!task)return;pending.delete(data.id);clearTimeout(task.timer);task.cleanup();data.error?task.reject(Object.assign(new Error(data.error),{status:data.status})):task.resolve(data);};
 function nativeMessage(message,signal){return new Promise((resolve,reject)=>{if(signal?.aborted){reject(new DOMException('Cancelado','AbortError'));return;}const id=String(Date.now())+':'+(++serial);const abort=()=>{pending.delete(id);clearTimeout(timer);reject(new DOMException('Cancelado','AbortError'));};const timer=setTimeout(()=>{pending.delete(id);signal?.removeEventListener('abort',abort);reject(new Error('Tempo esgotado'));},message.kind==='github'?90000:25000);pending.set(id,{resolve,reject,timer,cleanup:()=>signal?.removeEventListener('abort',abort)});signal?.addEventListener('abort',abort,{once:true});AndroidNetwork.postMessage(JSON.stringify({...message,id}));});}
 export async function nativeFetch(address,options={}){const url=new URL(address);if(url.protocol!=='https:')throw new Error('HTTPS obrigatório');const data=await nativeMessage({kind:'fetch',url:url.href},options.signal);return new Response(data.body,{status:data.status,headers:{'Content-Type':data.type}});}
 const config=await nativeMessage({kind:'config'});
-window.EquacaoAndroid={githubRequest:(action,input={})=>nativeMessage({kind:'github',action,input}),version:config.versionName,systemDark:config.systemDark===true,checkUpdates:()=>AndroidNetwork.postMessage(JSON.stringify({kind:'check-updates'})),exportHistory:body=>AndroidNetwork.postMessage(JSON.stringify({kind:'export',body}))};
+window.EquacaoAndroid={githubRequest:(action,input={})=>nativeMessage({kind:'github',action,input}),version:config.versionName,systemDark:config.systemDark===true,autoUpdateEnabled:config.autoUpdateEnabled===true,checkUpdates:()=>AndroidNetwork.postMessage(JSON.stringify({kind:'check-updates'})),setAutoUpdates:async enabled=>{const expected=Boolean(enabled),result=await nativeMessage({kind:'set-auto-updates',enabled:expected});if(result.saved!==true||typeof result.autoUpdateEnabled!=='boolean'||result.autoUpdateEnabled!==expected)throw new Error('O Android não confirmou a preferência de atualização.');window.EquacaoAndroid.autoUpdateEnabled=result.autoUpdateEnabled;return result.autoUpdateEnabled;},exportHistory:body=>AndroidNetwork.postMessage(JSON.stringify({kind:'export',body}))};
 const bankPromise=browserFetch('/bank.json').then(r=>r.json());
 const studyBankPromise=browserFetch('/study-bank.json').then(r=>r.ok?r.json():[]).catch(()=>[]);
 const curriculumPromise=browserFetch('/curriculum.json').then(r=>r.json());

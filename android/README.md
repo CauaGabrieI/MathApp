@@ -1,6 +1,6 @@
 # Equação para Android
 
-Aplicativo Android instalável (`br.com.equacao.app`, versão 1.5.0, `versionCode 8`), Android 8.0/API 26 ou superior. É um app híbrido: uma Activity Android reutiliza a interface existente em uma WebView local, com assets incluídos no APK, armazenamento próprio e integração nativa para rede, links, exportação e botão de voltar. Não é um atalho do navegador e não abre o site privado para funcionar.
+Aplicativo Android instalável (`br.com.equacao.app`, versão 1.5.2, `versionCode 10`), Android 8.0/API 26 ou superior. É um app híbrido: uma Activity Android reutiliza a interface existente em uma WebView local, com assets incluídos no APK, armazenamento próprio e integração nativa para rede, links, exportação e botão de voltar. Não é um atalho do navegador e não abre o site privado para funcionar.
 
 ## Incluído no app
 
@@ -69,7 +69,17 @@ As limitações pedagógicas do acervo e da associação automática dos exercí
 
 O app consulta somente a última release pública estável de [CauaGabrieI/MathApp](https://github.com/CauaGabrieI/MathApp/releases). Não usa login nem token de GitHub. Não envia histórico, respostas ou dados de estudo: faz somente GET dos metadados públicos de versão. O GitHub recebe a conexão HTTP normal, incluindo o IP e a versão do app no User-Agent.
 
-A consulta automática acontece ao abrir/retomar o app, no máximo uma vez por dia. Há também Preferências → Verificar atualizações. Quando encontra uma versão mais nova, o aviso oferece Atualizar agora e Agora não. Adiar silencia aquela versão por 24 horas; a consulta manual ignora o adiamento. Falhas automáticas ficam silenciosas e permitem nova consulta após uma hora; consultas manuais informam problemas de conexão/limite do GitHub.
+### Versão 1.5.2
+
+Preferências inclui o controle de atualizações automáticas. A tela de aula usa três abas reais, com cabeçalho fixo e rolagem no painel: Teoria, Videoaula e Exercícios. Trocar de aba preserva a seleção, a questão e a correção; sair de Videoaula interrompe o player e preserva a escolha do vídeo. Somente concluir a aula altera o progresso de conclusão.
+
+As 199 aulas atuais receberam resumos próprios, passos de resolução, exemplos resolvidos e alertas de erros comuns. Os materiais de apoio anteriores continuam disponíveis. IDs, ordem curricular e associações de exercícios não mudaram.
+
+A busca oferece até 12 vídeos confirmados, com consultas por conceito, sinônimos editoriais e rejeição de assuntos vizinhos. Continua restrita aos oito canais autorizados. O limite não garante 12 resultados em todo assunto: vídeos sem confirmação de autoria, disponibilidade ou tema são descartados.
+
+A consulta automática acontece ao abrir/retomar o app, no máximo uma vez por dia. Há também Preferências → Verificar atualizações. A opção **Atualizações automáticas**, inicialmente desativada, permite buscar e preparar uma nova versão dentro do app sem o aviso intermediário. A escolha fica salva no Android e ativá-la inicia uma consulta. Pode usar dados móveis; não há atualização agendada com o app fechado. O instalador Android continua exigindo confirmação e, quando necessário, a autorização para instalar desta fonte.
+
+Com a opção desativada ou em consultas manuais, o aviso oferece Atualizar agora e Agora não. Adiar silencia aquela versão por 24 horas, inclusive a preparação automática; a consulta manual ignora o adiamento. Falhas automáticas ficam silenciosas e permitem nova consulta após uma hora; consultas manuais informam problemas de conexão/limite do GitHub. A preferência não interfere no histórico de estudo nem no backup.
 
 A release precisa conter `android-update.json` e o APK com o nome indicado nele. O app compara o `versionCode` Android, confere o identificador do aplicativo, a tag estável, o nome, o tamanho e o endereço do APK no mesmo repositório. Quando o GitHub fornece um digest, compara-o com o SHA-256 do manifesto. Depois de aceitar, o usuário vê o progresso dentro do app. O APK é baixado para `files/updates`, no armazenamento privado, sem navegador nem pasta Downloads. Antes de abrir o instalador, o app confere tamanho e SHA-256 dos bytes, pacote, versão mais nova e os certificados atuais do aplicativo instalado. A instalação é iniciada pelo próprio app e confirmada na tela do Android. Os dados locais são mantidos numa atualização normal, com mesmo pacote e assinatura.
 

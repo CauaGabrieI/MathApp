@@ -1,5 +1,6 @@
 // Curriculum identities, order and titles come exclusively from the imported Markdown.
 // These associations add existing support material; they never replace a curriculum lesson.
+import {guideForLesson} from './lesson-guides.mjs';
 const rid = (module, lesson) => `roadmap.m${String(module).padStart(2, '0')}.l${String(lesson).padStart(2, '0')}`;
 const tid = (module, lesson) => `math.m${String(module).padStart(2, '0')}.t${String(lesson).padStart(2, '0')}`;
 const ASSOCIATIONS = {
@@ -98,6 +99,7 @@ export function createLearningPath(curriculum, legacyRoadmap, legacyIndex) {
       return {id:topic.id,title:topic.title,order:topic.order,resources,questionIds,legacyIds,
         ...(card ? {card} : {}),
         videoTopic:resources[0]?.videoTopic ?? 'basics',videoTerms:topic.title,
+        guide:guideForLesson(topic,module),
       };
     });
     moduleQuestions[module.id] = unique(lessons.flatMap(lesson => lesson.questionIds));

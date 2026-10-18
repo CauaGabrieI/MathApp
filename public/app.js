@@ -1,12 +1,12 @@
-import {initGitHub,disableAutoBackup} from './github-ui.js?v=math22';
-import {openDB,snapshot,reserveQuestion,submitAnswer,clearHistory,setActive,saveLearningTopic,saveCardReview,beginModuleExam,saveExamAnswer,touchExamQuestion,migrateRoadmap,saveLearningFilters} from './db.js?v=math22';
-import {statementHTML,inlineHTML,optionHTML,imageURL} from './render.js?v=math22';
-import {SOURCES,completedRecords,localDay,stats} from './core.js?v=math22';
-import {journeyProgress,learnedQuestions,learnedCards,examSelection,examResult,examComparison,normalizeExamKind} from './journey-model.js?v=math22';
-import {initJourney,loadJourney,refreshJourney,openJourneyModule,openJourneyLesson} from './journey-ui.js?v=math22';
-import {initVideoUI,updateVideoRecommendations,loadVideoLibrary} from './videos.js?v=math22';
-import {ICONS as icons} from './icons.js?v=math22';
-import {answerOrderKey,displayChoiceFor,displayChoices} from './answer-shuffle.js?v=math22';
+import {initGitHub,disableAutoBackup} from './github-ui.js?v=math23';
+import {openDB,snapshot,reserveQuestion,submitAnswer,clearHistory,setActive,saveLearningTopic,saveCardReview,beginModuleExam,saveExamAnswer,touchExamQuestion,migrateRoadmap,saveLearningFilters} from './db.js?v=math23';
+import {statementHTML,inlineHTML,optionHTML,imageURL} from './render.js?v=math23';
+import {SOURCES,completedRecords,localDay,stats} from './core.js?v=math23';
+import {journeyProgress,learnedQuestions,learnedCards,examSelection,examResult,examComparison,normalizeExamKind} from './journey-model.js?v=math23';
+import {initJourney,loadJourney,refreshJourney,openJourneyModule,openJourneyLesson} from './journey-ui.js?v=math23';
+import {initVideoUI,updateVideoRecommendations,loadVideoLibrary} from './videos.js?v=math23';
+import {ICONS as icons} from './icons.js?v=math23';
+import {answerOrderKey,displayChoiceFor,displayChoices} from './answer-shuffle.js?v=math23';
 const svg=(name)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name]??icons.cards}</svg>`;
 const $=s=>document.querySelector(s);const $$=s=>[...document.querySelectorAll(s)];
 const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -21,7 +21,7 @@ function showDialog(title,body){$('#dialog-content').innerHTML=`<div class="dial
 const countText=n=>new Intl.NumberFormat('pt-BR').format(n);
 const dateLabel=value=>new Date(value).toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'});
 const currentState=()=>({records,learningEntries,learningLastTopicId,learningFilters,exams,cards,bank:data?.bank??[]});
-async function loadCourse(){if(data)return data;if(coursePromise)return coursePromise;coursePromise=Promise.all(['/learning-path.json','/study-bank.json','/bank.json','/learning-path-index.json'].map(async path=>{const r=await fetch(path+'?v=math22');if(!r.ok)throw new Error('Não foi possível abrir os conteúdos.');return r.json();})).then(([roadmap,study,enem,index])=>{data={roadmap,study,bank:[...study,...enem],index};return data;}).finally(()=>coursePromise=null);return coursePromise;}
+async function loadCourse(){if(data)return data;if(coursePromise)return coursePromise;coursePromise=Promise.all(['/learning-path.json','/study-bank.json','/bank.json','/learning-path-index.json'].map(async path=>{const r=await fetch(path+'?v=math23');if(!r.ok)throw new Error('Não foi possível abrir os conteúdos.');return r.json();})).then(([roadmap,study,enem,index])=>{data={roadmap,study,bank:[...study,...enem],index};return data;}).finally(()=>coursePromise=null);return coursePromise;}
 function progress(){return data?journeyProgress(data.roadmap,learningEntries,exams):{modules:[],learnedIds:[],completed:0,total:199};}
 function eligibleQuestions(){return data?learnedQuestions(data.roadmap,learningEntries,data.bank,data.index):[];}
 function activeRecord(){return records.find(r=>r.id===activeId);}
@@ -103,7 +103,7 @@ initVideoUI(()=>({records,question:activeRecord()?.question,content:activeRecord
 try{broadcast=new BroadcastChannel('equacao-history');broadcast.onmessage=async()=>{if(dbReady){await sync();if(page==='prova')renderExam();}};}catch{}
 window.addEventListener('focus',async()=>{if(dbReady){await sync();if(page==='prova')renderExam();}});
 $('#date-chip').textContent=new Date().toLocaleDateString('pt-BR',{day:'numeric',month:'long'});
-async function init(){try{await openDB();dbReady=true;await loadCourse();await migrateRoadmap(data.roadmap);await sync();initGitHub({showDialog,toast,refresh:async()=>{await migrateRoadmap(data.roadmap);await sync();},broadcast:()=>broadcast?.postMessage('updated')}).catch(()=>{});navigator.storage?.persist?.().catch(()=>{});navigate(location.hash.slice(1)||'mapa',false);}catch(error){toast('Não foi possível abrir os conteúdos. Seu histórico foi preservado.');$('#learning-root').innerHTML='<div class="learning-empty"><h2>Vamos tentar de novo?</h2><p>Verifique a conexão ou o armazenamento e reabra o app.</p><button class="button primary" onclick="location.reload()">Recarregar</button></div>';console.error(error);}if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js?v=math22').catch(()=>{});}
+async function init(){try{await openDB();dbReady=true;await loadCourse();await migrateRoadmap(data.roadmap);await sync();initGitHub({showDialog,toast,refresh:async()=>{await migrateRoadmap(data.roadmap);await sync();},broadcast:()=>broadcast?.postMessage('updated')}).catch(()=>{});navigator.storage?.persist?.().catch(()=>{});navigate(location.hash.slice(1)||'mapa',false);}catch(error){toast('Não foi possível abrir os conteúdos. Seu histórico foi preservado.');$('#learning-root').innerHTML='<div class="learning-empty"><h2>Vamos tentar de novo?</h2><p>Verifique a conexão ou o armazenamento e reabra o app.</p><button class="button primary" onclick="location.reload()">Recarregar</button></div>';console.error(error);}if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js?v=math23').catch(()=>{});}
 init();
 
 document.addEventListener('keydown',event=>{if((event.key==='Enter'||event.key===' ')&&event.target.matches('img[data-zoom]')){event.preventDefault();event.target.click();}});

@@ -78,4 +78,9 @@ final class UpdatePolicy {
                                int deferredCode, long deferredUntil, long now) {
         return release.newerThan(installedCode) && (manual || deferredCode != release.versionCode || now >= deferredUntil);
     }
+
+    static boolean shouldPrepareAutomatically(Release release, int installedCode, boolean enabled,
+                                               boolean manual, int deferredCode, long deferredUntil, long now) {
+        return enabled && !manual && shouldOffer(release, installedCode, false, deferredCode, deferredUntil, now);
+    }
 }

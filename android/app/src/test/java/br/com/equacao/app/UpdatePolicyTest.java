@@ -21,6 +21,14 @@ public class UpdatePolicyTest {
         assertTrue(UpdatePolicy.shouldOffer(release(4), 2, false, 3, 1000, 999));
         assertFalse(UpdatePolicy.shouldOffer(release(1), 2, true, 0, 0, 999));
     }
+    @Test public void automaticPreparationRequiresEnabledAutomaticCheckAndHonorsDeferral() {
+        assertTrue(UpdatePolicy.shouldPrepareAutomatically(release(3), 2, true, false, 0, 0, 999));
+        assertFalse(UpdatePolicy.shouldPrepareAutomatically(release(3), 2, false, false, 0, 0, 999));
+        assertFalse(UpdatePolicy.shouldPrepareAutomatically(release(3), 2, true, true, 0, 0, 999));
+        assertFalse(UpdatePolicy.shouldPrepareAutomatically(release(3), 2, true, false, 3, 1000, 999));
+        assertTrue(UpdatePolicy.shouldPrepareAutomatically(release(3), 2, true, false, 3, 1000, 1000));
+        assertFalse(UpdatePolicy.shouldPrepareAutomatically(release(2), 2, true, false, 0, 0, 999));
+    }
     @Test public void refusesOtherAppsRepositoriesCorruptedAndMismatchedAssets() {
         assertThrows(IllegalArgumentException.class, () -> new UpdatePolicy.Release("v1.0.2", 1, "other.app", "1.0.2", 3, URL, HASH, 100, 100, ""));
         assertThrows(IllegalArgumentException.class, () -> new UpdatePolicy.Release("v1.0.3", 1, UpdatePolicy.APPLICATION_ID, "1.0.2", 3, URL, HASH, 100, 100, ""));

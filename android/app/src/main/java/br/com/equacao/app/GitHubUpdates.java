@@ -18,8 +18,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/** Checks only public releases. Download and installation always require user actions. */
+/** Checks only public releases. Installation always requires confirmation from Android. */
 final class GitHubUpdates implements AutoCloseable {
+    static final String PREFERENCES_NAME = "github-updates";
+    static final String AUTO_UPDATE_KEY = "autoUpdateEnabled";
     private final Activity activity;
     private final SharedPreferences preferences;
     private final ExecutorService worker = Executors.newSingleThreadExecutor();
@@ -35,9 +37,17 @@ final class GitHubUpdates implements AutoCloseable {
         installer = new UpdateInstaller(activity);
         dark = (activity.getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES;
         installer.setDark(dark);
-        preferences = activity.getSharedPreferences("github-updates", Context.MODE_PRIVATE);
+        preferences = activity.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
     }
     void setDark(boolean dark) { this.dark = dark; installer.setDark(dark); }
+    boolean autoUpdateEnabled() { return preferences.getBoolean(AUTO_UPDATE_KEY, false); }
+    boolean setAutoUpdateEnabled(boolean enabled) {
+        boolean previous = autoUpdateEnabled();
+        if (preferences.edit().putBoolean(AUTO_UPDATE_KEY, enabled).commit()) return true;
+        // commit() may update the in-memory map before reporting an I/O failure.
+        preferences.edit().putBoolean(AUTO_UPDATE_KEY, previous).commit();
+        return false;
+    }
 
     void onResume() {
         resumed = true;
@@ -49,7 +59,7 @@ final class GitHubUpdates implements AutoCloseable {
     void onActivityResult(int request, int result) { installer.onActivityResult(request, result); }
 
     void check(boolean manual) {
-        if (closed || activity.isFinishing() || activity.isDestroyed()) return;
+        if (closed || activity.isFinishing() || activity.isDestroyed() || (!manual && !resumed)) return;
         if (installer.isBusy()) { if (manual) toast("A atualização já está em preparação."); return; }
         if (checking) { if (manual) toast("Já estamos verificando atualizações…"); return; }
         if (dialog != null && dialog.isShowing()) return;
@@ -160,8 +170,16 @@ final class GitHubUpdates implements AutoCloseable {
             if (result.manual) toast(result.message);
             return;
         }
+        int deferredVersion = preferences.getInt("deferredVersion", 0);
+        long deferredUntil = preferences.getLong("deferredUntil", 0);
+        long now = System.currentTimeMillis();
         if (!UpdatePolicy.shouldOffer(release, BuildConfig.VERSION_CODE, result.manual,
-            preferences.getInt("deferredVersion", 0), preferences.getLong("deferredUntil", 0), System.currentTimeMillis())) return;
+            deferredVersion, deferredUntil, now)) return;
+        if (UpdatePolicy.shouldPrepareAutomatically(release, BuildConfig.VERSION_CODE, autoUpdateEnabled(),
+            result.manual, deferredVersion, deferredUntil, now)) {
+            installer.begin(release);
+            return;
+        }
         dialog = new AlertDialog.Builder(activity, dark ? R.style.EquacaoDialogDark : R.style.EquacaoDialogLight).setTitle("Atualização disponível")
             .setMessage("A versão " + release.version + " do Equação está disponível no GitHub. Você está usando a "
                 + BuildConfig.VERSION_NAME + ".\n\nQuer atualizar agora? O Equação prepara a atualização aqui no app. Depois, basta confirmar a instalação na tela do Android."
