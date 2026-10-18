@@ -103,11 +103,14 @@ export function createLearningPath(curriculum, legacyRoadmap, legacyIndex) {
     moduleQuestions[module.id] = unique(lessons.flatMap(lesson => lesson.questionIds));
     return {...module,description:DESCRIPTIONS[module.order-1],lessons};
   });
-  const stages = [
-    {id:'stage.fundamentals',title:'Fundamentos',description:'Construa a base numérica para avançar com segurança.',order:1,level:'Básico'},
-    {id:'stage.development',title:'Desenvolvimento',description:'Conecte álgebra, funções, geometria e análise de dados.',order:2,level:'Intermediário'},
-    {id:'stage.advanced',title:'Aprofundamento',description:'Integre ferramentas e amplie a interpretação de modelos e problemas.',order:3,level:'Avançado'},
-  ].map(stage => ({...stage,moduleIds:modules.filter(module => module.level===stage.level).map(module=>module.id)}));
+  // The curriculum levels remain on each module as difficulty metadata. The
+  // learner-facing path is a single subject, so modules are never split into
+  // separate stages by level.
+  const stages = [{
+    id:'stage.math', title:'Matemática',
+    description:'Estude os 25 módulos no seu ritmo, com recomendações de base entre os assuntos.',
+    order:1, moduleIds:modules.map(module=>module.id),
+  }];
   const requiredModules = Object.fromEntries(Object.entries(legacyIndex.questionTags).filter(([,tags])=>tags.moduleIds?.length).map(([id,tags])=>[id,[...tags.moduleIds]]));
   const path = {schemaVersion:2,title:'Seu caminho de aprendizagem',source:curriculum.source,prerequisitePolicy:'recommended',
     prerequisiteNote:curriculum.prerequisiteNote,stages,modules,

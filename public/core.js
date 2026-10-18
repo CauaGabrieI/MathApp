@@ -11,7 +11,7 @@ function finish(q){q.question=plainText(q.statement+' '+q.introduction);q.dedupe
 export function normalizeBank(input){if(!Array.isArray(input))throw new Error('Formato de banco inválido');const seen=new Map();for(const q of input){if(q?.source&&q.id&&q.statement!==undefined&&Array.isArray(q.alternatives)&&Object.hasOwn(LEVELS,q.level)){if(!seen.has(q.id))seen.set(q.id,q);}}if(!seen.size)throw new Error('Nenhuma questão válida');return [...seen.values()];}
 export function normalizeSources(hub=[],dev=[]){return normalizeBank([...hub.map(fromHub),...dev.map(fromDev)].filter(Boolean));}
 export function availableQuestions(bank,records,level=null,source='all'){const ids=new Set(records.map(r=>r.id));const fingerprints=new Set(records.map(r=>r.question.dedupeKey).filter(Boolean));return bank.filter(q=>(!level||q.level===level)&&(source==='all'||q.source===source)&&!ids.has(q.id)&&!fingerprints.has(q.dedupeKey));}
-export function optionsFor(q){return q.alternatives?q.alternatives.map(a=>a.letter):shuffle([...new Set([q.answer,...q.wrong_answers])]);}
+export function optionsFor(q,random=Math.random){return shuffle(q.alternatives?q.alternatives.map(a=>a.letter):[...new Set([q.answer,...q.wrong_answers])],random);}
 export function shuffle(values,random=Math.random){const a=[...values];for(let i=a.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 export function formatNumber(n){return new Intl.NumberFormat('pt-BR',{maximumFractionDigits:10}).format(n).replace(/-/g,'−');}
 export function questionId(q){return 'math-question:'+q.question.trim().toLowerCase().replace(/\s+/g,'').replace(/[×*]/g,'x');}

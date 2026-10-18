@@ -1,4 +1,4 @@
-import {expressionParts,formatNumber,questionId} from './core.js?v=polish20';
+import {expressionParts,formatNumber,questionId} from './core.js?v=math22';
 const n=formatNumber;
 const templates={
  '+':[

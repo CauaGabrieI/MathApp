@@ -51,13 +51,13 @@ test('a trilha publica exatamente os 25 módulos e 199 subtópicos do Markdown c
   assert.deepEqual(readJSON('public/learning-path-index.json'), index, 'O índice publicado corresponde à trilha');
 });
 
-test('três etapas cobrem cada módulo uma vez na ordem e no nível da fonte, com dependências sem ciclos', () => {
-  assert.deepEqual(path.stages.map(stage => stage.level), ['Básico', 'Intermediário', 'Avançado']);
-  assert.deepEqual(path.stages.map(stage => stage.order), [1, 2, 3]);
+test('a matéria única cobre cada módulo uma vez na ordem, com níveis preservados e sem ciclos', () => {
+  assert.deepEqual(path.stages.map(stage => stage.title), ['Matemática']);
+  assert.deepEqual(path.stages.map(stage => stage.order), [1]);
   const covered = path.stages.flatMap(stage => stage.moduleIds);
   assert.equal(new Set(covered).size, 25);
   assert.deepEqual(covered, path.modules.map(module => module.id));
-  for (const stage of path.stages) assert.deepEqual(stage.moduleIds, source.filter(module => module.level === stage.level).map(module => `math.m${String(module.sourceNumber).padStart(2, '0')}`));
+  assert.deepEqual(path.modules.map(module => module.level), source.map(module => module.level));
   const byId = new Map(path.modules.map(module => [module.id, module]));
   const done = new Set(), active = new Set();
   function visit(id) {
@@ -74,7 +74,7 @@ test('três etapas cobrem cada módulo uma vez na ordem e no nível da fonte, co
   assert.ok(!byId.get('math.m18').prerequisiteIds.includes('math.m17'));
   assert.ok(!byId.get('math.m21').prerequisiteIds.includes('math.m20'));
   const repeated = structuredClone(path);
-  repeated.stages[1].moduleIds.push(repeated.stages[0].moduleIds[0]);
+  repeated.stages[0].moduleIds.push(repeated.stages[0].moduleIds[0]);
   assert.throws(() => validateRoadmap(repeated));
   const cyclic = structuredClone(path);
   cyclic.modules[0].prerequisiteIds = ['math.m02'];
@@ -138,16 +138,16 @@ test('progresso de etapa e total usa quantidade real de aulas, ignorando marcado
   const first = path.modules[0], second = path.modules[1], advanced = path.modules[24];
   const entries = [...entriesFor(first), mark(second.lessons[0].id), mark(advanced.lessons[0].id, false), ...entriesFor(...legacyRoadmap.modules)];
   const p = journeyProgress(path, entries);
-  const basic = p.stages.find(stage => stage.level === 'Básico');
+  const subject = p.stages.find(stage => stage.id === 'stage.math');
   assert.equal(p.completed, 11);
   assert.equal(p.started, 12);
   assert.equal(p.total, 199);
   assert.equal(p.percent, 11 / 199 * 100);
-  assert.equal(basic.completed, 11);
-  assert.equal(basic.total, 42);
-  assert.equal(basic.percent, 11 / 42 * 100);
-  assert.equal(basic.completedModules, 1);
-  assert.notEqual(basic.percent, p.modules.slice(0, 5).reduce((sum, module) => sum + module.percent, 0) / 5);
+  assert.equal(subject.completed, 11);
+  assert.equal(subject.total, 199);
+  assert.equal(subject.percent, 11 / 199 * 100);
+  assert.equal(subject.completedModules, 1);
+  assert.equal(subject.totalModules, 25);
   assert.deepEqual(p.learnedIds, [first.id]);
 });
 

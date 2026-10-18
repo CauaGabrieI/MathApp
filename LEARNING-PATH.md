@@ -1,10 +1,6 @@
-# Learning Path · versão 1.5.0
+# Learning Path · versão 1.5.1
 
-Esta versão importa do Markdown o currículo exato de Matemática do ENEM: 25 módulos e 199 aulas. A divisão é:
-
-- Básico: 5 módulos, 42 aulas.
-- Intermediário: 15 módulos, 121 aulas.
-- Avançado: 5 módulos, 36 aulas.
+Esta versão importa do Markdown o currículo exato de Matemática do ENEM: uma matéria com 25 módulos e 199 aulas. Cada módulo mantém seu nível curricular (Básico, Intermediário ou Avançado) como metadado para orientar a sequência recomendada.
 
 ## Conteúdo e fluxo
 
@@ -27,7 +23,7 @@ O usuário preferiu testar o GitHub real no celular. O fluxo foi preparado para 
 - Android 1.5.0 usa versionCode 8; a assinatura ainda precisa ser conferida antes da publicação.
 - 15 arquivos de teste Node passaram.
 - `assembleRelease`, `testDebugUnitTest`, `lintRelease` Android e `android:release-files` concluíram com a assinatura e o `versionCode 8` verificados.
-- A validação no navegador confirmou o ciclo diagnóstico → aulas → avaliação final, a comparação após recarregar, as três rails em suas próprias etapas e ausência de overflow.
+- A validação no navegador confirmou o ciclo diagnóstico → aulas → avaliação final, a comparação após recarregar, a matéria Matemática com seus 25 módulos e ausência de overflow.
 - Não havia aparelho físico ou emulador disponível; o backup real não foi testado por escolha do usuário.
 
 O schema 2 já existia na versão 1.3; esta versão apenas expande os IDs para `math.*`. `LEARNING-FLOW.md` documenta o fluxo 1.3.0 e permanece como histórico.

@@ -11,7 +11,8 @@
     "android:release-files": "node scripts/android-release.mjs",
     "pretest": "node scripts/prepare-android.mjs",
     "design:build": "node scripts/design-system.mjs",
-    "design:check": "node scripts/design-system.mjs --check"
+    "design:check": "node scripts/design-system.mjs --check",
+    "privacy:check": "node scripts/check-privacy.mjs"
   },
   "devDependencies": {
     "fake-indexeddb": "^6.2.6"

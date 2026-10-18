@@ -39,6 +39,7 @@ const githubClientId=JSON.parse(await fs.readFile('public/github-config.json','u
 const worker=await fs.readFile('worker.js','utf8');
 await fs.mkdir('dist/server',{recursive:true});await fs.mkdir('dist/.openai',{recursive:true});
 await fs.writeFile('dist/server/index.js',`const ASSETS=${JSON.stringify(assets)};\nconst BANK=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(ASSETS['/bank.json'].body),c=>c.charCodeAt(0))));\n${core}\n${videoTopics}\n${lessonTopics}\nconst ROADMAP=${JSON.stringify(roadmap)};\nconst CURRICULUM=${JSON.stringify(curriculum)};\nconst VIDEO_SEEDS=${JSON.stringify(videoSeeds)};\n${videoService}\nconst GITHUB_CLIENT_ID=${JSON.stringify(githubClientId)};\n${githubService}\n${worker}`);
-await fs.copyFile('.openai/hosting.json','dist/.openai/hosting.json');
+// Hosting identity is local deployment configuration, not public application source.
+try{await fs.copyFile('.openai/hosting.json','dist/.openai/hosting.json');}catch(error){if(error.code!=='ENOENT')throw error;}
 console.log(`Built worker with ${files.length} assets, ${bank.filter(q=>q.source==='enemdev').length} enem.dev + ${bank.filter(q=>q.source==='enemhub').length} EnemHub questions.`);
 console.log('Level distribution:',Object.keys(LEVELS).map(l=>[l,bank.filter(q=>q.source==='enemdev'&&q.level===l).length,bank.filter(q=>q.source==='enemhub'&&q.level===l).length]));

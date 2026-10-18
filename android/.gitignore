@@ -3,3 +3,14 @@
 local.properties
 .android-signing/
 app/src/main/assets/
+*.apk
+*.aab
+*.apks
+*.jks
+*.keystore
+*.p12
+*.pfx
+signing.properties
+keystore.properties
+.idea/
+*.iml

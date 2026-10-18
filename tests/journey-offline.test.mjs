@@ -40,7 +40,11 @@ test('instalação serve a trilha completa, os índices e o acervo anterior com 
   assert.equal(assets['/learning-path.json'].schemaVersion, 2);
   assert.equal(assets['/learning-path.json'].modules.length, 25);
   assert.equal(assets['/learning-path.json'].modules.flatMap(module => module.lessons).length, 199);
-  assert.equal(assets['/learning-path.json'].stages.length, 3);
+  assert.equal(assets['/learning-path.json'].stages.length, 1);
+  assert.equal(assets['/learning-path.json'].stages[0].title, 'Matemática');
+  const helperPath=fs.readFileSync('public/sw.js','utf8').match(/'([^']*answer-shuffle\.js[^']*)'/)[1];
+  let helper;listeners.fetch({request:new Request('https://app.test'+helperPath),respondWith:value=>helper=value});
+  const helperResponse=await helper;assert.equal(helperResponse.status,200);assert.ok((await helperResponse.text()).includes('function fisherYates'));
   assert.equal(assets['/roadmap.json'].modules.flatMap(module => module.lessons).length, 98);
   assert.equal(assets['/study-bank.json'].length, 392);
 });

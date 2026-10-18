@@ -137,9 +137,9 @@ A versão Android 1.2.0 e o site incluem conexão opcional ao GitHub, backup pri
 
 O novo fluxo segue o roadmap do usuário, com 11 módulos, 98 aulas e 392 exercícios autorais, além do acervo ENEM preservado. Prática e perguntas rápidas dos cards usam todos os módulos com aulas concluídas, sem exigir nota mínima na prova. Veja [LEARNING-FLOW.md](LEARNING-FLOW.md) para conteúdo, vídeos, dados, migração e validação.
 
-## Learning Path · 1.4.0
+## Learning Path · 1.5.1
 
-A versão atual importa do Markdown 25 módulos e 199 aulas: 5 módulos/42 aulas no Básico, 15/121 no Intermediário e 5/36 no Avançado. Módulos expandem de forma independente; cada aula persiste os estados não iniciada, em andamento e concluída. Exercícios inline reutilizam renderização, correção e IndexedDB, com IDs únicos. Prática global e cards só são liberados quando todas as aulas do módulo terminam; a prova é opcional.
+A versão atual importa do Markdown 25 módulos e 199 aulas em uma única matéria chamada Matemática. Os níveis Básico, Intermediário e Avançado permanecem como metadados dos módulos. Módulos expandem de forma independente; cada aula persiste os estados não iniciada, em andamento e concluída. Exercícios inline reutilizam renderização, correção e IndexedDB, com IDs únicos. Prática global e cards só são liberados quando todas as aulas do módulo terminam; a prova é opcional.
 
 O caminho reaproveita recursos relacionados em 154 aulas e informa honestamente as 45 sem teoria cadastrada. O roadmap legado de 98 aulas e 392 exercícios continua preservado em arquivo, histórico e backups. O schema 2 já existia na versão 1.3 e agora inclui os novos IDs `math.*`. O usuário preferiu testar o GitHub real no celular; o aparelho físico e o upload real entre dispositivos ainda não foram testados. Consulte [LEARNING-PATH.md](LEARNING-PATH.md) para migração, limitações e checklist de release.
 
@@ -154,3 +154,9 @@ As provas autorais não repetem questões usadas anteriormente enquanto houver q
 As videoaulas usam o contexto da questão autoral e do ENEM. Canal e oEmbed oficial do YouTube são validados; a heurística pode errar e, sem confirmação, o resultado fica vazio.
 
 Para esta entrega, os 15 arquivos de testes Node passaram. `assembleRelease`, testes unitários Android, lint e `android:release-files` concluíram com a assinatura e o `versionCode 8` verificados. A validação no navegador confirmou o ciclo diagnóstico → aulas → avaliação final, a comparação após recarregar, as três rails em suas próprias etapas e ausência de overflow. Não havia aparelho ou emulador disponível, e o backup real não foi testado por escolha do usuário. O APK usa `versionCode 8` e `versionName 1.5.0`.
+
+## Atualização 1.5.1
+
+Aprender reúne os 25 módulos e as 199 aulas na matéria **Matemática**, preservando a sequência, as dificuldades e o progresso. Provas, exercícios de aula e prática usam Fisher–Yates para embaralhar as alternativas. As letras visuais seguem A–E; a identidade original é mantida para corrigir e salvar a resposta. A ordem é estável durante cada tentativa e após reabrir o app.
+
+Consulte [SECURITY.md](SECURITY.md) e execute `npm run privacy:check` antes de enviar mudanças. Credenciais, assinaturas privadas, exportações, pacotes e estado local de hospedagem não pertencem ao repositório público.

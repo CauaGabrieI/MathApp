@@ -1,15 +1,60 @@
+# Dependências e resultados reproduzíveis
 node_modules/
 dist/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+
+# Segredos de ambiente (somente modelos sem valores podem ser versionados)
 .env
 .env.*
 !.env.example
+!.env.sample
+.secrets/
+secrets.local.*
+credentials.local.*
+tokens.local.*
+
+# Chaves privadas, credenciais de assinatura e pacotes compilados
 *.jks
 *.keystore
 *.p12
 *.pfx
-.openai/*.local.*
+*.key
+*.pem
+*.apk
+*.aab
+*.apks
+**/signing.properties
+**/keystore.properties
+android/.android-signing/
+
+# Estado local Android e arquivos gerados
+.gradle/
 android/.gradle/
 android/**/build/
-android/local.properties
-android/.android-signing/
+**/local.properties
 android/app/src/main/assets/
+
+# Dados pessoais exportados pelo aplicativo; nunca fazem parte do código
+backups/
+exports/
+private-data/
+equacao-historico*.json
+equacao-backup*.json
+
+# Ferramentas locais, relatórios e capturas de desenvolvimento
+.openai/
+.idea/
+.vscode/
+outputs/
+playwright-report/
+test-results/
+.git-privacy-audit/
+*.log
+*.log.*
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
