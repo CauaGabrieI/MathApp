@@ -6,8 +6,8 @@ android {
         applicationId 'br.com.equacao.app'
         minSdk 26
         targetSdk 36
-        versionCode 14
-        versionName '1.5.6'
+        versionCode 15
+        versionName '1.5.7'
         testInstrumentationRunner 'android.test.InstrumentationTestRunner'
     }
     def signingPropertiesFile = rootProject.file('.android-signing/signing.properties')
