@@ -14,6 +14,7 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.GCMParameterSpec;
+import java.util.function.LongSupplier;
 
 /** Fixed GitHub actions; credentials are encrypted with a non-exportable Android Keystore key. */
 final class GitHubBackup {
@@ -22,13 +23,22 @@ final class GitHubBackup {
     private final SharedPreferences prefs;
     private final String clientId;
     private JSONObject session;
-    private String deviceCode;
-    private long deviceExpires,nextPoll;
-    private int interval=5;
+    interface SessionStore { JSONObject load() throws Exception; void save(JSONObject value) throws Exception; void clear() throws Exception; }
+    interface Transport { Result send(String path,String method,JSONObject body,boolean oauth,boolean raw,String token) throws Exception; }
+    private final SessionStore store;
+    private final Transport transport;
+    private final LongSupplier clock;
     GitHubBackup(Context context) throws Exception {
         prefs=context.getSharedPreferences("github-connection",Context.MODE_PRIVATE);
+        store=null;transport=null;clock=System::currentTimeMillis;
         try(InputStream in=context.getAssets().open("github-config.json")){clientId=new JSONObject(new String(read(in,4096),StandardCharsets.UTF_8)).optString("clientId");}
         session=load();
+    }
+    // Package-private injection is for deterministic JVM tests. The app always
+    // uses the Context constructor and the encrypted Android Keystore store.
+    GitHubBackup(String clientId,SessionStore store,Transport transport,LongSupplier clock) throws Exception {
+        this.prefs=null;this.clientId=clientId;this.store=store;this.transport=transport;this.clock=clock;
+        JSONObject loaded=store.load();session=loaded==null?new JSONObject():new JSONObject(loaded.toString());
     }
     private SecretKey key() throws Exception {
         KeyStore ks=KeyStore.getInstance("AndroidKeyStore");ks.load(null);
@@ -36,14 +46,20 @@ final class GitHubBackup {
         return (SecretKey)ks.getKey(KEY,null);
     }
     private JSONObject load(){try{String value=prefs.getString("session",null);if(value==null)return new JSONObject();String[] parts=value.split("\\.");Cipher cipher=Cipher.getInstance("AES/GCM/NoPadding");cipher.init(Cipher.DECRYPT_MODE,key(),new GCMParameterSpec(128,Base64.decode(parts[0],Base64.NO_WRAP)));cipher.updateAAD(KEY.getBytes(StandardCharsets.UTF_8));return new JSONObject(new String(cipher.doFinal(Base64.decode(parts[1],Base64.NO_WRAP)),StandardCharsets.UTF_8));}catch(Exception ignored){prefs.edit().clear().apply();return new JSONObject();}}
-    private void save() throws Exception {
-        Cipher cipher=Cipher.getInstance("AES/GCM/NoPadding");cipher.init(Cipher.ENCRYPT_MODE,key());cipher.updateAAD(KEY.getBytes(StandardCharsets.UTF_8));
-        String encrypted=Base64.encodeToString(cipher.getIV(),Base64.NO_WRAP)+"."+Base64.encodeToString(cipher.doFinal(session.toString().getBytes(StandardCharsets.UTF_8)),Base64.NO_WRAP);
-        if(!prefs.edit().putString("session",encrypted).commit())throw new IOException("Não foi possível proteger a conexão neste aparelho.");
+    private void save() throws Exception { save(session); }
+    private void save(JSONObject value) throws Exception {
+        if(store!=null)store.save(new JSONObject(value.toString()));
+        else {
+            Cipher cipher=Cipher.getInstance("AES/GCM/NoPadding");cipher.init(Cipher.ENCRYPT_MODE,key());cipher.updateAAD(KEY.getBytes(StandardCharsets.UTF_8));
+            String encrypted=Base64.encodeToString(cipher.getIV(),Base64.NO_WRAP)+"."+Base64.encodeToString(cipher.doFinal(value.toString().getBytes(StandardCharsets.UTF_8)),Base64.NO_WRAP);
+            if(!prefs.edit().putString("session",encrypted).commit())throw new IOException("Não foi possível proteger a conexão neste aparelho.");
+        }
+        session=value;
     }
     private static byte[] read(InputStream in,int limit) throws IOException {if(in==null)return new byte[0];try(InputStream stream=in;ByteArrayOutputStream out=new ByteArrayOutputStream()){byte[] bytes=new byte[16384];int n;while((n=stream.read(bytes))!=-1){if(out.size()+n>limit)throw new IOException("Resposta muito grande");out.write(bytes,0,n);}return out.toByteArray();}}
-    private static final class Result {final int status;final JSONObject data;Result(int status,JSONObject data){this.status=status;this.data=data;}}
+    static final class Result {final int status;final JSONObject data;Result(int status,JSONObject data){this.status=status;this.data=data;}}
     private Result request(String path,String method,JSONObject body,boolean oauth,boolean raw) throws Exception {
+        if(transport!=null){Result result=transport.send(path,method,body,oauth,raw,session.optString("token"));checkStatus(result.status,oauth);return result;}
         // Callers only use constant paths and a username verified by /user; never a bridge URL.
         String address=(oauth?"https://github.com":"https://api.github.com")+path;
         HttpURLConnection connection=(HttpURLConnection)new URL(address).openConnection();
@@ -53,37 +69,87 @@ final class GitHubBackup {
         try{
             if(body!=null){connection.setDoOutput(true);connection.setRequestProperty("Content-Type","application/json");try(OutputStream out=connection.getOutputStream()){out.write(body.toString().getBytes(StandardCharsets.UTF_8));}}
             int code=connection.getResponseCode();if(code>=300&&code<400)throw new IOException("Redirecionamento recusado");
-            if(code==401&&!oauth){logout();throw new BackupError("Sua autorização expirou ou foi revogada. Conecte o GitHub novamente.",401);}
-            if(code==403||code==429)throw new BackupError("GitHub indisponível por limite de acesso ou permissão. Tente novamente mais tarde.",code);
+            checkStatus(code,oauth);
             byte[] bytes=read(code>=400?connection.getErrorStream():connection.getInputStream(),oauth?16384:12*1024*1024);
             JSONObject data;try{data=new JSONObject(new String(bytes,StandardCharsets.UTF_8));}catch(Exception ignored){data=new JSONObject();}return new Result(code,data);
         }finally{connection.disconnect();}
+    }
+    private void checkStatus(int status,boolean oauth) throws Exception {
+        if(status==401&&!oauth){logout();throw new BackupError("Sua autorização expirou ou foi revogada. Conecte o GitHub novamente.",401);}
+        if(status==403||status==429)throw new BackupError("GitHub indisponível por limite de acesso ou permissão. Tente novamente mais tarde.",status);
     }
     private JSONObject api(String path) throws Exception {Result r=request(path,"GET",null,false,false);if(r.status!=200)throw new BackupError("Não foi possível identificar sua conta GitHub.",502);return r.data;}
     private static JSONObject profile(JSONObject data) throws Exception {long id=data.optLong("id");String login=data.optString("login");if(id<=0||!login.matches("[-a-zA-Z0-9_]{1,39}"))throw new BackupError("Conta GitHub inválida.",502);return new JSONObject().put("id",id).put("login",login);}
     private String path() throws Exception {return "/repos/"+session.getJSONObject("user").getString("login")+"/"+REPO;}
     private void validate(JSONObject data) throws Exception {if(!"br.com.equacao.app".equals(data.optString("app"))||(data.optInt("schemaVersion")!=1&&data.optInt("schemaVersion")!=2)||data.optLong("ownerId")!=session.getJSONObject("user").getLong("id")||data.optJSONArray("records")==null||data.optJSONArray("learningEntries")==null||data.toString().getBytes(StandardCharsets.UTF_8).length>LIMIT)throw new BackupError("Backup inválido ou pertencente a outra conta. Nenhum dado foi alterado.",400);}
     private boolean repository() throws Exception {Result r=request(path(),"GET",null,false,false);if(r.status==404)return false;if(r.status!=200)throw new BackupError("Não foi possível consultar o repositório de backup.",502);if(!r.data.optBoolean("private")||r.data.optJSONObject("owner")==null||r.data.getJSONObject("owner").optLong("id")!=session.getJSONObject("user").getLong("id")||r.data.optBoolean("fork")||r.data.optBoolean("archived"))throw new BackupError("equacao-backup precisa ser um repositório privado, da sua conta e disponível. Nenhum arquivo foi alterado.",400);return true;}
-    private void logout(){session=new JSONObject();deviceCode=null;prefs.edit().clear().commit();}
+    private void logout() throws Exception {
+        if(store!=null)store.clear();
+        else if(!prefs.edit().clear().commit())throw new IOException("Não foi possível remover a conexão neste aparelho.");
+        session=new JSONObject();
+    }
+    private boolean hasToken(long now){return !session.optString("token").isEmpty()&&session.optLong("expires")>now;}
+    private JSONObject copy() throws Exception {return new JSONObject(session.toString());}
+    private void cleanExpired(long now) throws Exception {
+        JSONObject next=copy();boolean changed=false;
+        if(next.has("token")&&next.optLong("expires")<=now){for(String name:new String[]{"token","user","expires","createdRepoId"})next.remove(name);changed=true;}
+        JSONObject device=next.optJSONObject("device");
+        if(device!=null&&device.optLong("expires")<=now&&next.optString("token").isEmpty()){next.remove("device");changed=true;}
+        if(changed)save(next);
+    }
+    private JSONObject publicFlow(long now) throws Exception {
+        JSONObject device=session.optJSONObject("device");boolean finishing=hasToken(now)&&!session.has("user");
+        if(device==null&&!finishing)return null;
+        return new JSONObject().put("userCode",device==null?"":device.optString("userCode"))
+            .put("verificationUri","https://github.com/login/device")
+            .put("expiresAt",finishing?session.optLong("expires"):device.optLong("expires"))
+            .put("interval",device==null?5:Math.max(5,device.optInt("interval",5)))
+            .put("nextPollAt",device==null?0:device.optLong("next"))
+            .put("phase",finishing?"finishing":"authorizing");
+    }
+    private JSONObject finishProfile() throws Exception {
+        JSONObject user=profile(api("/user")),next=copy();next.put("user",user);next.remove("device");save(next);
+        return new JSONObject().put("user",user);
+    }
     synchronized JSONObject action(String action,JSONObject input) throws Exception {
-        long now=System.currentTimeMillis();
-        if("status".equals(action)){if(session.optLong("expires")<=now)logout();return new JSONObject().put("configured",clientId.matches("[a-zA-Z0-9]{10,100}")).put("user",session.opt("user"));}
+        long now=clock.getAsLong();
         if("logout".equals(action)){logout();return new JSONObject().put("user",JSONObject.NULL);}
+        if("status".equals(action)){
+            cleanExpired(now);JSONObject result=new JSONObject().put("configured",clientId.matches("[a-zA-Z0-9]{10,100}")).put("user",session.opt("user")==null?JSONObject.NULL:session.opt("user"));
+            JSONObject flow=publicFlow(now);if(flow!=null)result.put("flow",flow);return result;
+        }
         if("start".equals(action)){
             if(!clientId.matches("[a-zA-Z0-9]{10,100}"))throw new BackupError("O login GitHub ainda não foi configurado.",503);
             Result r=request("/login/device/code","POST",new JSONObject().put("client_id",clientId).put("scope","repo"),true,false);JSONObject d=r.data;
             if(r.status!=200||d.optString("device_code").isEmpty()||d.optString("user_code").isEmpty()||!"https://github.com/login/device".equals(d.optString("verification_uri")))throw new BackupError("Não foi possível iniciar o login. Confira se Device Flow está habilitado.",502);
-            deviceCode=d.getString("device_code");interval=Math.max(5,d.optInt("interval",5));deviceExpires=now+Math.min(900,d.optInt("expires_in",900))*1000L;nextPoll=now+interval*1000L;
-            return new JSONObject().put("userCode",d.getString("user_code")).put("verificationUri","https://github.com/login/device").put("interval",interval).put("expiresAt",deviceExpires);
+            now=clock.getAsLong();int interval=Math.max(5,d.optInt("interval",5));
+            JSONObject device=new JSONObject().put("code",d.getString("device_code")).put("userCode",d.getString("user_code")).put("interval",interval)
+                .put("expires",now+Math.max(1,Math.min(900,d.optInt("expires_in",900)))*1000L).put("next",now+interval*1000L);
+            save(new JSONObject().put("device",device));return publicFlow(now);
         }
         if("poll".equals(action)){
-            if(deviceCode==null||now>=deviceExpires){deviceCode=null;throw new BackupError("O código expirou. Inicie a conexão novamente.",400);}if(now<nextPoll)return new JSONObject().put("pending",true).put("interval",Math.max(1,(nextPoll-now+999)/1000));
-            Result r=request("/login/oauth/access_token","POST",new JSONObject().put("client_id",clientId).put("device_code",deviceCode).put("grant_type","urn:ietf:params:oauth:grant-type:device_code"),true,false);JSONObject d=r.data;String error=d.optString("error");
-            if("authorization_pending".equals(error)||"slow_down".equals(error)){if("slow_down".equals(error))interval+=5;nextPoll=now+interval*1000L;return new JSONObject().put("pending",true).put("interval",interval);}
-            if(r.status!=200||d.optString("access_token").isEmpty()){deviceCode=null;throw new BackupError("access_denied".equals(error)?"Você cancelou a autorização no GitHub.":"Código expirado ou inválido. Inicie a conexão novamente.",400);}
-            if(!java.util.Arrays.asList(d.optString("scope").split("[ ,]+" )).contains("repo"))throw new BackupError("A permissão de backup privado não foi concedida.",400);
-            JSONObject previous=session;session=new JSONObject().put("token",d.getString("access_token"));try{session.put("user",profile(api("/user")));session.put("expires",now+Math.min(2592000,d.optLong("expires_in",2592000))*1000L);save();deviceCode=null;}catch(Exception e){session=previous;throw e;}
-            return new JSONObject().put("user",session.getJSONObject("user"));
+            cleanExpired(now);
+            if(hasToken(now)){if(session.has("user"))return new JSONObject().put("user",session.getJSONObject("user"));return finishProfile();}
+            JSONObject device=session.optJSONObject("device");
+            if(device==null)throw new BackupError("O código expirou. Inicie a conexão novamente.",400);
+            if(now<device.optLong("next"))return new JSONObject().put("pending",true).put("interval",Math.max(1,(device.optLong("next")-now+999)/1000));
+            int interval=Math.max(5,device.optInt("interval",5));JSONObject next=copy();next.getJSONObject("device").put("next",now+interval*1000L);save(next);
+            Result r=request("/login/oauth/access_token","POST",new JSONObject().put("client_id",clientId).put("device_code",device.getString("code")).put("grant_type","urn:ietf:params:oauth:grant-type:device_code"),true,false);JSONObject d=r.data;String error=d.optString("error");
+            if("authorization_pending".equals(error)||"slow_down".equals(error)){
+                if("slow_down".equals(error))interval+=5;next=copy();next.getJSONObject("device").put("interval",interval).put("next",clock.getAsLong()+interval*1000L);save(next);
+                return new JSONObject().put("pending",true).put("interval",interval);
+            }
+            if("access_denied".equals(error)||"expired_token".equals(error)||"bad_verification_code".equals(error)){
+                next=copy();next.remove("device");save(next);throw new BackupError("access_denied".equals(error)?"Você cancelou a autorização no GitHub.":"Código expirado ou inválido. Inicie a conexão novamente.",400);
+            }
+            if(r.status!=200||d.optString("access_token").isEmpty())throw new BackupError("Não foi possível concluir a conexão. Volte ao app para tentar verificar novamente.",502);
+            if(!java.util.Arrays.asList(d.optString("scope").split("[ ,]+" )).contains("repo")){
+                next=copy();next.remove("device");save(next);throw new BackupError("A permissão de backup privado não foi concedida.",400);
+            }
+            next=copy();next.put("token",d.getString("access_token")).put("expires",clock.getAsLong()+Math.max(1,Math.min(2592000,d.optLong("expires_in",2592000)))*1000L);
+            // Preserve an issued token before /user: an interrupted profile
+            // request must not force the student to authorize a second code.
+            save(next);return finishProfile();
         }
         if(session.optLong("expires")<=now||!session.has("token")||!session.has("user"))throw new BackupError("Conecte sua conta GitHub novamente.",401);
         if(!"read".equals(action)&&!"write".equals(action))throw new BackupError("Operação inválida.",400);

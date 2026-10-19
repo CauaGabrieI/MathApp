@@ -156,7 +156,7 @@ public class MainActivity extends androidx.activity.ComponentActivity {
         web.evaluateJavascript("(()=>{const d=[...document.querySelectorAll('dialog[open]')].pop();if(d){d.close();return true;}if(location.hash!=='#mapa'){location.hash='#mapa';return true;}return false;})()",handled->{if("false".equals(handled))finish();});
     }
     @Override protected void onPause(){if(updates!=null)updates.onPause();if(web!=null){web.evaluateJavascript("document.querySelector('#learning-dialog')?.close();document.querySelectorAll('iframe').forEach(f=>f.remove());",null);web.onPause();}super.onPause();}
-    @Override protected void onResume(){super.onResume();if(web!=null)web.onResume();if(updates!=null)updates.onResume();}
+    @Override protected void onResume(){super.onResume();if(web!=null){web.onResume();web.evaluateJavascript("window.dispatchEvent(new Event('android-app-resume'))",null);}if(updates!=null)updates.onResume();}
     @Override protected void onDestroy(){if(updates!=null)updates.close();requests.shutdownNow();if(web!=null){web.loadUrl("about:blank");web.destroy();}super.onDestroy();}
     WebView testWebView(){return web;}
     String testPageError(){return pageError;}

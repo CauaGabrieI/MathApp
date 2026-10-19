@@ -1,4 +1,4 @@
-import {initGitHub,disableAutoBackup} from './github-ui.js?v=math27';
+import {initGitHub,disableAutoBackup} from './github-ui.js?v=math30';
 import {openDB,snapshot,reserveQuestion,submitAnswer,clearHistory,setActive,saveLearningTopic,saveCardReview,beginModuleExam,saveExamAnswer,touchExamQuestion,migrateRoadmap,saveLearningFilters} from './db.js?v=math27';
 import {statementHTML,inlineHTML,richOptionHTML,imageURL,initQuestionMedia} from './render.js?v=math27';
 import {SOURCES,completedRecords,localDay,stats} from './core.js?v=math27';
@@ -121,7 +121,7 @@ initVideoUI(()=>({records,roadmap:data?.roadmap,question:activeRecord()?.questio
 try{broadcast=new BroadcastChannel('equacao-history');broadcast.onmessage=async()=>{if(dbReady){await sync();if(page==='prova')renderExam();}};}catch{}
 window.addEventListener('focus',async()=>{if(dbReady){await sync();if(page==='prova')renderExam();}});
 $('#date-chip').textContent=new Date().toLocaleDateString('pt-BR',{day:'numeric',month:'long'});
-async function init(){try{await openDB();dbReady=true;await loadCourse();await migrateRoadmap(data.roadmap);await sync();initGitHub({showDialog,toast,refresh:async()=>{await migrateRoadmap(data.roadmap);await sync();},broadcast:()=>broadcast?.postMessage('updated')}).catch(()=>{});navigator.storage?.persist?.().catch(()=>{});navigate(location.hash.slice(1)||'mapa',false,true);}catch(error){toast('Não foi possível abrir os conteúdos. Seu histórico foi preservado.');$('#learning-root').innerHTML='<div class="learning-empty"><h2>Vamos tentar de novo?</h2><p>Verifique a conexão ou o armazenamento e reabra o app.</p><button class="button primary" onclick="location.reload()">Recarregar</button></div>';console.error(error);}if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js?v=math29').catch(()=>{});}
+async function init(){try{await openDB();dbReady=true;await loadCourse();await migrateRoadmap(data.roadmap);await sync();initGitHub({showDialog,toast,refresh:async()=>{await migrateRoadmap(data.roadmap);await sync();},broadcast:()=>broadcast?.postMessage('updated')}).catch(()=>{});navigator.storage?.persist?.().catch(()=>{});navigate(location.hash.slice(1)||'mapa',false,true);}catch(error){toast('Não foi possível abrir os conteúdos. Seu histórico foi preservado.');$('#learning-root').innerHTML='<div class="learning-empty"><h2>Vamos tentar de novo?</h2><p>Verifique a conexão ou o armazenamento e reabra o app.</p><button class="button primary" onclick="location.reload()">Recarregar</button></div>';console.error(error);}if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js?v=math30').catch(()=>{});}
 init();
 
 document.addEventListener('keydown',event=>{if((event.key==='Enter'||event.key===' ')&&event.target.matches('img[data-zoom]')){event.preventDefault();event.target.click();}});
