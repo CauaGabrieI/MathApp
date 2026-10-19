@@ -84,7 +84,7 @@ test('trocar aba não chama exercício, touch ou estudo e o template não volta 
   const openEnd = source.indexOf('async function handleClick', openStart);
   const openBody = source.slice(openStart, openEnd);
   assert.match(openBody, /renderLessonTabs\(/);
-  assert.match(openBody, /await config\.touch\(id\)/);
+  assert.match(openBody, /await config\.touch\(id,l\.contentVersion\)/);
   assert.doesNotMatch(openBody, /return renderLessonTabs\(/);
   assert.doesNotMatch(openBody, /scrollIntoView/);
   assert.equal((source.match(/role="tablist"/g) ?? []).length, 1);

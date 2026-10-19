@@ -109,6 +109,7 @@
       "sourceNumber": 1,
       "branchId": "numbers",
       "prerequisiteIds": [],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Leitura e estudo",
       "topics": [
         {
@@ -173,6 +174,7 @@
       "prerequisiteIds": [
         "math.m01"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Números e operações",
       "topics": [
         {
@@ -227,6 +229,7 @@
       "prerequisiteIds": [
         "math.m02"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Razões e proporções",
       "topics": [
         {
@@ -286,6 +289,7 @@
       "prerequisiteIds": [
         "math.m01"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Porcentagem e finanças básicas",
       "topics": [
         {
@@ -341,6 +345,7 @@
         "math.m01",
         "math.m04"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Potências e radicais",
       "topics": [
         {
@@ -391,6 +396,7 @@
         "math.m01",
         "math.m04"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Medidas e estimativas",
       "topics": [
         {
@@ -450,6 +456,7 @@
       "prerequisiteIds": [
         "math.m06"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Álgebra fundamental",
       "topics": [
         {
@@ -505,6 +512,7 @@
         "math.m06",
         "math.m02"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Equações e polinômios",
       "topics": [
         {
@@ -564,6 +572,7 @@
       "prerequisiteIds": [
         "math.m08"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Introdução às funções",
       "topics": [
         {
@@ -619,6 +628,7 @@
         "math.m08",
         "math.m07"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Função afim",
       "topics": [
         {
@@ -669,6 +679,7 @@
         "math.m08",
         "math.m04"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Função quadrática",
       "topics": [
         {
@@ -724,6 +735,7 @@
         "math.m06",
         "math.m04"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Exponencial e logaritmos",
       "topics": [
         {
@@ -777,9 +789,10 @@
       "branchId": "geometry",
       "prerequisiteIds": [
         "math.m02",
-        "math.m05",
-        "math.m06"
+        "math.m04",
+        "math.m05"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Sequências e progressões",
       "topics": [
         {
@@ -834,6 +847,7 @@
       "prerequisiteIds": [
         "math.m13"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Geometria plana I",
       "topics": [
         {
@@ -889,6 +903,7 @@
         "math.m14",
         "math.m08"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Geometria plana II",
       "topics": [
         {
@@ -941,8 +956,10 @@
       "sourceNumber": 16,
       "branchId": "geometry",
       "prerequisiteIds": [
+        "math.m05",
         "math.m14"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Trigonometria",
       "topics": [
         {
@@ -995,9 +1012,11 @@
       "sourceNumber": 17,
       "branchId": "geometry",
       "prerequisiteIds": [
+        "math.m04",
         "math.m09",
         "math.m14"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Geometria espacial",
       "topics": [
         {
@@ -1050,9 +1069,10 @@
       "sourceNumber": 18,
       "branchId": "statistics",
       "prerequisiteIds": [
-        "math.m02",
-        "math.m04"
+        "math.m01",
+        "math.m02"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Geometria analítica",
       "topics": [
         {
@@ -1107,6 +1127,7 @@
       "prerequisiteIds": [
         "math.m01"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Estatística descritiva",
       "topics": [
         {
@@ -1162,6 +1183,7 @@
         "math.m19",
         "math.m02"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Análise combinatória",
       "topics": [
         {
@@ -1215,9 +1237,11 @@
       "branchId": "ratios",
       "prerequisiteIds": [
         "math.m03",
+        "math.m04",
         "math.m11",
         "math.m12"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Probabilidade",
       "topics": [
         {
@@ -1269,6 +1293,7 @@
         "math.m10",
         "math.m11"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Matemática financeira avançada",
       "topics": [
         {
@@ -1316,10 +1341,10 @@
       "sourceNumber": 23,
       "branchId": "statistics",
       "prerequisiteIds": [
-        "math.m18",
-        "math.m20",
-        "math.m09"
+        "math.m02",
+        "math.m18"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Funções e modelagem integrada",
       "topics": [
         {
@@ -1379,6 +1404,7 @@
         "math.m22",
         "math.m23"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Estatística e inferência",
       "topics": [
         {
@@ -1426,11 +1452,13 @@
       "sourceNumber": 25,
       "branchId": "modeling",
       "prerequisiteIds": [
+        "math.m06",
         "math.m07",
         "math.m15",
         "math.m17",
         "math.m22"
       ],
+      "prerequisiteRevision": 2,
       "sourceStudyAfter": "Problemas integrados",
       "topics": [
         {

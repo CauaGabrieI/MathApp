@@ -1,3 +1,5 @@
+import {approvedExercises} from '../content/pedagogy-exercises.mjs';
+import {MODULE01_LESSONS} from '../content/review/module01.mjs';
 import {createLearningPath} from '../content/learning-path.mjs';
 import {parseMathMarkdown,buildCurriculum} from './import-curriculum.mjs';
 import {pathVideoSeeds} from '../content/path-video-seeds.mjs';
@@ -19,9 +21,10 @@ const legacyIndex=makeCurriculumIndex(bank,curriculum);
 await fs.writeFile('public/curriculum-index.json',JSON.stringify(legacyIndex));
 const {roadmap,questions:studyBank}=createRoadmap();validateRoadmap(roadmap);
 await fs.writeFile('public/roadmap.json',JSON.stringify(roadmap));
+studyBank.push(...approvedExercises(MODULE01_LESSONS,curriculum));
 await fs.writeFile('public/study-bank.json',JSON.stringify(studyBank));
 await fs.writeFile('public/roadmap-index.json',JSON.stringify(roadmapIndex(roadmap,legacyIndex)));
-const {path:learningPath,index:learningPathIndex}=createLearningPath(curriculum,roadmap,legacyIndex);validateRoadmap(learningPath);
+const {path:learningPath,index:learningPathIndex}=createLearningPath(curriculum,roadmap,legacyIndex,{theoryCandidates:MODULE01_LESSONS,preview:process.env.PEDAGOGY_PREVIEW==='1'});validateRoadmap(learningPath);
 await fs.writeFile('public/learning-path.json',JSON.stringify(learningPath));
 await fs.writeFile('public/learning-path-index.json',JSON.stringify(learningPathIndex));
 

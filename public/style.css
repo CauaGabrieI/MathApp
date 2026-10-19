@@ -921,3 +921,6 @@ select option{background:var(--eq-color-surface);color:var(--eq-color-text)}
 @media(max-width:650px){.journey-subject-grid{grid-template-columns:1fr;gap:12px}.journey-subject-card{min-height:190px;padding:20px}}
 
 .journey-subject-card .progress-track{display:block}.journey-subject-card .progress-track>span{display:block;height:100%;border-radius:inherit;background:var(--primary)}.journey-subject-card:focus-visible{outline-color:var(--primary)}
+
+/* Structured teaching content uses the existing lesson surface and type scale. */
+.lesson-guide dl{margin:0}.lesson-guide dt{font-weight:700;margin-top:1rem}.lesson-guide dd{margin:.4rem 0 1rem;line-height:1.8}.lesson-guide details summary{cursor:pointer;white-space:normal;overflow-wrap:anywhere}.lesson-guide .lesson-answer{margin-top:1rem}.lesson-guide li,.lesson-guide p{overflow-wrap:anywhere}.lesson-guide .text-button span{display:block;white-space:normal;text-align:start}

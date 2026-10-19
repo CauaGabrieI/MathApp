@@ -16,7 +16,7 @@ export function videoCategories(curriculum){
  return remaining.length?[...groups,{id:'other-subjects',label:'Outros assuntos',moduleIds:remaining.map(module=>module.id),modules:remaining}]:groups;
 }
 export function videoModules(curriculum){return videoCategories(curriculum).flatMap(group=>group.modules);}
-export function videoLessons(curriculum,moduleId){return videoModules(curriculum).find(module=>module.id===moduleId)?.lessons??[];}
+export function videoLessons(curriculum,moduleId){return [...(videoModules(curriculum).find(module=>module.id===moduleId)?.lessons??[])].sort((a,b)=>(a.displayOrder??a.order)-(b.displayOrder??b.order));}
 export function isValidVideoSelection(curriculum,moduleId,lessonId=''){
  const module=videoModules(curriculum).find(item=>item.id===moduleId);
  return Boolean(module&&(!lessonId||module.lessons?.some(lesson=>lesson.id===lessonId)));

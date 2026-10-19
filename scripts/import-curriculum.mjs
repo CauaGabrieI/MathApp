@@ -2,6 +2,8 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
+import {MODULE_PREREQUISITES, PEDAGOGY_VERSION} from '../content/pedagogy-policy.mjs';
+
 // Source module numbers anchor identities; source titles are display text only.
 const moduleId = number => `math.m${String(number).padStart(2, '0')}`;
 const BRANCHES = [
@@ -19,13 +21,7 @@ const BRANCH_MODULES = {
   geometry: [13, 14, 15, 16, 17], statistics: [18, 23], probability: [19, 20], modeling: [22, 24, 25],
 };
 // Editorial recommendations, intentionally independent of the source's linear route.
-const PREREQUISITES = {
-  1: [], 2: [1], 3: [2], 4: [1], 5: [1, 4], 6: [1, 4], 7: [6], 8: [6, 2],
-  9: [8], 10: [8, 7], 11: [8, 4], 12: [6, 4], 13: [2, 5, 6], 14: [13],
-  15: [14, 8], 16: [14], 17: [9, 14], 18: [2, 4], 19: [1], 20: [19, 2],
-  21: [3, 11, 12], 22: [9, 10, 11], 23: [18, 20, 9],
-  24: [15, 16, 20, 21, 22, 23], 25: [7, 15, 17, 22],
-};
+
 const FOUNDATIONS = [
   {
     id: 'math.foundation.interpretation', title: 'Interpretação de problemas',
@@ -112,7 +108,8 @@ export function buildCurriculum(sourceModules, previous = null) {
     return {
       id, title: source.title, level: source.level, order: source.sourceNumber, sourceNumber: source.sourceNumber,
       branchId: old?.branchId ?? branchId,
-      prerequisiteIds: old?.prerequisiteIds ?? PREREQUISITES[source.sourceNumber].map(number => ids.get(number)),
+      prerequisiteIds: MODULE_PREREQUISITES[source.sourceNumber].map(number => ids.get(number)),
+      prerequisiteRevision: PEDAGOGY_VERSION,
       sourceStudyAfter: source.sourceStudyAfter,
       topics: preserveTopicIds(source.topics, old?.topics ?? [], id),
     };

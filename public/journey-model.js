@@ -1,3 +1,5 @@
+export function orderedLessons(module){return [...module.lessons].sort((a,b)=>(a.displayOrder??a.order)-(b.displayOrder??b.order));}
+export function orderedModules(roadmap){return [...roadmap.modules].sort((a,b)=>(a.displayOrder??a.order)-(b.displayOrder??b.order));}
 export function validateRoadmap(roadmap) {
   if (![1,2].includes(roadmap?.schemaVersion)||!Array.isArray(roadmap.modules)||!roadmap.modules.length) throw new Error('Roadmap inválido');
   const canonical=roadmap.schemaVersion===2,ids=new Set(),moduleIds=new Set(roadmap.modules.map(m=>m.id));
@@ -13,6 +15,10 @@ export function validateRoadmap(roadmap) {
     }
   }
   if(canonical){
+    const allLessons=new Map(roadmap.modules.flatMap(m=>m.lessons.map(l=>[l.id,l])));
+    const activeLessons=new Set(),visitedLessons=new Set();
+    const visitLesson=id=>{if(activeLessons.has(id))throw new Error('Ciclo de pré-requisitos de aula');if(visitedLessons.has(id))return;activeLessons.add(id);const l=allLessons.get(id);for(const prerequisite of l.prerequisiteIds??[]){if(!allLessons.has(prerequisite))throw new Error('Pré-requisito de aula inexistente');visitLesson(prerequisite);}activeLessons.delete(id);visitedLessons.add(id);};
+    for(const m of roadmap.modules){const display=new Set();for(const l of m.lessons){if(l.displayOrder!==undefined&&(!Number.isInteger(l.displayOrder)||l.displayOrder<1||display.has(l.displayOrder)))throw new Error('Ordem editorial inválida');display.add(l.displayOrder??l.order);if(l.prerequisiteIds!==undefined&&(!Array.isArray(l.prerequisiteIds)||new Set(l.prerequisiteIds).size!==l.prerequisiteIds.length))throw new Error('Pré-requisito de aula inválido');visitLesson(l.id);}}
     if(!Array.isArray(roadmap.stages)||!roadmap.stages.length)throw new Error('Etapas inválidas');
     const covered=new Set();
     for(const stage of roadmap.stages){
@@ -70,7 +76,7 @@ export function learnedQuestions(roadmap,entries,bank,index){
   });
 }
 export function learnedCards(roadmap,entries){return journeyProgress(roadmap,entries).modules.filter(m=>m.learned).flatMap(m=>m.lessons.filter(l=>l.card?.question&&l.card?.answer).map(l=>({...l.card,id:l.id,moduleId:m.id,moduleTitle:m.title,lessonTitle:l.title})));}
-export function nextLesson(roadmap,entries,lastId){const byId=new Map(entries.map(e=>[e.id,e]));const all=roadmap.modules.flatMap(m=>m.lessons.map(l=>({...l,moduleId:m.id,moduleTitle:m.title})));return all.find(l=>l.id===lastId&&!byId.get(l.id)?.studied)||all.find(l=>!byId.get(l.id)?.studied)||all[0];}
+export function nextLesson(roadmap,entries,lastId){const byId=new Map(entries.map(e=>[e.id,e]));const all=orderedModules(roadmap).flatMap(m=>orderedLessons(m).map(l=>({...l,moduleId:m.id,moduleTitle:m.title})));return all.find(l=>l.id===lastId&&!byId.get(l.id)?.studied)||all.find(l=>!byId.get(l.id)?.studied)||all[0];}
 export function examSelection(module,bank,records=[],random=Math.random,options={}){
   const allowed=new Set(module.lessons.flatMap(l=>l.questionIds)),seen=new Set(records.map(r=>r.id)),prior=new Set(),priorKeys=new Set();
   if(Array.isArray(options.exams)) for(const exam of options.exams) if(exam.moduleId===module.id) for(const id of exam.questionIds??[]) {prior.add(id);const q=bank.find(row=>row.id===id);if(q?.dedupeKey)priorKeys.add(q.dedupeKey);}
@@ -90,7 +96,8 @@ export function examSelection(module,bank,records=[],random=Math.random,options=
   if(chosen.length<count)return [];
   return chosen.map(q=>q.id);
 }
-export function examResult(exam,bank){const byId=new Map(bank.map(q=>[q.id,q]));let correct=0,answered=0;for(const id of exam.questionIds){if(exam.answers[id]){answered++;if(exam.answers[id]===byId.get(id)?.answer)correct++;}}return{correct,answered,total:exam.questionIds.length,percent:exam.questionIds.length?Math.round(correct/exam.questionIds.length*100):0};}
+export function examQuestion(exam,id,bank){return exam.questionSnapshots?.find(q=>q.id===id)??bank.find(q=>q.id===id);}
+export function examResult(exam,bank){let correct=0,answered=0,unavailable=0;for(const id of exam.questionIds){const q=examQuestion(exam,id,bank);if(!q)unavailable++;if(exam.answers[id]){answered++;if(q&&exam.answers[id]===q.answer)correct++;}}return{correct,answered,total:exam.questionIds.length,unavailable,percent:unavailable?null:exam.questionIds.length?Math.round(correct/exam.questionIds.length*100):0};}
 export function normalizeExamKind(kind){return kind===undefined?'legacy':kind;}
 export function examComparison(moduleId,exams,bank){
   const completed=(exams??[]).filter(e=>e.moduleId===moduleId&&e.completedAt);
@@ -104,7 +111,7 @@ export function examComparison(moduleId,exams,bank){
   const baselineIds=new Set(baseline?.questionIds??[]),finalIds=new Set(final?.questionIds??[]);
   const sharedQuestionCount=baseline&&final?[...baselineIds].filter(id=>finalIds.has(id)).length:null;
   const differentQuestionCount=baseline&&final?[...new Set([...baselineIds,...finalIds])].filter(id=>!baselineIds.has(id)||!finalIds.has(id)).length:null;
-  const percentDelta=baselineResult&&finalResult?finalResult.percent-baselineResult.percent:null;
+  const percentDelta=baselineResult&&finalResult&&baselineResult.percent!==null&&finalResult.percent!==null?finalResult.percent-baselineResult.percent:null;
   return {moduleId,baseline,final,baselineResult,finalResult,baselineCounts:baselineResult,finalCounts:finalResult,
     percentDelta,deltaPoints:percentDelta,sharedQuestionCount,differentQuestionCount,differentCount:differentQuestionCount,
     baselinePercent:baselineResult?.percent??null,finalPercent:finalResult?.percent??null};

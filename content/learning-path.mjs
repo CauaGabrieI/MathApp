@@ -1,10 +1,11 @@
 // Curriculum identities, order and titles come exclusively from the imported Markdown.
 // These associations add existing support material; they never replace a curriculum lesson.
 import {guideForLesson} from './lesson-guides.mjs';
+import {lessonPrerequisites, lessonDisplayOrder, PEDAGOGY_VERSION, approvedTheory} from './pedagogy-policy.mjs';
 const rid = (module, lesson) => `roadmap.m${String(module).padStart(2, '0')}.l${String(lesson).padStart(2, '0')}`;
 const tid = (module, lesson) => `math.m${String(module).padStart(2, '0')}.t${String(lesson).padStart(2, '0')}`;
 const ASSOCIATIONS = {
-  1: { 1:[[2,3]], 2:[[2,3]], 3:[[1,3]], 4:[[1,4]], 5:[[1,1]], 6:[[1,2]], 7:[[1,6]], 8:[[1,7]], 10:[[1,8]] },
+  1: { 3:[[1,3]], 4:[[1,4]], 5:[[1,1]], 6:[[1,2]], 7:[[1,6]], 8:[[1,7]], 10:[[1,8]] },
   2: { 1:[[1,18]], 2:[[1,18]], 3:[[1,19]], 4:[[1,20]], 6:[[1,21]] },
   3: { 1:[[1,3],[1,22]], 2:[[1,22]], 3:[[1,22]], 7:[[1,23]], 8:[[1,23]] },
   4: { 1:[[1,9]], 2:[[1,9]], 3:[[1,10]], 5:[[1,12]], 6:[[1,12]], 8:[[1,12]] },
@@ -46,7 +47,7 @@ const DIRECT_EQUIVALENTS = {
   '19.5':[[8,7]], '19.6':[[8,6]], '25.5':[[3,12]],
 };
 const DESCRIPTIONS = [
-  'Reconheça os conjuntos numéricos, organize cálculos e use propriedades das operações para resolver problemas.',
+  'Compreenda o sistema decimal e organize cálculos com naturais, inteiros, frações e decimais para resolver problemas.',
   'Compare grandezas, identifique relações proporcionais e interprete razões, taxas e escalas.',
   'Relacione porcentagens, variações e juros para analisar situações financeiras do cotidiano.',
   'Use potências, raízes e notação científica para representar números e simplificar cálculos.',
@@ -74,10 +75,11 @@ const DESCRIPTIONS = [
 ];
 const unique = values => [...new Set(values)];
 
-export function createLearningPath(curriculum, legacyRoadmap, legacyIndex) {
+export function createLearningPath(curriculum, legacyRoadmap, legacyIndex, {theoryCandidates = {}, preview = false} = {}) {
   const oldLessons = new Map(legacyRoadmap.modules.flatMap(module => module.lessons.map(lesson => [lesson.id, lesson])));
   const lessonQuestions = {}, moduleQuestions = {};
   const modules = curriculum.modules.map(module => {
+    const historicalQuestionIds = [];
     const lessons = module.topics.map(topic => {
       const key = `${module.order}.${topic.order}`;
       const resources = (ASSOCIATIONS[module.order]?.[topic.order] ?? []).map(([m,l]) => {
@@ -92,23 +94,35 @@ export function createLearningPath(curriculum, legacyRoadmap, legacyIndex) {
         const tags = legacyIndex.questionTags[id];
         return tags?.moduleIds?.length === 1 && tags.moduleIds[0] === module.id;
       });
-      const questionIds = unique([...resources.flatMap(resource => resource.questionIds), ...exclusiveQuestions]);
+      const questionIds = unique([...resources.flatMap(resource => resource.questionIds), ...exclusiveQuestions,
+        ...(approvedTheory(theoryCandidates[topic.id]) ? (theoryCandidates[topic.id].exercises??[]).filter(approvedTheory).map(q=>q.id) : [])]);
+      // Keep old association IDs available ONLY for restoring historical exams.
+      if (module.order === 1 && [1,2].includes(topic.order)) historicalQuestionIds.push(...oldLessons.get(rid(2,3)).questionIds);
       lessonQuestions[topic.id] = questionIds;
       const legacyIds = (DIRECT_EQUIVALENTS[key] ?? []).map(([m,l]) => rid(m,l));
       const guide = guideForLesson(topic,module);
-      const card = resources[0]?.card
+      const candidate = theoryCandidates[topic.id];
+      const theory = approvedTheory(candidate) || (preview && candidate) ? structuredClone(candidate) : null;
+      if (theory) delete theory.exercises;
+      const card = module.order === 1 && [1,2].includes(topic.order)
+        ? {id:topic.id, question:guide.example.question, answer:guide.example.answer}
+        : resources[0]?.card
         ? {...resources[0].card, id:topic.id}
         : guide?.example?.question && guide?.example?.answer
           ? {id:topic.id,question:guide.example.question,answer:guide.example.answer}
           : undefined;
-      return {id:topic.id,title:topic.title,order:topic.order,resources,questionIds,legacyIds,
+      return {id:topic.id,moduleId:module.id,title:topic.title,order:topic.order,displayOrder:lessonDisplayOrder(module,topic),
+        prerequisiteIds:lessonPrerequisites(module,topic),contentVersion:theory?.contentVersion ?? 1,
+        reviewStatus:theory?.reviewStatus ?? 'legacy_pending_review',
+        ...(theory ? {theory:{...theory,prerequisiteIds:lessonPrerequisites(module,topic)}} : {}),resources,questionIds,legacyIds,
         ...(card ? {card} : {}),
         videoTopic:resources[0]?.videoTopic ?? 'basics',videoTerms:topic.title,
+        videoReview:{relevance:'title_match',contentCoverage:'not_reviewed',durationSeconds:null,language:null,embeddability:'not_tested',license:'not_verified'},
         guide,
       };
     });
     moduleQuestions[module.id] = unique(lessons.flatMap(lesson => lesson.questionIds));
-    return {...module,description:DESCRIPTIONS[module.order-1],lessons};
+    return {...module,displayOrder:module.order,description:DESCRIPTIONS[module.order-1],historicalQuestionIds:unique(historicalQuestionIds),lessons};
   });
   // The curriculum levels remain on each module as difficulty metadata. The
   // learner-facing path is a single subject, so modules are never split into
@@ -119,7 +133,7 @@ export function createLearningPath(curriculum, legacyRoadmap, legacyIndex) {
     order:1, moduleIds:modules.map(module=>module.id),
   }];
   const requiredModules = Object.fromEntries(Object.entries(legacyIndex.questionTags).filter(([,tags])=>tags.moduleIds?.length).map(([id,tags])=>[id,[...tags.moduleIds]]));
-  const path = {schemaVersion:2,title:'Seu caminho de aprendizagem',source:curriculum.source,prerequisitePolicy:'recommended',
+  const path = {schemaVersion:2,pedagogyVersion:PEDAGOGY_VERSION,editorialPreview:preview,title:'Seu caminho de aprendizagem',source:curriculum.source,prerequisitePolicy:'recommended',
     prerequisiteNote:curriculum.prerequisiteNote,stages,modules,
     // Full original modules retain the context of pre-existing exams and attempts;
     // none of these archived IDs count toward the new curriculum's progression.

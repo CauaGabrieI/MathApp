@@ -1,0 +1,6379 @@
+{
+  "auditVersion": 2,
+  "generatedFrom": {
+    "baseline": "docs/content-audit-baseline.json",
+    "baselineGeneratedAt": "2026-10-19T16:37:05.871Z",
+    "publicLearningPath": "public/learning-path.json",
+    "candidate": "content/review/module01.mjs",
+    "deterministicDate": "2026-10-19"
+  },
+  "status": {
+    "baselineImmutable": true,
+    "canonicalInventory": {
+      "modules": 25,
+      "lessons": 199
+    },
+    "candidate": {
+      "lessons": 10,
+      "examples": 20,
+      "exercises": 40
+    },
+    "humanApproval": {
+      "approvedLessons": 0,
+      "approvedExercises": 0
+    },
+    "pending": {
+      "fullReviewLessons": 189,
+      "candidateHumanReviewLessons": 10,
+      "allCanonicalLessons": 199,
+      "candidateExercises": 40
+    },
+    "publishedCandidate": {
+      "lessons": 0,
+      "exercises": 0,
+      "newAnswerKeys": 0
+    }
+  },
+  "counts": {
+    "canonicalModules": 25,
+    "canonicalLessons": 199,
+    "baselineCanonicalLessons": 199,
+    "candidateLessons": 10,
+    "candidateExamples": 20,
+    "candidateExercises": 40,
+    "pendingFullReviewLessons": 189,
+    "pendingCandidateHumanReviewLessons": 10,
+    "pendingCanonicalLessons": 199,
+    "approvedCandidateLessons": 0,
+    "approvedCandidateExercises": 0,
+    "publishedCandidateLessons": 0,
+    "publishedCandidateExercises": 0,
+    "baselineVideoUniqueIds": 646,
+    "baselineVideoVerifiedLessons": 173,
+    "baselineVideoPendingLessons": 26
+  },
+  "identity": {
+    "idsIntactAgainstBaseline": true,
+    "sourceOrderIntactAgainstBaseline": true,
+    "module01DisplayOrder": [
+      1,
+      5,
+      2,
+      6,
+      7,
+      8,
+      9,
+      10,
+      3,
+      4
+    ],
+    "module07DisplayOrder": [
+      1,
+      4,
+      2,
+      3,
+      6,
+      5,
+      7,
+      8
+    ],
+    "prerequisitePolicy": {
+      "path": "recommended",
+      "revision": [
+        2
+      ]
+    }
+  },
+  "previewPolicy": {
+    "productionEditorialPreview": false,
+    "optInEnvironmentVariable": "PEDAGOGY_PREVIEW",
+    "optInValue": "1",
+    "buildReadsOptIn": true,
+    "androidPrepareRejectsPreview": true,
+    "candidateIsPublished": false
+  },
+  "references": {
+    "curriculumModel": {
+      "file": "aula_modelo_naturais_sistema_decimal.md",
+      "found": false,
+      "status": "absent_in_workspace"
+    },
+    "official": [
+      {
+        "title": "Provas e gabaritos — Inep",
+        "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos",
+        "consultation": "consulted_by_root"
+      },
+      {
+        "title": "Relatório pedagógico Enem 2009–2010",
+        "file": "relatorio_pedagogico_enem_2009_2010.pdf",
+        "url": "https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/relatorio_pedagogico_enem_2009_2010.pdf",
+        "consultation": "official_source_indexed_by_root_search"
+      }
+    ],
+    "editorialMapping": {
+      "labels": [
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ],
+      "status": "non_official_editorial_mapping",
+      "note": "O mapeamento editorial por aula não representa correspondência oficial do Inep."
+    }
+  },
+  "videoAudit": {
+    "uniqueVideoIds": 646,
+    "verifiedLessonCount": 173,
+    "pendingLessonCount": 26,
+    "titleAuthorAvailableLessonCount": 173,
+    "checks": {
+      "duration": "not_verified",
+      "license": "not_verified",
+      "language": "not_verified",
+      "embeddability": "not_verified"
+    },
+    "note": "Título e autoria estão disponíveis no recorte verificado do baseline; duração, licença, idioma e embeddability não foram verificados para os IDs únicos catalogados."
+  },
+  "limitations": [
+    "A contagem de 199 aulas é inventário curricular; não é afirmação de revisão matemática completa.",
+    "As 10 candidatas M01 e seus 20 exemplos/40 exercícios aguardam aprovação humana; os 189 IDs restantes aguardam revisão integral.",
+    "Nenhum novo gabarito ou exercício candidato foi publicado no learning-path de produção deste snapshot.",
+    "A aula_modelo_naturais_sistema_decimal.md não está disponível no workspace.",
+    "O mapeamento H1–H4 é editorial e não oficial; a fonte oficial indexada foi registrada apenas como referência consultada online nesta revisão."
+  ],
+  "modules": [
+    {
+      "id": "math.m01",
+      "title": "Números e operações",
+      "order": 1,
+      "displayOrder": 1,
+      "level": "Básico",
+      "prerequisiteIds": [],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Leitura e estudo",
+      "lessonCount": 10,
+      "lessonDisplayOrder": [
+        1,
+        5,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "math.m02",
+      "title": "Razões e proporções",
+      "order": 2,
+      "displayOrder": 2,
+      "level": "Básico",
+      "prerequisiteIds": [
+        "math.m01"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Números e operações",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m03",
+      "title": "Porcentagem e finanças básicas",
+      "order": 3,
+      "displayOrder": 3,
+      "level": "Básico",
+      "prerequisiteIds": [
+        "math.m02"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Razões e proporções",
+      "lessonCount": 9,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "math.m04",
+      "title": "Potências e radicais",
+      "order": 4,
+      "displayOrder": 4,
+      "level": "Básico",
+      "prerequisiteIds": [
+        "math.m01"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Porcentagem e finanças básicas",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m05",
+      "title": "Medidas e estimativas",
+      "order": 5,
+      "displayOrder": 5,
+      "level": "Básico",
+      "prerequisiteIds": [
+        "math.m01",
+        "math.m04"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Potências e radicais",
+      "lessonCount": 7,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "id": "math.m06",
+      "title": "Álgebra fundamental",
+      "order": 6,
+      "displayOrder": 6,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m01",
+        "math.m04"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Medidas e estimativas",
+      "lessonCount": 9,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "math.m07",
+      "title": "Equações e polinômios",
+      "order": 7,
+      "displayOrder": 7,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m06"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Álgebra fundamental",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        4,
+        2,
+        3,
+        6,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m08",
+      "title": "Introdução às funções",
+      "order": 8,
+      "displayOrder": 8,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m06",
+        "math.m02"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Equações e polinômios",
+      "lessonCount": 9,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "math.m09",
+      "title": "Função afim",
+      "order": 9,
+      "displayOrder": 9,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m08"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Introdução às funções",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m10",
+      "title": "Função quadrática",
+      "order": 10,
+      "displayOrder": 10,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m08",
+        "math.m07"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Função afim",
+      "lessonCount": 7,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "id": "math.m11",
+      "title": "Exponencial e logaritmos",
+      "order": 11,
+      "displayOrder": 11,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m08",
+        "math.m04"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Função quadrática",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m12",
+      "title": "Sequências e progressões",
+      "order": 12,
+      "displayOrder": 12,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m06",
+        "math.m04"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Exponencial e logaritmos",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m13",
+      "title": "Geometria plana I",
+      "order": 13,
+      "displayOrder": 13,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m02",
+        "math.m04",
+        "math.m05"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Sequências e progressões",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m14",
+      "title": "Geometria plana II",
+      "order": 14,
+      "displayOrder": 14,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m13"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Geometria plana I",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m15",
+      "title": "Trigonometria",
+      "order": 15,
+      "displayOrder": 15,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m14",
+        "math.m08"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Geometria plana II",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m16",
+      "title": "Geometria espacial",
+      "order": 16,
+      "displayOrder": 16,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m05",
+        "math.m14"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Trigonometria",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m17",
+      "title": "Geometria analítica",
+      "order": 17,
+      "displayOrder": 17,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m04",
+        "math.m09",
+        "math.m14"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Geometria espacial",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m18",
+      "title": "Estatística descritiva",
+      "order": 18,
+      "displayOrder": 18,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m01",
+        "math.m02"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Geometria analítica",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m19",
+      "title": "Análise combinatória",
+      "order": 19,
+      "displayOrder": 19,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m01"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Estatística descritiva",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m20",
+      "title": "Probabilidade",
+      "order": 20,
+      "displayOrder": 20,
+      "level": "Intermediário",
+      "prerequisiteIds": [
+        "math.m19",
+        "math.m02"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Análise combinatória",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m21",
+      "title": "Matemática financeira avançada",
+      "order": 21,
+      "displayOrder": 21,
+      "level": "Avançado",
+      "prerequisiteIds": [
+        "math.m03",
+        "math.m04",
+        "math.m11",
+        "math.m12"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Probabilidade",
+      "lessonCount": 7,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "id": "math.m22",
+      "title": "Funções e modelagem integrada",
+      "order": 22,
+      "displayOrder": 22,
+      "level": "Avançado",
+      "prerequisiteIds": [
+        "math.m09",
+        "math.m10",
+        "math.m11"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Matemática financeira avançada",
+      "lessonCount": 7,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "id": "math.m23",
+      "title": "Estatística e inferência",
+      "order": 23,
+      "displayOrder": 23,
+      "level": "Avançado",
+      "prerequisiteIds": [
+        "math.m02",
+        "math.m18"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Funções e modelagem integrada",
+      "lessonCount": 8,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "math.m24",
+      "title": "Problemas integrados",
+      "order": 24,
+      "displayOrder": 24,
+      "level": "Avançado",
+      "prerequisiteIds": [
+        "math.m15",
+        "math.m16",
+        "math.m20",
+        "math.m21",
+        "math.m22",
+        "math.m23"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Estatística e inferência",
+      "lessonCount": 7,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "id": "math.m25",
+      "title": "Tópicos complementares",
+      "order": 25,
+      "displayOrder": 25,
+      "level": "Avançado",
+      "prerequisiteIds": [
+        "math.m06",
+        "math.m07",
+        "math.m15",
+        "math.m17",
+        "math.m22"
+      ],
+      "prerequisiteRevision": 2,
+      "sourceStudyAfter": "Problemas integrados",
+      "lessonCount": 7,
+      "lessonDisplayOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  ],
+  "lessons": [
+    {
+      "id": "math.m01.t01",
+      "moduleId": "math.m01",
+      "moduleTitle": "Números e operações",
+      "title": "Naturais e sistema decimal",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": true,
+        "contentVersion": 2,
+        "reviewStatus": "editorial_review_pending_human",
+        "exampleCount": 2,
+        "exerciseCount": 4,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "candidate_pending_human_review",
+        "reason": "Candidato editorial existe, mas não tem aprovação humana registrada."
+      }
+    },
+    {
+      "id": "math.m01.t02",
+      "moduleId": "math.m01",
+      "moduleTitle": "Números e operações",
+      "title": "Inteiros e números negativos",
+      "sourceOrder": 2,
+      "displayOrder": 3,
+      "prerequisiteIds": [
+        "math.m01.t01",
+        "math.m01.t05"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": true,
+        "contentVersion": 2,
+        "reviewStatus": "editorial_review_pending_human",
+        "exampleCount": 2,
+        "exerciseCount": 4,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "candidate_pending_human_review",
+        "reason": "Candidato editorial existe, mas não tem aprovação humana registrada."
+      }
+    },
+    {
+      "id": "math.m01.t03",
+      "moduleId": "math.m01",
+      "moduleTitle": "Números e operações",
+      "title": "Frações próprias e impróprias",
+      "sourceOrder": 3,
+      "displayOrder": 9,
+      "prerequisiteIds": [
+        "math.m01.t01",
+        "math.m01.t05",
+        "math.m01.t10"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 5
+      },
+      "candidate": {
+        "present": true,
+        "contentVersion": 2,
+        "reviewStatus": "editorial_review_pending_human",
+        "exampleCount": 2,
+        "exerciseCount": 4,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "candidate_pending_human_review",
+        "reason": "Candidato editorial existe, mas não tem aprovação humana registrada."
+      }
+    },
+    {
+      "id": "math.m01.t04",
+      "moduleId": "math.m01",
+      "moduleTitle": "Números e operações",
+      "title": "Decimais e conversões",
+      "sourceOrder": 4,
+      "displayOrder": 10,
+      "prerequisiteIds": [
+        "math.m01.t01",
+        "math.m01.t03",
+        "math.m01.t05"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 9
+      },
+      "candidate": {
+        "present": true,
+        "contentVersion": 2,
+        "reviewStatus": "editorial_review_pending_human",
+        "exampleCount": 2,
+        "exerciseCount": 4,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "candidate_pending_human_review",
+        "reason": "Candidato editorial existe, mas não tem aprovação humana registrada."
+      }
+    },
+    {
+      "id": "math.m01.t05",
+      "moduleId": "math.m01",
+      "moduleTitle": "Números e operações",
+      "title": "Adição, subtração, multiplicação e divisão",
+      "sourceOrder": 5,
+      "displayOrder": 2,
+      "prerequisiteIds": [
+        "math.m01.t01"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 9
+      },
+      "candidate": {
+        "present": true,
+        "contentVersion": 2,
+        "reviewStatus": "editorial_review_pending_human",
+        "exampleCount": 2,
+        "exerciseCount": 4,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "candidate_pending_human_review",
+        "reason": "Candidato editorial existe, mas não tem aprovação humana registrada."
+      }
+    },
+    {
+      "id": "math.m01.t06",
+      "moduleId": "math.m01",
+      "moduleTitle": "Números e operações",
+      "title": "Ordem das operações e parênteses",
+      "sourceOrder": 6,
+      "displayOrder": 4,
+      "prerequisiteIds": [
+        "math.m01.t05",
+        "math.m01.t02"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": true,
+        "contentVersion": 2,
+        "reviewStatus": "editorial_review_pending_human",
+        "exampleCount": 2,
+        "exerciseCount": 4,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "candidate_pending_human_review",
+        "reason": "Candidato editorial existe, mas não tem aprovação humana registrada."
+      }
+    },
+    {
+      "id": "math.m01.t07",
+      "moduleId": "math.m01",
+      "moduleTitle": "Números e operações",
+      "title": "Múltiplos e divisores",
+      "sourceOrder": 7,
+      "displayOrder": 5,
+      "prerequisiteIds": [
+        "math.m01.t01",
+        "math.m01.t05"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": true,
+        "contentVersion": 2,
+        "reviewStatus": "editorial_review_pending_human",
+        "exampleCount": 2,
+        "exerciseCount": 4,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "candidate_pending_human_review",
+        "reason": "Candidato editorial existe, mas não tem aprovação humana registrada."
+      }
+    },
+    {
+      "id": "math.m01.t08",
+      "moduleId": "math.m01",
+      "moduleTitle": "Números e operações",
+      "title": "Critérios de divisibilidade",
+      "sourceOrder": 8,
+      "displayOrder": 6,
+      "prerequisiteIds": [
+        "math.m01.t07",
+        "math.m01.t06"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": true,
+        "contentVersion": 2,
+        "reviewStatus": "editorial_review_pending_human",
+        "exampleCount": 2,
+        "exerciseCount": 4,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "candidate_pending_human_review",
+        "reason": "Candidato editorial existe, mas não tem aprovação humana registrada."
+      }
+    },
+    {
+      "id": "math.m01.t09",
+      "moduleId": "math.m01",
+      "moduleTitle": "Números e operações",
+      "title": "Números primos e fatoração",
+      "sourceOrder": 9,
+      "displayOrder": 7,
+      "prerequisiteIds": [
+        "math.m01.t07",
+        "math.m01.t08",
+        "math.m01.t06"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": true,
+        "contentVersion": 2,
+        "reviewStatus": "editorial_review_pending_human",
+        "exampleCount": 2,
+        "exerciseCount": 4,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "candidate_pending_human_review",
+        "reason": "Candidato editorial existe, mas não tem aprovação humana registrada."
+      }
+    },
+    {
+      "id": "math.m01.t10",
+      "moduleId": "math.m01",
+      "moduleTitle": "Números e operações",
+      "title": "MMC e MDC",
+      "sourceOrder": 10,
+      "displayOrder": 8,
+      "prerequisiteIds": [
+        "math.m01.t07",
+        "math.m01.t09"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 6
+      },
+      "candidate": {
+        "present": true,
+        "contentVersion": 2,
+        "reviewStatus": "editorial_review_pending_human",
+        "exampleCount": 2,
+        "exerciseCount": 4,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "candidate_pending_human_review",
+        "reason": "Candidato editorial existe, mas não tem aprovação humana registrada."
+      }
+    },
+    {
+      "id": "math.m02.t01",
+      "moduleId": "math.m02",
+      "moduleTitle": "Razões e proporções",
+      "title": "Razão e taxa",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 78
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m02.t02",
+      "moduleId": "math.m02",
+      "moduleTitle": "Razões e proporções",
+      "title": "Proporcionalidade direta e inversa",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 13
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m02.t03",
+      "moduleId": "math.m02",
+      "moduleTitle": "Razões e proporções",
+      "title": "Regra de três simples",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m02.t04",
+      "moduleId": "math.m02",
+      "moduleTitle": "Razões e proporções",
+      "title": "Regra de três composta",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m02.t05",
+      "moduleId": "math.m02",
+      "moduleTitle": "Razões e proporções",
+      "title": "Divisão em partes proporcionais",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m02.t06",
+      "moduleId": "math.m02",
+      "moduleTitle": "Razões e proporções",
+      "title": "Escalas",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 38
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m02.t07",
+      "moduleId": "math.m02",
+      "moduleTitle": "Razões e proporções",
+      "title": "Velocidade média como razão",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m02.t08",
+      "moduleId": "math.m02",
+      "moduleTitle": "Razões e proporções",
+      "title": "Densidade e vazão",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 14
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m03.t01",
+      "moduleId": "math.m03",
+      "moduleTitle": "Porcentagem e finanças básicas",
+      "title": "Conversão fração-decimal-percentual",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m03.t02",
+      "moduleId": "math.m03",
+      "moduleTitle": "Porcentagem e finanças básicas",
+      "title": "Cálculo percentual",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 87
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m03.t03",
+      "moduleId": "math.m03",
+      "moduleTitle": "Porcentagem e finanças básicas",
+      "title": "Acréscimos e descontos",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 19
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m03.t04",
+      "moduleId": "math.m03",
+      "moduleTitle": "Porcentagem e finanças básicas",
+      "title": "Variações sucessivas",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m03.t05",
+      "moduleId": "math.m03",
+      "moduleTitle": "Porcentagem e finanças básicas",
+      "title": "Porcentagem reversa",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m03.t06",
+      "moduleId": "math.m03",
+      "moduleTitle": "Porcentagem e finanças básicas",
+      "title": "Lucro e prejuízo",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 11
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m03.t07",
+      "moduleId": "math.m03",
+      "moduleTitle": "Porcentagem e finanças básicas",
+      "title": "Juros simples",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m03.t08",
+      "moduleId": "math.m03",
+      "moduleTitle": "Porcentagem e finanças básicas",
+      "title": "Juros compostos",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m03.t09",
+      "moduleId": "math.m03",
+      "moduleTitle": "Porcentagem e finanças básicas",
+      "title": "Taxa de juros e inflação",
+      "sourceOrder": 9,
+      "displayOrder": 9,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m04.t01",
+      "moduleId": "math.m04",
+      "moduleTitle": "Potências e radicais",
+      "title": "Potenciação e propriedades",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 9
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m04.t02",
+      "moduleId": "math.m04",
+      "moduleTitle": "Potências e radicais",
+      "title": "Potências de dez",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m04.t03",
+      "moduleId": "math.m04",
+      "moduleTitle": "Potências e radicais",
+      "title": "Notação científica",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m04.t04",
+      "moduleId": "math.m04",
+      "moduleTitle": "Potências e radicais",
+      "title": "Ordem de grandeza",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 1
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m04.t05",
+      "moduleId": "math.m04",
+      "moduleTitle": "Potências e radicais",
+      "title": "Raiz quadrada e cúbica",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m04.t06",
+      "moduleId": "math.m04",
+      "moduleTitle": "Potências e radicais",
+      "title": "Simplificação de radicais",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m04.t07",
+      "moduleId": "math.m04",
+      "moduleTitle": "Potências e radicais",
+      "title": "Racionalização simples",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 5
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m04.t08",
+      "moduleId": "math.m04",
+      "moduleTitle": "Potências e radicais",
+      "title": "Expoentes fracionários",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m05.t01",
+      "moduleId": "math.m05",
+      "moduleTitle": "Medidas e estimativas",
+      "title": "SI e prefixos",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m05.t02",
+      "moduleId": "math.m05",
+      "moduleTitle": "Medidas e estimativas",
+      "title": "Conversões de comprimento, massa, volume, área e tempo",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 6
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m05.t03",
+      "moduleId": "math.m05",
+      "moduleTitle": "Medidas e estimativas",
+      "title": "Relação litro e metro cúbico",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m05.t04",
+      "moduleId": "math.m05",
+      "moduleTitle": "Medidas e estimativas",
+      "title": "Medidas angulares",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m05.t05",
+      "moduleId": "math.m05",
+      "moduleTitle": "Medidas e estimativas",
+      "title": "Estimativas",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m05.t06",
+      "moduleId": "math.m05",
+      "moduleTitle": "Medidas e estimativas",
+      "title": "Algarismos significativos",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m05.t07",
+      "moduleId": "math.m05",
+      "moduleTitle": "Medidas e estimativas",
+      "title": "Arredondamento e erro de medida",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m06.t01",
+      "moduleId": "math.m06",
+      "moduleTitle": "Álgebra fundamental",
+      "title": "Variáveis e expressões",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 5
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m06.t02",
+      "moduleId": "math.m06",
+      "moduleTitle": "Álgebra fundamental",
+      "title": "Propriedade distributiva",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m06.t03",
+      "moduleId": "math.m06",
+      "moduleTitle": "Álgebra fundamental",
+      "title": "Produtos notáveis",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m06.t04",
+      "moduleId": "math.m06",
+      "moduleTitle": "Álgebra fundamental",
+      "title": "Fatoração algébrica",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m06.t05",
+      "moduleId": "math.m06",
+      "moduleTitle": "Álgebra fundamental",
+      "title": "Frações algébricas",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m06.t06",
+      "moduleId": "math.m06",
+      "moduleTitle": "Álgebra fundamental",
+      "title": "Equação do primeiro grau",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m06.t07",
+      "moduleId": "math.m06",
+      "moduleTitle": "Álgebra fundamental",
+      "title": "Inequações de primeiro grau",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m06.t08",
+      "moduleId": "math.m06",
+      "moduleTitle": "Álgebra fundamental",
+      "title": "Sistemas lineares 2x2",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 5
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m06.t09",
+      "moduleId": "math.m06",
+      "moduleTitle": "Álgebra fundamental",
+      "title": "Problemas com incógnitas",
+      "sourceOrder": 9,
+      "displayOrder": 9,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m07.t01",
+      "moduleId": "math.m07",
+      "moduleTitle": "Equações e polinômios",
+      "title": "Equação de segundo grau",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m07.t02",
+      "moduleId": "math.m07",
+      "moduleTitle": "Equações e polinômios",
+      "title": "Fórmula de Bhaskara",
+      "sourceOrder": 2,
+      "displayOrder": 3,
+      "prerequisiteIds": [
+        "math.m07.t01",
+        "math.m07.t04"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m07.t03",
+      "moduleId": "math.m07",
+      "moduleTitle": "Equações e polinômios",
+      "title": "Soma e produto das raízes",
+      "sourceOrder": 3,
+      "displayOrder": 4,
+      "prerequisiteIds": [
+        "math.m07.t02"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m07.t04",
+      "moduleId": "math.m07",
+      "moduleTitle": "Equações e polinômios",
+      "title": "Discriminante",
+      "sourceOrder": 4,
+      "displayOrder": 2,
+      "prerequisiteIds": [
+        "math.m07.t01"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m07.t05",
+      "moduleId": "math.m07",
+      "moduleTitle": "Equações e polinômios",
+      "title": "Sistemas com equação quadrática",
+      "sourceOrder": 5,
+      "displayOrder": 6,
+      "prerequisiteIds": [
+        "math.m07.t02"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m07.t06",
+      "moduleId": "math.m07",
+      "moduleTitle": "Equações e polinômios",
+      "title": "Polinômios e operações",
+      "sourceOrder": 6,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m07.t07",
+      "moduleId": "math.m07",
+      "moduleTitle": "Equações e polinômios",
+      "title": "Equações biquadradas (aprofundamento)",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [
+        "math.m07.t02",
+        "math.m07.t06"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m07.t08",
+      "moduleId": "math.m07",
+      "moduleTitle": "Equações e polinômios",
+      "title": "Inequações quadráticas",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [
+        "math.m07.t02",
+        "math.m07.t04"
+      ],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m08.t01",
+      "moduleId": "math.m08",
+      "moduleTitle": "Introdução às funções",
+      "title": "Conceito de função",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m08.t02",
+      "moduleId": "math.m08",
+      "moduleTitle": "Introdução às funções",
+      "title": "Domínio, contradomínio e imagem",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 9
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m08.t03",
+      "moduleId": "math.m08",
+      "moduleTitle": "Introdução às funções",
+      "title": "Pares ordenados",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m08.t04",
+      "moduleId": "math.m08",
+      "moduleTitle": "Introdução às funções",
+      "title": "Plano cartesiano",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 5
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m08.t05",
+      "moduleId": "math.m08",
+      "moduleTitle": "Introdução às funções",
+      "title": "Gráfico e tabela",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 9
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m08.t06",
+      "moduleId": "math.m08",
+      "moduleTitle": "Introdução às funções",
+      "title": "Crescimento e decrescimento",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 9
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m08.t07",
+      "moduleId": "math.m08",
+      "moduleTitle": "Introdução às funções",
+      "title": "Taxa de variação",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m08.t08",
+      "moduleId": "math.m08",
+      "moduleTitle": "Introdução às funções",
+      "title": "Zeros e interceptos",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m08.t09",
+      "moduleId": "math.m08",
+      "moduleTitle": "Introdução às funções",
+      "title": "Composição e função inversa (quando pertinente)",
+      "sourceOrder": 9,
+      "displayOrder": 9,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m09.t01",
+      "moduleId": "math.m09",
+      "moduleTitle": "Função afim",
+      "title": "Coeficientes angular e linear",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m09.t02",
+      "moduleId": "math.m09",
+      "moduleTitle": "Função afim",
+      "title": "Equação da reta",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m09.t03",
+      "moduleId": "math.m09",
+      "moduleTitle": "Função afim",
+      "title": "Interpretação gráfica",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m09.t04",
+      "moduleId": "math.m09",
+      "moduleTitle": "Função afim",
+      "title": "Zero da função",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m09.t05",
+      "moduleId": "math.m09",
+      "moduleTitle": "Função afim",
+      "title": "Sinal da função",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m09.t06",
+      "moduleId": "math.m09",
+      "moduleTitle": "Função afim",
+      "title": "Taxa constante",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m09.t07",
+      "moduleId": "math.m09",
+      "moduleTitle": "Função afim",
+      "title": "Sistemas representados graficamente",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m09.t08",
+      "moduleId": "math.m09",
+      "moduleTitle": "Função afim",
+      "title": "Modelagem de tarifas e consumos",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m10.t01",
+      "moduleId": "math.m10",
+      "moduleTitle": "Função quadrática",
+      "title": "Parábola e concavidade",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 5
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m10.t02",
+      "moduleId": "math.m10",
+      "moduleTitle": "Função quadrática",
+      "title": "Zeros e vértice",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m10.t03",
+      "moduleId": "math.m10",
+      "moduleTitle": "Função quadrática",
+      "title": "Máximos e mínimos",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m10.t04",
+      "moduleId": "math.m10",
+      "moduleTitle": "Função quadrática",
+      "title": "Intervalos de sinal",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m10.t05",
+      "moduleId": "math.m10",
+      "moduleTitle": "Função quadrática",
+      "title": "Gráfico e deslocamentos",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m10.t06",
+      "moduleId": "math.m10",
+      "moduleTitle": "Função quadrática",
+      "title": "Problemas de área/otimização",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m10.t07",
+      "moduleId": "math.m10",
+      "moduleTitle": "Função quadrática",
+      "title": "Modelagem de trajetórias",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 5
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m11.t01",
+      "moduleId": "math.m11",
+      "moduleTitle": "Exponencial e logaritmos",
+      "title": "Crescimento e decaimento exponencial",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m11.t02",
+      "moduleId": "math.m11",
+      "moduleTitle": "Exponencial e logaritmos",
+      "title": "Função exponencial",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m11.t03",
+      "moduleId": "math.m11",
+      "moduleTitle": "Exponencial e logaritmos",
+      "title": "Equações exponenciais",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m11.t04",
+      "moduleId": "math.m11",
+      "moduleTitle": "Exponencial e logaritmos",
+      "title": "Conceito de logaritmo",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m11.t05",
+      "moduleId": "math.m11",
+      "moduleTitle": "Exponencial e logaritmos",
+      "title": "Propriedades de logaritmos",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m11.t06",
+      "moduleId": "math.m11",
+      "moduleTitle": "Exponencial e logaritmos",
+      "title": "Função logarítmica",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m11.t07",
+      "moduleId": "math.m11",
+      "moduleTitle": "Exponencial e logaritmos",
+      "title": "Escalas logarítmicas (pH, decibéis, Richter)",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 6
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m11.t08",
+      "moduleId": "math.m11",
+      "moduleTitle": "Exponencial e logaritmos",
+      "title": "Aplicações a juros e populações",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m12.t01",
+      "moduleId": "math.m12",
+      "moduleTitle": "Sequências e progressões",
+      "title": "Padrões e sequências",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 6
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m12.t02",
+      "moduleId": "math.m12",
+      "moduleTitle": "Sequências e progressões",
+      "title": "PA e termo geral",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m12.t03",
+      "moduleId": "math.m12",
+      "moduleTitle": "Sequências e progressões",
+      "title": "Soma da PA",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m12.t04",
+      "moduleId": "math.m12",
+      "moduleTitle": "Sequências e progressões",
+      "title": "PG e termo geral",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m12.t05",
+      "moduleId": "math.m12",
+      "moduleTitle": "Sequências e progressões",
+      "title": "Soma da PG finita",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m12.t06",
+      "moduleId": "math.m12",
+      "moduleTitle": "Sequências e progressões",
+      "title": "Crescimento geométrico",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m12.t07",
+      "moduleId": "math.m12",
+      "moduleTitle": "Sequências e progressões",
+      "title": "Sequências recorrentes simples",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m12.t08",
+      "moduleId": "math.m12",
+      "moduleTitle": "Sequências e progressões",
+      "title": "Modelos financeiros",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m13.t01",
+      "moduleId": "math.m13",
+      "moduleTitle": "Geometria plana I",
+      "title": "Ponto, reta, segmento e ângulo",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 25
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m13.t02",
+      "moduleId": "math.m13",
+      "moduleTitle": "Geometria plana I",
+      "title": "Retas paralelas e transversais",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m13.t03",
+      "moduleId": "math.m13",
+      "moduleTitle": "Geometria plana I",
+      "title": "Triângulos e classificação",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 16
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m13.t04",
+      "moduleId": "math.m13",
+      "moduleTitle": "Geometria plana I",
+      "title": "Soma dos ângulos",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m13.t05",
+      "moduleId": "math.m13",
+      "moduleTitle": "Geometria plana I",
+      "title": "Congruência e semelhança",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 10
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m13.t06",
+      "moduleId": "math.m13",
+      "moduleTitle": "Geometria plana I",
+      "title": "Teorema de Tales",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m13.t07",
+      "moduleId": "math.m13",
+      "moduleTitle": "Geometria plana I",
+      "title": "Teorema de Pitágoras",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m13.t08",
+      "moduleId": "math.m13",
+      "moduleTitle": "Geometria plana I",
+      "title": "Relações métricas do triângulo retângulo",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 6
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m14.t01",
+      "moduleId": "math.m14",
+      "moduleTitle": "Geometria plana II",
+      "title": "Quadriláteros e polígonos",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 17
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m14.t02",
+      "moduleId": "math.m14",
+      "moduleTitle": "Geometria plana II",
+      "title": "Polígonos regulares",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m14.t03",
+      "moduleId": "math.m14",
+      "moduleTitle": "Geometria plana II",
+      "title": "Perímetro e áreas",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 26
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m14.t04",
+      "moduleId": "math.m14",
+      "moduleTitle": "Geometria plana II",
+      "title": "Triângulo e fórmula de Heron (aprofundamento)",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m14.t05",
+      "moduleId": "math.m14",
+      "moduleTitle": "Geometria plana II",
+      "title": "Circunferência e círculo",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 17
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m14.t06",
+      "moduleId": "math.m14",
+      "moduleTitle": "Geometria plana II",
+      "title": "Arcos, setores e coroas",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 2
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m14.t07",
+      "moduleId": "math.m14",
+      "moduleTitle": "Geometria plana II",
+      "title": "Ângulo inscrito e central",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m14.t08",
+      "moduleId": "math.m14",
+      "moduleTitle": "Geometria plana II",
+      "title": "Tangência e relações geométricas",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 6
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m15.t01",
+      "moduleId": "math.m15",
+      "moduleTitle": "Trigonometria",
+      "title": "Seno, cosseno e tangente no triângulo retângulo",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 10
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m15.t02",
+      "moduleId": "math.m15",
+      "moduleTitle": "Trigonometria",
+      "title": "Ângulos notáveis",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m15.t03",
+      "moduleId": "math.m15",
+      "moduleTitle": "Trigonometria",
+      "title": "Lei dos senos",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m15.t04",
+      "moduleId": "math.m15",
+      "moduleTitle": "Trigonometria",
+      "title": "Lei dos cossenos",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m15.t05",
+      "moduleId": "math.m15",
+      "moduleTitle": "Trigonometria",
+      "title": "Ciclo trigonométrico (noções)",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m15.t06",
+      "moduleId": "math.m15",
+      "moduleTitle": "Trigonometria",
+      "title": "Funções seno e cosseno",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m15.t07",
+      "moduleId": "math.m15",
+      "moduleTitle": "Trigonometria",
+      "title": "Graus e radianos",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m15.t08",
+      "moduleId": "math.m15",
+      "moduleTitle": "Trigonometria",
+      "title": "Interpretação de fenômenos periódicos",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m16.t01",
+      "moduleId": "math.m16",
+      "moduleTitle": "Geometria espacial",
+      "title": "Prismas e pirâmides",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 28
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m16.t02",
+      "moduleId": "math.m16",
+      "moduleTitle": "Geometria espacial",
+      "title": "Cubo e paralelepípedo",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 19
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m16.t03",
+      "moduleId": "math.m16",
+      "moduleTitle": "Geometria espacial",
+      "title": "Cilindros, cones e esferas",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 36
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m16.t04",
+      "moduleId": "math.m16",
+      "moduleTitle": "Geometria espacial",
+      "title": "Planificações",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 1
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m16.t05",
+      "moduleId": "math.m16",
+      "moduleTitle": "Geometria espacial",
+      "title": "Área lateral e total",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 16
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m16.t06",
+      "moduleId": "math.m16",
+      "moduleTitle": "Geometria espacial",
+      "title": "Volume",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 46
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m16.t07",
+      "moduleId": "math.m16",
+      "moduleTitle": "Geometria espacial",
+      "title": "Seções e relações de escala",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m16.t08",
+      "moduleId": "math.m16",
+      "moduleTitle": "Geometria espacial",
+      "title": "Troncos de cone e pirâmide",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 5
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m17.t01",
+      "moduleId": "math.m17",
+      "moduleTitle": "Geometria analítica",
+      "title": "Distância entre pontos",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m17.t02",
+      "moduleId": "math.m17",
+      "moduleTitle": "Geometria analítica",
+      "title": "Ponto médio",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 1
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m17.t03",
+      "moduleId": "math.m17",
+      "moduleTitle": "Geometria analítica",
+      "title": "Coeficiente angular",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m17.t04",
+      "moduleId": "math.m17",
+      "moduleTitle": "Geometria analítica",
+      "title": "Retas e equações",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 9
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m17.t05",
+      "moduleId": "math.m17",
+      "moduleTitle": "Geometria analítica",
+      "title": "Paralelismo e perpendicularismo",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 6
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m17.t06",
+      "moduleId": "math.m17",
+      "moduleTitle": "Geometria analítica",
+      "title": "Interseção de retas",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m17.t07",
+      "moduleId": "math.m17",
+      "moduleTitle": "Geometria analítica",
+      "title": "Circunferência no plano",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m17.t08",
+      "moduleId": "math.m17",
+      "moduleTitle": "Geometria analítica",
+      "title": "Área por coordenadas",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m18.t01",
+      "moduleId": "math.m18",
+      "moduleTitle": "Estatística descritiva",
+      "title": "Leitura de distribuição de frequência",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 7
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m18.t02",
+      "moduleId": "math.m18",
+      "moduleTitle": "Estatística descritiva",
+      "title": "Tabelas e gráficos",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 41
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m18.t03",
+      "moduleId": "math.m18",
+      "moduleTitle": "Estatística descritiva",
+      "title": "Média simples e ponderada",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 30
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m18.t04",
+      "moduleId": "math.m18",
+      "moduleTitle": "Estatística descritiva",
+      "title": "Mediana e moda",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 16
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m18.t05",
+      "moduleId": "math.m18",
+      "moduleTitle": "Estatística descritiva",
+      "title": "Amplitude",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m18.t06",
+      "moduleId": "math.m18",
+      "moduleTitle": "Estatística descritiva",
+      "title": "Quartis e interpretação",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m18.t07",
+      "moduleId": "math.m18",
+      "moduleTitle": "Estatística descritiva",
+      "title": "Variância e desvio padrão",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 1
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m18.t08",
+      "moduleId": "math.m18",
+      "moduleTitle": "Estatística descritiva",
+      "title": "Identificação de gráficos enganosos",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m19.t01",
+      "moduleId": "math.m19",
+      "moduleTitle": "Análise combinatória",
+      "title": "Princípio fundamental da contagem",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m19.t02",
+      "moduleId": "math.m19",
+      "moduleTitle": "Análise combinatória",
+      "title": "Diagramas de árvore",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m19.t03",
+      "moduleId": "math.m19",
+      "moduleTitle": "Análise combinatória",
+      "title": "Permutação simples",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m19.t04",
+      "moduleId": "math.m19",
+      "moduleTitle": "Análise combinatória",
+      "title": "Permutação com repetição",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m19.t05",
+      "moduleId": "math.m19",
+      "moduleTitle": "Análise combinatória",
+      "title": "Arranjo",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m19.t06",
+      "moduleId": "math.m19",
+      "moduleTitle": "Análise combinatória",
+      "title": "Combinação",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m19.t07",
+      "moduleId": "math.m19",
+      "moduleTitle": "Análise combinatória",
+      "title": "Contagem com restrições",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m19.t08",
+      "moduleId": "math.m19",
+      "moduleTitle": "Análise combinatória",
+      "title": "Princípio aditivo e multiplicativo",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m20.t01",
+      "moduleId": "math.m20",
+      "moduleTitle": "Probabilidade",
+      "title": "Espaço amostral e eventos",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m20.t02",
+      "moduleId": "math.m20",
+      "moduleTitle": "Probabilidade",
+      "title": "Eventos equiprováveis",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m20.t03",
+      "moduleId": "math.m20",
+      "moduleTitle": "Probabilidade",
+      "title": "Complementar",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m20.t04",
+      "moduleId": "math.m20",
+      "moduleTitle": "Probabilidade",
+      "title": "União e interseção",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m20.t05",
+      "moduleId": "math.m20",
+      "moduleTitle": "Probabilidade",
+      "title": "Eventos independentes",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m20.t06",
+      "moduleId": "math.m20",
+      "moduleTitle": "Probabilidade",
+      "title": "Probabilidade condicional",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m20.t07",
+      "moduleId": "math.m20",
+      "moduleTitle": "Probabilidade",
+      "title": "Contagem em probabilidades",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m20.t08",
+      "moduleId": "math.m20",
+      "moduleTitle": "Probabilidade",
+      "title": "Probabilidade de múltiplas etapas",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 6
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m21.t01",
+      "moduleId": "math.m21",
+      "moduleTitle": "Matemática financeira avançada",
+      "title": "Capitalização composta",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m21.t02",
+      "moduleId": "math.m21",
+      "moduleTitle": "Matemática financeira avançada",
+      "title": "Taxas equivalentes",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m21.t03",
+      "moduleId": "math.m21",
+      "moduleTitle": "Matemática financeira avançada",
+      "title": "Valor presente e futuro",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m21.t04",
+      "moduleId": "math.m21",
+      "moduleTitle": "Matemática financeira avançada",
+      "title": "Parcelamentos e prestações",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m21.t05",
+      "moduleId": "math.m21",
+      "moduleTitle": "Matemática financeira avançada",
+      "title": "Comparação de investimentos",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 7
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m21.t06",
+      "moduleId": "math.m21",
+      "moduleTitle": "Matemática financeira avançada",
+      "title": "Inflação acumulada",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m21.t07",
+      "moduleId": "math.m21",
+      "moduleTitle": "Matemática financeira avançada",
+      "title": "Análise crítica de juros nominais e reais",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m22.t01",
+      "moduleId": "math.m22",
+      "moduleTitle": "Funções e modelagem integrada",
+      "title": "Funções definidas por partes",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m22.t02",
+      "moduleId": "math.m22",
+      "moduleTitle": "Funções e modelagem integrada",
+      "title": "Valor absoluto e módulo",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m22.t03",
+      "moduleId": "math.m22",
+      "moduleTitle": "Funções e modelagem integrada",
+      "title": "Relação entre gráficos e fórmulas",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m22.t04",
+      "moduleId": "math.m22",
+      "moduleTitle": "Funções e modelagem integrada",
+      "title": "Otimização contextualizada",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m22.t05",
+      "moduleId": "math.m22",
+      "moduleTitle": "Funções e modelagem integrada",
+      "title": "Composição de modelos",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m22.t06",
+      "moduleId": "math.m22",
+      "moduleTitle": "Funções e modelagem integrada",
+      "title": "Modelos não lineares",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m22.t07",
+      "moduleId": "math.m22",
+      "moduleTitle": "Funções e modelagem integrada",
+      "title": "Comparação de crescimento linear e exponencial",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m23.t01",
+      "moduleId": "math.m23",
+      "moduleTitle": "Estatística e inferência",
+      "title": "Amostragem e representatividade",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m23.t02",
+      "moduleId": "math.m23",
+      "moduleTitle": "Estatística e inferência",
+      "title": "Viés amostral",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m23.t03",
+      "moduleId": "math.m23",
+      "moduleTitle": "Estatística e inferência",
+      "title": "Correlação e causalidade",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m23.t04",
+      "moduleId": "math.m23",
+      "moduleTitle": "Estatística e inferência",
+      "title": "Interpolação e extrapolação",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m23.t05",
+      "moduleId": "math.m23",
+      "moduleTitle": "Estatística e inferência",
+      "title": "Séries temporais",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m23.t06",
+      "moduleId": "math.m23",
+      "moduleTitle": "Estatística e inferência",
+      "title": "Leitura de boxplots",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m23.t07",
+      "moduleId": "math.m23",
+      "moduleTitle": "Estatística e inferência",
+      "title": "Distribuição normal (intuição)",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m23.t08",
+      "moduleId": "math.m23",
+      "moduleTitle": "Estatística e inferência",
+      "title": "Variabilidade e tomada de decisões",
+      "sourceOrder": 8,
+      "displayOrder": 8,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m24.t01",
+      "moduleId": "math.m24",
+      "moduleTitle": "Problemas integrados",
+      "title": "Proporção + geometria",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m24.t02",
+      "moduleId": "math.m24",
+      "moduleTitle": "Problemas integrados",
+      "title": "Probabilidade + combinatória",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m24.t03",
+      "moduleId": "math.m24",
+      "moduleTitle": "Problemas integrados",
+      "title": "Função + finanças",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m24.t04",
+      "moduleId": "math.m24",
+      "moduleTitle": "Problemas integrados",
+      "title": "Geometria espacial + conversões",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 8
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m24.t05",
+      "moduleId": "math.m24",
+      "moduleTitle": "Problemas integrados",
+      "title": "Trigonometria + topografia",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m24.t06",
+      "moduleId": "math.m24",
+      "moduleTitle": "Problemas integrados",
+      "title": "Estatística + interpretação",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m24.t07",
+      "moduleId": "math.m24",
+      "moduleTitle": "Problemas integrados",
+      "title": "Estimativa e análise dimensional",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m25.t01",
+      "moduleId": "math.m25",
+      "moduleTitle": "Tópicos complementares",
+      "title": "Matrizes e determinantes básicos",
+      "sourceOrder": 1,
+      "displayOrder": 1,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 6
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m25.t02",
+      "moduleId": "math.m25",
+      "moduleTitle": "Tópicos complementares",
+      "title": "Sistemas lineares por matrizes",
+      "sourceOrder": 2,
+      "displayOrder": 2,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 0
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m25.t03",
+      "moduleId": "math.m25",
+      "moduleTitle": "Tópicos complementares",
+      "title": "Números complexos noções",
+      "sourceOrder": 3,
+      "displayOrder": 3,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m25.t04",
+      "moduleId": "math.m25",
+      "moduleTitle": "Tópicos complementares",
+      "title": "Identidades trigonométricas básicas",
+      "sourceOrder": 4,
+      "displayOrder": 4,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m25.t05",
+      "moduleId": "math.m25",
+      "moduleTitle": "Tópicos complementares",
+      "title": "Equações modulares",
+      "sourceOrder": 5,
+      "displayOrder": 5,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m25.t06",
+      "moduleId": "math.m25",
+      "moduleTitle": "Tópicos complementares",
+      "title": "Cônicas em nível interpretativo",
+      "sourceOrder": 6,
+      "displayOrder": 6,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 4
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    },
+    {
+      "id": "math.m25.t07",
+      "moduleId": "math.m25",
+      "moduleTitle": "Tópicos complementares",
+      "title": "Raciocínio lógico e conjuntos",
+      "sourceOrder": 7,
+      "displayOrder": 7,
+      "prerequisiteIds": [],
+      "production": {
+        "contentVersion": 1,
+        "reviewStatus": "legacy_pending_review",
+        "editorialPreview": false,
+        "questionCount": 12
+      },
+      "candidate": {
+        "present": false,
+        "contentVersion": null,
+        "reviewStatus": null,
+        "exampleCount": 0,
+        "exerciseCount": 0,
+        "published": false
+      },
+      "pending": {
+        "value": true,
+        "status": "full_review_pending",
+        "reason": "Não há candidato editorial completo para esta aula; revisão integral permanece pendente."
+      }
+    }
+  ],
+  "candidateLessonIds": [
+    "math.m01.t01",
+    "math.m01.t02",
+    "math.m01.t03",
+    "math.m01.t04",
+    "math.m01.t05",
+    "math.m01.t06",
+    "math.m01.t07",
+    "math.m01.t08",
+    "math.m01.t09",
+    "math.m01.t10"
+  ],
+  "publishedCandidateExerciseIds": []
+}

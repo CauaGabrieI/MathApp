@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 await generateDesignSystem();
 const root=path.resolve(import.meta.dirname,'..'),target=path.join(root,'android/app/src/main/assets');
+if(JSON.parse(await fs.readFile(path.join(root,'public/learning-path.json'),'utf8')).editorialPreview)throw new Error('Prévia editorial não pode ser empacotada no Android. Execute npm run build sem PEDAGOGY_PREVIEW.');
 await fs.mkdir(target,{recursive:true});
 const excluded=new Set(['sw.js','questions.json','enemhub.json','enemdev.json']);
 for(const file of await fs.readdir(path.join(root,'public'))){if(excluded.has(file))continue;const stat=await fs.stat(path.join(root,'public',file));if(stat.isFile())await fs.copyFile(path.join(root,'public',file),path.join(target,file));}
