@@ -1,0 +1,2347 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-19T15:17:17.026Z",
+  "source": "public/learning-path.json",
+  "method": "youtube_oembed_and_editorial_lesson_concepts",
+  "modules": 25,
+  "total": 199,
+  "covered": 173,
+  "lessons": [
+    {
+      "id": "math.m01.t01",
+      "title": "Naturais e sistema decimal",
+      "status": "verified",
+      "videoIds": [
+        "GLYEff_w-dE",
+        "3Y0u8kPYvko",
+        "k0B31bgBq1o",
+        "cTfRpRD5xUg",
+        "zpaDtpNmqVk",
+        "iFmFfFRnea0",
+        "PAwrTlW_cTw",
+        "hrmDJxcthPk",
+        "tfL0zxt1tgc",
+        "LN7AKwg-_qc",
+        "IpBzPnM74PI",
+        "Jf0sA3wBqXE",
+        "C812J7_hqTg",
+        "Y_mYgLkuEl4",
+        "Z3rDxJAZW9o"
+      ]
+    },
+    {
+      "id": "math.m01.t02",
+      "title": "Inteiros e números negativos",
+      "status": "verified",
+      "videoIds": [
+        "TToR1RqcgrU",
+        "ReojSacVKWs",
+        "Lh_oYa3qIkA",
+        "74jrzl0yPlI"
+      ]
+    },
+    {
+      "id": "math.m01.t03",
+      "title": "Frações próprias e impróprias",
+      "status": "verified",
+      "videoIds": [
+        "30WizpTJjKc",
+        "esFA9XaM08g",
+        "hyCBlWFfQso",
+        "BWFnqKYxgMo",
+        "6z1p6MybQMQ",
+        "j80Sn3_zWVQ",
+        "_J0vXN9zfNE",
+        "PV7ghabdSlg",
+        "1o_FhTSPesU"
+      ]
+    },
+    {
+      "id": "math.m01.t04",
+      "title": "Decimais e conversões",
+      "status": "verified",
+      "videoIds": [
+        "hyCBlWFfQso",
+        "gQz4gxQAZ9M",
+        "19ksgzttJ_4",
+        "Ij8Wa5WbhG4",
+        "_IYxfahKDZE",
+        "PV7ghabdSlg",
+        "3Y0u8kPYvko",
+        "cTfRpRD5xUg",
+        "iFmFfFRnea0",
+        "Jf0sA3wBqXE",
+        "C812J7_hqTg",
+        "XDVjoRGAr14"
+      ]
+    },
+    {
+      "id": "math.m01.t05",
+      "title": "Adição, subtração, multiplicação e divisão",
+      "status": "verified",
+      "videoIds": [
+        "AfeaRSZ8Ks8",
+        "gQz4gxQAZ9M",
+        "Ij8Wa5WbhG4",
+        "_IYxfahKDZE",
+        "GIKC5breQKo",
+        "Bei45OrIDns",
+        "bDKTIFxZHN4"
+      ]
+    },
+    {
+      "id": "math.m01.t06",
+      "title": "Ordem das operações e parênteses",
+      "status": "verified",
+      "videoIds": [
+        "fG3tzCME95Y",
+        "LwOvCw6dfiI",
+        "TToR1RqcgrU",
+        "Gb0z_lNVbTk"
+      ]
+    },
+    {
+      "id": "math.m01.t07",
+      "title": "Múltiplos e divisores",
+      "status": "verified",
+      "videoIds": [
+        "OSAxbWy94Fs",
+        "_hG29vH0IN4",
+        "0QZVJFOE4cE"
+      ]
+    },
+    {
+      "id": "math.m01.t08",
+      "title": "Critérios de divisibilidade",
+      "status": "verified",
+      "videoIds": [
+        "RAXp2qjhA1M",
+        "SmjkZeLo0UQ",
+        "QPhp7NDwzNs",
+        "g-2p87-lVtk"
+      ]
+    },
+    {
+      "id": "math.m01.t09",
+      "title": "Números primos e fatoração",
+      "status": "verified",
+      "videoIds": [
+        "PAwrTlW_cTw",
+        "LN7AKwg-_qc",
+        "IpBzPnM74PI",
+        "Lh_oYa3qIkA",
+        "74jrzl0yPlI",
+        "tuvjLzgXhcE",
+        "ZNeknBtu9PE",
+        "86eZGMGGM0M",
+        "RCH48p2S0Ww",
+        "vP0SquC1gSU",
+        "VjQ8QsREmR8",
+        "MrHhUUnOtPc",
+        "qYww45PyTEs",
+        "4bGVTH5b0fY",
+        "i1MZMbQYKDg"
+      ]
+    },
+    {
+      "id": "math.m01.t10",
+      "title": "MMC e MDC",
+      "status": "verified",
+      "videoIds": [
+        "03lHucDFh10",
+        "_hG29vH0IN4",
+        "E6ivTfJGjhs",
+        "yqKOhCuo3hA",
+        "ve4mzqNJark",
+        "pCw8KYfypzo",
+        "YgkK4NpnBi8"
+      ]
+    },
+    {
+      "id": "math.m02.t01",
+      "title": "Razão e taxa",
+      "status": "verified",
+      "videoIds": [
+        "Kf_YzZ0CnIs",
+        "C_j6K8-zZGM",
+        "dqROevsk4q8",
+        "evXrGaI6SVc",
+        "sEDRPZChK5M",
+        "lYEJ19G9fck",
+        "GJrQsNJsVzo",
+        "SLEFCrrVujk",
+        "LOnH2gYclsI",
+        "638-Cyo-xcU",
+        "RSnWH-hQWbA",
+        "waIXJzREyw8",
+        "1o_FhTSPesU",
+        "6Dsta1eZ1BA",
+        "HJg2hadgbHw",
+        "24S0-Q9DYtg",
+        "j0gBi-_zorg",
+        "G3SwMkcghSM",
+        "TeKvhnJgNYU"
+      ]
+    },
+    {
+      "id": "math.m02.t02",
+      "title": "Proporcionalidade direta e inversa",
+      "status": "verified",
+      "videoIds": [
+        "H5It7WL5WMA",
+        "XVPo3mD3LIU",
+        "2b7_28xHCf0",
+        "7Y1_rX4hoUI",
+        "8sWp-SRz2p0",
+        "JhhHa2lF9ws",
+        "JVe1T1KlMPs",
+        "6Dsta1eZ1BA",
+        "HJg2hadgbHw",
+        "gt02M8zIlh8",
+        "04EB9dZoBqw",
+        "0MQqsHzy_e4",
+        "L_u_bOLd5Tc",
+        "alLifth7gxE",
+        "foMiU5Fz04c"
+      ]
+    },
+    {
+      "id": "math.m02.t03",
+      "title": "Regra de três simples",
+      "status": "verified",
+      "videoIds": [
+        "mnle8NcUYkQ",
+        "q846Qdi-od8",
+        "CQFFaa9fmS0",
+        "H5It7WL5WMA",
+        "xuQgQTiD3mw",
+        "alLifth7gxE"
+      ]
+    },
+    {
+      "id": "math.m02.t04",
+      "title": "Regra de três composta",
+      "status": "verified",
+      "videoIds": [
+        "5QVTHHAvBFI",
+        "vKU-85u6yJw"
+      ]
+    },
+    {
+      "id": "math.m02.t05",
+      "title": "Divisão em partes proporcionais",
+      "status": "verified",
+      "videoIds": [
+        "2b7_28xHCf0",
+        "7Y1_rX4hoUI",
+        "8sWp-SRz2p0",
+        "JVe1T1KlMPs"
+      ]
+    },
+    {
+      "id": "math.m02.t06",
+      "title": "Escalas",
+      "status": "verified",
+      "videoIds": [
+        "cBYDah2TJNs",
+        "xcgHnXkiA9k",
+        "sEDRPZChK5M",
+        "zj8spmMm6No",
+        "g6TwtoDysMM"
+      ]
+    },
+    {
+      "id": "math.m02.t07",
+      "title": "Velocidade média como razão",
+      "status": "verified",
+      "videoIds": [
+        "j0gBi-_zorg",
+        "5xouvPAD8bQ",
+        "0RyV6qUoG3g",
+        "zKIYw6glm0g",
+        "yJL7tU1ljpg",
+        "C93tQjswQgU",
+        "Bd_hE33tENI",
+        "8BcjJhWtfh8",
+        "CahYTjpLpSw"
+      ]
+    },
+    {
+      "id": "math.m02.t08",
+      "title": "Densidade e vazão",
+      "status": "verified",
+      "videoIds": [
+        "24S0-Q9DYtg",
+        "G3SwMkcghSM"
+      ]
+    },
+    {
+      "id": "math.m03.t01",
+      "title": "Conversão fração-decimal-percentual",
+      "status": "verified",
+      "videoIds": [
+        "hyCBlWFfQso",
+        "PV7ghabdSlg",
+        "1o_FhTSPesU"
+      ]
+    },
+    {
+      "id": "math.m03.t02",
+      "title": "Cálculo percentual",
+      "status": "verified",
+      "videoIds": [
+        "_kYc4oJAp8Y",
+        "4qsGdvf2TyE",
+        "HQQIFrGEGb8",
+        "cKjisDmnM4Q",
+        "nCOTy0dwI40",
+        "1o_FhTSPesU",
+        "BouPbLsBys4",
+        "3EefFSEF8Ds",
+        "6ZqN3bcblyI",
+        "H_A4vIul5pw",
+        "Ed8fS4TGee0",
+        "s0j-YMlMwJU",
+        "Sa-zVXh97i0",
+        "S_Q6ktMElMQ",
+        "-ALmTFWM0Fk",
+        "1mmJUhH9sAA",
+        "Y4afHqr9zxA"
+      ]
+    },
+    {
+      "id": "math.m03.t03",
+      "title": "Acréscimos e descontos",
+      "status": "verified",
+      "videoIds": [
+        "3EefFSEF8Ds",
+        "6ZqN3bcblyI",
+        "H_A4vIul5pw",
+        "Ed8fS4TGee0",
+        "s0j-YMlMwJU",
+        "Sa-zVXh97i0",
+        "S_Q6ktMElMQ",
+        "-ALmTFWM0Fk",
+        "1mmJUhH9sAA",
+        "Y4afHqr9zxA",
+        "ssxo-ziRNpI",
+        "r9RFtuB_VQ0",
+        "HTQGiDwO68I",
+        "utuW8qvdoPg",
+        "WjgTI4a7vGc",
+        "NWXIZ9fmRMs"
+      ]
+    },
+    {
+      "id": "math.m03.t04",
+      "title": "Variações sucessivas",
+      "status": "verified",
+      "videoIds": [
+        "HTQGiDwO68I",
+        "utuW8qvdoPg",
+        "rEN-c1LQufc"
+      ]
+    },
+    {
+      "id": "math.m03.t05",
+      "title": "Porcentagem reversa",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m03.t06",
+      "title": "Lucro e prejuízo",
+      "status": "verified",
+      "videoIds": [
+        "c9e1VLyIPwU",
+        "aGrppKtELx4"
+      ]
+    },
+    {
+      "id": "math.m03.t07",
+      "title": "Juros simples",
+      "status": "verified",
+      "videoIds": [
+        "o8uvnk7Flt8",
+        "rvy_6JExnrw"
+      ]
+    },
+    {
+      "id": "math.m03.t08",
+      "title": "Juros compostos",
+      "status": "verified",
+      "videoIds": [
+        "hddweu-qSBM",
+        "ZMsieXqXwMg",
+        "X652ApXFTJA",
+        "KHaqyh6xQUk",
+        "j1oQE1514q8",
+        "PjjNnIZgLOY",
+        "Riz-ii6WZKE",
+        "FUsi1-hwK60",
+        "790S9GR5bWU",
+        "ZxhZpTcNgX8",
+        "U6lGwYyzsAs",
+        "bqBte86helo"
+      ]
+    },
+    {
+      "id": "math.m03.t09",
+      "title": "Taxa de juros e inflação",
+      "status": "verified",
+      "videoIds": [
+        "5UGpU0lxBY0"
+      ]
+    },
+    {
+      "id": "math.m04.t01",
+      "title": "Potenciação e propriedades",
+      "status": "verified",
+      "videoIds": [
+        "sdTniGNq19M",
+        "FzkAWvOAEUI",
+        "cWL3FjqLhOM",
+        "RD9CDbbjT4U",
+        "y_XUVMQdJMI"
+      ]
+    },
+    {
+      "id": "math.m04.t02",
+      "title": "Potências de dez",
+      "status": "verified",
+      "videoIds": [
+        "tMOqp1Rqr0E",
+        "-e2ExUbZ-8M",
+        "DDUhzvzXCHA",
+        "LtW3WdA4Iqk",
+        "GPTxrh_mhow"
+      ]
+    },
+    {
+      "id": "math.m04.t03",
+      "title": "Notação científica",
+      "status": "verified",
+      "videoIds": [
+        "tMOqp1Rqr0E",
+        "-e2ExUbZ-8M",
+        "DDUhzvzXCHA",
+        "LtW3WdA4Iqk",
+        "GPTxrh_mhow"
+      ]
+    },
+    {
+      "id": "math.m04.t04",
+      "title": "Ordem de grandeza",
+      "status": "verified",
+      "videoIds": [
+        "GPTxrh_mhow",
+        "uLYFPKeSUeg",
+        "IPepFx9euZE"
+      ]
+    },
+    {
+      "id": "math.m04.t05",
+      "title": "Raiz quadrada e cúbica",
+      "status": "verified",
+      "videoIds": [
+        "sdTniGNq19M",
+        "RD9CDbbjT4U",
+        "494171csjuw",
+        "oJx5IbJYYfQ",
+        "5ulxKU0It6w",
+        "es505ntn0gg"
+      ]
+    },
+    {
+      "id": "math.m04.t06",
+      "title": "Simplificação de radicais",
+      "status": "verified",
+      "videoIds": [
+        "5ulxKU0It6w",
+        "es505ntn0gg",
+        "-pNhbWcIZvo",
+        "drNJonpNcTM",
+        "04nnroZrmgg"
+      ]
+    },
+    {
+      "id": "math.m04.t07",
+      "title": "Racionalização simples",
+      "status": "verified",
+      "videoIds": [
+        "04nnroZrmgg",
+        "aymBSA-yHHs",
+        "4D0Lound2-A",
+        "m3xaxmRsmYI",
+        "wrI5Sm0DWGU",
+        "xHQ7cUZnM9g",
+        "IYtwaKRD74Y"
+      ]
+    },
+    {
+      "id": "math.m04.t08",
+      "title": "Expoentes fracionários",
+      "status": "verified",
+      "videoIds": [
+        "y_XUVMQdJMI",
+        "9l6Rbr42KuM",
+        "-_G9OvgMATc",
+        "43547oG7pGQ"
+      ]
+    },
+    {
+      "id": "math.m05.t01",
+      "title": "SI e prefixos",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m05.t02",
+      "title": "Conversões de comprimento, massa, volume, área e tempo",
+      "status": "verified",
+      "videoIds": [
+        "HobKaKHvCtY",
+        "Ppd8AKqqMFU",
+        "Le8ZEFngkRo"
+      ]
+    },
+    {
+      "id": "math.m05.t03",
+      "title": "Relação litro e metro cúbico",
+      "status": "verified",
+      "videoIds": [
+        "Le8ZEFngkRo"
+      ]
+    },
+    {
+      "id": "math.m05.t04",
+      "title": "Medidas angulares",
+      "status": "verified",
+      "videoIds": [
+        "XwetBqzFBGk",
+        "73v-k7HTAXY",
+        "1_HQNgyrVco",
+        "ChrWd9fNtnI"
+      ]
+    },
+    {
+      "id": "math.m05.t05",
+      "title": "Estimativas",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m05.t06",
+      "title": "Algarismos significativos",
+      "status": "inconclusive",
+      "videoIds": []
+    },
+    {
+      "id": "math.m05.t07",
+      "title": "Arredondamento e erro de medida",
+      "status": "verified",
+      "videoIds": [
+        "tfL0zxt1tgc",
+        "XDVjoRGAr14"
+      ]
+    },
+    {
+      "id": "math.m06.t01",
+      "title": "Variáveis e expressões",
+      "status": "verified",
+      "videoIds": [
+        "8NNA-8rimNs",
+        "hPrWWSLdaCM",
+        "TyUVBbsG8ag",
+        "i7MZpiRht2E",
+        "W0p1xGxSds8",
+        "4-P_0p17sGM",
+        "uLkqsDEc41w",
+        "rJtuB-VsmKI",
+        "gpLUtjncoSo",
+        "3amBZupsIdc",
+        "8qma3ZWd2kM"
+      ]
+    },
+    {
+      "id": "math.m06.t02",
+      "title": "Propriedade distributiva",
+      "status": "verified",
+      "videoIds": [
+        "GIKC5breQKo",
+        "Bei45OrIDns",
+        "bDKTIFxZHN4",
+        "xOyC50CMdi8",
+        "-ZZPaS1zOwc"
+      ]
+    },
+    {
+      "id": "math.m06.t03",
+      "title": "Produtos notáveis",
+      "status": "verified",
+      "videoIds": [
+        "iZY4rXly1_Y",
+        "C_dLST3fa6s",
+        "UECy1XbL6w8",
+        "RwIf6cUFt88",
+        "zq-2XpGdn1w",
+        "VXZvnDrbBOI"
+      ]
+    },
+    {
+      "id": "math.m06.t04",
+      "title": "Fatoração algébrica",
+      "status": "verified",
+      "videoIds": [
+        "iZY4rXly1_Y",
+        "Sshc6CWYTkM",
+        "hgr3iNJdLzE",
+        "BoJaNfpV4Tk",
+        "c4Y2noAk2Eg",
+        "YgkK4NpnBi8",
+        "4D2XIMDg7cQ",
+        "gpLUtjncoSo",
+        "3amBZupsIdc"
+      ]
+    },
+    {
+      "id": "math.m06.t05",
+      "title": "Frações algébricas",
+      "status": "verified",
+      "videoIds": [
+        "rJtuB-VsmKI",
+        "d57PWD9wlMg",
+        "5IUJCJ2HDqc",
+        "1X3d957nuXw",
+        "M3ladGxsgc4",
+        "_iRc9eMvg_U",
+        "klOecOyECNs"
+      ]
+    },
+    {
+      "id": "math.m06.t06",
+      "title": "Equação do primeiro grau",
+      "status": "verified",
+      "videoIds": [
+        "bWJrg5DyuMY",
+        "TLkqE_CWY2E",
+        "uqO6lx95m00",
+        "6z1p6MybQMQ",
+        "tBU853Fh4e8",
+        "xOyC50CMdi8",
+        "-ZZPaS1zOwc",
+        "iUrjKc8VDlw",
+        "DINAMFileSE"
+      ]
+    },
+    {
+      "id": "math.m06.t07",
+      "title": "Inequações de primeiro grau",
+      "status": "verified",
+      "videoIds": [
+        "-LT4pGt2acE",
+        "2D6uhOJtN44",
+        "pecamqaz9f4",
+        "6noPKowL3J0",
+        "i-aoZXeBizU",
+        "q1dYyoDKVs4",
+        "LsX-0I5w9UE",
+        "0SiUrWOSL1U",
+        "pxkS0gN0gN0",
+        "HBkSpbVoYW4"
+      ]
+    },
+    {
+      "id": "math.m06.t08",
+      "title": "Sistemas lineares 2x2",
+      "status": "verified",
+      "videoIds": [
+        "DFSovLu1BAs",
+        "tBU853Fh4e8",
+        "gz3XparlR8Q",
+        "NYbHyW9qeAQ",
+        "-LT4pGt2acE",
+        "tYj2DoLWV-Y",
+        "eprw_SsxGcg"
+      ]
+    },
+    {
+      "id": "math.m06.t09",
+      "title": "Problemas com incógnitas",
+      "status": "verified",
+      "videoIds": [
+        "iUrjKc8VDlw",
+        "DINAMFileSE",
+        "g3JclM7UKK8"
+      ]
+    },
+    {
+      "id": "math.m07.t01",
+      "title": "Equação de segundo grau",
+      "status": "verified",
+      "videoIds": [
+        "NYbHyW9qeAQ",
+        "HCslGzCAA9E",
+        "uBuFIYwnZnQ",
+        "4D2XIMDg7cQ",
+        "LNLvMo1PWok",
+        "ZZ9gGsqwrpo",
+        "KarCkEGZqXA",
+        "M6x1eydsMCs",
+        "toAaUBwitFE",
+        "qYQllsg8ka8",
+        "R83NXczgvcA",
+        "bDzwyFUqPHw",
+        "DGZn7ZefNzM"
+      ]
+    },
+    {
+      "id": "math.m07.t02",
+      "title": "Fórmula de Bhaskara",
+      "status": "verified",
+      "videoIds": [
+        "LNLvMo1PWok",
+        "ZZ9gGsqwrpo",
+        "KarCkEGZqXA",
+        "M6x1eydsMCs",
+        "toAaUBwitFE",
+        "qYQllsg8ka8",
+        "6LlSNGgxDlM",
+        "CBNtKwbZuj0",
+        "D7OzGB0wQyo",
+        "jX36W3t1lWk",
+        "y1Prj2xf9gY",
+        "a8DnGCCf1uw",
+        "CNqeTO2tCuI"
+      ]
+    },
+    {
+      "id": "math.m07.t03",
+      "title": "Soma e produto das raízes",
+      "status": "verified",
+      "videoIds": [
+        "_n269r_SR_A",
+        "90pseAnmGq4",
+        "a6sLaYN3IxM"
+      ]
+    },
+    {
+      "id": "math.m07.t04",
+      "title": "Discriminante",
+      "status": "verified",
+      "videoIds": [
+        "R83NXczgvcA",
+        "bDzwyFUqPHw"
+      ]
+    },
+    {
+      "id": "math.m07.t05",
+      "title": "Sistemas com equação quadrática",
+      "status": "verified",
+      "videoIds": [
+        "NYbHyW9qeAQ",
+        "tYj2DoLWV-Y"
+      ]
+    },
+    {
+      "id": "math.m07.t06",
+      "title": "Polinômios e operações",
+      "status": "verified",
+      "videoIds": [
+        "90pseAnmGq4",
+        "N_oFTs1-mMg",
+        "821c9l1SeaE",
+        "kRxZKOxZ_aU",
+        "LWBKJLipWBM",
+        "UBUOTEaGH3g",
+        "O-KSxzwsXQg",
+        "iI-RS_YavGE",
+        "4mYe8Y5iPYA",
+        "1JF2DIJwhN8",
+        "JKazOagV5rk",
+        "SnH2DxPSItc",
+        "_bklrLDbAEg",
+        "UEzGhV5PTI8"
+      ]
+    },
+    {
+      "id": "math.m07.t07",
+      "title": "Equações biquadradas (aprofundamento)",
+      "status": "verified",
+      "videoIds": [
+        "DGZn7ZefNzM",
+        "pV_TmL_DkgQ",
+        "tl9ENE3pfEQ",
+        "Ny9WMo7f1vI",
+        "YEaQDJeADTg",
+        "ayC0m_6-SHQ"
+      ]
+    },
+    {
+      "id": "math.m07.t08",
+      "title": "Inequações quadráticas",
+      "status": "verified",
+      "videoIds": [
+        "tYj2DoLWV-Y",
+        "I4H1WNuBJSI",
+        "50YYFWPec0Y",
+        "UKgRWYwrzd0",
+        "8ZFSKCUngyw",
+        "jy2hQSveWc8",
+        "C50Um6OjmTg",
+        "u1zvLoATa-8",
+        "Rh99ZjA2NuU"
+      ]
+    },
+    {
+      "id": "math.m08.t01",
+      "title": "Conceito de função",
+      "status": "verified",
+      "videoIds": [
+        "hdMFlAv5GkU"
+      ]
+    },
+    {
+      "id": "math.m08.t02",
+      "title": "Domínio, contradomínio e imagem",
+      "status": "verified",
+      "videoIds": [
+        "AkC2YWGldWg",
+        "GkuG8xZrYbs",
+        "wPesFG0cG7g",
+        "w9teZOdAQJ0",
+        "wxRotEr1Klk",
+        "JBs07Iik6DQ",
+        "lrpNTBD1_jE",
+        "G3zjNRYbDv8",
+        "w13aeOGO3ZI",
+        "Y1urlgE0lBU"
+      ]
+    },
+    {
+      "id": "math.m08.t03",
+      "title": "Pares ordenados",
+      "status": "verified",
+      "videoIds": [
+        "Vg8yTl0WvKc"
+      ]
+    },
+    {
+      "id": "math.m08.t04",
+      "title": "Plano cartesiano",
+      "status": "verified",
+      "videoIds": [
+        "C2vQ9pMkvpU",
+        "Vg8yTl0WvKc",
+        "kJI5RfwNlCE",
+        "XRJvcU4TfDM",
+        "Kpn82kN5zHE",
+        "iC4q1AGeN5A",
+        "EAeTBeEHSD4",
+        "PUP6wMu78x8"
+      ]
+    },
+    {
+      "id": "math.m08.t05",
+      "title": "Gráfico e tabela",
+      "status": "verified",
+      "videoIds": [
+        "CqCexURvZaU",
+        "XWVcoUa8hRI",
+        "mR9IlYbzeGw",
+        "AkC2YWGldWg",
+        "fhg7IP_bIJI",
+        "RXOe_wIFf0c",
+        "Emj0qSG8Q54",
+        "w13aeOGO3ZI",
+        "JgGseIonmYI",
+        "Wb0ceNgBM00",
+        "9U3rkjaVp7I",
+        "2yqqNtunyxI",
+        "6CtKXNmIScI",
+        "I2XlqtBS5uY",
+        "2KWDWpmDZwQ",
+        "aIOKZ0rFzS4",
+        "ZnxMdyN4Xp8",
+        "SggGwu1VV3s",
+        "-0-MS7MzvBU",
+        "7r7DDHnQpqc",
+        "U9I1LFFcUkw",
+        "-iMToBhO2i8",
+        "yihH524OkeA"
+      ]
+    },
+    {
+      "id": "math.m08.t06",
+      "title": "Crescimento e decrescimento",
+      "status": "verified",
+      "videoIds": [
+        "RJcmnD0ZZ1Y"
+      ]
+    },
+    {
+      "id": "math.m08.t07",
+      "title": "Taxa de variação",
+      "status": "verified",
+      "videoIds": [
+        "pSMOBkNO_ew",
+        "7EEl-dBc8II",
+        "xDTd2a4NJ40"
+      ]
+    },
+    {
+      "id": "math.m08.t08",
+      "title": "Zeros e interceptos",
+      "status": "verified",
+      "videoIds": [
+        "CNqeTO2tCuI",
+        "JgGseIonmYI",
+        "3jE9VAIyI30",
+        "a0ndXBGjqCU",
+        "u-pg5Pz_YUw",
+        "PgOLmJ00KPQ",
+        "PNRniV3gtmk",
+        "4d48gLFe3F0"
+      ]
+    },
+    {
+      "id": "math.m08.t09",
+      "title": "Composição e função inversa (quando pertinente)",
+      "status": "verified",
+      "videoIds": [
+        "qUn9SpP-8Vk",
+        "aSXWoSvmvNA",
+        "OqNcQoJEWNU",
+        "kROKvsKLxKk"
+      ]
+    },
+    {
+      "id": "math.m09.t01",
+      "title": "Coeficientes angular e linear",
+      "status": "verified",
+      "videoIds": [
+        "pSMOBkNO_ew",
+        "7EEl-dBc8II",
+        "xDTd2a4NJ40"
+      ]
+    },
+    {
+      "id": "math.m09.t02",
+      "title": "Equação da reta",
+      "status": "verified",
+      "videoIds": [
+        "eTf2g3Sx8cE",
+        "qze1Bws5RaE",
+        "nysu0K-VXR8",
+        "5WeIHwhyDJA",
+        "xDQM9GDsDZc",
+        "j0dU93bKML8",
+        "_WAQOcSU2Co",
+        "hdMFlAv5GkU",
+        "6CtKXNmIScI",
+        "2KWDWpmDZwQ",
+        "xDTd2a4NJ40",
+        "u-pg5Pz_YUw",
+        "PgOLmJ00KPQ",
+        "PNRniV3gtmk",
+        "5FpSn7-k2sk"
+      ]
+    },
+    {
+      "id": "math.m09.t03",
+      "title": "Interpretação gráfica",
+      "status": "verified",
+      "videoIds": [
+        "Wb0ceNgBM00",
+        "9U3rkjaVp7I",
+        "2yqqNtunyxI",
+        "6CtKXNmIScI",
+        "I2XlqtBS5uY",
+        "2KWDWpmDZwQ"
+      ]
+    },
+    {
+      "id": "math.m09.t04",
+      "title": "Zero da função",
+      "status": "verified",
+      "videoIds": [
+        "3jE9VAIyI30",
+        "u-pg5Pz_YUw",
+        "PgOLmJ00KPQ",
+        "PNRniV3gtmk"
+      ]
+    },
+    {
+      "id": "math.m09.t05",
+      "title": "Sinal da função",
+      "status": "verified",
+      "videoIds": [
+        "5FpSn7-k2sk"
+      ]
+    },
+    {
+      "id": "math.m09.t06",
+      "title": "Taxa constante",
+      "status": "verified",
+      "videoIds": [
+        "pSMOBkNO_ew",
+        "7EEl-dBc8II",
+        "xDTd2a4NJ40"
+      ]
+    },
+    {
+      "id": "math.m09.t07",
+      "title": "Sistemas representados graficamente",
+      "status": "verified",
+      "videoIds": [
+        "eprw_SsxGcg"
+      ]
+    },
+    {
+      "id": "math.m09.t08",
+      "title": "Modelagem de tarifas e consumos",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m10.t01",
+      "title": "Parábola e concavidade",
+      "status": "verified",
+      "videoIds": [
+        "aIOKZ0rFzS4",
+        "ZnxMdyN4Xp8",
+        "SggGwu1VV3s",
+        "-0-MS7MzvBU",
+        "U9I1LFFcUkw",
+        "vD7f5wUh0yA",
+        "AUyrnvKidFk",
+        "rHal93QAGyo",
+        "DCT9jRSAwfs",
+        "S8gSYVhY_To",
+        "mEHX_5kXatI",
+        "FQDp9Cmys3c"
+      ]
+    },
+    {
+      "id": "math.m10.t02",
+      "title": "Zeros e vértice",
+      "status": "verified",
+      "videoIds": [
+        "CNqeTO2tCuI",
+        "4d48gLFe3F0",
+        "vD7f5wUh0yA",
+        "DCT9jRSAwfs",
+        "9Ovd2Pvx42I"
+      ]
+    },
+    {
+      "id": "math.m10.t03",
+      "title": "Máximos e mínimos",
+      "status": "verified",
+      "videoIds": [
+        "9Ovd2Pvx42I"
+      ]
+    },
+    {
+      "id": "math.m10.t04",
+      "title": "Intervalos de sinal",
+      "status": "verified",
+      "videoIds": [
+        "SggGwu1VV3s"
+      ]
+    },
+    {
+      "id": "math.m10.t05",
+      "title": "Gráfico e deslocamentos",
+      "status": "verified",
+      "videoIds": [
+        "aIOKZ0rFzS4",
+        "ZnxMdyN4Xp8",
+        "SggGwu1VV3s",
+        "-0-MS7MzvBU",
+        "7r7DDHnQpqc",
+        "U9I1LFFcUkw",
+        "-iMToBhO2i8",
+        "yihH524OkeA"
+      ]
+    },
+    {
+      "id": "math.m10.t06",
+      "title": "Problemas de área/otimização",
+      "status": "verified",
+      "videoIds": [
+        "S8gSYVhY_To",
+        "FQDp9Cmys3c",
+        "9Ovd2Pvx42I"
+      ]
+    },
+    {
+      "id": "math.m10.t07",
+      "title": "Modelagem de trajetórias",
+      "status": "verified",
+      "videoIds": [
+        "mEHX_5kXatI",
+        "14TVfC2kxJo"
+      ]
+    },
+    {
+      "id": "math.m11.t01",
+      "title": "Crescimento e decaimento exponencial",
+      "status": "verified",
+      "videoIds": [
+        "zU2nPaGyauc",
+        "uHnfaNWJdjw",
+        "gMGz-dB9few",
+        "fhg7IP_bIJI",
+        "9FGtZt84w6U",
+        "oCmqMy6q8UM"
+      ]
+    },
+    {
+      "id": "math.m11.t02",
+      "title": "Função exponencial",
+      "status": "verified",
+      "videoIds": [
+        "zU2nPaGyauc",
+        "uHnfaNWJdjw",
+        "gMGz-dB9few",
+        "fhg7IP_bIJI",
+        "9FGtZt84w6U",
+        "oCmqMy6q8UM"
+      ]
+    },
+    {
+      "id": "math.m11.t03",
+      "title": "Equações exponenciais",
+      "status": "verified",
+      "videoIds": [
+        "aWLNbY_8ViE",
+        "rzW-DifPXYY",
+        "cvvbRKHW868",
+        "9uffeDBaiV0"
+      ]
+    },
+    {
+      "id": "math.m11.t04",
+      "title": "Conceito de logaritmo",
+      "status": "verified",
+      "videoIds": [
+        "BcbKbQFeHyE",
+        "3-99EzHQ-yI",
+        "esdFuyG7zGs",
+        "2xuw8aSRVoM",
+        "cjXN-cs5deo",
+        "BzbzlRyaj2U"
+      ]
+    },
+    {
+      "id": "math.m11.t05",
+      "title": "Propriedades de logaritmos",
+      "status": "verified",
+      "videoIds": [
+        "vOTCXduYpQ8",
+        "MFZ2yYg5JXI"
+      ]
+    },
+    {
+      "id": "math.m11.t06",
+      "title": "Função logarítmica",
+      "status": "verified",
+      "videoIds": [
+        "yzMJbhVbQcA",
+        "oza6zrCMOPM",
+        "MVZKF_W2Hd0"
+      ]
+    },
+    {
+      "id": "math.m11.t07",
+      "title": "Escalas logarítmicas (pH, decibéis, Richter)",
+      "status": "inconclusive",
+      "videoIds": []
+    },
+    {
+      "id": "math.m11.t08",
+      "title": "Aplicações a juros e populações",
+      "status": "verified",
+      "videoIds": [
+        "hddweu-qSBM",
+        "ZMsieXqXwMg",
+        "X652ApXFTJA",
+        "KHaqyh6xQUk",
+        "j1oQE1514q8",
+        "PjjNnIZgLOY",
+        "Riz-ii6WZKE",
+        "FUsi1-hwK60",
+        "790S9GR5bWU",
+        "ZxhZpTcNgX8",
+        "U6lGwYyzsAs",
+        "bqBte86helo"
+      ]
+    },
+    {
+      "id": "math.m12.t01",
+      "title": "Padrões e sequências",
+      "status": "verified",
+      "videoIds": [
+        "mE6_YVkTDr0",
+        "rIDYwb5mAC4"
+      ]
+    },
+    {
+      "id": "math.m12.t02",
+      "title": "PA e termo geral",
+      "status": "verified",
+      "videoIds": [
+        "Efr5jMPR8CI",
+        "BWwQa8c22Pw",
+        "waIXJzREyw8",
+        "uFqfvnTlYLM",
+        "TMbTqx8lM4c",
+        "WKVNCM-Tod8",
+        "XROiXtPB_g4",
+        "vyJGTm6WvdU",
+        "miu-gy0Modk"
+      ]
+    },
+    {
+      "id": "math.m12.t03",
+      "title": "Soma da PA",
+      "status": "verified",
+      "videoIds": [
+        "WKVNCM-Tod8",
+        "XROiXtPB_g4",
+        "vyJGTm6WvdU",
+        "eVTyKfxv60g",
+        "vThb5sB6OIY",
+        "0Sz6-nc_tUM"
+      ]
+    },
+    {
+      "id": "math.m12.t04",
+      "title": "PG e termo geral",
+      "status": "verified",
+      "videoIds": [
+        "7TTwjASqCjA",
+        "WAW5CBvYIPE",
+        "haKrC4quHj8",
+        "iC5gz2U_6Tw",
+        "CDZYMkxv2JA"
+      ]
+    },
+    {
+      "id": "math.m12.t05",
+      "title": "Soma da PG finita",
+      "status": "verified",
+      "videoIds": [
+        "haKrC4quHj8",
+        "iC5gz2U_6Tw",
+        "CDZYMkxv2JA",
+        "KYKWqlEprl0",
+        "Y6N4s4Jf5cg"
+      ]
+    },
+    {
+      "id": "math.m12.t06",
+      "title": "Crescimento geométrico",
+      "status": "verified",
+      "videoIds": [
+        "7TTwjASqCjA",
+        "WAW5CBvYIPE",
+        "haKrC4quHj8",
+        "iC5gz2U_6Tw",
+        "CDZYMkxv2JA"
+      ]
+    },
+    {
+      "id": "math.m12.t07",
+      "title": "Sequências recorrentes simples",
+      "status": "verified",
+      "videoIds": [
+        "mE6_YVkTDr0",
+        "wjcBsEd-ogE"
+      ]
+    },
+    {
+      "id": "math.m12.t08",
+      "title": "Modelos financeiros",
+      "status": "verified",
+      "videoIds": [
+        "4CqC8IjtL4M"
+      ]
+    },
+    {
+      "id": "math.m13.t01",
+      "title": "Ponto, reta, segmento e ângulo",
+      "status": "verified",
+      "videoIds": [
+        "nAvqZSglTmA",
+        "Xe3ijQG5mtQ",
+        "FG0lcfR6-Cg",
+        "2w6ZxGqqVI0"
+      ]
+    },
+    {
+      "id": "math.m13.t02",
+      "title": "Retas paralelas e transversais",
+      "status": "verified",
+      "videoIds": [
+        "8xOm-HKgljQ",
+        "Ldr_uuJo4Uk",
+        "byrefiSZw0k"
+      ]
+    },
+    {
+      "id": "math.m13.t03",
+      "title": "Triângulos e classificação",
+      "status": "verified",
+      "videoIds": [
+        "3x920GHyF4g",
+        "Ka3GluTldeY"
+      ]
+    },
+    {
+      "id": "math.m13.t04",
+      "title": "Soma dos ângulos",
+      "status": "verified",
+      "videoIds": [
+        "-6MYOpNQdGQ",
+        "3ihvVifG258",
+        "mKalmiok3xs",
+        "KzzrV8zVShA",
+        "3ynYNP4PQzk",
+        "IU01Qcv_-Zg",
+        "7pADvVbNcsg",
+        "4ZD2_JuSbRc"
+      ]
+    },
+    {
+      "id": "math.m13.t05",
+      "title": "Congruência e semelhança",
+      "status": "verified",
+      "videoIds": [
+        "C0BAP_2eeaA",
+        "G_9XuPrIo_M",
+        "JBP0ryUtJmg",
+        "lYEJ19G9fck",
+        "enKCHremHN8",
+        "JaxzXZJ8tzo",
+        "TeKvhnJgNYU"
+      ]
+    },
+    {
+      "id": "math.m13.t06",
+      "title": "Teorema de Tales",
+      "status": "verified",
+      "videoIds": [
+        "TeKvhnJgNYU",
+        "byrefiSZw0k",
+        "RKegZ1TiO28",
+        "MQw2524ZZcU"
+      ]
+    },
+    {
+      "id": "math.m13.t07",
+      "title": "Teorema de Pitágoras",
+      "status": "verified",
+      "videoIds": [
+        "2DZ6xMVC60I",
+        "iOi8FQIObQw",
+        "-MZ5At-p_jA",
+        "mplTXZD_pBo",
+        "vmpT7AXwwy4",
+        "yhfhKD0Vejg",
+        "7YeYeL2MjB4",
+        "DD06fT-xdtI",
+        "Tq3XOB7Amcc",
+        "nqXfCLe58CA",
+        "AZSs7hMMllw",
+        "RxfPjqXx-g0",
+        "tJwdgWdFvGg",
+        "3aP6hDvcsJI",
+        "YBkhviGTcnM",
+        "sNkhMMoKDUE",
+        "j4fjn5FFlDc"
+      ]
+    },
+    {
+      "id": "math.m13.t08",
+      "title": "Relações métricas do triângulo retângulo",
+      "status": "verified",
+      "videoIds": [
+        "mFszQZAke7o",
+        "TTfajm-aQ1s",
+        "nR12SF_erRQ",
+        "2DZ6xMVC60I"
+      ]
+    },
+    {
+      "id": "math.m14.t01",
+      "title": "Quadriláteros e polígonos",
+      "status": "verified",
+      "videoIds": [
+        "m2owI8HeAjY",
+        "T7aMJJ-YDvw",
+        "HQqjQhtrZNY",
+        "NhP5eneMmLA",
+        "zObNn4vFy14",
+        "Kgh93SCaJPw",
+        "a0sl1_eF7Xk",
+        "LI8rDyEMQ74",
+        "vMmwoV7XJFA",
+        "jTlJViKihsU",
+        "lNbNjWpXtJM",
+        "dLrMSsi55rQ",
+        "8iHaegUgUK8",
+        "IU01Qcv_-Zg",
+        "7pADvVbNcsg",
+        "4ZD2_JuSbRc",
+        "RTECtV8mULg"
+      ]
+    },
+    {
+      "id": "math.m14.t02",
+      "title": "Polígonos regulares",
+      "status": "verified",
+      "videoIds": [
+        "jTlJViKihsU",
+        "lNbNjWpXtJM",
+        "RTECtV8mULg"
+      ]
+    },
+    {
+      "id": "math.m14.t03",
+      "title": "Perímetro e áreas",
+      "status": "verified",
+      "videoIds": [
+        "B8AlGge2ZRc",
+        "Hz5n9tcXmg0",
+        "_70-D5JsxRM",
+        "9h6c6RoI73E"
+      ]
+    },
+    {
+      "id": "math.m14.t04",
+      "title": "Triângulo e fórmula de Heron (aprofundamento)",
+      "status": "verified",
+      "videoIds": [
+        "_70-D5JsxRM",
+        "9h6c6RoI73E"
+      ]
+    },
+    {
+      "id": "math.m14.t05",
+      "title": "Circunferência e círculo",
+      "status": "verified",
+      "videoIds": [
+        "zObNn4vFy14",
+        "mVhzUA4yqww",
+        "ZJvkD2zEFVQ",
+        "kf2lvyoQ9oc",
+        "TxKZjxDo6RA",
+        "cWfijhjOjxI",
+        "lNbNjWpXtJM",
+        "XwetBqzFBGk",
+        "h1H1yjMRazg",
+        "R-sjOtYdmHs",
+        "oaN_ui6K2w4",
+        "IvX45J9akj0",
+        "H06B-VG2i3g"
+      ]
+    },
+    {
+      "id": "math.m14.t06",
+      "title": "Arcos, setores e coroas",
+      "status": "verified",
+      "videoIds": [
+        "h1H1yjMRazg",
+        "R-sjOtYdmHs",
+        "oaN_ui6K2w4",
+        "bl4G29ePCIs",
+        "E8KPG5eiWE4",
+        "FgYtH2i-ZwE",
+        "MNxLUQQDr18",
+        "uYjhozCzGbI"
+      ]
+    },
+    {
+      "id": "math.m14.t07",
+      "title": "Ângulo inscrito e central",
+      "status": "verified",
+      "videoIds": [
+        "RTECtV8mULg",
+        "IvX45J9akj0",
+        "H06B-VG2i3g",
+        "2iEjtAtcjJg",
+        "0mg1ghtyneo"
+      ]
+    },
+    {
+      "id": "math.m14.t08",
+      "title": "Tangência e relações geométricas",
+      "status": "verified",
+      "videoIds": [
+        "b1tzERE3owg",
+        "cWfijhjOjxI"
+      ]
+    },
+    {
+      "id": "math.m15.t01",
+      "title": "Seno, cosseno e tangente no triângulo retângulo",
+      "status": "verified",
+      "videoIds": [
+        "i6vUaVTPnSs",
+        "4dqxauw3ZRo",
+        "LOnH2gYclsI",
+        "D-E_A04ReTE",
+        "C7NrVLmEYcs",
+        "IwDSokY2FvQ",
+        "638-Cyo-xcU",
+        "RSnWH-hQWbA"
+      ]
+    },
+    {
+      "id": "math.m15.t02",
+      "title": "Ângulos notáveis",
+      "status": "verified",
+      "videoIds": [
+        "B6xUqq3BO0I",
+        "PbTFufj_pdI",
+        "DE4jfG2_zfs",
+        "3sJwHnMuPr0",
+        "QE3dVyWSzMM"
+      ]
+    },
+    {
+      "id": "math.m15.t03",
+      "title": "Lei dos senos",
+      "status": "verified",
+      "videoIds": [
+        "-aqfFvg49zs",
+        "9ngYXYmcZw8",
+        "0FhllteBZ10",
+        "Vp3gI7r1pUQ",
+        "dLrMSsi55rQ",
+        "sQW4z9ppfuc",
+        "CtOonrVQqbQ",
+        "TUBEkA-lGPU",
+        "qabYtowO30c",
+        "_8_V_H8MtPY"
+      ]
+    },
+    {
+      "id": "math.m15.t04",
+      "title": "Lei dos cossenos",
+      "status": "verified",
+      "videoIds": [
+        "dLrMSsi55rQ",
+        "sQW4z9ppfuc",
+        "CtOonrVQqbQ",
+        "TUBEkA-lGPU",
+        "qabYtowO30c",
+        "_8_V_H8MtPY"
+      ]
+    },
+    {
+      "id": "math.m15.t05",
+      "title": "Ciclo trigonométrico (noções)",
+      "status": "verified",
+      "videoIds": [
+        "GlgXTWP1HoM",
+        "MmhMAqsi40Y",
+        "d3jHc2FgKno",
+        "7Yu5XmLNV_U"
+      ]
+    },
+    {
+      "id": "math.m15.t06",
+      "title": "Funções seno e cosseno",
+      "status": "verified",
+      "videoIds": [
+        "RXOe_wIFf0c",
+        "FwTbL4hewlY",
+        "Emj0qSG8Q54",
+        "OZb2bXxlJFY",
+        "SEMobWoJz0Q"
+      ]
+    },
+    {
+      "id": "math.m15.t07",
+      "title": "Graus e radianos",
+      "status": "verified",
+      "videoIds": [
+        "ria4I6pTlEI",
+        "xaMu-IHHTDw"
+      ]
+    },
+    {
+      "id": "math.m15.t08",
+      "title": "Interpretação de fenômenos periódicos",
+      "status": "verified",
+      "videoIds": [
+        "OZb2bXxlJFY",
+        "SEMobWoJz0Q"
+      ]
+    },
+    {
+      "id": "math.m16.t01",
+      "title": "Prismas e pirâmides",
+      "status": "verified",
+      "videoIds": [
+        "fHbd8C69-xg",
+        "Jlr7qPlZRFI",
+        "uV51d1MBKP8",
+        "Bz1lw74k4XI",
+        "8agtneVekfs",
+        "EiEJTTmIRmo",
+        "dVPVKrk94yw",
+        "tiTR_joANO4",
+        "2ydlEpqePn0",
+        "Gvcru8fqqcA",
+        "gqwQaoN6w48",
+        "RGlCdaZJrI4",
+        "eMOjYGz10UU"
+      ]
+    },
+    {
+      "id": "math.m16.t02",
+      "title": "Cubo e paralelepípedo",
+      "status": "verified",
+      "videoIds": [
+        "fHbd8C69-xg",
+        "RGlCdaZJrI4",
+        "ZFsMQu4dyWo",
+        "BCCdM7Rv_oQ",
+        "dXlTcrL1ZI0",
+        "HVaP8akjnaU",
+        "N79LaXVAxPI",
+        "IKBk-Js_R6s",
+        "JVGuGoKipTI",
+        "mAbNOaLkSnY",
+        "y2a_W22VzjY"
+      ]
+    },
+    {
+      "id": "math.m16.t03",
+      "title": "Cilindros, cones e esferas",
+      "status": "verified",
+      "videoIds": [
+        "uV51d1MBKP8",
+        "Pk-IOSEQ8sQ",
+        "yAk1rfh6YaI",
+        "MdiTUsPg_zc",
+        "U2IglC56Ac0",
+        "RGlCdaZJrI4",
+        "Bu0X1_P_O5k",
+        "dQLa9Qya2OU"
+      ]
+    },
+    {
+      "id": "math.m16.t04",
+      "title": "Planificações",
+      "status": "verified",
+      "videoIds": [
+        "HVaP8akjnaU",
+        "b31jJ7BKjAE"
+      ]
+    },
+    {
+      "id": "math.m16.t05",
+      "title": "Área lateral e total",
+      "status": "verified",
+      "videoIds": [
+        "Gvcru8fqqcA",
+        "gqwQaoN6w48",
+        "eMOjYGz10UU",
+        "Bu0X1_P_O5k",
+        "dQLa9Qya2OU"
+      ]
+    },
+    {
+      "id": "math.m16.t06",
+      "title": "Volume",
+      "status": "verified",
+      "videoIds": [
+        "Bz1lw74k4XI",
+        "EiEJTTmIRmo",
+        "MdiTUsPg_zc",
+        "U2IglC56Ac0",
+        "Gvcru8fqqcA",
+        "gqwQaoN6w48",
+        "RGlCdaZJrI4",
+        "ZFsMQu4dyWo",
+        "BCCdM7Rv_oQ",
+        "dXlTcrL1ZI0",
+        "N79LaXVAxPI",
+        "IKBk-Js_R6s",
+        "JVGuGoKipTI",
+        "mAbNOaLkSnY"
+      ]
+    },
+    {
+      "id": "math.m16.t07",
+      "title": "Seções e relações de escala",
+      "status": "inconclusive",
+      "videoIds": []
+    },
+    {
+      "id": "math.m16.t08",
+      "title": "Troncos de cone e pirâmide",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m17.t01",
+      "title": "Distância entre pontos",
+      "status": "verified",
+      "videoIds": [
+        "Qpl3NXubU9E",
+        "C2vQ9pMkvpU",
+        "XRJvcU4TfDM"
+      ]
+    },
+    {
+      "id": "math.m17.t02",
+      "title": "Ponto médio",
+      "status": "verified",
+      "videoIds": [
+        "IOAknHCCaE0"
+      ]
+    },
+    {
+      "id": "math.m17.t03",
+      "title": "Coeficiente angular",
+      "status": "verified",
+      "videoIds": [
+        "pSMOBkNO_ew",
+        "7EEl-dBc8II",
+        "xDTd2a4NJ40"
+      ]
+    },
+    {
+      "id": "math.m17.t04",
+      "title": "Retas e equações",
+      "status": "verified",
+      "videoIds": [
+        "5WeIHwhyDJA",
+        "xDQM9GDsDZc",
+        "j0dU93bKML8",
+        "_WAQOcSU2Co"
+      ]
+    },
+    {
+      "id": "math.m17.t05",
+      "title": "Paralelismo e perpendicularismo",
+      "status": "verified",
+      "videoIds": [
+        "Nyj3bQZ6-Y4",
+        "mP_FYcXKu0U"
+      ]
+    },
+    {
+      "id": "math.m17.t06",
+      "title": "Interseção de retas",
+      "status": "verified",
+      "videoIds": [
+        "eprw_SsxGcg"
+      ]
+    },
+    {
+      "id": "math.m17.t07",
+      "title": "Circunferência no plano",
+      "status": "verified",
+      "videoIds": [
+        "b1tzERE3owg",
+        "3Gl5RAmQuHE",
+        "ItWiSvXxsww",
+        "M2jJzIaPb3c",
+        "c-FZLWvPepg"
+      ]
+    },
+    {
+      "id": "math.m17.t08",
+      "title": "Área por coordenadas",
+      "status": "verified",
+      "videoIds": [
+        "eXQc-t6_TZs"
+      ]
+    },
+    {
+      "id": "math.m18.t01",
+      "title": "Leitura de distribuição de frequência",
+      "status": "verified",
+      "videoIds": [
+        "8D1lcpo8TMQ"
+      ]
+    },
+    {
+      "id": "math.m18.t02",
+      "title": "Tabelas e gráficos",
+      "status": "verified",
+      "videoIds": [
+        "GDEkkbwvhNg"
+      ]
+    },
+    {
+      "id": "math.m18.t03",
+      "title": "Média simples e ponderada",
+      "status": "verified",
+      "videoIds": [
+        "nRxl0WUplf4",
+        "c95D-gZqAuE",
+        "A4oDR7sER_g",
+        "Ht5UfNBTxLg",
+        "xfFUdCf70Ls",
+        "lNj4fz2O8VE",
+        "-YdS6miUAfM",
+        "JQ91E7UeQ3g",
+        "wMjNqebDLu4",
+        "vARZQP9Va6Q",
+        "p0pBKkMuOdk",
+        "pbNmpKerRIg",
+        "o8fEcLAar0w",
+        "2sRWaVJh7_o",
+        "AfsfZ9jOK0E"
+      ]
+    },
+    {
+      "id": "math.m18.t04",
+      "title": "Mediana e moda",
+      "status": "verified",
+      "videoIds": [
+        "X5BUC6Lc8gw",
+        "Z_SzS1E73uY",
+        "FzDoonoRjuw",
+        "IgoKxQK5hGQ",
+        "wMjNqebDLu4",
+        "mSk2vjGXA90"
+      ]
+    },
+    {
+      "id": "math.m18.t05",
+      "title": "Amplitude",
+      "status": "verified",
+      "videoIds": [
+        "mV_d_KejL8s"
+      ]
+    },
+    {
+      "id": "math.m18.t06",
+      "title": "Quartis e interpretação",
+      "status": "inconclusive",
+      "videoIds": []
+    },
+    {
+      "id": "math.m18.t07",
+      "title": "Variância e desvio padrão",
+      "status": "verified",
+      "videoIds": [
+        "mSk2vjGXA90",
+        "JEwd0Vlqapo"
+      ]
+    },
+    {
+      "id": "math.m18.t08",
+      "title": "Identificação de gráficos enganosos",
+      "status": "verified",
+      "videoIds": [
+        "_NcEIiX4Sqc"
+      ]
+    },
+    {
+      "id": "math.m19.t01",
+      "title": "Princípio fundamental da contagem",
+      "status": "verified",
+      "videoIds": [
+        "6QsrR9QFLro",
+        "6pquf3Bl5q8",
+        "xC9RNdce-mg",
+        "4cNV62z08Kc",
+        "E_N2b59AolE"
+      ]
+    },
+    {
+      "id": "math.m19.t02",
+      "title": "Diagramas de árvore",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m19.t03",
+      "title": "Permutação simples",
+      "status": "verified",
+      "videoIds": [
+        "PRQpUleWr-4",
+        "DZFDUsWTfck",
+        "jhy6QfHKiXI",
+        "HF2qXFs0sKQ"
+      ]
+    },
+    {
+      "id": "math.m19.t04",
+      "title": "Permutação com repetição",
+      "status": "verified",
+      "videoIds": [
+        "c-gxFCn6bJk",
+        "LMlm2OvPqr8",
+        "lqpLVhakThg",
+        "5NUiH1m5mk8"
+      ]
+    },
+    {
+      "id": "math.m19.t05",
+      "title": "Arranjo",
+      "status": "verified",
+      "videoIds": [
+        "9IlqcvomScM",
+        "kQtdQ8iKuvg",
+        "_8mZOSXCRp8",
+        "EHxu9xWctJc",
+        "Drj2Y5_ix1Y"
+      ]
+    },
+    {
+      "id": "math.m19.t06",
+      "title": "Combinação",
+      "status": "verified",
+      "videoIds": [
+        "0USK4yzPQ_M",
+        "RJHLburK0zo",
+        "kQtdQ8iKuvg",
+        "_8mZOSXCRp8",
+        "EHxu9xWctJc"
+      ]
+    },
+    {
+      "id": "math.m19.t07",
+      "title": "Contagem com restrições",
+      "status": "verified",
+      "videoIds": [
+        "-TQ-WhFVxoM",
+        "3aa8vML42YE",
+        "tN3RN5IthCQ"
+      ]
+    },
+    {
+      "id": "math.m19.t08",
+      "title": "Princípio aditivo e multiplicativo",
+      "status": "verified",
+      "videoIds": [
+        "6QsrR9QFLro",
+        "6pquf3Bl5q8",
+        "xC9RNdce-mg",
+        "4cNV62z08Kc",
+        "E_N2b59AolE"
+      ]
+    },
+    {
+      "id": "math.m20.t01",
+      "title": "Espaço amostral e eventos",
+      "status": "verified",
+      "videoIds": [
+        "GpManOlb3dA",
+        "Vk2onHoRxD8"
+      ]
+    },
+    {
+      "id": "math.m20.t02",
+      "title": "Eventos equiprováveis",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m20.t03",
+      "title": "Complementar",
+      "status": "verified",
+      "videoIds": [
+        "Vk2onHoRxD8"
+      ]
+    },
+    {
+      "id": "math.m20.t04",
+      "title": "União e interseção",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m20.t05",
+      "title": "Eventos independentes",
+      "status": "verified",
+      "videoIds": [
+        "4NNF6koi5BY"
+      ]
+    },
+    {
+      "id": "math.m20.t06",
+      "title": "Probabilidade condicional",
+      "status": "verified",
+      "videoIds": [
+        "YKjlusDJRpE",
+        "WlUgwydaLcw",
+        "DXV3NX6vR38",
+        "trqIPvmAkKM"
+      ]
+    },
+    {
+      "id": "math.m20.t07",
+      "title": "Contagem em probabilidades",
+      "status": "verified",
+      "videoIds": [
+        "ebPR-0u5-Zk",
+        "YKjlusDJRpE",
+        "fvS5Je30_bg",
+        "bb-x3iuGl1c",
+        "GDf8TkPh59k",
+        "NsGpDI53HqA"
+      ]
+    },
+    {
+      "id": "math.m20.t08",
+      "title": "Probabilidade de múltiplas etapas",
+      "status": "verified",
+      "videoIds": [
+        "4cNV62z08Kc",
+        "E_N2b59AolE"
+      ]
+    },
+    {
+      "id": "math.m21.t01",
+      "title": "Capitalização composta",
+      "status": "verified",
+      "videoIds": [
+        "hddweu-qSBM",
+        "ZMsieXqXwMg",
+        "X652ApXFTJA",
+        "KHaqyh6xQUk",
+        "j1oQE1514q8",
+        "PjjNnIZgLOY",
+        "Riz-ii6WZKE",
+        "FUsi1-hwK60",
+        "790S9GR5bWU",
+        "ZxhZpTcNgX8",
+        "U6lGwYyzsAs",
+        "bqBte86helo"
+      ]
+    },
+    {
+      "id": "math.m21.t02",
+      "title": "Taxas equivalentes",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m21.t03",
+      "title": "Valor presente e futuro",
+      "status": "inconclusive",
+      "videoIds": []
+    },
+    {
+      "id": "math.m21.t04",
+      "title": "Parcelamentos e prestações",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m21.t05",
+      "title": "Comparação de investimentos",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m21.t06",
+      "title": "Inflação acumulada",
+      "status": "verified",
+      "videoIds": [
+        "rEN-c1LQufc"
+      ]
+    },
+    {
+      "id": "math.m21.t07",
+      "title": "Análise crítica de juros nominais e reais",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m22.t01",
+      "title": "Funções definidas por partes",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m22.t02",
+      "title": "Valor absoluto e módulo",
+      "status": "verified",
+      "videoIds": [
+        "gQmFpa7OAJo",
+        "ReojSacVKWs",
+        "HH7FHiIBVpo",
+        "l4cezu2Z35U",
+        "Kvh1tmDJA34",
+        "AkC2YWGldWg",
+        "PdKDZC7mBYc",
+        "gACm0IMhdpo"
+      ]
+    },
+    {
+      "id": "math.m22.t03",
+      "title": "Relação entre gráficos e fórmulas",
+      "status": "verified",
+      "videoIds": [
+        "5WeIHwhyDJA"
+      ]
+    },
+    {
+      "id": "math.m22.t04",
+      "title": "Otimização contextualizada",
+      "status": "verified",
+      "videoIds": [
+        "TLh9zNdxpbs"
+      ]
+    },
+    {
+      "id": "math.m22.t05",
+      "title": "Composição de modelos",
+      "status": "verified",
+      "videoIds": [
+        "qUn9SpP-8Vk",
+        "OqNcQoJEWNU"
+      ]
+    },
+    {
+      "id": "math.m22.t06",
+      "title": "Modelos não lineares",
+      "status": "verified",
+      "videoIds": [
+        "uHnfaNWJdjw"
+      ]
+    },
+    {
+      "id": "math.m22.t07",
+      "title": "Comparação de crescimento linear e exponencial",
+      "status": "verified",
+      "videoIds": [
+        "eTf2g3Sx8cE",
+        "qze1Bws5RaE",
+        "nysu0K-VXR8",
+        "zU2nPaGyauc",
+        "uHnfaNWJdjw",
+        "gMGz-dB9few",
+        "fhg7IP_bIJI",
+        "hdMFlAv5GkU",
+        "6CtKXNmIScI",
+        "2KWDWpmDZwQ",
+        "xDTd2a4NJ40",
+        "u-pg5Pz_YUw",
+        "PgOLmJ00KPQ",
+        "PNRniV3gtmk",
+        "5FpSn7-k2sk",
+        "9FGtZt84w6U",
+        "oCmqMy6q8UM"
+      ]
+    },
+    {
+      "id": "math.m23.t01",
+      "title": "Amostragem e representatividade",
+      "status": "verified",
+      "videoIds": [
+        "7FeRixdf02I"
+      ]
+    },
+    {
+      "id": "math.m23.t02",
+      "title": "Viés amostral",
+      "status": "inconclusive",
+      "videoIds": []
+    },
+    {
+      "id": "math.m23.t03",
+      "title": "Correlação e causalidade",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m23.t04",
+      "title": "Interpolação e extrapolação",
+      "status": "verified",
+      "videoIds": [
+        "miu-gy0Modk"
+      ]
+    },
+    {
+      "id": "math.m23.t05",
+      "title": "Séries temporais",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m23.t06",
+      "title": "Leitura de boxplots",
+      "status": "inconclusive",
+      "videoIds": []
+    },
+    {
+      "id": "math.m23.t07",
+      "title": "Distribuição normal (intuição)",
+      "status": "inconclusive",
+      "videoIds": []
+    },
+    {
+      "id": "math.m23.t08",
+      "title": "Variabilidade e tomada de decisões",
+      "status": "verified",
+      "videoIds": [
+        "mSk2vjGXA90",
+        "JEwd0Vlqapo"
+      ]
+    },
+    {
+      "id": "math.m24.t01",
+      "title": "Proporção + geometria",
+      "status": "verified",
+      "videoIds": [
+        "JBP0ryUtJmg",
+        "lYEJ19G9fck",
+        "enKCHremHN8",
+        "JaxzXZJ8tzo",
+        "TeKvhnJgNYU",
+        "byrefiSZw0k",
+        "RKegZ1TiO28",
+        "MQw2524ZZcU"
+      ]
+    },
+    {
+      "id": "math.m24.t02",
+      "title": "Probabilidade + combinatória",
+      "status": "verified",
+      "videoIds": [
+        "ebPR-0u5-Zk",
+        "YKjlusDJRpE",
+        "fvS5Je30_bg",
+        "bb-x3iuGl1c",
+        "GDf8TkPh59k",
+        "NsGpDI53HqA"
+      ]
+    },
+    {
+      "id": "math.m24.t03",
+      "title": "Função + finanças",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m24.t04",
+      "title": "Geometria espacial + conversões",
+      "status": "verified",
+      "videoIds": [
+        "Le8ZEFngkRo"
+      ]
+    },
+    {
+      "id": "math.m24.t05",
+      "title": "Trigonometria + topografia",
+      "status": "inconclusive",
+      "videoIds": []
+    },
+    {
+      "id": "math.m24.t06",
+      "title": "Estatística + interpretação",
+      "status": "verified",
+      "videoIds": [
+        "NsGpDI53HqA",
+        "GDEkkbwvhNg",
+        "loKgDVm7xGc"
+      ]
+    },
+    {
+      "id": "math.m24.t07",
+      "title": "Estimativa e análise dimensional",
+      "status": "verified",
+      "videoIds": [
+        "Zk4ddu2vFJU"
+      ]
+    },
+    {
+      "id": "math.m25.t01",
+      "title": "Matrizes e determinantes básicos",
+      "status": "verified",
+      "videoIds": [
+        "kDr1CdPuVXo",
+        "nHHaWOk9KRQ",
+        "HNpSOOhtqkA",
+        "tltAjKa_TVU",
+        "S2klz6X8e30",
+        "vdRZrrRDCp8"
+      ]
+    },
+    {
+      "id": "math.m25.t02",
+      "title": "Sistemas lineares por matrizes",
+      "status": "no_match_confirmed",
+      "videoIds": []
+    },
+    {
+      "id": "math.m25.t03",
+      "title": "Números complexos noções",
+      "status": "verified",
+      "videoIds": [
+        "gACm0IMhdpo",
+        "ti5izVRoJnk",
+        "AAXPJpfRwxw",
+        "6nQpBAE4bww",
+        "4VsK52AxpuI",
+        "aWsKb4qRYnI"
+      ]
+    },
+    {
+      "id": "math.m25.t04",
+      "title": "Identidades trigonométricas básicas",
+      "status": "verified",
+      "videoIds": [
+        "gdRDhev7Uyo",
+        "APjCLnLhurA",
+        "Q4BMv_vaKuk",
+        "ZeatJ7MHPGQ",
+        "t7uMFA0DxrA",
+        "DLAI0CAJn6E",
+        "lHuB0CBNNm0",
+        "IgUVktoGF9w",
+        "bC-ZSXs8hCQ"
+      ]
+    },
+    {
+      "id": "math.m25.t05",
+      "title": "Equações modulares",
+      "status": "verified",
+      "videoIds": [
+        "RmciQNnYxLY",
+        "PdKDZC7mBYc",
+        "UZZu5IteNm8"
+      ]
+    },
+    {
+      "id": "math.m25.t06",
+      "title": "Cônicas em nível interpretativo",
+      "status": "verified",
+      "videoIds": [
+        "fqoUna8aQXg",
+        "3GD0zn8r7qk"
+      ]
+    },
+    {
+      "id": "math.m25.t07",
+      "title": "Raciocínio lógico e conjuntos",
+      "status": "verified",
+      "videoIds": [
+        "h9lCtsIYB-8",
+        "rDEJDS5zJ3U",
+        "qEDnZzzks7Q",
+        "7E-rh5heeP8",
+        "YQLuG1EkjLw",
+        "Ymu1L35AQPs",
+        "s5Xv1SIQnQE",
+        "GLYEff_w-dE",
+        "Y_mYgLkuEl4",
+        "UEzGhV5PTI8"
+      ]
+    }
+  ]
+}

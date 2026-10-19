@@ -5,9 +5,242 @@ const normalizeWords=value=>normalizeVideoTitle(value).replace(/\b(aprofundament
 const EARLY_ARITHMETIC_VIDEO_GUARDS={
  'math.m01':{reject:/\b(?:monom(?:io|ios)|polinom(?:io|ios)|radic(?:al|ais)|raiz(?:es)? quadrad|func(?:ao|oes)|trigonom(?:etria)?|logaritm[a-z]*|derivad[a-z]*|integrais|calculo (?:1|diferencial|integral)|calculus)\b/},
  'math.m01.t01':{reject:/\b(?:operac(?:ao|oes)|adicao|subtracao|multiplicacao|divisao|monom(?:io|ios)|polinom(?:io|ios)|radic(?:al|ais)|raiz(?:es)? quadrad|func(?:ao|oes)|trigonom(?:etria)?|logaritm[a-z]*|derivad[a-z]*|integrais|calculo (?:1|diferencial|integral)|calculus)\b/},
- 'math.m01.t05':{reject:/\b(?:monom(?:io|ios)|polinom(?:io|ios)|radic(?:al|ais)|raiz(?:es)? quadrad|frac(?:ao|oes)|func(?:ao|oes)|trigonom(?:etria)?|logaritm[a-z]*|derivad[a-z]*|integrais|calculo (?:1|diferencial|integral)|calculus)\b/},
+ 'math.m01.t05':{reject:/\b(?:matriz|matrizes|sistemas?|equac[a-z]*|proporcion[a-z]*|notacao cientifica|potencia[a-z]*|monom(?:io|ios)|polinom(?:io|ios)|radic(?:al|ais)|raiz(?:es)? quadrad|frac(?:ao|oes)|func(?:ao|oes)|trigonom(?:etria)?|logaritm[a-z]*|derivad[a-z]*|integrais|calculo (?:1|diferencial|integral)|calculus)\b/},
  'math.m01.t10':{reject:/\b(?:monom(?:io|ios)|polinom(?:io|ios)|radic(?:al|ais)|raiz(?:es)? quadrad|frac(?:ao|oes)|func(?:ao|oes)|trigonom(?:etria)?|logaritm[a-z]*|derivad[a-z]*|integrais|calculo (?:1|diferencial|integral)|calculus)\b/}
 };
+// Editorial concept profiles follow the 199 stable curriculum lesson IDs.
+// Related coverage is allowed, but ambiguous words require their subject context.
+const LESSON_VIDEO_ROWS={
+1:String.raw`
+numeros naturais sistema decimal~ordens classes numeracao decimal;numeros? naturais|sistema (?:de numeracao )?decimal|ordens e classes|decomposicao de numeros
+numeros inteiros negativos;numeros? inteiros|numeros? negativos
+fracoes proprias improprias~tipos de fracoes;fracoes?\b|fracao\b|tipos de fracao;algebr|geratriz|radic
+numeros decimais conversao~fracao decimal;decima(?:is|l)|fracao decimal
+quatro operacoes basicas~adicao subtracao multiplicacao divisao;operac(?:oes|ao).*(?:basic|fundament)|adicao|subtracao|multiplicacao|divisao
+expressoes numericas parenteses~ordem das operacoes;expressoes? numericas?|ordem das operacoes|parenteses.*operac
+multiplos divisores;multiplos?|divisores?;divisor comum|multiplo comum
+criterios de divisibilidade;divisibilidade|divisivel
+numeros primos fatoracao~decomposicao fatores primos;primos?|fatores? primos|fatoracao (?:numerica|de numeros)
+mmc mdc~minimo multiplo comum maximo divisor comum;\bmmc\b|\bmdc\b|multiplo comum|divisor comum`,
+2:String.raw`
+razao taxa matematica~razao proporcao;razao|razoes|taxa unitaria;juros|exponencial
+proporcionalidade direta inversa~grandezas diretamente inversamente proporcionais;proporcional|proporcionais
+regra de tres simples;regra de tres simples
+regra de tres composta;regra de tres composta
+divisao partes proporcionais;divisao.*proporciona|partes proporcionais
+escalas matematica;\bescalas?\b;logarit|richter|decibe|\bph\b|quant|universo|musica
+velocidade media;velocidade media|movimento uniforme\b;uniformemente
+densidade vazao~razao densidade;\bdensidade\b|\bvazao\b`,
+3:String.raw`
+fracao decimal porcentagem~conversao fracao porcentagem;(?:fraco?es?|fracao).*(?:decimal|decimais|porcent)|(?:decimal|decimais|porcent).*(?:fraco?es?|fracao)
+porcentagem~calculo percentual;porcentagem|percentua
+acrescimos descontos porcentagem~aumento desconto percentual;acrescim|descont|aumento.*percent|percent.*aumento
+variacoes percentuais sucessivas~aumentos descontos sucessivos;sucessiv.*(?:percent|descont|aument|variac)|(?:percent|descont|aument|variac).*sucessiv
+porcentagem valor original~porcentagem inversa;porcentagem.*(?:reversa|inversa)|(?:reversa|inversa).*porcentagem|porcentagem.*(?:original|inicial)|(?:preco|valor) (?:original|inicial)
+lucro prejuizo;\blucro\b|\bprejuizo\b
+juros simples;juros simples
+juros compostos;juros compostos|capitalizacao composta
+taxa juros inflacao;inflacao|taxa.*juros|juros.*taxa`,
+4:String.raw`
+potenciacao propriedades;potenciacao|propriedades.*potencia|potencia.*propriedades
+potencias de dez~potencia base 10;potencia(?:s)? (?:de |da base |com base )?(?:dez|10)\b|notacao cientifica
+notacao cientifica;notacao cientifica
+ordem de grandeza;ordem de grandeza
+raiz quadrada cubica~radiciacao;raiz(?:es)? (?:quadrad|cubic)|radiciacao
+simplificacao radicais;simplifica.*radic|radic.*simplifica
+racionalizacao denominadores;racionaliza
+expoentes fracionarios~potencia expoente fracionario;expoente.*fracionar|potencia.*fracionar`,
+5:String.raw`
+sistema internacional unidades~prefixos multiplos submultiplos;sistema internacional|prefixos.*(?:unidades|medidas)|unidades.*prefixos
+conversao unidades medidas~transformacao unidades;conversao.*(?:unidades|medidas)|transformacao.*(?:unidades|medidas)|unidades de (?:comprimento|massa|volume|area|tempo);radian|graus|trigonom
+litros metros cubicos~medidas capacidade volume;litro.*(?:metro|volume)|(?:metro|volume).*litro|(?:unidades|medidas) de (?:volume|capacidade)
+medidas angulares~graus minutos segundos angulos;medidas? angulares?|angulos.*(?:graus|minutos|segundos)|(?:graus|minutos|segundos).*angulos
+estimativa matematica~calculo aproximado;estimativ|calculo aproximado
+algarismos significativos;algarismos? significativos?
+arredondamento erro medida~arredondamento numeros;arredondamento|erro.*medida|medida.*erro`,
+6:String.raw`
+variaveis expressoes algebricas~linguagem algebrica;expressoes? algebricas?|linguagem algebrica|\bvariaveis\b;qualitativ|quantitativ|estatistic
+propriedade distributiva;distributiv
+produtos notaveis;produtos? notaveis?
+fatoracao algebrica~fatoracao polinomios;fatoracao|fatorar;primos|numerica|numeros
+fracoes algebricas;fracoes? algebricas?|fracao algebrica
+ equacao primeiro grau;equac(?:ao|oes).*(?:primeiro|1[º°o]?).*grau;segundo|quadratic|inequa
+inequacao primeiro grau;inequac(?:ao|oes).*(?:primeiro|1[º°o]?).*grau
+sistemas lineares duas incognitas~sistemas equacoes 2x2;sistemas?.*(?:linear|lineares|equac|incognitas)|metodo.*(?:adicao|substituicao);quadratic|segundo grau
+problemas equacao primeiro grau~problemas incognitas;problemas?.*(?:equac|incognit)|(?:equac|incognit).*problemas?`,
+7:String.raw`
+equacao segundo grau;equac(?:ao|oes).*(?:segundo|2[º°o]?).*grau|equac(?:ao|oes) quadratic;inequa
+formula bhaskara;bhaskara;sem (?:usar )?bhaskara
+soma produto raizes~relacoes girard;soma.*produto.*raiz|relacoes? de girard
+discriminante equacao segundo grau~delta bhaskara;discriminante|delta.*(?:equac|grau|bhaskara)|(?:equac|grau|bhaskara).*delta
+sistema equacoes segundo grau~sistemas quadraticos;sistemas?.*(?:segundo grau|2[º°o]?.*grau|quadratic)|(?:segundo grau|2[º°o]?.*grau|quadratic).*sistemas?
+polinomios operacoes;polinomios?|monomios?
+equacoes biquadradas;biquadrad
+inequacoes segundo grau~inequacoes quadraticas;inequac(?:ao|oes).*(?:segundo|2[º°o]?).*grau|inequac(?:ao|oes) quadratic`,
+8:String.raw`
+introducao funcoes~conceito funcao;(?:introducao|conceito|definicao|o que e|nocoes|entenda).*(?:funcao|funcoes)|(?:funcao|funcoes).*(?:introducao|conceito|definicao);inversa|modular|composta|quadratic|exponencial|logarit
+dominio contradominio imagem;dominio|contradominio|imagem.*funcao
+par ordenado~pares ordenados;pares? ordenados?|par ordenado|produto cartesiano|coordenadas cartesianas
+plano cartesiano;plano cartesiano
+grafico tabela funcao~construcao graficos funcoes;grafic.*(?:funcao|funcoes)|(?:funcao|funcoes).*grafic|tabel.*funcao
+funcoes crescentes decrescentes;crescent|decrescent|crescimento.*funcao|funcao.*crescimento;juros|exponencial
+taxa de variacao~funcao taxa variacao;taxa.*variacao|variacao.*funcao|coeficiente angular
+zeros interceptos funcoes~raiz funcao;zeros?.*(?:funcao|funcoes)|(?:funcao|funcoes).*(?:zeros?|raiz)|intercepto
+funcao composta inversa;func(?:ao|oes).*(?:compost|invers)|composicao.*fun`,
+9:String.raw`
+coeficiente angular linear funcao afim;coeficientes?.*(?:angular|linear)
+equacao reta~funcao afim equacao reta;equac(?:ao|oes).*reta|funcao afim
+grafico funcao afim~grafico funcao primeiro grau;grafic.*(?:afim|primeiro grau|1[º°o]?.*grau)|(?:afim|primeiro grau).*grafic
+zero funcao afim~raiz funcao primeiro grau;(?:zero|raiz).*(?:afim|primeiro grau|1[º°o]?.*grau)|(?:afim|primeiro grau).*(?:zero|raiz)
+sinal funcao afim~estudo sinal primeiro grau;sinal.*(?:afim|primeiro grau|1[º°o]?.*grau)|(?:afim|primeiro grau).*sinal
+taxa variacao funcao afim~coeficiente angular taxa constante;taxa.*variacao.*(?:afim|linear|constante)|coeficiente angular
+sistemas equacoes metodo grafico;sistemas?.*(?:grafic|retas)|(?:grafic|retas).*sistemas?
+funcao afim problemas~funcao tarifas;(?:afim|primeiro grau).*(?:tarifa|consumo|problema|aplicac)|(?:tarifa|consumo|problema).*(?:afim|primeiro grau)`,
+10:String.raw`
+parabola concavidade funcao quadratica;parabola|concavidade.*(?:funcao|grau)
+vertice raizes parabola~zeros funcao quadratica;vertice.*(?:parabola|quadratic|grau)|(?:parabola|quadratic|segundo grau).*(?:vertice|raiz|zero)
+maximos e minimos funcao quadratica~vertice parabola;(?:maxim|minim).*(?:quadratic|segundo grau|2[º°o]?.*grau|parabola)|(?:quadratic|segundo grau|parabola).*(?:maxim|minim)
+sinal funcao quadratica~sinal funcao segundo grau;sinal.*(?:quadratic|segundo grau|2[º°o]?.*grau)|(?:quadratic|segundo grau).*sinal
+grafico funcao quadratica~translacao parabola;grafic.*(?:quadratic|segundo grau)|(?:quadratic|segundo grau).*grafic|(?:translacao|deslocamento).*parabola
+funcao quadratica problemas area~otimizacao funcao quadratica;(?:quadratic|segundo grau|parabola).*(?:area|otimiza|maxim|minim)|(?:area|otimiza).*(?:quadratic|segundo grau)
+funcao quadratica trajetoria~lancamento obliquo parabola;trajetoria.*(?:parabol|quadratic)|(?:parabol|quadratic).*trajetoria|lancamento obliquo`,
+11:String.raw`
+crescimento decaimento exponencial;crescimento.*exponencial|decaimento.*exponencial|exponencial.*(?:crescimento|decaimento)|funcao exponencial
+funcao exponencial;func(?:ao|oes) exponencia
+ equacoes exponenciais;\bequac(?:ao|oes) exponencia
+introducao logaritmos~definicao logaritmo;logaritmo.*(?:introducao|definicao|conceito)|(?:introducao|definicao|conceito|o que e).*logaritmo
+propriedades logaritmos;propriedades?.*logaritm|logaritm.*propriedades?
+funcao logaritmica;func(?:ao|oes) logaritm
+escalas logaritmicas~logaritmo ph decibeis richter;escala.*(?:logaritm|\bph\b|decibe|richter)|(?:logaritm|funcao).*(?:\bph\b|decibe|richter)|(?:\bph\b|decibe|richter).*logaritm
+funcao exponencial populacao juros~crescimento populacional exponencial;exponencial.*(?:juros|populac|aplicac|bacter)|(?:juros|populac|bacter).*exponencial|juros compostos`,
+12:String.raw`
+sequencias numericas padroes;sequencias? numericas?|padroes?.*sequenc
+progressao aritmetica termo geral;progressao aritmetica|\bpa\b.*termo geral|termo geral.*\bpa\b
+soma progressao aritmetica~soma pa;som[ae].*(?:\bpa\b|progressao aritmetica)|(?:\bpa\b|progressao aritmetica).*som[ae]
+progressao geometrica termo geral;progressao geometrica|\bpg\b.*termo geral|termo geral.*\bpg\b
+soma progressao geometrica finita~soma pg;som[ae].*(?:\bpg\b|progressao geometrica)|(?:\bpg\b|progressao geometrica).*som[ae];infinit
+crescimento geometrico~progressao geometrica crescimento;crescimento.*geometric|geometric.*crescimento|progressao geometrica
+sequencias recorrentes~recorrencia sequencias;(?:recorren|recursiv).*sequenc|sequenc.*(?:recorren|recursiv)|fibonacci
+progressoes matematica financeira~juros compostos progressao geometrica;(?:progressao|\bpg\b|\bpa\b).*(?:financeir|juros)|(?:financeir|juros).*(?:progressao|\bpg\b|\bpa\b)`,
+13:String.raw`
+ponto reta segmento angulos;ponto.*reta|segmento de reta|tipos de angulos|conceitos.*angulos
+retas paralelas transversais;paralelas.*transversa|transversa.*paralelas
+triangulos classificacao;classificac.*triangulo|triangulo.*classificac|tipos de triangulo
+soma angulos triangulo~soma angulos internos poligonos;soma.*angulos.*(?:triangulo|poligono)|(?:triangulo|poligono).*soma.*angulos
+congruencia semelhanca triangulos;congruencia.*triangulo|semelhanca.*triangulo|triangulo.*(?:congruencia|semelhanca)
+teorema tales;\btales\b|\bthales\b
+teorema pitagoras;pitagoras
+relacoes metricas triangulo retangulo;relacoes metricas.*triangulo|triangulo.*relacoes metricas`,
+14:String.raw`
+quadrilateros poligonos;quadrilateros?|poligonos?|paralelogramos?|trapezios?
+poligonos regulares;poligonos? regulares?|hexagono regular
+perimetro areas figuras planas;perimetro|areas?.*(?:figuras|planas|triangulo|quadrado|retangulo|trapezio)|(?:triangulo|quadrado|retangulo|trapezio).*areas?
+formula heron;heron|herao
+circunferencia circulo;circunferencia|circulo;analitica|equacao
+arcos setores coroas~setor coroa circular;setor circular|setores circulares|coroa circular|arcos?.*circunferencia
+angulo inscrito central;angulos?.*(?:inscrit|central)|(?:inscrit|central).*angulos?
+tangencia circunferencia~relacoes metricas circunferencia;tangencia|tangentes?.*circunferencia|circunferencia.*tangentes?|relacoes metricas.*circunferencia`,
+15:String.raw`
+trigonometria triangulo retangulo~razoes trigonometricas;trigonometria.*triangulo retangulo|razoes trigonometricas|(?:seno|cosseno|tangente).*triangulo retangulo
+angulos notaveis trigonometria;angulos? notaveis?|tabela trigonometrica
+lei senos;lei.*senos
+lei cossenos;lei.*cossenos
+ciclo trigonometrico;circulo trigonometrico|ciclo trigonometrico|circunferencia trigonometrica
+funcoes seno cosseno;func(?:ao|oes).*(?:seno|cosseno)|funcoes trigonometricas
+graus radianos;graus.*radian|radian.*graus|conversao.*radian
+funcoes trigonometricas fenomenos periodicos~periodo funcoes seno cosseno;fenomenos periodicos|(?:periodo|periodic).*(?:seno|cosseno|trigonom)|(?:seno|cosseno|trigonom).*(?:periodo|periodic)`,
+16:String.raw`
+prismas piramides;prismas?|piramides?
+cubo paralelepipedo;\bcubos?\b|paralelepipedo
+cilindros cones esferas;cilindros?|\bcones?\b|esferas?;condutora|carga|eletro|magnet
+planificacao solidos;planificac
+area lateral total geometria espacial;area.*(?:lateral|total)|(?:lateral|total).*area
+volume solidos geometria espacial;volumes?.*(?:solido|prisma|piramide|cubo|paralelepipedo|cilindro|cone|esfera)|(?:solido|prisma|piramide|cubo|paralelepipedo|cilindro|cone|esfera).*volumes?
+secoes solidos semelhanca escala~seccao transversal solidos;secc?(?:ao|oes).*(?:solido|prisma|cilindro|cone|piramide|esfera)|(?:solido|prisma|cilindro|cone|piramide|esfera).*(?:secc?ao|escala|semelhanca)
+tronco cone piramide;troncos?.*(?:cone|piramide)`,
+17:String.raw`
+distancia entre pontos;distancia.*pontos
+ponto medio;point medio|ponto medio
+coeficiente angular;coeficiente angular
+equacao reta geometria analitica;equac(?:ao|oes).*reta
+retas paralelismo perpendicularismo;paralelismo|perpendicularismo|retas?.*(?:paralel|perpendicular);transversa
+intersecao retas;intersecc?ao.*retas|retas.*intersecc?ao|sistemas?.*(?:grafic|retas)
+circunferencia equacao geometria analitica;equac(?:ao|oes).*circunferencia|circunferencia.*(?:equac|analitica|plano cartesiano)
+area triangulo determinante~area coordenadas geometria analitica;area.*(?:determinante|coordenada|analitica)|(?:determinante|coordenada|analitica).*area`,
+18:String.raw`
+distribuicao frequencia~tabela frequencia;distribuicao.*frequencia|tabela.*frequencia|frequencia (?:absoluta|relativa)|tabelas? estatisticas?
+estatistica tabelas graficos~leitura interpretacao graficos tabelas;(?:tabelas|graficos).*(?:estatistic|interpretac|leitura)|(?:estatistic|interpretac|leitura).*(?:tabelas|graficos)
+media aritmetica ponderada;media.*(?:aritmetica|ponderada|simples)
+mediana moda;mediana|\bmoda\b
+amplitude estatistica;amplitude.*(?:estatistica|dados|total)|(?:estatistica|dados).*amplitude
+quartis~diagrama caixa boxplot;quartis|quartil|box.?plot
+variancia desvio padrao;variancia|desvio padrao
+graficos enganosos~graficos manipulados;graficos?.*(?:engan|manipul|mentir|distorc|fals)|(?:engan|manipul|mentir|distorc).*graficos?`,
+19:String.raw`
+principio fundamental contagem;principio fundamental.*contagem|\bpfc\b|principio multiplicativo
+diagrama arvore contagem~arvore possibilidades;diagrama.*arvore|arvore.*(?:possibilidades|contagem|probabilidade)
+permutacao simples;permutacao simples;repeticao|circular
+permutacao repeticao;permutacao.*repeticao
+arranjo combinatoria;\barranjo\b|\barranjos\b
+combinacao combinatoria;combinac(?:ao|oes)
+contagem restricoes combinatoria;(?:contagem|combinatoria|permutacao).*(?:restric|juntos|separados)|restric.*(?:contagem|combinatoria)|permutacao circular
+principio aditivo multiplicativo;principio aditivo|principio multiplicativo|principio fundamental.*contagem`,
+20:String.raw`
+espaco amostral eventos;espaco amostral|eventos.*probabilidade|probabilidade.*eventos
+eventos equiprovaveis probabilidade;equiprovaveis|equiprovavel|probabilidade.*(?:moeda|dado)|(?:moeda|dado).*probabilidade
+probabilidade evento complementar;complementar.*(?:probabilidade|evento)|(?:probabilidade|evento).*complementar
+probabilidade uniao intersecao;probabilidade.*(?:uniao|intersec)|(?:uniao|intersec).*probabilidade|adicao.*probabilidade|probabilidade.*adicao
+eventos independentes probabilidade;eventos independentes|probabilidade.*independen
+probabilidade condicional;probabilidade condicional|teorema de bayes
+probabilidade combinatoria;probabilidade.*combinatoria|combinatoria.*probabilidade
+probabilidade multiplas etapas~multiplicacao probabilidades;probabilidade.*(?:multiplica|etapas|sucessiv|independen)|(?:multiplica|etapas|sucessiv).*probabilidade`,
+21:String.raw`
+capitalizacao composta juros compostos;capitalizacao composta|juros compostos
+taxas equivalentes;taxas?.*equivalen|equivalencia.*taxas?
+valor presente futuro matematica financeira;valor presente|valor futuro|valor atual
+parcelamentos prestacoes matematica financeira;parcelamento|prestacoes|prestacao|financiamento|sistema price|sistema sac
+comparacao investimentos matematica financeira;compara.*investimento|investimento.*compara|rentabilidade|rendimento.*(?:juros|compost|financeir)
+inflacao acumulada;inflacao.*acumulad|acumulad.*inflacao|aumentos sucessivos
+juros nominais reais;(?:juros|taxas?).*(?:nomina|reais|real)|(?:nomina|reais).*(?:juros|taxa)`,
+22:String.raw`
+funcao definida sentencas~funcao por partes;func(?:ao|oes).*(?:partes|sentencas|leis|ramos)|(?:partes|sentencas|leis|ramos).*funcao
+valor absoluto modulo~funcao modular;valor absoluto|funcao modular|\bmodulo\b;aritmetica modular|congruencia
+relacao graficos formulas funcoes~lei formacao funcao grafico;grafic.*(?:formula|lei de formacao)|(?:formula|lei de formacao).*grafic
+otimizacao funcao problemas~maximo minimo funcao quadratica;otimizac.*(?:funcao|matematic)|(?:funcao|matematic).*otimizac|maxim.*minim.*(?:quadratic|grau)
+composicao funcoes modelos~funcao composta;func(?:ao|oes) compost|composicao.*func
+modelos nao lineares~modelagem funcao quadratica exponencial;(?:quadratic|exponencial).*(?:modelagem|aplicac|problema|contextualiz)|(?:modelagem|aplicac).*funcao.*(?:quadratic|exponencial)|modelos? nao lineares?
+crescimento linear exponencial comparacao;linear.*exponencial|exponencial.*linear|funcao (?:afim|exponencial)`,
+23:String.raw`
+amostragem representatividade~amostra populacao estatistica;amostragem|amostra.*(?:populacao|representativ)|populacao.*amostra
+vies amostral~vies estatistica;vies.*(?:amostra|estatistic)|(?:amostra|estatistic).*vies
+correlacao causalidade;correlacao|causalidade
+interpolacao extrapolacao;interpolac|extrapolac
+series temporais estatistica;series? temporais?|serie historica
+boxplot~diagrama de caixa;box.?plot|diagrama.*caixa
+distribuicao normal~curva gauss;distribuicao normal|curva de gauss|curva normal
+variabilidade estatistica~dispersao estatistica;variabilidade.*(?:estatistic|dados)|medidas de dispersao|variancia|desvio padrao`,
+24:String.raw`
+semelhanca geometria proporcao~teorema tales problemas;semelhanca.*(?:triangulo|figura)|(?:triangulo|figura).*semelhanca|teorema.*tales
+probabilidade combinatoria problemas;probabilidade.*combinatoria|combinatoria.*probabilidade
+funcoes matematica financeira~funcao exponencial juros;funcao.*(?:financeir|juros)|(?:financeir|juros).*funcao
+geometria espacial conversao volume~conversao unidades volume;conversao.*volume|volume.*conversao|litro.*metro cubico
+trigonometria topografia~trigonometria alturas distancias;trigonometria.*(?:topografia|alturas|distancias)|(?:topografia|alturas|distancias).*trigonometria
+estatistica interpretacao graficos~analise dados estatistica;estatistica.*(?:interpretac|grafic|analise)|(?:interpretac|grafic|analise).*estatistica
+analise dimensional estimativa;analise dimensional|estimativa.*(?:unidades|medidas)`,
+25:String.raw`
+matrizes determinantes;matrizes?|determinantes?
+sistemas lineares matrizes~sistemas regra cramer;sistemas?.*(?:matriz|matrizes|cramer)|(?:matriz|matrizes|cramer).*sistemas?|regra de cramer
+numeros complexos;numeros? complexos?|unidade imaginaria
+identidades trigonometricas~relacao fundamental trigonometria;identidades? trigonometricas?|relacao fundamental.*trigonometria|trigonometria.*relacao fundamental
+equacoes modulares;\bequac(?:ao|oes) modulares?|\bequacao modular
+conicas elipse hiperbole parabola;conicas?|elipse|hiperbole
+raciocinio logico conjuntos;raciocinio logico|logica.*(?:matematica|proposic)|conjuntos|diagrama de venn`
+};
+export const VIDEO_LESSON_PROFILES=Object.fromEntries(Object.entries(LESSON_VIDEO_ROWS).flatMap(([module,rows])=>rows.trim().split('\n').map((row,i)=>{
+ const [query,accept,reject]=row.trim().split(';');
+ return [`math.m${module.padStart(2,'0')}.t${String(i+1).padStart(2,'0')}`,{queries:query.trim().split('~'),accept:new RegExp(accept),reject:reject?new RegExp(reject):null}];
+})));
+
 const EDITORIAL_QUERY_ALIASES=[
  [/calculo percentual/,'porcentagem'],[/funcao quadratica/,'funcao do segundo grau'],[/funcao afim/,'funcao do primeiro grau'],
  [/naturais|sistema decimal/,'sistema de numeracao decimal ordens classes decomposicao'],[/adicao, subtracao.*multiplicacao.*divisao/,'quatro operacoes basicas numeros inteiros decimais'],[/coeficientes? angular/,'inclinacao da reta'],[/ordem das operacoes/,'expressoes numericas'],
@@ -15,6 +248,7 @@ const EDITORIAL_QUERY_ALIASES=[
 ];
 export function lessonVideoQueries(lesson){
  if(!lesson)return[];
+ if(VIDEO_LESSON_PROFILES[lesson.id])return VIDEO_LESSON_PROFILES[lesson.id].queries.slice(0,2);
  const base=normalizeWords(lesson.videoTerms??lesson.title);
  if(!base)return[];
  const moduleContext=lesson.moduleTitle==null?'':normalizeWords(lesson.moduleTitle);
@@ -74,6 +308,8 @@ export function scoreLessonVideo(title,lesson){
  const guard=EARLY_ARITHMETIC_VIDEO_GUARDS[lesson.id];
  if(guard?.reject.test(text))return 0;
  if(lesson.id==='math.m10.t03'&&!/quadratic|parabol|segundo grau|2\s*[º°o]?\s*grau/.test(text))return 0;
+ const profile=VIDEO_LESSON_PROFILES[lesson.id];
+ if(profile){if(profile.reject?.test(text)||/derivad|calculo (?:1|diferencial|integral)/.test(text))return 0;return profile.accept.test(text)?(text.includes(target)?40:20):0;}
  if(ROADMAP_VIDEO_MATCH[lesson.id])return ROADMAP_VIDEO_MATCH[lesson.id].test(text)?20:0;
  const override=aliases.find(([key])=>key.test(target));
  if(override)return override[1].test(text)?(text.includes(target)?40:20):0;

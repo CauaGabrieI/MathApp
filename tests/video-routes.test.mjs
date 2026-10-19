@@ -43,7 +43,11 @@ test('rotas de conteúdo válidas funcionam offline e aceitam Ferretto',async()=
       assert.ok(data.topic);
     }
     assert.ok(calls.length>0);
-    assert.ok(calls.every(url=>url.includes('youtube.com/@professorferretto/')));
+    const ferrettoIds=new Set(['video-catalog.json','video-catalog-roadmap.json'].flatMap(file=>JSON.parse(fs.readFileSync(file,'utf8'))).filter(v=>v.channelHandle==='professorferretto').map(v=>v.id));
+    for(const url of calls){const u=new URL(url);assert.equal(u.origin,'https://www.youtube.com');
+      if(u.pathname==='/oembed')assert.ok(ferrettoIds.has(new URL(u.searchParams.get('url')).searchParams.get('v')),'só verifica candidatos do canal filtrado');
+      else assert.equal(u.pathname,'/@professorferretto/search');
+    }
   }finally{globalThis.fetch=original;}
 });
 

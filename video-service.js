@@ -21,7 +21,9 @@ export async function recommendVideos(topic,channelFilter='all',{fetchImpl=fetch
  const jobs=isModule?moduleJobs:channels.flatMap(channel=>(lesson?lessonVideoQueries(lesson):[VIDEO_TOPICS[topic].query]).map(query=>({channel,query,lesson})));
  const verifyLimit=Math.min(32,Math.max(0,48-jobs.length));
  const check=async candidate=>{if(verified.has(candidate.id)||attempted.has(candidate.id)||attempted.size>=verifyLimit)return null;attempted.add(candidate.id);const remaining=deadline-Date.now();if(remaining<=0)return null;const value=await verifyYouTubeVideo(candidate,candidate.lesson?.topic??topic,{fetchImpl,now,useCache,lesson:candidate.lesson??lesson,timeoutMs:Math.min(3500,remaining)});if(value){value.lessonId=candidate.lesson?.id;verified.set(value.id,value);}return value;};
- const targeted=lesson?interleave(lessons.map(context=>seedVideos.filter(v=>v.lessonIds?.includes(context.id)&&(channelFilter==='all'||v.channelHandle===channelFilter)&&(!isModule||matchesLessonVideo(v.title,context))).map(v=>({...v,lesson:context}))),isModule?24:12):[];
+ // Rank the lesson's precise concepts before spending the verification budget.
+ // Availability and the live title/channel are still checked below.
+ const targeted=lesson?interleave(lessons.map(context=>seedVideos.filter(v=>v.lessonIds?.includes(context.id)&&(channelFilter==='all'||v.channelHandle===channelFilter)&&(!v.title||matchesLessonVideo(v.title,context))).sort((a,b)=>scoreLessonVideo(b.title,context)-scoreLessonVideo(a.title,context)).map(v=>({...v,lesson:context}))),isModule?24:12):[];
  await bounded(targeted,6,async candidate=>check(candidate));
  const discovered=verified.size>=12?[]:(await bounded(jobs,6,async({channel,query,lesson:context})=>{
    if(Date.now()>=deadline)return [];
