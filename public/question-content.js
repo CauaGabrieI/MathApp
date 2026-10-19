@@ -1,4 +1,4 @@
-import {alternativeContentKey,plainText} from './core.js?v=math26';
+import {alternativeContentKey,plainText} from './core.js?v=math27';
 
 // Refresh presentation only when the saved answer identities still match.
 // Completed attempts retain their timestamps, source letters and grading.

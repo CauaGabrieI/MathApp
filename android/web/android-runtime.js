@@ -1,7 +1,7 @@
-import {fromDev} from './core.js?v=math26';
+import {fromDev} from './core.js?v=math27';
 import {recommendVideos} from './android-video-service.js';
-import {VIDEO_TOPICS,VIDEO_CHANNELS} from './video-topics.js?v=math26';
-import {learningLesson,questionVideoContext} from './lesson-topics.js?v=math26';
+import {VIDEO_TOPICS,VIDEO_CHANNELS} from './video-topics.js?v=math27';
+import {learningLesson,questionVideoContext} from './lesson-topics.js?v=math27';
 const browserFetch=window.fetch.bind(window),pending=new Map();let serial=0;
 AndroidNetwork.onmessage=event=>{let data;try{data=JSON.parse(event.data);}catch{return;}const task=pending.get(data.id);if(!task)return;pending.delete(data.id);clearTimeout(task.timer);task.cleanup();data.error?task.reject(Object.assign(new Error(data.error),{status:data.status})):task.resolve(data);};
 function nativeMessage(message,signal){return new Promise((resolve,reject)=>{if(signal?.aborted){reject(new DOMException('Cancelado','AbortError'));return;}const id=String(Date.now())+':'+(++serial);const abort=()=>{pending.delete(id);clearTimeout(timer);reject(new DOMException('Cancelado','AbortError'));};const timer=setTimeout(()=>{pending.delete(id);signal?.removeEventListener('abort',abort);reject(new Error('Tempo esgotado'));},message.kind==='github'?90000:25000);pending.set(id,{resolve,reject,timer,cleanup:()=>signal?.removeEventListener('abort',abort)});signal?.addEventListener('abort',abort,{once:true});AndroidNetwork.postMessage(JSON.stringify({...message,id}));});}

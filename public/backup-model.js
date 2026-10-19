@@ -1,4 +1,4 @@
-import {CARD_RATINGS,CARD_SCHEMA_VERSION,normalizeCard} from './flashcard-model.js?v=math26';
+import {CARD_RATINGS,CARD_SCHEMA_VERSION,normalizeCard} from './flashcard-model.js?v=math27';
 // Backups contain IDs, attempts and study state. Question content comes from the app bank.
 export const BACKUP_APP='br.com.equacao.app';
 export const BACKUP_LIMIT=8*1024*1024;

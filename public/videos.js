@@ -1,6 +1,6 @@
-import {VIDEO_CHANNELS,VIDEO_TOPICS,detectVideoTopic} from './video-topics.js?v=math26';
-import {completedRecords} from './core.js?v=math26';
-import {videoCategories,videoModules,videoLessons,defaultVideoSelection,isValidVideoSelection} from './video-categories.js?v=math26';
+import {VIDEO_CHANNELS,VIDEO_TOPICS,detectVideoTopic} from './video-topics.js?v=math27';
+import {completedRecords} from './core.js?v=math27';
+import {videoCategories,videoModules,videoLessons,defaultVideoSelection,isValidVideoSelection} from './video-categories.js?v=math27';
 const $=s=>document.querySelector(s);
 const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const play='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg>';
@@ -13,7 +13,7 @@ async function ensureRoadmap(){
  const provided=stateProvider?.()?.roadmap;
  if(provided){roadmapData=provided;return provided;}
  if(roadmapData)return roadmapData;
- if(!roadmapPromise)roadmapPromise=fetch('/learning-path.json?v=math26',{signal:AbortSignal.timeout(25000)}).then(response=>{if(!response.ok)throw new Error('Não foi possível carregar os módulos de videoaula.');return response.json();}).then(data=>{roadmapData=data;return data;}).catch(error=>{roadmapPromise=null;throw error;});
+ if(!roadmapPromise)roadmapPromise=fetch('/learning-path.json?v=math27',{signal:AbortSignal.timeout(25000)}).then(response=>{if(!response.ok)throw new Error('Não foi possível carregar os módulos de videoaula.');return response.json();}).then(data=>{roadmapData=data;return data;}).catch(error=>{roadmapPromise=null;throw error;});
  return roadmapPromise;
 }
 function contextOptionAvailable(current){return Boolean(current?.questionId||current?.content?.topicId||current?.content?.moduleId);}
