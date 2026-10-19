@@ -3,7 +3,7 @@ import {openDB,snapshot,reserveQuestion,submitAnswer,clearHistory,setActive,save
 import {statementHTML,inlineHTML,richOptionHTML,imageURL,initQuestionMedia} from './render.js?v=math27';
 import {SOURCES,completedRecords,localDay,stats} from './core.js?v=math27';
 import {journeyProgress,learnedQuestions,learnedCards,examSelection,examResult,examComparison,normalizeExamKind} from './journey-model.js?v=math27';
-import {initJourney,loadJourney as renderJourney,refreshJourney,openJourneyModule,openJourneyLesson} from './journey-ui.js?v=math27';
+import {initJourney,loadJourney as renderJourney,refreshJourney,openJourneyModule,openJourneyLesson} from './journey-ui.js?v=math28';
 import {subjectRoute,subjectForModule,subjectForLesson,parseAppRoute} from './journey-navigation.js?v=math27';
 import {initVideoUI,updateVideoRecommendations,loadVideoLibrary} from './videos.js?v=math27';
 import {ICONS as icons} from './icons.js?v=math27';
